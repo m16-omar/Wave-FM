@@ -1,173 +1,129 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ARTICLES_DATA, ARTICLE_CATEGORIES } from '../../data/articles';
+import { ARTICLES_DATA } from '../../data/articles';
 import { ArticleCard } from '../../components/cards/ArticleCard';
 import { BlogSidebar } from '../../components/blog/BlogSidebar';
-import { Pagination } from '../../components/ui/Pagination';
-import { Tabs } from '../../components/ui/Tabs';
-import type { TabItem } from '../../components/ui/Tabs';
-import { Newspaper } from 'lucide-react';
 
 export const BlogPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategory = searchParams.get('category') || 'all';
   const selectedTag = searchParams.get('tag') || null;
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const [visibleCount, setVisibleCount] = useState<number>(6);
 
-  // Filter articles
+  // Filter articles by category or tag
   const filteredArticles = useMemo(() => {
     return ARTICLES_DATA.filter((article) => {
-      if (selectedCategory !== 'all' && article.category.toLowerCase().replace(/ & | /g, '-') !== selectedCategory) {
-        // Also match category name directly
-        if (!article.category.toLowerCase().includes(selectedCategory.replace(/-/g, ' '))) {
+      if (selectedCategory !== 'all') {
+        const catSlug = article.category.toLowerCase().replace(/ & | /g, '-');
+        if (catSlug !== selectedCategory && !article.category.toLowerCase().includes(selectedCategory)) {
           return false;
         }
       }
       if (selectedTag) {
-        const tagSlug = selectedTag.toLowerCase();
-        const hasTag = article.tags.some(t => t.toLowerCase().replace(/ /g, '-') === tagSlug);
+        const tagUpper = selectedTag.toUpperCase();
+        const hasTag = article.tags.some((t) => t.toUpperCase() === tagUpper);
         if (!hasTag) return false;
       }
       return true;
     });
   }, [selectedCategory, selectedTag]);
 
-  // Pagination calculation
-  const totalPages = Math.ceil(filteredArticles.length / itemsPerPage) || 1;
-  const currentArticles = filteredArticles.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const displayedArticles = filteredArticles.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredArticles.length;
 
-  const categoryTabs: TabItem[] = [
-    { id: 'all', label: 'All Stories', count: ARTICLES_DATA.length },
-    ...ARTICLE_CATEGORIES.map(c => ({
-      id: c.slug,
-      label: c.name,
-      count: c.count,
-    })),
-  ];
-
-  const handleCategoryChange = (tabId: string) => {
-    setCurrentPage(1);
-    if (tabId === 'all') {
+  const handleCategorySelect = (catSlug: string) => {
+    setVisibleCount(6);
+    if (catSlug === 'all') {
       searchParams.delete('category');
     } else {
-      searchParams.set('category', tabId);
+      searchParams.set('category', catSlug);
     }
     searchParams.delete('tag');
     setSearchParams(searchParams);
   };
 
+  const handleTagSelect = (tag: string) => {
+    setVisibleCount(6);
+    searchParams.set('tag', tag);
+    searchParams.delete('category');
+    setSearchParams(searchParams);
+  };
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 4);
+  };
+
   return (
-    <div className="w-full py-8 md:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Page Header / Breadcrumb */}
-        <div className="border-b border-border pb-6">
-          <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
-            <Newspaper className="w-4 h-4" />
-            <span>WAVE 98.5 FM Editorial Newsroom</span>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-                News & Blog
-              </h1>
-              <p className="text-sm md:text-base text-gray-400 mt-2 max-w-2xl">
-                Daily music journalism, exclusive studio dialogues, festival guides, gear reviews and chart analysis.
-              </p>
-            </div>
-
-            {/* Category Filter Pills (Top Bar) */}
-            <div className="shrink-0 overflow-x-auto pb-1">
-              <Tabs
-                tabs={categoryTabs}
-                activeTab={selectedCategory}
-                onChange={handleCategoryChange}
-                variant="pills"
-              />
-            </div>
-          </div>
+    <div className="w-full select-none">
+      {/* 1. Hero Page Title with Repeating "Blog" Watermark (Pixel-Matched to Screenshot 1) */}
+      <div className="w-full bg-[#0C0D10] py-14 sm:py-20 relative overflow-hidden border-b border-white/5">
+        {/* Background Repeating Script Watermark "Blog" */}
+        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.04] overflow-hidden select-none">
+          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
+            Blog
+          </span>
+          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden sm:inline">
+            Blog
+          </span>
+          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden md:inline">
+            Blog
+          </span>
         </div>
 
-        {/* Selected Tag or Category indicator */}
-        {(selectedTag || selectedCategory !== 'all') && (
-          <div className="flex items-center justify-between p-3.5 rounded-xl bg-background-card border border-border text-xs">
-            <span className="text-gray-300">
-              Filtering by: <strong className="text-brand-yellow uppercase">{selectedTag ? `#${selectedTag}` : selectedCategory}</strong> ({filteredArticles.length} articles)
-            </span>
-            <button
-              onClick={() => {
-                setSearchParams({});
-                setCurrentPage(1);
-              }}
-              className="text-gray-400 hover:text-white font-bold underline"
-            >
-              Clear filters
-            </button>
-          </div>
-        )}
+        {/* Centered Title */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight font-display">
+            Blog Sidebar
+          </h1>
+        </div>
+      </div>
 
-        {/* Exact WP35 Blog-Sidebar 2-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* Main Articles Column (68% / 8 Cols on Large Screens) */}
-          <main className="lg:col-span-8 space-y-8">
-            {currentArticles.length > 0 ? (
-              <>
-                {/* First Article as Large Hero Card (on page 1 when showing all) */}
-                {currentPage === 1 && selectedCategory === 'all' && !selectedTag && (
-                  <div className="mb-8">
-                    <ArticleCard article={currentArticles[0]} variant="featured" />
-                  </div>
-                )}
-
-                {/* Grid of standard blog cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {(currentPage === 1 && selectedCategory === 'all' && !selectedTag
-                    ? currentArticles.slice(1)
-                    : currentArticles
-                  ).map((article) => (
-                    <ArticleCard
-                      key={article.id}
-                      article={article}
-                      variant="standard"
-                    />
-                  ))}
-                </div>
-
-                {/* Pagination (1, 2, 3...) */}
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={(page) => {
-                    setCurrentPage(page);
-                    window.scrollTo({ top: 200, behavior: 'smooth' });
-                  }}
-                />
-              </>
+      {/* 2. Main Content Grid: Articles (8 Cols) + Sidebar (4 Cols) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          {/* Left Column (8 Cols): 2-Column Article Cards Grid */}
+          <div className="lg:col-span-8 space-y-10">
+            {displayedArticles.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                {displayedArticles.map((article) => (
+                  <ArticleCard key={article.id} article={article} variant="grid" />
+                ))}
+              </div>
             ) : (
-              <div className="text-center py-16 bg-background-card rounded-2xl border border-border p-8">
-                <p className="text-base text-gray-300 font-bold mb-2">
-                  No articles found matching this filter.
-                </p>
-                <p className="text-xs text-gray-500 mb-6">
-                  Try selecting a different category or clear active tag filters.
-                </p>
+              <div className="text-center py-16 bg-[#141416] rounded-2xl border border-white/10">
+                <p className="text-gray-400 font-bold text-sm">No stories found in this category.</p>
                 <button
-                  onClick={() => setSearchParams({})}
-                  className="px-6 py-2.5 rounded-xl bg-brand-yellow text-black font-bold uppercase text-xs"
+                  onClick={() => {
+                    searchParams.delete('category');
+                    searchParams.delete('tag');
+                    setSearchParams(searchParams);
+                  }}
+                  className="mt-4 px-6 py-2 rounded-full bg-brand-yellow text-black font-extrabold text-xs uppercase"
                 >
-                  View All News
+                  View All Stories
                 </button>
               </div>
             )}
-          </main>
 
-          {/* Dedicated Sidebar Column (32% / 4 Cols on Large Screens) */}
+            {/* "LOAD MORE" Pill Button from Screenshot 3 */}
+            {hasMore && (
+              <div className="text-center pt-4">
+                <button
+                  onClick={handleLoadMore}
+                  className="px-10 py-3 rounded-full border border-white/30 text-white hover:border-brand-yellow hover:text-brand-yellow hover:scale-105 active:scale-95 font-black text-xs uppercase tracking-widest transition-all cursor-pointer shadow-lg"
+                >
+                  LOAD MORE
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Right Column (4 Cols): Redesigned Sidebar */}
           <div className="lg:col-span-4">
-            <BlogSidebar currentCategory={selectedCategory} />
+            <BlogSidebar
+              onSelectCategory={handleCategorySelect}
+              onSelectTag={handleTagSelect}
+            />
           </div>
         </div>
       </div>

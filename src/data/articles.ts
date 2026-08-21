@@ -1,203 +1,264 @@
 import { Article, ArticleCategory } from '../types/article';
 
 export const ARTICLE_CATEGORIES: ArticleCategory[] = [
-  { id: 'cat-1', name: 'Music News', slug: 'music-news', count: 24, color: '#FFE600' },
-  { id: 'cat-2', name: 'Interviews', slug: 'interviews', count: 18, color: '#00F0FF' },
-  { id: 'cat-3', name: 'DJ & Production', slug: 'dj-production', count: 12, color: '#FF007F' },
-  { id: 'cat-4', name: 'Festivals & Events', slug: 'festivals-events', count: 15, color: '#8B5CF6' },
-  { id: 'cat-5', name: 'Culture & Trends', slug: 'culture-trends', count: 9, color: '#10B981' },
-  { id: 'cat-6', name: 'Album Reviews', slug: 'album-reviews', count: 14, color: '#F59E0B' },
+  { id: 'cat-1', name: 'Events', slug: 'events', count: 18, color: '#FFE600' },
+  { id: 'cat-2', name: 'Artists', slug: 'artists', count: 24, color: '#00F0FF' },
+  { id: 'cat-3', name: 'Concerts', slug: 'concerts', count: 15, color: '#FF007F' },
+  { id: 'cat-4', name: 'Featured', slug: 'featured', count: 22, color: '#8B5CF6' },
+  { id: 'cat-5', name: 'Highlights', slug: 'highlights', count: 12, color: '#10B981' },
+  { id: 'cat-6', name: 'Interviews', slug: 'interviews', count: 16, color: '#F59E0B' },
 ];
 
 export const ARTICLES_DATA: Article[] = [
   {
     id: 'art-01',
-    slug: 'peggy-gou-unveils-groundbreaking-world-tour-and-club-album',
-    title: 'Peggy Gou Unveils Groundbreaking 2026 World Tour & Headline Festival Dates',
-    excerpt: 'The global dance powerhouse opens up in an exclusive WAVE FM interview about sound design, vintage synthesizers, and creating the summer anthem.',
+    slug: 'listeners-choice-awards-top-picks-music-icons',
+    title: "Listener's Choice Awards: Your Top Picks for This Year's Music Icons",
+    excerpt: 'The global community voted, and the results are officially in. Discover who took home the crown on WAVE 98.',
     content: `
-# Peggy Gou Takes Over Global Dancefloors
+# The People Have Spoken: 2026 Music Icons
 
-In a candid, exclusive conversation with WAVE 98.5 FM’s Maya Lin, international DJ, producer, and fashion icon **Peggy Gou** broke down the creative journey behind her latest chart-topping single, *Starry Night (Club Mix)*, and shared high-voltage details about her upcoming 40-city world tour.
+Every year, WAVE 98 hands the voting power directly to our listeners worldwide. Over 250,000 ballots were cast across electronic, hip-hop, pop, and global beats categories.
 
-## "The Energy in the Studio Was Electric"
+## Dominating the Charts
+From explosive world tours to genre-defining studio albums, this year proved that listener power is stronger than ever.
 
-*"We spent nearly two months testing variations of the 909 kick drum in small underground clubs before releasing the master track,"* Gou explained. *"Radio listeners crave something that feels both nostalgically 90s house and sharp with modern low-end punch."*
-
-### What to Expect on Tour:
-- Custom 360-degree LED visual stage architecture
-- Live guest vocal appearances from top UK and European underground acts
-- Secret b2b club pop-ups in select cities announced 2 hours before midnight
-
-> "Music is pure frequency. When the crowd and the sound system hit that resonant wavelength together, there is no feeling like it on Earth."
-
-Peggy Gou’s headline tour kicks off next month in London, Paris, Tokyo, and New York. Stay locked into **WAVE 98.5 FM** for VIP backstage passes and exclusive ticket giveaways!
+### Top Winners This Year:
+- **Best Global Act:** Peggy Gou & Maya Jane Coles
+- **Album of the Year:** Short n' Sweet
+- **Breakthrough Record:** "Who" — Jimin
+- **Underground DJ of the Year:** Ryan Taylor (After Hours Mix)
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop&q=80',
-    category: 'Interviews',
-    tags: ['Peggy Gou', 'House Music', 'Festivals', 'Tour', 'Electronic'],
+    featuredImage: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+    category: 'Events',
+    tags: ['ARTISTS', 'CHARTS', 'COUNTDOWN', 'CULTURE', 'FESTIVALS'],
     author: {
       id: 'maya-lin',
       name: 'Maya Lin',
-      role: 'Music Editor & On-Air Host',
-      avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80',
-      bio: 'Maya Lin leads music journalism at WAVE FM, tracking global charts and conducting backstage artist dialogues.',
+      role: 'Music Editor',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
     },
-    publishedAt: 'Aug 19, 2026',
+    publishedAt: 'January 8, 2026',
     readTime: '4 min read',
-    viewsCount: 14280,
-    commentsCount: 34,
+    viewsCount: 32,
+    commentsCount: 156,
     isFeatured: true,
-    isTrending: true,
   },
   {
     id: 'art-02',
-    slug: 'the-revolution-of-modern-drill-and-afrobeats-fusion',
-    title: 'The Sound Evolution: How UK Drill and Afrobeats Are Redefining Global Radio',
-    excerpt: 'From London basement studios to global stadium tours, cross-continental collaborations are driving the most energetic wave in radio history.',
+    slug: 'from-viral-dance-challenges-to-radio-play',
+    title: 'From Viral Dance Challenges to Radio Play: How Trap Songs Go Mainstream',
+    excerpt: 'A deep dive into how short-form video hooks transition into global rotation records on radio stations across the world.',
     content: `
-# The New Global Rhythm
+# The Modern Pipeline to Radio Rotation
 
-The sonic landscape of contemporary radio has experienced a monumental transformation. Blending 808 slides with syncopated Afrobeats polyrhythms, producers across London, Lagos, Paris, and Toronto are reshaping mainstream radio playlists.
-
-## Breaking Down the Cross-Genre Phenomenon
-
-On our midday show **Urban Pulse**, DJ K-Real regularly spins new underground tracks that combine West African percussive grooves with heavy melodic drill basslines. 
-
-### Key Elements of the Movement:
-1. **Syncopated Log Drums:** Borrowed from Amapiano and injected with aggressive trap snares.
-2. **Dual-Language Hooks:** Seamless switches between English, Yoruba, French, and local street slang.
-3. **High-Definition Spatial Mixing:** Tuned specifically for stadium sound systems and high-end automotive audio.
-
-Stay tuned to WAVE 98.5 FM every weekday at 10 AM for the freshest unreleased dubplates.
+How does an 8-bar loop uploaded from a bedroom producer become the #1 most-requested song on WAVE 98? We analyze the sonic formula behind viral hits.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&auto=format&fit=crop&q=80',
-    category: 'Music News',
-    tags: ['Afrobeats', 'UK Drill', 'Hip-Hop', 'Urban Culture', 'Trends'],
+    featuredImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80',
+    category: 'Artists',
+    tags: ['HITS', 'INDUSTRY', 'POP', 'SOUND', 'TRENDS'],
     author: {
-      id: 'dj-k-real',
-      name: 'DJ K-Real',
-      role: 'Urban Music Director',
+      id: 'ryan-taylor',
+      name: 'Ryan Taylor',
+      role: 'Resident DJ & Writer',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
     },
-    publishedAt: 'Aug 18, 2026',
-    readTime: '6 min read',
-    viewsCount: 9820,
-    commentsCount: 21,
+    publishedAt: 'January 8, 2026',
+    readTime: '5 min read',
+    viewsCount: 28,
+    commentsCount: 94,
     isFeatured: true,
   },
   {
     id: 'art-03',
-    slug: 'inside-the-analog-synth-renaissance-in-studio-sound',
-    title: 'Inside the Studio: Why Top Chart Producers Are Ditching Plugins for Analog Rigs',
-    excerpt: 'We step inside Berlin and Los Angeles recording facilities to see how legendary hardware synthesizers are powering the 2026 hit singles.',
+    slug: 'the-2025-urban-music-festival-you-cant-miss',
+    title: "The 2025 Urban Music Festival You Can't Miss",
+    excerpt: 'Full lineup announcement, stage schedules, secret VIP sets, and camping tickets for the largest urban music weekend.',
     content: `
-# The Warmth of Voltage
+# Ready for the Ultimate Urban Music Experience?
 
-Despite countless digital audio workstations and software emulations, chart-topping producers are returning in droves to bulky patch cables, analog filters, and vintage tape machines.
-
-## Why Real Silicon Still Wins
-
-Producer and WAVE FM resident host **Leo Vance** explains:
-
-> "There is a non-linear imperfection to true analog circuitry. When you push a Moog filter or a Roland Juno into red saturation, it produces harmonic overtones that digital algorithms simply approximate."
-
-Listen to the difference during **After Hours Club** every midnight on WAVE 98.5 FM.
+WAVE 98 is the official broadcast partner for the 2025 Urban Music Festival, streaming live DJ sets and exclusive backstage artist chats all weekend.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&auto=format&fit=crop&q=80',
-    category: 'DJ & Production',
-    tags: ['Synthesizers', 'Studio Gear', 'Production', 'Audio Engineering'],
-    author: {
-      id: 'leo-vance',
-      name: 'Leo Vance',
-      role: 'Resident Producer',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80',
-    },
-    publishedAt: 'Aug 16, 2026',
-    readTime: '5 min read',
-    viewsCount: 7540,
-    commentsCount: 15,
-  },
-  {
-    id: 'art-04',
-    slug: 'wave-festival-2026-lineup-announcement',
-    title: 'WAVE Live Summer Festival 2026: Official Headliners & Early Bird Access',
-    excerpt: '3 Stages, 45 Artists, 30,000 Fans. The annual WAVE FM flagship summer music celebration returns bigger than ever.',
-    content: `
-# The Ultimate Summer Gathering
-
-WAVE 98.5 FM is thrilled to announce the official phase 1 artist roster for the **WAVE Summer Music Festival 2026**. 
-
-Taking place across Waterfront Park on September 12-14, this year's lineup features international headliners alongside local breakout stars.
-
-### Stage Breakdown:
-- **The Main Wave Stage:** Global Pop, Hip-Hop, and Chart Leaders
-- **The Bass Arena:** Drum & Bass, Dubstep, and High-BPM Energy
-- **The Oasis Lounge:** Melodic Deep House, Soul, and Sunset Sessions
-
-Early bird tickets go on sale this Friday at 10 AM. WAVE FM mobile app members get instant 24-hour presale privileges.
-    `,
-    featuredImage: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&auto=format&fit=crop&q=80',
-    category: 'Festivals & Events',
-    tags: ['WAVE Fest', 'Summer 2026', 'Concerts', 'Live Music', 'Tickets'],
-    author: {
-      id: 'marcus-chloe',
-      name: 'Chloe Vance',
-      role: 'Events Host & Correspondent',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
-    },
-    publishedAt: 'Aug 14, 2026',
-    readTime: '3 min read',
-    viewsCount: 18900,
-    commentsCount: 88,
-    isTrending: true,
-  },
-  {
-    id: 'art-05',
-    slug: 'review-billie-eilish-hit-me-hard-and-soft-deluxe',
-    title: 'Album Breakdown: Why Billie Eilish’s Latest Project Is a Masterclass in Dynamic Range',
-    excerpt: 'An in-depth sonic inspection of acoustic intimacy transitioning into heavy bass explosions.',
-    content: `
-# Intimacy Meets Sub-Bass Power
-
-From whispering acoustic vocals to seismic synthesizer drops, *HIT ME HARD AND SOFT* proves that radio pop can maintain supreme dynamic range and emotional depth simultaneously.
-    `,
-    featuredImage: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=1200&auto=format&fit=crop&q=80',
-    category: 'Album Reviews',
-    tags: ['Billie Eilish', 'Pop', 'Album Review', 'Acoustic', 'Finneas'],
+    featuredImage: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80',
+    category: 'Concerts',
+    tags: ['CONCERTS', 'FESTIVALS', 'LIVE', 'RADIO LIVE'],
     author: {
       id: 'maya-lin',
       name: 'Maya Lin',
-      role: 'Music Editor & On-Air Host',
-      avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80',
+      role: 'Music Editor',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
     },
-    publishedAt: 'Aug 12, 2026',
-    readTime: '5 min read',
-    viewsCount: 8430,
-    commentsCount: 19,
+    publishedAt: 'January 8, 2026',
+    readTime: '3 min read',
+    viewsCount: 45,
+    commentsCount: 112,
+  },
+  {
+    id: 'art-04',
+    slug: 'the-best-of-both-worlds-commercial-and-rap-music',
+    title: 'The Best of Both Worlds: How Commercial and Rap Music Are Coming Together',
+    excerpt: 'Genre borders are dissolving as rap producers engineer stadium anthems with high-energy house kicks.',
+    content: `
+# Cross-Genre Hybrid Sound
+
+Analyzing the explosive growth of rap tracks engineered for club dancefloors and prime-time radio airplay.
+    `,
+    featuredImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80',
+    category: 'Featured',
+    tags: ['FEATURED', 'DJ', 'STUDIO', 'PRO RADIO'],
+    author: {
+      id: 'dj-k-real',
+      name: 'DJ K-Real',
+      role: 'Director',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80',
+    },
+    publishedAt: 'January 8, 2026',
+    readTime: '4 min read',
+    viewsCount: 52,
+    commentsCount: 88,
+  },
+  {
+    id: 'art-05',
+    slug: 'what-goes-into-creating-a-hit-single-production',
+    title: 'What Goes into Creating a Hit Single? A Deep Dive into Music Production',
+    excerpt: 'Step inside the mastering suite to understand analog summing, drum layering, and dynamic vocal tuning.',
+    content: `
+# Inside the Hitmaking Studio
+
+Great songs do not happen by accident. Top mixing engineers break down the anatomy of a #1 billboard smash.
+    `,
+    featuredImage: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80',
+    category: 'Artists',
+    tags: ['STUDIO', 'SYNTH', 'TECHNO', 'SOUND'],
+    author: {
+      id: 'ryan-taylor',
+      name: 'Ryan Taylor',
+      role: 'Resident DJ',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+    },
+    publishedAt: 'January 8, 2026',
+    readTime: '6 min read',
+    viewsCount: 34,
+    commentsCount: 71,
   },
   {
     id: 'art-06',
-    slug: '10-breakout-independent-artists-you-need-on-your-radar',
-    title: '10 Breakout Indie & Underground Artists You Need on Your Radar This Month',
-    excerpt: 'WAVE FM’s music discovery team curates the ten rising artists disrupting streaming algorithms and dominating radio airwaves.',
+    slug: 'trap-stars-you-should-be-following-right-now',
+    title: 'Trap Stars You Should Be Following Right Now',
+    excerpt: 'The underground acts building loyal followings before major labels even discover their sound.',
     content: `
-# Fresh Blood in the Airwaves
+# The Next Wave of Underground Stars
 
-Every week our curation staff listens through hundreds of demo submissions and independent releases. Here are ten names setting the underground on fire.
+Meet the 5 producers and lyricists reshaping the sonic landscape from Atlanta, London, and Toronto.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&auto=format&fit=crop&q=80',
-    category: 'Culture & Trends',
-    tags: ['Indie', 'New Music', 'Discovery', 'Underground', 'Spotlight'],
+    featuredImage: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+    category: 'Featured',
+    tags: ['ARTISTS', 'DISCOVERY', 'ONLINE', 'RELEASES'],
     author: {
-      id: 'dj-luna',
-      name: 'DJ Luna',
-      role: 'Music Curator',
-      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80',
+      id: 'maya-lin',
+      name: 'Maya Lin',
+      role: 'Music Editor',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
     },
-    publishedAt: 'Aug 10, 2026',
-    readTime: '7 min read',
-    viewsCount: 11200,
-    commentsCount: 29,
-  }
+    publishedAt: 'January 8, 2026',
+    readTime: '4 min read',
+    viewsCount: 67,
+    commentsCount: 104,
+  },
+  {
+    id: 'art-07',
+    slug: 'radio-revolution-shaping-future-of-music',
+    title: 'Radio Revolution: How Our Station Is Shaping the Future of Music',
+    excerpt: 'Live human curation, dynamic DJ mixing, and community voting vs algorithmic playback.',
+    content: `
+# Why Live Radio Is Still King
+
+In a world of sterile playlists, WAVE 98 proves that energy, human connection, and real-time enthusiasm can never be replaced.
+    `,
+    featuredImage: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80',
+    category: 'Highlights',
+    tags: ['ON AIR', 'PRO RADIO', 'RADIO LIVE', 'CULTURE'],
+    author: {
+      id: 'ryan-taylor',
+      name: 'Ryan Taylor',
+      role: 'Resident DJ',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+    },
+    publishedAt: 'January 8, 2026',
+    readTime: '5 min read',
+    viewsCount: 76,
+    commentsCount: 140,
+  },
+  {
+    id: 'art-08',
+    slug: 'up-and-coming-artists-to-watch-hip-hop',
+    title: 'Up-and-Coming Artists to Watch: The Next Big Names in Hip-Hop',
+    excerpt: 'Ten rising voices with distinctive delivery, innovative production choices, and viral momentum.',
+    content: `
+# Fresh Faces on the Block
+
+Spotlighting the boldest new talents on WAVE 98’s Fresh Picks playlist.
+    `,
+    featuredImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    category: 'Featured',
+    tags: ['FEATURED', 'ARTISTS', 'TRENDS', 'DISCOVERY'],
+    author: {
+      id: 'maya-lin',
+      name: 'Maya Lin',
+      role: 'Music Editor',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+    },
+    publishedAt: 'January 8, 2026',
+    readTime: '4 min read',
+    viewsCount: 92,
+    commentsCount: 185,
+  },
+  {
+    id: 'art-09',
+    slug: 'urban-music-vs-streaming-services-whos-winning',
+    title: "Urban Music vs. Streaming Services: Who's Really Winning?",
+    excerpt: 'An investigation into licensing, payouts, radio royalty revenues, and direct listener patronage.',
+    content: `
+# The Economics of Modern Audio
+
+Analyzing where artist revenue truly comes from in the streaming and broadcast era.
+    `,
+    featuredImage: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+    category: 'Artists',
+    tags: ['INDUSTRY', 'ONLINE', 'POP', 'HITS'],
+    author: {
+      id: 'ryan-taylor',
+      name: 'Ryan Taylor',
+      role: 'Resident DJ',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+    },
+    publishedAt: 'January 8, 2026',
+    readTime: '5 min read',
+    viewsCount: 48,
+    commentsCount: 92,
+  },
+  {
+    id: 'art-10',
+    slug: 'chart-breakdown-what-makes-a-song-the-one',
+    title: "Chart Breakdown: What Makes a Song 'The One'?",
+    excerpt: 'Deconstructing tempo, key changes, memorable taglines, and emotional resonance across the Top 20.',
+    content: `
+# Anatomy of a Number One Hit
+
+What separates a pleasant background track from an undeniable worldwide anthem? We break down the harmonic components.
+    `,
+    featuredImage: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+    category: 'Concerts',
+    tags: ['CHARTS', 'COUNTDOWN', 'ROCK', 'POP', 'HITS'],
+    author: {
+      id: 'maya-lin',
+      name: 'Maya Lin',
+      role: 'Music Editor',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+    },
+    publishedAt: 'January 8, 2026',
+    readTime: '4 min read',
+    viewsCount: 63,
+    commentsCount: 110,
+  },
 ];
