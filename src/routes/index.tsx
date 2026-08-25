@@ -33,6 +33,8 @@ export const AppRoutes: React.FC = () => {
       <Route path="/podcasts/:slug" element={<PodcastDetailPage />} />
       <Route path="/hosts" element={<HostsPage />} />
       <Route path="/hosts/:slug" element={<HostDetailPage />} />
+      <Route path="/members/:slug" element={<HostDetailPage />} />
+      <Route path="/team-members/:slug" element={<HostDetailPage />} />
       <Route path="/videos" element={<VideosPage />} />
       <Route path="/events" element={<EventsPage />} />
       <Route path="/events/:slug" element={<EventDetailPage />} />
