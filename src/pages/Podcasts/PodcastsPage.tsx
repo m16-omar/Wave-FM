@@ -24,7 +24,7 @@ export const PodcastsPage: React.FC = () => {
       playTrack({
         id: podcast.id,
         title: podcast.title,
-        artist: 'WAVE Original Podcast',
+        artist: 'WAVE 98 Podcast',
         album: podcast.category,
         coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=80',
         duration: 2400,
@@ -36,11 +36,11 @@ export const PodcastsPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full select-none space-y-12 sm:space-y-16 pb-16">
+    <div className="w-full select-none space-y-12 sm:space-y-16 pb-16 font-sans">
       {/* 1. Hero Page Header: PODCASTS EPISODES + Red Studio Card (Screenshot 1) */}
       <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-16 sm:pt-16 sm:pb-20">
         {/* Background Repeating Cursive Script Watermark "podcasts" */}
-        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.05] overflow-hidden select-none">
+        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.04] overflow-hidden select-none">
           <span className="font-script text-7xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
             podcasts
           </span>
@@ -56,13 +56,13 @@ export const PodcastsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column (7 Cols): Title + Description + Button */}
             <div className="lg:col-span-7 space-y-4">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight leading-none">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight leading-[1.05]">
                 PODCASTS
                 <br />
                 EPISODES
               </h1>
 
-              <p className="text-xs sm:text-sm text-gray-300 font-medium leading-relaxed max-w-md">
+              <p className="text-xs sm:text-sm text-gray-400 font-medium leading-relaxed max-w-md">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
 
@@ -95,31 +95,33 @@ export const PodcastsPage: React.FC = () => {
 
       {/* 2. "FEATURED PODCAST" + Hero Preview (Screenshot 1) */}
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           {/* Left Card: Clean White Rounded Card */}
-          <div className="md:col-span-6 bg-white rounded-[32px] p-8 sm:p-10 text-black shadow-2xl space-y-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-black uppercase font-display leading-none">
-              FEATURED
-              <br />
-              PODCAST
-            </h2>
+          <div className="md:col-span-6 bg-white rounded-[32px] p-8 sm:p-10 text-black shadow-2xl space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-black uppercase font-display leading-[1.05]">
+                FEATURED
+                <br />
+                PODCAST
+              </h2>
 
-            <p className="text-xs sm:text-sm text-gray-700 font-semibold leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-            </p>
+              <p className="text-xs sm:text-sm text-gray-700 font-semibold leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+            </div>
 
             {/* Dark Pill Widget: Beat Breakdown */}
             <div
               onClick={() => handlePlayPodcast(ALL_PODCASTS_DATA[0])}
-              className="bg-[#141416] rounded-2xl p-3 sm:p-3.5 flex items-center gap-3 text-white shadow-lg cursor-pointer hover:bg-neutral-900 transition-colors group"
+              className="bg-[#141416] rounded-2xl p-3 sm:p-3.5 flex items-center gap-3 text-white shadow-lg cursor-pointer hover:bg-neutral-900 transition-colors group mt-4"
             >
               {/* Stylized Square "POD CAST" Artwork */}
-              <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-white/10 flex flex-col items-center justify-center shrink-0 p-1">
-                <span className="text-[10px] font-black text-brand-yellow font-display leading-none">POD</span>
-                <span className="text-[8px] font-black text-white font-display leading-none">CAST</span>
+              <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-white/10 flex flex-col items-center justify-center shrink-0 p-1">
+                <span className="text-[11px] font-black text-brand-yellow font-display leading-none">POD</span>
+                <span className="text-[9px] font-black text-white font-display leading-none mt-0.5">CAST</span>
               </div>
 
-              <span className="font-extrabold text-sm text-white group-hover:text-brand-yellow transition-colors">
+              <span className="font-black text-sm text-white group-hover:text-brand-yellow transition-colors font-display">
                 Beat Breakdown
               </span>
             </div>
@@ -128,7 +130,7 @@ export const PodcastsPage: React.FC = () => {
           {/* Right Card: Dark Rounded Behind the Lens Player Card */}
           <div
             onClick={() => handlePlayPodcast(ALL_PODCASTS_DATA[0])}
-            className="md:col-span-6 bg-neutral-900 rounded-[32px] overflow-hidden relative aspect-[16/10] shadow-2xl border border-white/10 p-6 sm:p-8 flex flex-col justify-between group cursor-pointer"
+            className="md:col-span-6 bg-neutral-900 rounded-[32px] overflow-hidden relative aspect-[16/10] sm:aspect-auto shadow-2xl border border-white/10 p-6 sm:p-8 flex flex-col justify-between group cursor-pointer min-h-[260px]"
           >
             {/* Background Grayscale Image */}
             <img
@@ -140,7 +142,7 @@ export const PodcastsPage: React.FC = () => {
 
             {/* Top Category Badge */}
             <div className="relative z-10">
-              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider font-mono">
                 Commercial
               </span>
             </div>
@@ -154,7 +156,7 @@ export const PodcastsPage: React.FC = () => {
 
             {/* Bottom Title Text */}
             <div className="relative z-10">
-              <h3 className="text-xl sm:text-2xl font-black text-white uppercase font-display tracking-tight group-hover:text-brand-yellow transition-colors">
+              <h3 className="text-xl sm:text-2xl font-black text-white uppercase font-display tracking-tight group-hover:text-brand-yellow transition-colors leading-none">
                 Behind the Lens
               </h3>
             </div>
@@ -200,7 +202,7 @@ export const PodcastsPage: React.FC = () => {
 
               {/* Foreground Bottom Details */}
               <div className="relative z-10 flex items-center justify-between">
-                <h4 className="text-base sm:text-lg font-black text-white uppercase font-display group-hover:text-brand-yellow transition-colors">
+                <h4 className="text-base sm:text-lg font-black text-white uppercase font-display group-hover:text-brand-yellow transition-colors leading-snug">
                   {pod.title}
                 </h4>
 
@@ -273,7 +275,7 @@ export const PodcastsPage: React.FC = () => {
                     </div>
 
                     {/* Title */}
-                    <h4 className="font-black text-xs sm:text-sm text-white group-hover:text-brand-yellow transition-colors line-clamp-1 font-display">
+                    <h4 className="font-black text-xs sm:text-sm text-white group-hover:text-brand-yellow transition-colors line-clamp-1 font-display leading-tight">
                       {podcast.title}
                     </h4>
 
@@ -312,7 +314,7 @@ export const PodcastsPage: React.FC = () => {
                   });
                   handleLoadMore();
                 }}
-                className="px-8 py-2.5 rounded-full border-2 border-black text-black hover:bg-black hover:text-white font-black text-xs uppercase tracking-widest transition-all cursor-pointer shadow-md"
+                className="px-8 py-2.5 rounded-full border border-black text-black hover:bg-black hover:text-white font-black text-xs uppercase tracking-widest transition-all cursor-pointer shadow-md"
               >
                 LOAD MORE
               </button>
