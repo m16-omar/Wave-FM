@@ -12,7 +12,6 @@ export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isStreamModalOpen, setIsStreamModalOpen] = useState(false);
-  const [isDemosDropdownOpen, setIsDemosDropdownOpen] = useState(false);
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
 
   const { isPlaying, togglePlay, toggleMute } = useAudio();
@@ -75,45 +74,19 @@ export const Header: React.FC = () => {
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[11px] xl:text-xs font-black uppercase tracking-wider text-black">
-              {/* DEMOS with right arrow */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsDemosDropdownOpen(true)}
-                onMouseLeave={() => setIsDemosDropdownOpen(false)}
+              {/* HOME */}
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
               >
-                <Link
-                  to="/"
-                  className="flex items-center gap-1.5 hover:text-brand-yellowDark transition-colors py-2 group cursor-pointer"
-                >
-                  <span>DEMOS</span>
-                  <span className="text-[10px] text-gray-500 font-sans group-hover:translate-x-0.5 transition-transform">
-                    →
-                  </span>
-                </Link>
-
-                {isDemosDropdownOpen && (
-                  <div className="absolute top-full left-0 w-48 bg-white border border-gray-100 rounded-xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                    <Link
-                      to="/"
-                      className="block px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800"
-                    >
-                      Radio Station Home
-                    </Link>
-                    <Link
-                      to="/charts"
-                      className="block px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800"
-                    >
-                      Top 20 Countdown
-                    </Link>
-                    <Link
-                      to="/shows"
-                      className="block px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800"
-                    >
-                      DJ Shows Showcase
-                    </Link>
-                  </div>
-                )}
-              </div>
+                HOME
+              </NavLink>
 
               {/* BLOG with right arrow */}
               <NavLink
