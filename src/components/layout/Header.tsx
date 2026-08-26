@@ -183,6 +183,19 @@ export const Header: React.FC = () => {
                 HOSTS
               </NavLink>
 
+              {/* CONTACT */}
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
+              >
+                CONTACT
+              </NavLink>
+
               {/* MORE with right arrow */}
               <div
                 className="relative"
