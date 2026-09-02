@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
                 <div className="w-8 h-8 rounded-full bg-black text-brand-yellow flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span>wave98@info.xyz</span>
+                <span>info@imolefm.com</span>
               </div>
 
               <div className="flex items-center gap-3 font-bold text-sm sm:text-base text-black">
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
 
             {/* Copyright note */}
             <div className="mt-8 text-[11px] font-semibold text-black/70">
-              Copyright Pro Radio — Edit theme in customizer
+              Copyright © 2026 Imole 106.3 FM — All rights reserved
             </div>
 
             {/* Angled Brush Script "Contact us" */}

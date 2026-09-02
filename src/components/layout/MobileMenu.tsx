@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Search, ChevronRight } from 'lucide-react';
 import { MAIN_NAV_ITEMS } from './Navigation';
+import { StationLogo } from '../ui/StationLogo';
 import { SocialLinks } from '../ui/SocialLinks';
 import { useAudio } from '../../context/AudioContext';
 import { clsx } from 'clsx';
@@ -44,14 +45,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             <div>
               {/* Header inside drawer */}
               <div className="flex items-center justify-between pb-5 border-b border-border mb-6">
-                <Link to="/" onClick={onClose} className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-brand-yellow flex items-center justify-center font-black text-black text-lg">
-                    W
-                  </div>
-                  <span className="font-extrabold text-xl tracking-tight text-white">
-                    WAVE<span className="text-brand-yellow">98.5</span>
-                  </span>
-                </Link>
+                <StationLogo variant="dark" size="sm" asLink={true} />
 
                 <button
                   onClick={onClose}

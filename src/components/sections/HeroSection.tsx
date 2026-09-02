@@ -8,10 +8,10 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="relative w-full pt-10 sm:pt-14 pb-16 overflow-hidden select-none">
-      {/* Giant Background Watermark Text "WAVE 98" */}
+      {/* Giant Background Watermark Text "IMOLE 106.3" */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10 opacity-[0.03] overflow-hidden">
-        <span className="font-black text-[28vw] sm:text-[22vw] leading-none tracking-tighter text-white uppercase whitespace-nowrap font-display">
-          WAVE 98
+        <span className="font-black text-[22vw] sm:text-[18vw] leading-none tracking-tighter text-white uppercase whitespace-nowrap font-display">
+          IMOLE 106.3
         </span>
       </div>
 

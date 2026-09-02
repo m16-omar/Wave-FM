@@ -7,6 +7,7 @@ interface StationLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'hero';
   className?: string;
   asLink?: boolean;
+  showText?: boolean;
 }
 
 export const StationLogo: React.FC<StationLogoProps> = ({
@@ -14,36 +15,48 @@ export const StationLogo: React.FC<StationLogoProps> = ({
   size = 'md',
   className = '',
   asLink = true,
+  showText = true,
 }) => {
   const content = (
-    <div className={clsx('relative inline-flex items-center select-none group', className)}>
-      {/* Base "WAVE 98" Text */}
-      <span
+    <div className={clsx('relative inline-flex items-center gap-2 select-none group', className)}>
+      {/* Real Sun Logo Image */}
+      <img
+        src="/imole-logo.png"
+        alt="Imole 106.3 FM Logo"
         className={clsx(
-          'font-black tracking-tighter uppercase font-display leading-none flex items-baseline',
-          variant === 'light' ? 'text-black' : 'text-white',
-          size === 'sm' && 'text-2xl sm:text-[26px]',
-          size === 'md' && 'text-3xl sm:text-4xl',
-          size === 'lg' && 'text-4xl sm:text-5xl',
-          size === 'hero' && 'text-6xl sm:text-7xl md:text-8xl lg:text-9xl'
+          'object-contain shrink-0 transition-transform duration-300 group-hover:scale-105',
+          size === 'sm' && 'h-8 sm:h-9 w-auto',
+          size === 'md' && 'h-10 sm:h-12 w-auto',
+          size === 'lg' && 'h-14 sm:h-16 w-auto',
+          size === 'hero' && 'h-20 sm:h-24 md:h-28 w-auto'
         )}
-      >
-        <span>WAVE</span>
-        <span className="ml-0.5">98</span>
-      </span>
+      />
 
-      {/* Floating cursive "RADIO" Script Badge */}
-      <span
-        className={clsx(
-          'font-marker text-brand-yellow absolute leading-none tracking-normal rotate-[-8deg] pointer-events-none drop-shadow-sm',
-          size === 'sm' && 'text-[9px] sm:text-[10px] -top-2 right-0.5',
-          size === 'md' && 'text-xs sm:text-sm -top-3.5 right-0',
-          size === 'lg' && 'text-lg sm:text-xl -top-5 right-1',
-          size === 'hero' && 'text-2xl sm:text-3xl md:text-4xl -top-6 sm:-top-8 md:-top-10 right-2 sm:right-4'
-        )}
-      >
-        RADIO
-      </span>
+      {showText && (
+        <div className="flex flex-col leading-none justify-center">
+          <span
+            className={clsx(
+              'font-black tracking-tight uppercase font-display leading-none flex items-baseline',
+              variant === 'light' ? 'text-black' : 'text-white',
+              size === 'sm' && 'text-lg sm:text-xl',
+              size === 'md' && 'text-2xl sm:text-3xl',
+              size === 'lg' && 'text-3xl sm:text-4xl',
+              size === 'hero' && 'text-5xl sm:text-6xl md:text-7xl'
+            )}
+          >
+            <span>IMOLE</span>
+            <span className="text-brand-yellow ml-1">FM</span>
+          </span>
+          <span
+            className={clsx(
+              'text-[9px] font-bold tracking-widest text-brand-yellow uppercase font-mono mt-0.5',
+              size === 'hero' && 'text-xs'
+            )}
+          >
+            106.3 MHZ
+          </span>
+        </div>
+      )}
     </div>
   );
 

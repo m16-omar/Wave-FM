@@ -38,15 +38,15 @@ export const ContactPage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-[#0C0D10]/85 via-[#0C0D10]/60 to-[#0C0D10]" />
         </div>
 
-        {/* Giant Hollow Outline Watermark "WAVE 98" in Gold */}
+        {/* Giant Hollow Outline Watermark "IMOLE 106.3" in Gold */}
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center pointer-events-none -z-5 overflow-hidden select-none translate-y-6 sm:translate-y-10">
           <span
-            className="font-black text-[22vw] text-transparent tracking-tighter uppercase font-display leading-none whitespace-nowrap opacity-60"
+            className="font-black text-[18vw] text-transparent tracking-tighter uppercase font-display leading-none whitespace-nowrap opacity-60"
             style={{
               WebkitTextStroke: '2px #F5B800',
             }}
           >
-            WAVE 98
+            IMOLE 106.3
           </span>
         </div>
 
@@ -173,7 +173,7 @@ export const ContactPage: React.FC = () => {
                   Message Sent!
                 </h3>
                 <p className="text-xs text-gray-400 max-w-xs mx-auto">
-                  Thank you for contacting WAVE 98. Our studio team will get back to you shortly.
+                  Thank you for contacting Imole 106.3 FM. Our studio team will get back to you shortly.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
