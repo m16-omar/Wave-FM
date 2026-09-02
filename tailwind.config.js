@@ -18,6 +18,8 @@ export default {
         brand: {
           yellow: '#FEBF0F',
           yellowHover: '#F8B217',
+          yellowLight: '#F7D210',
+          yellowDark: '#D49500',
           orange: '#F69A20',
           cyan: '#00F0FF',
           pink: '#FF007F',
