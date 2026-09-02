@@ -16,8 +16,9 @@ export default {
           hover: '#1E2333',
         },
         brand: {
-          yellow: '#FFE600',
-          yellowHover: '#E5CF00',
+          yellow: '#FEBF0F',
+          yellowHover: '#F8B217',
+          orange: '#F69A20',
           cyan: '#00F0FF',
           pink: '#FF007F',
           purple: '#8B5CF6',
@@ -37,7 +38,7 @@ export default {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {
-        'glow-yellow': '0 0 25px -5px rgba(255, 230, 0, 0.4)',
+        'glow-yellow': '0 0 25px -5px rgba(254, 191, 15, 0.5)',
         'glow-cyan': '0 0 25px -5px rgba(0, 240, 255, 0.4)',
         'glow-pink': '0 0 25px -5px rgba(255, 0, 127, 0.4)',
         'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
