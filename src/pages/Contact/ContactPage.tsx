@@ -332,11 +332,9 @@ export const ContactPage: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-black shrink-0 mt-0.5" />
                   <div className="leading-relaxed font-medium">
-                    Imole Broadcast Complex
+                    20, Adetoro John Street,
                     <br />
-                    Broadcasting Hill, Victoria Island
-                    <br />
-                    Lagos, Nigeria
+                    Fadeyi, Lagos.
                   </div>
                 </div>
               </div>
