@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PRESENTERS_DATA } from '../../data/hosts';
+import { STATION_INFO } from '../../data/station';
 import { useAudio } from '../../context/AudioContext';
-import { User, MoreVertical, Star } from 'lucide-react';
+import { User, MoreVertical, Star, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const HOSTED_SHOWS_PREVIEWS = [
@@ -57,13 +59,22 @@ export const HostsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
           {/* Top Title Row + SEE ALL TEAM Badge */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight">
-              TEAM MEMBERS
-            </h1>
             <div>
-              <span className="px-5 py-2 rounded-full bg-brand-yellow text-black text-xs font-black uppercase tracking-wider inline-block shadow-md">
-                SEE ALL TEAM
-              </span>
+              <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
+                <Sparkles className="w-4 h-4" />
+                <span>Station Presenters & Leadership</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight leading-none">
+                TEAM MEMBERS
+              </h1>
+            </div>
+            <div>
+              <Link
+                to="/contact#station-bio"
+                className="px-5 py-2 rounded-full bg-brand-yellow text-black text-xs font-black uppercase tracking-wider inline-block shadow-md hover:bg-brand-yellowHover transition-colors"
+              >
+                STATION BIO
+              </Link>
             </div>
           </div>
 
@@ -71,17 +82,22 @@ export const HostsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
             {/* Left Card: Yellow Box */}
             <div className="lg:col-span-5 bg-brand-yellow text-black rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl border border-brand-yellowHover space-y-4">
-              <p className="text-xs sm:text-sm text-black/80 font-bold leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-              </p>
+              <div className="space-y-2">
+                <span className="text-[10px] font-black uppercase tracking-widest bg-black/10 px-2.5 py-1 rounded-md inline-block">
+                  Launched 21st Nov 2025
+                </span>
+                <p className="text-xs sm:text-sm text-black font-extrabold leading-relaxed">
+                  Imole 106.3FM is Lagos's urban indigenous voice — a commercial radio station born to inform, inspire, and illuminate. Broadcasting culture, community, and conversation that matters.
+                </p>
+              </div>
 
               <div>
-                <button
-                  onClick={handleJoinUs}
-                  className="px-6 py-2.5 rounded-full bg-black text-white hover:bg-neutral-900 active:scale-95 font-black text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                <Link
+                  to="/contact#station-bio"
+                  className="px-6 py-2.5 rounded-full bg-black text-white hover:bg-neutral-900 active:scale-95 font-black text-xs uppercase tracking-wider shadow-md transition-all inline-block"
                 >
-                  JOIN US
-                </button>
+                  STATION BIO & LEADERSHIP
+                </Link>
               </div>
             </div>
 
@@ -106,30 +122,41 @@ export const HostsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. "MEET OUR HOST STAR" (Founder Highlight - Screenshot 1) */}
+      {/* 2. "STATION LEADERSHIP SPOTLIGHT" (Screenshot 1) */}
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
           {/* Left Card: Clean White Rounded Card */}
           <div className="md:col-span-5 bg-white rounded-[32px] p-8 sm:p-10 text-black shadow-2xl space-y-3">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-black uppercase font-display leading-tight">
-              MEET OUR
+              EXECUTIVE
               <br />
-              HOST STAR
+              LEADERSHIP
             </h2>
 
             <p className="text-xs sm:text-sm text-gray-700 font-semibold leading-relaxed">
-              Meet Alex Rivera, the wonderful founder, and the reason for all the fun and games!
+              Guided by Chairman Dr. Moses O. Bodunrin & Vice Chairman Mrs. Deborah O. Bodunrin, and managed day-to-day by General Manager Mrs. Peju Adekunle.
             </p>
           </div>
 
-          {/* Right Card: Dark Photo Card of Alex Rivera */}
+          {/* Right Card: Dark Photo Card */}
           <div className="md:col-span-7 bg-[#141416] rounded-[32px] overflow-hidden relative aspect-[16/10] sm:aspect-[16/9] shadow-2xl border border-white/10 group">
             <img
-              src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1000&q=80"
-              alt="Alex Rivera - Founder & Host Star"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
+              alt="Imole 106.3 FM Executive Leadership"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+              <span className="px-2.5 py-0.5 rounded bg-brand-yellow text-black text-[9px] font-black uppercase tracking-wider">
+                Leadership
+              </span>
+              <h4 className="text-base sm:text-lg font-black font-display uppercase text-white">
+                Dr. Moses O. Bodunrin & Leadership Team
+              </h4>
+              <p className="text-xs text-gray-300">
+                Guiding Imole 106.3 FM's mission to illuminate Lagos and beyond.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -203,29 +230,40 @@ export const HostsPage: React.FC = () => {
 
           {/* Right Column: Clean White Story Card (7 Cols) */}
           <div className="md:col-span-7 bg-white rounded-[32px] p-8 sm:p-10 text-black shadow-2xl space-y-4">
+            <div className="flex items-center gap-2 text-xs font-black text-brand-yellowDark uppercase tracking-widest">
+              <Sparkles className="w-4 h-4" />
+              <span>STATION BIO & ORIGIN</span>
+            </div>
+
             <h2 className="text-3xl sm:text-4xl font-black uppercase font-display tracking-tight text-black leading-none">
               THE START OF ALL
             </h2>
 
-            <div className="space-y-3 text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
+            <div className="space-y-3 text-xs sm:text-sm text-gray-800 font-medium leading-relaxed">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <strong>Imole 106.3FM</strong> is Lagos's urban indigenous voice — a commercial radio station born to inform, inspire, and illuminate. Launched on <strong>21st November 2025</strong>, Imole ("light" in Yoruba) broadcasts to Lagos and its environs, reaching millions of listeners with programming rooted in culture, community, and conversation that matters.
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Under the leadership of <strong>Chairman Dr. Moses O. Bodunrin</strong> and <strong>Vice Chairman Mrs. Deborah O. Bodunrin</strong>, and driven day-to-day by <strong>General Manager Mrs. Peju Adekunle</strong>, Imole 106.3FM is more than a radio station — it is a movement to bring light to every home, every ward, and every heart it reaches.
               </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <p className="text-gray-600">
+                From news and lifestyle to faith-driven programming and civic engagement, Imole 106.3FM stands as a trusted companion for the people of Lagos — indigenous in spirit, urban in sound, and unwavering in its mission to shine.
               </p>
             </div>
 
-            <div className="pt-2">
-              <button
-                onClick={handleJoinUs}
-                className="px-6 py-2.5 rounded-full bg-black text-white hover:bg-neutral-900 active:scale-95 font-black text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer"
+            <div className="pt-2 flex items-center gap-3">
+              <Link
+                to="/contact#station-bio"
+                className="px-6 py-2.5 rounded-full bg-black text-white hover:bg-neutral-900 active:scale-95 font-black text-xs uppercase tracking-wider shadow-md transition-all inline-block"
               >
-                MEET ALEX
-              </button>
+                VIEW FULL BIO
+              </Link>
+              <Link
+                to="/contact"
+                className="px-5 py-2.5 rounded-full bg-brand-yellow text-black hover:bg-brand-yellowHover active:scale-95 font-black text-xs uppercase tracking-wider shadow-md transition-all inline-block"
+              >
+                CONTACT US
+              </Link>
             </div>
           </div>
         </div>

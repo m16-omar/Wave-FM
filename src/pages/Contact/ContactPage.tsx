@@ -17,6 +17,7 @@ import confetti from 'canvas-confetti';
 import { Schedule } from '../../components/radio/Schedule';
 import { VIDEOS_DATA } from '../../data/videos';
 import { EVENTS_DATA } from '../../data/events';
+import { STATION_INFO } from '../../data/station';
 import { VideoCard } from '../../components/cards/VideoCard';
 import { EventCard } from '../../components/cards/EventCard';
 import { Modal } from '../../components/ui/Modal';
@@ -108,7 +109,7 @@ export const ContactPage: React.FC = () => {
     { value: '450,000+', label: 'Weekly Active FM Listeners' },
     { value: '1.2M+', label: 'Monthly Digital Audio Streams' },
     { value: '78%', label: 'Key 18-34 Urban Demographic' },
-    { value: '#1', label: 'Ranked Youth Music Media in Region' },
+    { value: '#1', label: 'Urban Indigenous Voice in Lagos' },
   ];
 
   const advertisingPackages = [
@@ -190,7 +191,7 @@ export const ContactPage: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
                 <Sparkles className="w-4 h-4" />
-                <span>Station Central Hub</span>
+                <span>Station Central Hub • Launched 21st Nov 2025</span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight leading-none">
                 CONTACT US
@@ -198,12 +199,19 @@ export const ContactPage: React.FC = () => {
             </div>
 
             <p className="text-xs sm:text-sm text-gray-300 font-medium leading-relaxed max-w-sm">
-              Get in touch with our studio team, view the weekly on-air schedule, watch exclusive video archives, explore upcoming station concerts, and partner with Imole 106.3 FM.
+              Get in touch with our studio team, explore our station bio & leadership, view the weekly on-air schedule, watch video archives, and partner with Imole 106.3 FM.
             </p>
           </div>
 
           {/* Quick Hub Jump Pill Navigation */}
           <div className="pt-2 flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => scrollToSection('station-bio')}
+              className="px-4 py-2 rounded-full bg-brand-yellow text-black hover:bg-brand-yellowHover text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md cursor-pointer"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Station Bio & Leadership</span>
+            </button>
             <button
               onClick={() => scrollToSection('contact-form')}
               className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
@@ -433,7 +441,118 @@ export const ContactPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. WIDGET 1: WEEKLY SCHEDULE WIDGET                                       */}
+      {/* 3. STATION BIO & LEADERSHIP SECTION                                       */}
+      {/* ========================================================================= */}
+      <section id="station-bio" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 scroll-mt-24">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-yellow/15 text-brand-yellow text-xs font-black uppercase tracking-widest border border-brand-yellow/30">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Station Bio • Launched 21st November 2025</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-display tracking-tight leading-tight">
+            Imole 106.3FM — Station Bio
+          </h2>
+
+          <p className="text-sm sm:text-base text-brand-yellow font-bold uppercase tracking-wider">
+            {STATION_INFO.tagline} • {STATION_INFO.motto}
+          </p>
+        </div>
+
+        {/* Narrative Bio Container */}
+        <div className="bg-[#141416] rounded-3xl p-8 sm:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
+          {/* Subtle Background Glow Accent */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#532688]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 space-y-6 text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed font-normal">
+            <p className="border-l-4 border-brand-yellow pl-4 sm:pl-6 text-white font-medium">
+              <strong className="text-brand-yellow font-black">Imole 106.3FM</strong> is Lagos's urban indigenous voice — a commercial radio station born to inform, inspire, and illuminate. Launched on <strong>21st November 2025</strong>, Imole ("light" in Yoruba) broadcasts to Lagos and its environs, reaching millions of listeners with programming rooted in culture, community, and conversation that matters.
+            </p>
+
+            <p className="border-l-4 border-white/20 pl-4 sm:pl-6">
+              Under the leadership of <strong>Chairman Dr. Moses O. Bodunrin</strong> and <strong>Vice Chairman Mrs. Deborah O. Bodunrin</strong>, and driven day-to-day by <strong>General Manager Mrs. Peju Adekunle</strong>, Imole 106.3FM is more than a radio station — it is a movement to bring light to every home, every ward, and every heart it reaches.
+            </p>
+
+            <p className="border-l-4 border-brand-yellow pl-4 sm:pl-6 text-gray-300">
+              From news and lifestyle to faith-driven programming and civic engagement, Imole 106.3FM stands as a trusted companion for the people of Lagos — indigenous in spirit, urban in sound, and unwavering in its mission to shine.
+            </p>
+          </div>
+        </div>
+
+        {/* Core Pillars (INFORM • INSPIRE • ILLUMINATE) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {STATION_INFO.pillars.map((pillar, i) => (
+            <div
+              key={i}
+              className="bg-background-card p-6 sm:p-8 rounded-3xl border border-border hover:border-brand-yellow/50 transition-all shadow-card group"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-brand-yellow text-black font-black flex items-center justify-center mb-4 text-lg font-display shadow-glow-yellow group-hover:scale-105 transition-transform">
+                0{i + 1}
+              </div>
+              <h3 className="text-xl font-black text-white uppercase font-display tracking-tight mb-2 group-hover:text-brand-yellow transition-colors">
+                {pillar.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                {pillar.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Executive Leadership Grid */}
+        <div className="space-y-6 pt-4">
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 rounded bg-brand-yellow text-black text-xs font-black uppercase tracking-wider">
+              EXECUTIVE LEADERSHIP
+            </span>
+            <div className="flex-1 border-b border-dashed border-brand-yellow/40" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {STATION_INFO.leadership.map((leader, idx) => (
+              <div
+                key={idx}
+                className="bg-[#141416] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col group hover:border-brand-yellow/40 transition-all"
+              >
+                {/* Photo container */}
+                <div className="relative aspect-[4/3] bg-neutral-900 overflow-hidden">
+                  <img
+                    src={leader.photo}
+                    alt={leader.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#141416] via-transparent to-transparent" />
+
+                  {/* Role Tag Pill */}
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider">
+                    {leader.role}
+                  </span>
+                </div>
+
+                {/* Details */}
+                <div className="p-6 space-y-2 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-black text-white uppercase font-display tracking-tight">
+                      {leader.name}
+                    </h3>
+                    <p className="text-xs text-brand-yellow font-bold mt-0.5 mb-2">
+                      {leader.title}
+                    </p>
+                    <p className="text-xs text-gray-400 leading-relaxed">
+                      {leader.bio}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. WIDGET 1: WEEKLY SCHEDULE WIDGET                                       */}
       {/* ========================================================================= */}
       <section id="schedule" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
         {/* Header */}
