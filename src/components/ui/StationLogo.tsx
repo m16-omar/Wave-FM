@@ -18,25 +18,38 @@ export const StationLogo: React.FC<StationLogoProps> = ({
   const content = (
     <div
       className={clsx(
-        'relative inline-flex items-center justify-center select-none group',
-        variant === 'light'
-          ? 'bg-[#0C0D10] px-3.5 py-1.5 rounded-2xl shadow-md border border-neutral-800'
-          : '',
+        'relative inline-flex items-center select-none group',
         className
       )}
     >
-      {/* Real Imole 106.3 FM Logo (ÌMỌ́LẸ̀ with Sun) */}
-      <img
-        src="/imole-logo.png"
-        alt="Imole 106.3 FM - We Are The Light"
+      {/* Base "WAVE 98" Text */}
+      <span
         className={clsx(
-          'object-contain shrink-0 transition-transform duration-300 group-hover:scale-105',
-          size === 'sm' && 'h-8 sm:h-9 md:h-10 w-auto min-w-[110px] sm:min-w-[130px]',
-          size === 'md' && 'h-12 sm:h-14 w-auto min-w-[160px]',
-          size === 'lg' && 'h-16 sm:h-20 w-auto min-w-[220px]',
-          size === 'hero' && 'h-24 sm:h-32 md:h-44 w-auto max-w-full'
+          'font-black tracking-tighter uppercase font-display leading-none flex items-baseline',
+          variant === 'light' ? 'text-black' : 'text-white',
+          size === 'sm' && 'text-2xl sm:text-[27px]',
+          size === 'md' && 'text-3xl sm:text-4xl',
+          size === 'lg' && 'text-4xl sm:text-5xl',
+          size === 'hero' && 'text-6xl sm:text-7xl md:text-8xl'
         )}
-      />
+      >
+        <span>WAVE</span>
+        <span className="relative inline-block ml-0.5">
+          98
+          {/* Floating cursive "gold" Script Badge */}
+          <span
+            className={clsx(
+              'font-script text-brand-yellow font-bold lowercase absolute leading-none tracking-normal rotate-[-8deg] pointer-events-none select-none drop-shadow-xs',
+              size === 'sm' && 'text-[13px] sm:text-[14px] -top-3 left-0',
+              size === 'md' && 'text-base sm:text-lg -top-4 -left-0.5',
+              size === 'lg' && 'text-xl sm:text-2xl -top-5.5 -left-1',
+              size === 'hero' && 'text-3xl sm:text-4xl md:text-5xl -top-8 sm:-top-10 -left-2'
+            )}
+          >
+            gold
+          </span>
+        </span>
+      </span>
     </div>
   );
 
@@ -50,3 +63,4 @@ export const StationLogo: React.FC<StationLogoProps> = ({
 
   return content;
 };
+
