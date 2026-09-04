@@ -26,7 +26,7 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="w-full select-none pb-16 font-sans">
-      {/* 1. Hero Page Header with Grayscale Studio DJ & Giant Hollow "WAVE 98" Wireframe */}
+      {/* 1. Hero Page Header with Grayscale Studio DJ & Giant Hollow "IMOLE 106.3" Wireframe */}
       <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-28 sm:pt-16 sm:pb-36">
         {/* Background Grayscale DJ / Host Image */}
         <div className="absolute inset-0 -z-10">

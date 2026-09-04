@@ -111,7 +111,7 @@ export const Header: React.FC = () => {
                       <Radio className="w-4 h-4 text-brand-yellow shrink-0" />
                       <div>
                         <div className="font-extrabold text-black">Live Radio Stream</div>
-                        <div className="text-[10px] text-gray-500 font-normal">Main 98.5 FM Broadcast</div>
+                        <div className="text-[10px] text-gray-500 font-normal">Main 106.3 FM Broadcast</div>
                       </div>
                     </button>
                     

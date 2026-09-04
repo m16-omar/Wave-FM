@@ -14,11 +14,11 @@ export const ARTICLES_DATA: Article[] = [
     id: 'art-01',
     slug: 'listeners-choice-awards-top-picks-music-icons',
     title: "Listener's Choice Awards: Your Top Picks for This Year's Music Icons",
-    excerpt: 'The global community voted, and the results are officially in. Discover who took home the crown on WAVE 98.',
+    excerpt: 'The global community voted, and the results are officially in. Discover who took home the crown on Imole 106.3 FM.',
     content: `
 # The People Have Spoken: 2026 Music Icons
 
-Every year, WAVE 98 hands the voting power directly to our listeners worldwide. Over 250,000 ballots were cast across electronic, hip-hop, pop, and global beats categories.
+Every year, Imole 106.3 FM hands the voting power directly to our listeners worldwide. Over 250,000 ballots were cast across electronic, hip-hop, pop, and global beats categories.
 
 ## Dominating the Charts
 From explosive world tours to genre-defining studio albums, this year proved that listener power is stronger than ever.
@@ -52,7 +52,7 @@ From explosive world tours to genre-defining studio albums, this year proved tha
     content: `
 # The Modern Pipeline to Radio Rotation
 
-How does an 8-bar loop uploaded from a bedroom producer become the #1 most-requested song on WAVE 98? We analyze the sonic formula behind viral hits.
+How does an 8-bar loop uploaded from a bedroom producer become the #1 most-requested song on Imole 106.3 FM? We analyze the sonic formula behind viral hits.
     `,
     featuredImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80',
     category: 'Artists',
@@ -77,7 +77,7 @@ How does an 8-bar loop uploaded from a bedroom producer become the #1 most-reque
     content: `
 # Ready for the Ultimate Urban Music Experience?
 
-WAVE 98 is the official broadcast partner for the 2025 Urban Music Festival, streaming live DJ sets and exclusive backstage artist chats all weekend.
+Imole 106.3 FM is the official broadcast partner for the 2025 Urban Music Festival, streaming live DJ sets and exclusive backstage artist chats all weekend.
     `,
     featuredImage: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80',
     category: 'Concerts',
@@ -173,7 +173,7 @@ Meet the 5 producers and lyricists reshaping the sonic landscape from Atlanta, L
     content: `
 # Why Live Radio Is Still King
 
-In a world of sterile playlists, WAVE 98 proves that energy, human connection, and real-time enthusiasm can never be replaced.
+In a world of sterile playlists, Imole 106.3 FM proves that energy, human connection, and real-time enthusiasm can never be replaced.
     `,
     featuredImage: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80',
     category: 'Highlights',
@@ -197,7 +197,7 @@ In a world of sterile playlists, WAVE 98 proves that energy, human connection, a
     content: `
 # Fresh Faces on the Block
 
-Spotlighting the boldest new talents on WAVE 98’s Fresh Picks playlist.
+Spotlighting the boldest new talents on Imole 106.3 FM’s Fresh Picks playlist.
     `,
     featuredImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
     category: 'Featured',

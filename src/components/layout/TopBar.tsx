@@ -13,7 +13,7 @@ export const TopBar: React.FC = () => {
             <Flame className="w-3.5 h-3.5 fill-current" />
             <span className="uppercase tracking-wider">Hotline:</span>
             <a href="tel:+18005559283" className="text-white hover:text-brand-yellow transition-colors font-mono">
-              +1 (800) 555-WAVE
+              +1 (800) 555-IMOLE
             </a>
           </div>
 

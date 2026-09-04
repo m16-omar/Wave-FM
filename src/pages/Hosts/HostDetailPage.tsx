@@ -151,7 +151,7 @@ export const HostDetailPage: React.FC = () => {
               <div className="space-y-3 text-sm sm:text-base text-gray-300 font-medium leading-relaxed">
                 <p>{host.fullBio}</p>
                 <p className="text-xs sm:text-sm text-gray-400">
-                  Broadcasting live daily on WAVE 98 FM across digital airwaves and global web stream.
+                  Broadcasting live daily on Imole 106.3 FM across digital airwaves and global web stream.
                 </p>
               </div>
 

@@ -90,7 +90,7 @@ export const HostsPage: React.FC = () => {
               {/* Photo of 3 Presenters */}
               <img
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
-                alt="WAVE 98 Radio Hosts"
+                alt="Imole 106.3 FM Radio Hosts"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

@@ -74,7 +74,7 @@ export const SongRankSection: React.FC = () => {
               SONG RANK
             </h2>
             <p className="mt-2 text-sm sm:text-base text-gray-400 font-medium">
-              Vote for your favorite records to climb this week's official airplay chart. Direct listener power on WAVE 98.
+              Vote for your favorite records to climb this week's official airplay chart. Direct listener power on Imole 106.3 FM.
             </p>
           </div>
 

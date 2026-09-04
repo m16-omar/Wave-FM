@@ -31,7 +31,7 @@ export const VideosPage: React.FC = () => {
         <div className="border-b border-border pb-6">
           <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
             <Tv className="w-4 h-4" />
-            <span>WAVE Visual Broadcast</span>
+            <span>Imole Visual Broadcast</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
             Video Archive & Studio Live

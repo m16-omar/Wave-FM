@@ -102,7 +102,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = ALL_PODCASTS_DATA.map((p, idx)
   title: `${p.title}: Episode ${idx + 1}`,
   episodeNumber: idx + 1,
   seasonNumber: 1,
-  description: 'Deep dive podcast session broadcasted on WAVE 98 FM.',
+  description: 'Deep dive podcast session broadcasted on Imole 106.3 FM.',
   duration: p.duration,
   durationSeconds: 2400,
   publishedAt: p.date,
@@ -110,7 +110,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = ALL_PODCASTS_DATA.map((p, idx)
   coverImage: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80',
   hostName: 'Maya Lin',
   category: p.category,
-  tags: [p.category, 'Podcast', 'WAVE 98'],
+  tags: [p.category, 'Podcast', 'Imole 106.3'],
   playsCount: p.views * 100,
 }));
 

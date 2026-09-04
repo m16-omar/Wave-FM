@@ -119,7 +119,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 <SocialLinks size="sm" variant="pills" />
               </div>
               <div className="text-center text-xs text-gray-500">
-                <p>Studio: +1 (800) 555-WAVE</p>
+                <p>Studio: +1 (800) 555-IMOLE</p>
                 <p className="mt-0.5">Live 24/7 in High Definition</p>
               </div>
             </div>

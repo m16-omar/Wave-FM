@@ -3,18 +3,18 @@ import { StationEvent } from '../types/event';
 export const EVENTS_DATA: StationEvent[] = [
   {
     id: 'evt-01',
-    slug: 'wave-summer-music-festival-2026',
-    title: 'WAVE Summer Music Festival 2026',
+    slug: 'imole-summer-music-festival-2026',
+    title: 'Imole Summer Music Festival 2026',
     subtitle: '3 Stages, 45 Artists, 30,000 Fans on the Waterfront',
     description: 'The city’s biggest annual open-air electronic, hip-hop, and pop music festival returns with international headliners and immersive visual production.',
     fullDetails: `
-WAVE 98.5 FM proudly presents the **WAVE Summer Music Festival 2026**!
+Imole 106.3 FM proudly presents the **Imole Summer Music Festival 2026**!
 
 Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring world-class audio systems, pyrotechnics, art installations, food truck villages, and exclusive VIP backstage lounges.
 
 ### Festival Highlights:
 - **3 Dynamic Stages:** Main Stage, Bass Dome, and Sunset Lounge
-- **VIP Perks:** Express entry, private viewing decks, air-conditioned lounges, complimentary drinks, and meet-and-greets with WAVE FM on-air hosts.
+- **VIP Perks:** Express entry, private viewing decks, air-conditioned lounges, complimentary drinks, and meet-and-greets with Imole FM on-air hosts.
 - **Eco-Friendly:** 100% renewable power, reusable cups, and free public transit shuttles.
     `,
     image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1000&auto=format&fit=crop&q=80',
@@ -26,18 +26,18 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
     city: 'Metro Bay Area',
     category: 'Festival',
     ticketPrice: '$89 - $249',
-    ticketUrl: 'https://tickets.wavefm.live',
+    ticketUrl: 'https://tickets.imolefm.live',
     isFeatured: true,
     isPast: false,
     lineup: ['Peggy Gou', 'Kendrick Lamar', 'Chase & Status', 'Tyla', 'Sabrina Carpenter', 'DJ Luna', 'DJ K-Real'],
-    organizer: 'WAVE FM Live & Global Beats Entertainment',
+    organizer: 'Imole FM Live & Global Beats Entertainment',
   },
   {
     id: 'evt-02',
     slug: 'after-hours-ibiza-club-night-takeover',
     title: 'After Hours Club Night: Ibiza Edition',
     subtitle: 'Direct from the White Isle — 8 Hours of Non-Stop Melodic House & Techno',
-    description: 'WAVE FM host Leo Vance takes over Club Elysium for an exclusive extended night session alongside international guest selectors.',
+    description: 'Imole FM host Leo Vance takes over Club Elysium for an exclusive extended night session alongside international guest selectors.',
     fullDetails: 'Experience true underground club culture with custom Funktion-One sound, laser mapping, and sunrise sets.',
     image: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=1000&auto=format&fit=crop&q=80',
     bannerImage: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=1600&auto=format&fit=crop&q=80',
@@ -48,11 +48,11 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
     city: 'Downtown Arts District',
     category: 'Club Night',
     ticketPrice: '$35',
-    ticketUrl: 'https://tickets.wavefm.live',
+    ticketUrl: 'https://tickets.imolefm.live',
     isFeatured: true,
     isPast: false,
     lineup: ['Leo Vance', 'Special Guests from Berlin & Ibiza'],
-    organizer: 'WAVE FM Underground Series',
+    organizer: 'Imole FM Underground Series',
   },
   {
     id: 'evt-03',
@@ -70,11 +70,11 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
     city: 'City Center',
     category: 'Live Broadcast',
     ticketPrice: 'Free Admission (RSVP Required)',
-    ticketUrl: 'https://tickets.wavefm.live',
+    ticketUrl: 'https://tickets.imolefm.live',
     isFeatured: false,
     isPast: false,
     lineup: ['Marcus Cole', 'Chloe Vance', 'Special Musical Guests'],
-    organizer: 'WAVE 98.5 FM',
+    organizer: 'Imole 106.3 FM',
   },
   {
     id: 'evt-04',
@@ -95,6 +95,6 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
     isFeatured: false,
     isPast: false,
     lineup: ['DJ K-Real', 'Battle DJs', 'Live Freestyle Showcase'],
-    organizer: 'WAVE FM Community Foundation',
+    organizer: 'Imole FM Community Foundation',
   }
 ];

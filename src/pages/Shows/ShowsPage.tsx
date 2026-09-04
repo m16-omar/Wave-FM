@@ -359,7 +359,7 @@ export const ShowsPage: React.FC = () => {
         {/* Giant Watermark Background "WAVE 98" */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10 opacity-[0.03] overflow-hidden select-none">
           <span className="font-black text-[24vw] leading-none tracking-tighter text-white uppercase whitespace-nowrap font-display">
-            WAVE 98
+            IMOLE 106.3
           </span>
         </div>
 

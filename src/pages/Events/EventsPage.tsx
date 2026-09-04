@@ -27,10 +27,10 @@ export const EventsPage: React.FC = () => {
             <span>Station Calendar & Live Experiences</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            WAVE Live Events & Festivals
+            Imole Live Events & Festivals
           </h1>
           <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
-            Concerts, club nights, summer festivals and free live breakfast broadcasts powered by WAVE 98.5 FM.
+            Concerts, club nights, summer festivals and free live breakfast broadcasts powered by Imole 106.3 FM.
           </p>
         </div>
 

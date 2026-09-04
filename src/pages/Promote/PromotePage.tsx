@@ -36,7 +36,7 @@ export const PromotePage: React.FC = () => {
     },
     {
       name: 'Festival & Event Partnership',
-      tagline: 'Direct experiential engagement at WAVE live concerts.',
+      tagline: 'Direct experiential engagement at Imole live concerts.',
       features: [
         'On-site experiential booth placement',
         'Mainstage visual LED screen branding',
@@ -58,7 +58,7 @@ export const PromotePage: React.FC = () => {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-            Amplify Your Brand on WAVE 98.5 FM
+            Amplify Your Brand on Imole 106.3 FM
           </h1>
 
           <p className="text-base text-gray-300">
@@ -143,7 +143,7 @@ export const PromotePage: React.FC = () => {
               Get full listener demographics, daypart coverage maps, pricing rate cards, and technical spec sheets in our official PDF media kit.
             </p>
             <button
-              onClick={() => alert('Downloading WAVE 98.5 FM Media Kit 2026 (PDF)...')}
+              onClick={() => alert('Downloading Imole 106.3 FM Media Kit 2026 (PDF)...')}
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-yellow text-black font-extrabold text-xs uppercase tracking-wider shadow-glow-yellow hover:scale-105 transition-all"
             >
               <Download className="w-4 h-4" />

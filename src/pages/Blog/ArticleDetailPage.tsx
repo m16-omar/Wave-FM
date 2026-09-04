@@ -115,7 +115,7 @@ export const ArticleDetailPage: React.FC = () => {
               </blockquote>
 
               <p>
-                Stay locked into **WAVE 98.5 FM** every weekday for non-stop live programming, real-time listener countdowns, and behind-the-scenes artist interviews.
+                Stay locked into **Imole 106.3 FM** every weekday for non-stop live programming, real-time listener countdowns, and behind-the-scenes artist interviews.
               </p>
             </div>
 
@@ -181,7 +181,7 @@ export const ArticleDetailPage: React.FC = () => {
                 </h4>
                 <p className="text-xs text-gray-400 mb-2">{article.author.role}</p>
                 <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                  {article.author.bio || 'Music journalist and broadcaster reporting on international artists, club culture, and live festivals for WAVE 98.5 FM.'}
+                  {article.author.bio || 'Music journalist and broadcaster reporting on international artists, club culture, and live festivals for Imole 106.3 FM.'}
                 </p>
               </div>
             </div>

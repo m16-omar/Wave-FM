@@ -57,7 +57,7 @@ export const ChartsPage: React.FC = () => {
               </h1>
 
               <p className="text-sm sm:text-base text-gray-300 max-w-xl font-medium leading-relaxed">
-                Vote for your favorite records to climb this week's official airplay chart. Direct listener power on WAVE 98.
+                Vote for your favorite records to climb this week's official airplay chart. Direct listener power on Imole 106.3 FM.
               </p>
 
               {/* Active Now Playing Ticker */}
@@ -181,7 +181,7 @@ export const ChartsPage: React.FC = () => {
               </h3>
 
               <p className="text-xs sm:text-sm text-black/80 font-semibold leading-relaxed max-w-md">
-                Updated weekly from live radio requests, streaming data, and listener votes across the globe on WAVE 98.
+                Updated weekly from live radio requests, streaming data, and listener votes across the globe on Imole 106.3.
               </p>
 
               <div>

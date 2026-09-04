@@ -4,7 +4,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     id: 'vid-01',
     slug: 'peggy-gou-live-studio-session-wave-fm',
-    title: 'Peggy Gou — Live DJ Set & Acoustic Synth Jam | WAVE 98.5 Studio Sessions',
+    title: 'Peggy Gou — Live DJ Set & Acoustic Synth Jam | Imole 106.3 FM Studio Sessions',
     description: 'Watch the full 45-minute live studio performance with Peggy Gou delivering custom edits in our neon studio.',
     thumbnail: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
@@ -45,7 +45,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     id: 'vid-04',
     slug: 'wave-festival-aftermovie-2025',
-    title: 'WAVE Summer Music Festival Official Aftermovie (4K HDR)',
+    title: 'Imole Summer Music Festival Official Aftermovie (4K HDR)',
     description: 'Relive the high-voltage energy, sunset stages, and 30,000 music lovers at last year’s festival.',
     thumbnail: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=80',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
@@ -58,7 +58,7 @@ export const VIDEOS_DATA: VideoItem[] = [
   {
     id: 'vid-05',
     slug: 'billie-eilish-exclusive-backstage-interview',
-    title: 'Billie Eilish on Album Production, Vocal Layering & World Tour | WAVE Exclusive',
+    title: 'Billie Eilish on Album Production, Vocal Layering & World Tour | Imole Exclusive',
     description: 'Backstage sit-down conversation with Maya Lin discussing production philosophy and songwriting.',
     thumbnail: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=800&auto=format&fit=crop&q=80',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',

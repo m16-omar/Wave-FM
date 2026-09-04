@@ -24,7 +24,7 @@ export const PodcastsPage: React.FC = () => {
       playTrack({
         id: podcast.id,
         title: podcast.title,
-        artist: 'WAVE 98 Podcast',
+        artist: 'Imole 106.3 FM Podcast',
         album: podcast.category,
         coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=80',
         duration: 2400,

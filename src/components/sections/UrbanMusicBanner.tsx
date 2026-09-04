@@ -124,7 +124,7 @@ export const UrbanMusicBanner: React.FC = () => {
                 RADIO
               </span>
               <span className="font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter uppercase font-display [writing-mode:vertical-rl] rotate-180 leading-none">
-                WAVE 98
+                IMOLE 106.3
               </span>
             </div>
           </div>

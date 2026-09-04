@@ -321,8 +321,8 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
 export const TOP_CHART_SONGS: ChartSong[] = CHART_CATEGORIES[0].songs;
 
 export const OFFICIAL_RADIO_CHART: RadioChart = {
-  id: 'wave-top-20',
-  title: 'The Official WAVE Top 20',
+  id: 'imole-top-20',
+  title: 'The Official Imole Top 20',
   description: 'Updated every Friday at 6:00 PM on Hitmakers Live with Maya Lin. Calculated from listener votes, digital streaming data, and airplay frequency.',
   updatedDate: 'August 21, 2026',
   coverImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop&q=80',
