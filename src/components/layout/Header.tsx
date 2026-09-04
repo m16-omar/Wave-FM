@@ -12,8 +12,7 @@ export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isStreamModalOpen, setIsStreamModalOpen] = useState(false);
-  const [isBlogDropdownOpen, setIsBlogDropdownOpen] = useState(false);
-  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
+  const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
 
   const { isPlaying, togglePlay, toggleMute, playLiveStream } = useAudio();
 
@@ -79,7 +78,7 @@ export const Header: React.FC = () => {
               </button>
             </div>
 
-            {/* Desktop Navigation Links (HOME, BLOG →, CHARTS, RADIO SHOWS, PODCASTS, HOSTS, CONTACT, MORE →) */}
+            {/* Desktop Navigation Links (HOME, BLOG, CHARTS, RADIO SHOWS, PODCASTS, HOSTS, CONTACT →) */}
             <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-[11px] xl:text-xs font-black uppercase tracking-wider text-black">
               
               {/* 1. HOME */}
@@ -95,60 +94,18 @@ export const Header: React.FC = () => {
                 HOME
               </NavLink>
 
-              {/* 2. BLOG with right arrow → */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsBlogDropdownOpen(true)}
-                onMouseLeave={() => setIsBlogDropdownOpen(false)}
+              {/* 2. BLOG (Plain direct link) */}
+              <NavLink
+                to="/blog"
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
               >
-                <NavLink
-                  to="/blog"
-                  className={({ isActive }) =>
-                    clsx(
-                      'flex items-center gap-1 transition-colors py-2',
-                      isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
-                    )
-                  }
-                >
-                  <span>BLOG</span>
-                  <span className="text-[10px] text-gray-400 font-sans leading-none ml-0.5 select-none">
-                    →
-                  </span>
-                </NavLink>
-
-                {isBlogDropdownOpen && (
-                  <div className="absolute top-full left-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                    <Link
-                      to="/blog"
-                      onClick={() => setIsBlogDropdownOpen(false)}
-                      className="block px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800"
-                    >
-                      All Articles & News
-                    </Link>
-                    <Link
-                      to="/blog"
-                      onClick={() => setIsBlogDropdownOpen(false)}
-                      className="block px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800"
-                    >
-                      Artist Interviews
-                    </Link>
-                    <Link
-                      to="/blog"
-                      onClick={() => setIsBlogDropdownOpen(false)}
-                      className="block px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800"
-                    >
-                      Music Debuts & Reviews
-                    </Link>
-                    <Link
-                      to="/blog"
-                      onClick={() => setIsBlogDropdownOpen(false)}
-                      className="block px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800"
-                    >
-                      Festival Coverage
-                    </Link>
-                  </div>
-                )}
-              </div>
+                BLOG
+              </NavLink>
 
               {/* 3. CHARTS */}
               <NavLink
@@ -202,68 +159,60 @@ export const Header: React.FC = () => {
                 HOSTS
               </NavLink>
 
-              {/* 7. CONTACT */}
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  clsx(
-                    'transition-colors py-2',
-                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
-                  )
-                }
-              >
-                CONTACT
-              </NavLink>
-
-              {/* 8. MORE with right arrow → */}
+              {/* 7. CONTACT with Dropdown menu */}
               <div
                 className="relative"
-                onMouseEnter={() => setIsMoreDropdownOpen(true)}
-                onMouseLeave={() => setIsMoreDropdownOpen(false)}
+                onMouseEnter={() => setIsContactDropdownOpen(true)}
+                onMouseLeave={() => setIsContactDropdownOpen(false)}
               >
-                <button
-                  onClick={() => setIsMoreDropdownOpen(!isMoreDropdownOpen)}
-                  className="flex items-center gap-1 hover:text-brand-yellowDark transition-colors py-2 cursor-pointer font-black"
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    clsx(
+                      'flex items-center gap-1 transition-colors py-2 font-black',
+                      isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                    )
+                  }
                 >
-                  <span>MORE</span>
+                  <span>CONTACT</span>
                   <span className="text-[10px] text-gray-400 font-sans leading-none ml-0.5 select-none">
                     →
                   </span>
-                </button>
+                </NavLink>
 
-                {isMoreDropdownOpen && (
-                  <div className="absolute top-full left-0 w-52 bg-white border border-gray-100 rounded-xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                {isContactDropdownOpen && (
+                  <div className="absolute top-full left-0 w-64 bg-white border border-gray-100 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150 select-none">
                     <Link
                       to="/schedule"
-                      onClick={() => setIsMoreDropdownOpen(false)}
-                      className="px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2"
+                      onClick={() => setIsContactDropdownOpen(false)}
+                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
-                      <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                      <span>Weekly Schedule</span>
+                      <Calendar className="w-4 h-4 text-gray-400 shrink-0" />
+                      <span>WEEKLY SCHEDULE</span>
                     </Link>
                     <Link
                       to="/videos"
-                      onClick={() => setIsMoreDropdownOpen(false)}
-                      className="px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2"
+                      onClick={() => setIsContactDropdownOpen(false)}
+                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
-                      <Video className="w-3.5 h-3.5 text-gray-400" />
-                      <span>Videos Archive</span>
+                      <Video className="w-4 h-4 text-gray-400 shrink-0" />
+                      <span>VIDEOS ARCHIVE</span>
                     </Link>
                     <Link
                       to="/events"
-                      onClick={() => setIsMoreDropdownOpen(false)}
-                      className="px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2"
+                      onClick={() => setIsContactDropdownOpen(false)}
+                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
-                      <PartyPopper className="w-3.5 h-3.5 text-gray-400" />
-                      <span>Events & Concerts</span>
+                      <PartyPopper className="w-4 h-4 text-gray-400 shrink-0" />
+                      <span>EVENTS & CONCERTS</span>
                     </Link>
                     <Link
                       to="/promote"
-                      onClick={() => setIsMoreDropdownOpen(false)}
-                      className="px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2"
+                      onClick={() => setIsContactDropdownOpen(false)}
+                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
-                      <Megaphone className="w-3.5 h-3.5 text-gray-400" />
-                      <span>Promote / Advertise</span>
+                      <Megaphone className="w-4 h-4 text-gray-400 shrink-0" />
+                      <span>PROMOTE / ADVERTISE</span>
                     </Link>
                   </div>
                 )}
