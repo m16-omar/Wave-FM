@@ -12,7 +12,6 @@ export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isStreamModalOpen, setIsStreamModalOpen] = useState(false);
-  const [isDemosDropdownOpen, setIsDemosDropdownOpen] = useState(false);
   const [isBlogDropdownOpen, setIsBlogDropdownOpen] = useState(false);
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
 
@@ -25,10 +24,10 @@ export const Header: React.FC = () => {
 
       {/* Main White Navbar */}
       <header className="w-full bg-white text-black sticky top-0 z-40 shadow-[0_1px_3px_rgba(0,0,0,0.04)] border-b border-gray-100 select-none">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between gap-4">
+        <div className="w-full px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between gap-4">
           
           {/* Left Container: 4 Golden Yellow Circular Action Buttons + Navigation Items */}
-          <div className="flex items-center gap-6 sm:gap-7 lg:gap-8 min-w-0">
+          <div className="flex items-center gap-5 sm:gap-6 lg:gap-7 min-w-0">
             
             {/* 4 Golden Yellow Circular Action Buttons */}
             <div className="flex items-center gap-2 shrink-0">
@@ -80,83 +79,23 @@ export const Header: React.FC = () => {
               </button>
             </div>
 
-            {/* Desktop Navigation Links (DEMOS ›, BLOG ›, CHARTS, RADIO SHOWS, PODCASTS, HOSTS, MORE ›) */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-7 text-[11px] xl:text-xs font-black uppercase tracking-wider text-black">
+            {/* Desktop Navigation Links (HOME, BLOG →, CHARTS, RADIO SHOWS, PODCASTS, HOSTS, CONTACT, MORE →) */}
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-[11px] xl:text-xs font-black uppercase tracking-wider text-black">
               
-              {/* 1. DEMOS with right chevron › */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsDemosDropdownOpen(true)}
-                onMouseLeave={() => setIsDemosDropdownOpen(false)}
+              {/* 1. HOME */}
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
               >
-                <button
-                  onClick={() => setIsDemosDropdownOpen(!isDemosDropdownOpen)}
-                  className="flex items-center gap-1 hover:text-brand-yellowDark transition-colors py-2 cursor-pointer font-black"
-                >
-                  <span>DEMOS</span>
-                  <span className="text-[12px] text-gray-400 font-sans leading-none ml-0.5 select-none">
-                    ›
-                  </span>
-                </button>
+                HOME
+              </NavLink>
 
-                {isDemosDropdownOpen && (
-                  <div className="absolute top-full left-0 w-60 bg-white border border-gray-100 rounded-xl shadow-xl py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                    <button
-                      onClick={() => {
-                        playLiveStream();
-                        setIsDemosDropdownOpen(false);
-                      }}
-                      className="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2.5 transition-colors"
-                    >
-                      <Radio className="w-4 h-4 text-brand-yellow shrink-0" />
-                      <div>
-                        <div className="font-extrabold text-black">Live Radio Stream</div>
-                        <div className="text-[10px] text-gray-500 font-normal">Main 106.3 FM Broadcast</div>
-                      </div>
-                    </button>
-                    
-                    <button
-                      onClick={() => {
-                        setIsStreamModalOpen(true);
-                        setIsDemosDropdownOpen(false);
-                      }}
-                      className="w-full text-left px-4 py-2.5 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2.5 transition-colors"
-                    >
-                      <Disc className="w-4 h-4 text-brand-orange shrink-0" />
-                      <div>
-                        <div className="font-extrabold text-black">Audio Stream Switcher</div>
-                        <div className="text-[10px] text-gray-500 font-normal">HD / AAC / Low-Bandwidth</div>
-                      </div>
-                    </button>
-
-                    <Link
-                      to="/charts"
-                      onClick={() => setIsDemosDropdownOpen(false)}
-                      className="block px-4 py-2.5 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2.5 transition-colors"
-                    >
-                      <Sparkles className="w-4 h-4 text-brand-cyan shrink-0" />
-                      <div>
-                        <div className="font-extrabold text-black">Top 20 Interactive Chart</div>
-                        <div className="text-[10px] text-gray-500 font-normal">Weekly listener voting</div>
-                      </div>
-                    </Link>
-
-                    <Link
-                      to="/videos"
-                      onClick={() => setIsDemosDropdownOpen(false)}
-                      className="block px-4 py-2.5 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2.5 transition-colors"
-                    >
-                      <Video className="w-4 h-4 text-brand-pink shrink-0" />
-                      <div>
-                        <div className="font-extrabold text-black">Studio Live Visualizer</div>
-                        <div className="text-[10px] text-gray-500 font-normal">4K Video stream recording</div>
-                      </div>
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* 2. BLOG with right chevron › */}
+              {/* 2. BLOG with right arrow → */}
               <div
                 className="relative"
                 onMouseEnter={() => setIsBlogDropdownOpen(true)}
@@ -172,8 +111,8 @@ export const Header: React.FC = () => {
                   }
                 >
                   <span>BLOG</span>
-                  <span className="text-[12px] text-gray-400 font-sans leading-none ml-0.5 select-none">
-                    ›
+                  <span className="text-[10px] text-gray-400 font-sans leading-none ml-0.5 select-none">
+                    →
                   </span>
                 </NavLink>
 
@@ -263,7 +202,20 @@ export const Header: React.FC = () => {
                 HOSTS
               </NavLink>
 
-              {/* 7. MORE with right chevron › */}
+              {/* 7. CONTACT */}
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
+              >
+                CONTACT
+              </NavLink>
+
+              {/* 8. MORE with right arrow → */}
               <div
                 className="relative"
                 onMouseEnter={() => setIsMoreDropdownOpen(true)}
@@ -274,8 +226,8 @@ export const Header: React.FC = () => {
                   className="flex items-center gap-1 hover:text-brand-yellowDark transition-colors py-2 cursor-pointer font-black"
                 >
                   <span>MORE</span>
-                  <span className="text-[12px] text-gray-400 font-sans leading-none ml-0.5 select-none">
-                    ›
+                  <span className="text-[10px] text-gray-400 font-sans leading-none ml-0.5 select-none">
+                    →
                   </span>
                 </button>
 
@@ -304,14 +256,6 @@ export const Header: React.FC = () => {
                     >
                       <PartyPopper className="w-3.5 h-3.5 text-gray-400" />
                       <span>Events & Concerts</span>
-                    </Link>
-                    <Link
-                      to="/contact"
-                      onClick={() => setIsMoreDropdownOpen(false)}
-                      className="px-4 py-2 text-xs font-bold hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-2"
-                    >
-                      <PhoneCall className="w-3.5 h-3.5 text-gray-400" />
-                      <span>Contact Studio</span>
                     </Link>
                     <Link
                       to="/promote"
