@@ -115,12 +115,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
             {/* Drawer Footer */}
             <div className="pt-6 border-t border-border mt-6 space-y-4">
-              <div className="flex items-center justify-center">
-                <SocialLinks size="sm" variant="pills" />
+              <div className="flex flex-col items-center justify-center gap-1.5">
+                <span className="text-[10px] font-black uppercase text-brand-yellow tracking-wider">
+                  @IMOLEFMLAGOS
+                </span>
+                <SocialLinks size="sm" variant="colored-circles" />
               </div>
               <div className="text-center text-xs text-gray-400 space-y-1">
                 <p className="font-semibold text-gray-200">20, Adetoro John Street, Fadeyi, Lagos.</p>
-                <p className="text-gray-400">Studio: +234 800 466 5336</p>
+                <p className="text-gray-300 font-mono">
+                  Call In: <a href="tel:09022000085" className="text-white font-black hover:text-brand-yellow">09022000085</a>
+                </p>
                 <p className="text-brand-yellow font-bold text-[11px]">Live 24/7 on 106.3 FM</p>
               </div>
             </div>

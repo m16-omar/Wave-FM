@@ -20,6 +20,8 @@ import { EVENTS_DATA } from '../../data/events';
 import { STATION_INFO } from '../../data/station';
 import { VideoCard } from '../../components/cards/VideoCard';
 import { EventCard } from '../../components/cards/EventCard';
+import { CallInStudioBanner } from '../../components/sections/CallInStudioBanner';
+import { SocialLinks } from '../../components/ui/SocialLinks';
 import { Modal } from '../../components/ui/Modal';
 import { Tabs } from '../../components/ui/Tabs';
 import type { TabItem } from '../../components/ui/Tabs';
@@ -158,11 +160,11 @@ export const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full select-none pb-24 font-sans space-y-20 sm:space-y-28">
+    <div className="w-full select-none pb-24 font-sans space-y-16 sm:space-y-24">
       {/* ========================================================================= */}
       {/* 1. HERO PAGE HEADER & QUICK HUB JUMP NAVIGATION                           */}
       {/* ========================================================================= */}
-      <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-28 sm:pt-16 sm:pb-36">
+      <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-24 sm:pt-16 sm:pb-32">
         {/* Background Grayscale DJ / Host Image */}
         <div className="absolute inset-0 -z-10">
           <img
@@ -199,25 +201,25 @@ export const ContactPage: React.FC = () => {
             </div>
 
             <p className="text-xs sm:text-sm text-gray-300 font-medium leading-relaxed max-w-sm">
-              Get in touch with our studio team, explore our station bio & leadership, view the weekly on-air schedule, watch video archives, and partner with Imole 106.3 FM.
+              Get in touch with our studio team, call in live on air, explore our station bio & leadership, and connect with @IMOLEFMLAGOS.
             </p>
           </div>
 
           {/* Quick Hub Jump Pill Navigation */}
           <div className="pt-2 flex flex-wrap items-center gap-2">
             <button
-              onClick={() => scrollToSection('station-bio')}
+              onClick={() => scrollToSection('contact-form')}
               className="px-4 py-2 rounded-full bg-brand-yellow text-black hover:bg-brand-yellowHover text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md cursor-pointer"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call-In & Socials</span>
+            </button>
+            <button
+              onClick={() => scrollToSection('station-bio')}
+              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Station Bio & Leadership</span>
-            </button>
-            <button
-              onClick={() => scrollToSection('contact-form')}
-              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span>Contact Form</span>
             </button>
             <button
               onClick={() => scrollToSection('schedule')}
@@ -252,23 +254,48 @@ export const ContactPage: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. CONTACT INFO & FORM SECTION (Overlapping Hero)                          */}
+      {/* 2. OFFICIAL CALL IN & SOCIAL MEDIA BANNER                                   */}
       {/* ========================================================================= */}
-      <section id="contact-form" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 sm:-mt-28 relative z-20">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 sm:-mt-24 relative z-30">
+        <CallInStudioBanner />
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. CONTACT INFO & FORM SECTION                                            */}
+      {/* ========================================================================= */}
+      <section id="contact-form" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start justify-center">
           {/* Left Column: Clean White Rounded Info Card */}
           <div className="md:col-span-6 bg-white rounded-[32px] p-8 sm:p-10 text-black shadow-2xl space-y-6 w-full">
             {/* Section 1: OUR SOCIALS */}
             <div className="space-y-3">
-              <h3 className="text-xl sm:text-2xl font-black uppercase font-display tracking-tight text-black leading-none">
-                OUR SOCIALS
-              </h3>
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-xl sm:text-2xl font-black uppercase font-display tracking-tight text-black leading-none">
+                  OUR SOCIALS
+                </h3>
+                <span className="px-2.5 py-1 rounded-full bg-black text-brand-yellow font-black text-[10px] tracking-wider uppercase">
+                  {STATION_INFO.socialHandle}
+                </span>
+              </div>
 
-              {/* Yellow Pill Buttons */}
+              {/* Yellow & Dark Pill Buttons Linking to Official Handles */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
+                {/* Facebook */}
+                <a
+                  href={STATION_INFO.socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 hover:bg-brand-yellowHover active:scale-95 transition-all shadow-sm cursor-pointer"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  <span>FACEBOOK</span>
+                </a>
+
                 {/* Instagram */}
                 <a
-                  href="https://instagram.com"
+                  href={STATION_INFO.socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3.5 py-2 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 hover:bg-brand-yellowHover active:scale-95 transition-all shadow-sm cursor-pointer"
@@ -279,9 +306,35 @@ export const ContactPage: React.FC = () => {
                   <span>INSTAGRAM</span>
                 </a>
 
+                {/* Twitter / X */}
+                <a
+                  href={STATION_INFO.socialLinks.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 hover:bg-brand-yellowHover active:scale-95 transition-all shadow-sm cursor-pointer"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  <span>TWITTER / X</span>
+                </a>
+
+                {/* YouTube */}
+                <a
+                  href={STATION_INFO.socialLinks.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 hover:bg-brand-yellowHover active:scale-95 transition-all shadow-sm cursor-pointer"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  <span>YOUTUBE</span>
+                </a>
+
                 {/* TikTok */}
                 <a
-                  href="https://tiktok.com"
+                  href={STATION_INFO.socialLinks.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3.5 py-2 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 hover:bg-brand-yellowHover active:scale-95 transition-all shadow-sm cursor-pointer"
@@ -289,20 +342,7 @@ export const ContactPage: React.FC = () => {
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.86 4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.04-4.52z"/>
                   </svg>
-                  <span>TIK TOK</span>
-                </a>
-
-                {/* Facebook */}
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3.5 py-2 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 hover:bg-brand-yellowHover active:scale-95 transition-all shadow-sm cursor-pointer"
-                >
-                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.595 0 9 1.582 9 4.615V8z"/>
-                  </svg>
-                  <span>FACEBOOK</span>
+                  <span>TIKTOK</span>
                 </a>
               </div>
             </div>
@@ -314,35 +354,56 @@ export const ContactPage: React.FC = () => {
               </h3>
 
               <div className="space-y-3.5 text-xs sm:text-sm font-semibold text-gray-800 pt-1">
-                {/* Email */}
+                {/* Call-In & Contribute Live Studio */}
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-black shrink-0" />
-                  <a
-                    href="mailto:info@imolefm.com"
-                    className="hover:text-brand-yellowDark transition-colors font-medium"
-                  >
-                    info@imolefm.com
-                  </a>
+                  <div className="w-7 h-7 rounded-full bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-sm">
+                    <Phone className="w-3.5 h-3.5 stroke-[2.5]" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase text-gray-500 block -mb-0.5">
+                      Call In & Contribute:
+                    </span>
+                    <a
+                      href={`tel:${STATION_INFO.hotline}`}
+                      className="hover:text-brand-yellowDark transition-colors font-mono font-black text-sm text-black"
+                    >
+                      {STATION_INFO.hotline}
+                    </a>
+                  </div>
                 </div>
 
-                {/* Phone */}
+                {/* Email */}
                 <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-black shrink-0" />
-                  <a
-                    href="tel:+2348004665336"
-                    className="hover:text-brand-yellowDark transition-colors font-mono font-medium"
-                  >
-                    +234 800 466 5336 (0800-IMOLE-FM)
-                  </a>
+                  <div className="w-7 h-7 rounded-full bg-black/5 text-black flex items-center justify-center shrink-0">
+                    <Mail className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase text-gray-500 block -mb-0.5">
+                      Email Inquiries:
+                    </span>
+                    <a
+                      href={`mailto:${STATION_INFO.email}`}
+                      className="hover:text-brand-yellowDark transition-colors font-medium text-black"
+                    >
+                      {STATION_INFO.email}
+                    </a>
+                  </div>
                 </div>
 
                 {/* Address */}
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-black shrink-0 mt-0.5" />
-                  <div className="leading-relaxed font-medium">
-                    20, Adetoro John Street,
-                    <br />
-                    Fadeyi, Lagos.
+                  <div className="w-7 h-7 rounded-full bg-black/5 text-black flex items-center justify-center shrink-0 mt-0.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase text-gray-500 block -mb-0.5">
+                      Broadcast Complex:
+                    </span>
+                    <div className="leading-relaxed font-medium text-gray-800">
+                      20, Adetoro John Street,
+                      <br />
+                      Fadeyi, Lagos.
+                    </div>
                   </div>
                 </div>
               </div>

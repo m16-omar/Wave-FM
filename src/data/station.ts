@@ -17,7 +17,17 @@ export interface StationInfo {
   state: string;
   country: string;
   hotline: string;
+  hotlineDisplay?: string;
+  hotlineInternational?: string;
   email: string;
+  socialHandle: string;
+  socialLinks: {
+    instagram: string;
+    facebook: string;
+    twitter: string;
+    youtube: string;
+    tiktok: string;
+  };
   shortBio: string;
   fullBio: string[];
   leadership: StationLeadership[];
@@ -37,8 +47,18 @@ export const STATION_INFO: StationInfo = {
   city: 'Lagos',
   state: 'Lagos State',
   country: 'Nigeria',
-  hotline: '+234 800 466 5336',
+  hotline: '09022000085',
+  hotlineDisplay: '0902 200 0085',
+  hotlineInternational: '+234 902 200 0085',
   email: 'info@imolefm.com',
+  socialHandle: '@IMOLEFMLAGOS',
+  socialLinks: {
+    instagram: 'https://instagram.com/imolefmlagos',
+    facebook: 'https://facebook.com/imolefmlagos',
+    twitter: 'https://x.com/imolefmlagos',
+    youtube: 'https://youtube.com/@imolefmlagos',
+    tiktok: 'https://tiktok.com/@imolefmlagos',
+  },
   shortBio:
     "Imole 106.3FM is Lagos's urban indigenous voice — a commercial radio station born to inform, inspire, and illuminate. Launched on 21st November 2025, Imole (\"light\" in Yoruba) broadcasts to Lagos and its environs.",
   fullBio: [
