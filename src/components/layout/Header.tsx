@@ -183,32 +183,64 @@ export const Header: React.FC = () => {
                 {isContactDropdownOpen && (
                   <div className="absolute top-full left-0 w-64 bg-white border border-gray-100 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150 select-none">
                     <Link
-                      to="/schedule"
-                      onClick={() => setIsContactDropdownOpen(false)}
+                      to="/contact#schedule"
+                      onClick={() => {
+                        setIsContactDropdownOpen(false);
+                        const el = document.getElementById('schedule');
+                        if (el) {
+                          const yOffset = -90;
+                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                      }}
                       className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
                       <Calendar className="w-4 h-4 text-gray-400 shrink-0" />
                       <span>WEEKLY SCHEDULE</span>
                     </Link>
                     <Link
-                      to="/videos"
-                      onClick={() => setIsContactDropdownOpen(false)}
+                      to="/contact#videos"
+                      onClick={() => {
+                        setIsContactDropdownOpen(false);
+                        const el = document.getElementById('videos');
+                        if (el) {
+                          const yOffset = -90;
+                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                      }}
                       className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
                       <Video className="w-4 h-4 text-gray-400 shrink-0" />
                       <span>VIDEOS ARCHIVE</span>
                     </Link>
                     <Link
-                      to="/events"
-                      onClick={() => setIsContactDropdownOpen(false)}
+                      to="/contact#events"
+                      onClick={() => {
+                        setIsContactDropdownOpen(false);
+                        const el = document.getElementById('events');
+                        if (el) {
+                          const yOffset = -90;
+                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                      }}
                       className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
                       <PartyPopper className="w-4 h-4 text-gray-400 shrink-0" />
                       <span>EVENTS & CONCERTS</span>
                     </Link>
                     <Link
-                      to="/promote"
-                      onClick={() => setIsContactDropdownOpen(false)}
+                      to="/contact#promote"
+                      onClick={() => {
+                        setIsContactDropdownOpen(false);
+                        const el = document.getElementById('promote');
+                        if (el) {
+                          const yOffset = -90;
+                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                          window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                      }}
                       className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
                     >
                       <Megaphone className="w-4 h-4 text-gray-400 shrink-0" />

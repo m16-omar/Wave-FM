@@ -1,8 +1,33 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  CheckCircle2,
+  Calendar,
+  Tv,
+  Megaphone,
+  Download,
+  Send,
+  Sparkles,
+  ArrowDownCircle,
+} from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { Schedule } from '../../components/radio/Schedule';
+import { VIDEOS_DATA } from '../../data/videos';
+import { EVENTS_DATA } from '../../data/events';
+import { VideoCard } from '../../components/cards/VideoCard';
+import { EventCard } from '../../components/cards/EventCard';
+import { Modal } from '../../components/ui/Modal';
+import { Tabs } from '../../components/ui/Tabs';
+import type { TabItem } from '../../components/ui/Tabs';
+import type { VideoItem } from '../../types/video';
 
 export const ContactPage: React.FC = () => {
+  const location = useLocation();
+
+  // Form states
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,22 +36,131 @@ export const ContactPage: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Video widget state
+  const [selectedVideoCategory, setSelectedVideoCategory] = useState('all');
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+
+  // Events widget state
+  const [activeEventsTab, setActiveEventsTab] = useState<'upcoming' | 'past'>('upcoming');
+
+  // Promote widget state
+  const [inquirySubmitted, setInquirySubmitted] = useState(false);
+
+  // Scroll to hash on load or hash change
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          const yOffset = -90; // offset for sticky navbar
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 120);
+      }
+    }
+  }, [location]);
+
+  const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name && formData.email) {
       setIsSubmitted(true);
       confetti({
-        particleCount: 50,
-        spread: 60,
+        particleCount: 60,
+        spread: 70,
         origin: { y: 0.6 },
-        colors: ['#F5B800', '#FFFFFF', '#000000'],
+        colors: ['#F5B800', '#532688', '#000000', '#FFFFFF'],
       });
     }
   };
 
+  const videoCategories: TabItem[] = [
+    { id: 'all', label: 'All Videos', count: VIDEOS_DATA.length },
+    { id: 'Studio Sessions', label: 'Studio Sessions' },
+    { id: 'Comedy & Highlights', label: 'Comedy Highlights' },
+    { id: 'DJ Masterclass', label: 'DJ Masterclass' },
+    { id: 'Festival Highlights', label: 'Festival Highlights' },
+    { id: 'Interviews', label: 'Interviews' },
+  ];
+
+  const filteredVideos = VIDEOS_DATA.filter((v) => {
+    return selectedVideoCategory === 'all' || v.category === selectedVideoCategory;
+  });
+
+  const eventTabs: TabItem[] = [
+    {
+      id: 'upcoming',
+      label: 'Upcoming Festivals & Concerts',
+      count: EVENTS_DATA.filter((e) => !e.isPast).length,
+    },
+    {
+      id: 'past',
+      label: 'Past Events & Archives',
+      count: EVENTS_DATA.filter((e) => e.isPast).length,
+    },
+  ];
+
+  const filteredEvents = EVENTS_DATA.filter((e) => {
+    return activeEventsTab === 'upcoming' ? !e.isPast : e.isPast;
+  });
+
+  const audienceStats = [
+    { value: '450,000+', label: 'Weekly Active FM Listeners' },
+    { value: '1.2M+', label: 'Monthly Digital Audio Streams' },
+    { value: '78%', label: 'Key 18-34 Urban Demographic' },
+    { value: '#1', label: 'Ranked Youth Music Media in Region' },
+  ];
+
+  const advertisingPackages = [
+    {
+      name: 'On-Air Spot Campaign',
+      tagline: 'High frequency rotation during morning & afternoon drive times.',
+      features: [
+        '30s & 60s prime broadcast audio commercials',
+        'Live presenter voice reads & endorsements',
+        'Hourly sponsor tags during Morning Drive',
+        'Inclusion in audio stream pre-rolls',
+      ],
+      badge: 'Popular',
+    },
+    {
+      name: 'Digital & App Sponsorship',
+      tagline: 'Multi-platform visual and interactive digital branding.',
+      features: [
+        'Sticky audio player banner takeovers',
+        'Sponsored podcast episode mentions',
+        'Newsletter feature to 45,000 VIP subscribers',
+        'Social media giveaway campaign hosting',
+      ],
+      badge: 'Digital',
+    },
+    {
+      name: 'Festival & Event Partnership',
+      tagline: 'Direct experiential engagement at Imole live concerts.',
+      features: [
+        'On-site experiential booth placement',
+        'Mainstage visual LED screen branding',
+        'VIP hospitality lounge naming rights',
+        'Live on-air remote broadcasts from your venue',
+      ],
+      badge: 'Experiential',
+    },
+  ];
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -90;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="w-full select-none pb-16 font-sans">
-      {/* 1. Hero Page Header with Grayscale Studio DJ & Giant Hollow "IMOLE 106.3" Wireframe */}
+    <div className="w-full select-none pb-24 font-sans space-y-20 sm:space-y-28">
+      {/* ========================================================================= */}
+      {/* 1. HERO PAGE HEADER & QUICK HUB JUMP NAVIGATION                           */}
+      {/* ========================================================================= */}
       <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-28 sm:pt-16 sm:pb-36">
         {/* Background Grayscale DJ / Host Image */}
         <div className="absolute inset-0 -z-10">
@@ -51,23 +185,70 @@ export const ContactPage: React.FC = () => {
         </div>
 
         {/* Top Header Row Content */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight leading-none">
-              CONTACT US
-            </h1>
+            <div>
+              <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
+                <Sparkles className="w-4 h-4" />
+                <span>Station Central Hub</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight leading-none">
+                CONTACT US
+              </h1>
+            </div>
 
             <p className="text-xs sm:text-sm text-gray-300 font-medium leading-relaxed max-w-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              Get in touch with our studio team, view the weekly on-air schedule, watch exclusive video archives, explore upcoming station concerts, and partner with Imole 106.3 FM.
             </p>
+          </div>
+
+          {/* Quick Hub Jump Pill Navigation */}
+          <div className="pt-2 flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => scrollToSection('contact-form')}
+              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>Contact Form</span>
+            </button>
+            <button
+              onClick={() => scrollToSection('schedule')}
+              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              <span>Weekly Schedule</span>
+            </button>
+            <button
+              onClick={() => scrollToSection('videos')}
+              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
+            >
+              <Tv className="w-3.5 h-3.5" />
+              <span>Videos Archive</span>
+            </button>
+            <button
+              onClick={() => scrollToSection('events')}
+              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Events & Concerts</span>
+            </button>
+            <button
+              onClick={() => scrollToSection('promote')}
+              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
+            >
+              <Megaphone className="w-3.5 h-3.5" />
+              <span>Promote / Advertise</span>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* 2. Main 2-Column Content Grid (Overlapping the Hero Header) */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 sm:-mt-28 relative z-20">
+      {/* ========================================================================= */}
+      {/* 2. CONTACT INFO & FORM SECTION (Overlapping Hero)                          */}
+      {/* ========================================================================= */}
+      <section id="contact-form" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 sm:-mt-28 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start justify-center">
-          {/* Left Column (6 Cols): Clean White Rounded Info Card */}
+          {/* Left Column: Clean White Rounded Info Card */}
           <div className="md:col-span-6 bg-white rounded-[32px] p-8 sm:p-10 text-black shadow-2xl space-y-6 w-full">
             {/* Section 1: OUR SOCIALS */}
             <div className="space-y-3">
@@ -75,7 +256,7 @@ export const ContactPage: React.FC = () => {
                 OUR SOCIALS
               </h3>
 
-              {/* 3 Yellow Pill Buttons */}
+              {/* Yellow Pill Buttons */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
                 {/* Instagram */}
                 <a
@@ -129,10 +310,10 @@ export const ContactPage: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-black shrink-0" />
                   <a
-                    href="mailto:info@contact.me"
+                    href="mailto:info@imolefm.com"
                     className="hover:text-brand-yellowDark transition-colors font-medium"
                   >
-                    info@contact.me
+                    info@imolefm.com
                   </a>
                 </div>
 
@@ -140,10 +321,10 @@ export const ContactPage: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-black shrink-0" />
                   <a
-                    href="tel:+55123323223"
+                    href="tel:+2348004665336"
                     className="hover:text-brand-yellowDark transition-colors font-mono font-medium"
                   >
-                    +55 123 32 32 23
+                    +234 800 466 5336 (0800-IMOLE-FM)
                   </a>
                 </div>
 
@@ -151,18 +332,18 @@ export const ContactPage: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-black shrink-0 mt-0.5" />
                   <div className="leading-relaxed font-medium">
-                    Central Street 13
+                    Imole Broadcast Complex
                     <br />
-                    1080 London
+                    Broadcasting Hill, Victoria Island
                     <br />
-                    United Kingdom
+                    Lagos, Nigeria
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column (6 Cols): Dark Rounded Form Card */}
+          {/* Right Column: Dark Rounded Form Card */}
           <div className="md:col-span-6 bg-[#141416] rounded-[32px] p-8 sm:p-10 border border-white/10 text-white shadow-2xl w-full">
             {isSubmitted ? (
               <div className="text-center py-12 space-y-4">
@@ -173,17 +354,17 @@ export const ContactPage: React.FC = () => {
                   Message Sent!
                 </h3>
                 <p className="text-xs text-gray-400 max-w-xs mx-auto">
-                  Thank you for contacting Imole 106.3 FM. Our studio team will get back to you shortly.
+                  Thank you for reaching out to Imole 106.3 FM. Our studio team will get back to you shortly.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
                   className="px-6 py-2.5 rounded-full bg-brand-yellow text-black font-black text-xs uppercase tracking-wider hover:bg-brand-yellowHover transition-all cursor-pointer"
                 >
-                  Send Another
+                  Send Another Message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleContactSubmit} className="space-y-4">
                 {/* Field 1: Your Name */}
                 <div>
                   <label className="text-[11px] font-bold text-gray-300 block mb-1">
@@ -251,7 +432,332 @@ export const ContactPage: React.FC = () => {
             )}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. WIDGET 1: WEEKLY SCHEDULE WIDGET                                       */}
+      {/* ========================================================================= */}
+      <section id="schedule" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
+        {/* Header */}
+        <div className="border-b border-border pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
+              <Calendar className="w-4 h-4" />
+              <span>Broadcast Program Guide</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+              Weekly Radio Schedule
+            </h2>
+            <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
+              All times are broadcast in West Africa Time (WAT). Tune in live on 106.3 FM or our high-definition digital streams.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1.5 text-xs text-brand-yellow font-bold bg-brand-yellow/10 px-3 py-1.5 rounded-lg border border-brand-yellow/20">
+              <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
+              Live Feed Active
+            </span>
+          </div>
+        </div>
+
+        {/* Schedule Component */}
+        <div className="bg-background-card/50 rounded-3xl p-4 sm:p-8 border border-white/5 shadow-2xl">
+          <Schedule defaultDay="monday" />
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. WIDGET 2: VIDEOS ARCHIVE WIDGET                                        */}
+      {/* ========================================================================= */}
+      <section id="videos" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
+        {/* Header */}
+        <div className="border-b border-border pb-6">
+          <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
+            <Tv className="w-4 h-4" />
+            <span>Imole Visual Broadcast</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+            Video Archive & Studio Live
+          </h2>
+          <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
+            Stream full HD studio DJ sets, artist freestyle battles, live acoustic jam sessions, and aftermovies.
+          </p>
+        </div>
+
+        {/* Category Filter */}
+        <div className="overflow-x-auto pb-1">
+          <Tabs
+            tabs={videoCategories}
+            activeTab={selectedVideoCategory}
+            onChange={setSelectedVideoCategory}
+            variant="pills"
+          />
+        </div>
+
+        {/* Videos Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredVideos.map((video) => (
+            <VideoCard
+              key={video.id}
+              video={video}
+              onPlay={(vid) => setSelectedVideo(vid)}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. WIDGET 3: EVENTS & CONCERTS WIDGET                                     */}
+      {/* ========================================================================= */}
+      <section id="events" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
+        {/* Header */}
+        <div className="border-b border-border pb-6">
+          <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
+            <Calendar className="w-4 h-4" />
+            <span>Station Calendar & Live Experiences</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+            Imole Live Events & Festivals
+          </h2>
+          <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
+            Concerts, club nights, summer festivals and free live breakfast broadcasts powered by Imole 106.3 FM.
+          </p>
+        </div>
+
+        {/* Tab Toggle */}
+        <div className="overflow-x-auto pb-1">
+          <Tabs
+            tabs={eventTabs}
+            activeTab={activeEventsTab}
+            onChange={(id) => setActiveEventsTab(id as 'upcoming' | 'past')}
+            variant="pills"
+          />
+        </div>
+
+        {/* Events Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredEvents.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 6. WIDGET 4: PROMOTE & ADVERTISE WIDGET                                   */}
+      {/* ========================================================================= */}
+      <section id="promote" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 scroll-mt-24">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-yellow/15 text-brand-yellow text-xs font-black uppercase tracking-widest border border-brand-yellow/30">
+            <Megaphone className="w-3.5 h-3.5" />
+            <span>Commercial & Media Partnerships</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            Amplify Your Brand on Imole 106.3 FM
+          </h2>
+
+          <p className="text-base text-gray-300">
+            Connect with an energized, trend-conscious urban audience through broadcast radio commercials, digital streaming sponsorships, and major music festivals.
+          </p>
+        </div>
+
+        {/* Audience Stats Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {audienceStats.map((st, i) => (
+            <div
+              key={i}
+              className="p-6 rounded-3xl bg-background-card border border-border text-center shadow-card"
+            >
+              <h3 className="text-3xl sm:text-4xl font-black text-brand-yellow mb-1 font-mono">
+                {st.value}
+              </h3>
+              <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">
+                {st.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Advertising Packages Grid */}
+        <div>
+          <h3 className="text-2xl font-black text-white text-center mb-8">
+            Advertising & Sponsorship Opportunities
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {advertisingPackages.map((pkg, idx) => (
+              <div
+                key={idx}
+                className="p-8 rounded-3xl bg-background-card border border-border hover:border-brand-yellow/50 transition-all flex flex-col justify-between shadow-card"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-brand-yellow/15 text-brand-yellow border border-brand-yellow/30">
+                      {pkg.badge}
+                    </span>
+                  </div>
+
+                  <h4 className="text-xl font-extrabold text-white mb-2">
+                    {pkg.name}
+                  </h4>
+
+                  <p className="text-xs text-gray-400 mb-6">
+                    {pkg.tagline}
+                  </p>
+
+                  <ul className="space-y-3 text-xs text-gray-300">
+                    {pkg.features.map((feat, fi) => (
+                      <li key={fi} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-8 mt-8 border-t border-border">
+                  <button
+                    onClick={() => scrollToSection('inquiry')}
+                    className="w-full py-3 rounded-xl bg-white/10 hover:bg-brand-yellow hover:text-black text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>Request Rates & Avails</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Media Kit Download & Inquiry Form */}
+        <div
+          id="inquiry"
+          className="p-8 sm:p-12 rounded-3xl bg-background-secondary border border-border grid grid-cols-1 lg:grid-cols-12 gap-8 items-center scroll-mt-24"
+        >
+          <div className="lg:col-span-5 space-y-4">
+            <h3 className="text-2xl font-black text-white">
+              Download 2026 Media Kit
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              Get full listener demographics, daypart coverage maps, pricing rate cards, and technical spec sheets in our official PDF media kit.
+            </p>
+            <button
+              onClick={() => alert('Downloading Imole 106.3 FM Media Kit 2026 (PDF)...')}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-yellow text-black font-extrabold text-xs uppercase tracking-wider shadow-glow-yellow hover:scale-105 transition-all cursor-pointer"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download Media Kit (PDF)</span>
+            </button>
+          </div>
+
+          <div className="lg:col-span-7 bg-background-card p-6 sm:p-8 rounded-2xl border border-border">
+            {inquirySubmitted ? (
+              <div className="text-center py-8 space-y-3">
+                <CheckCircle2 className="w-12 h-12 text-brand-yellow mx-auto" />
+                <h4 className="text-lg font-bold text-white">Inquiry Received!</h4>
+                <p className="text-xs text-gray-400">
+                  Our sales and sponsorships team will contact you within 24 hours.
+                </p>
+                <button
+                  onClick={() => setInquirySubmitted(false)}
+                  className="px-6 py-2 rounded-full bg-brand-yellow text-black font-bold text-xs uppercase tracking-wider hover:bg-brand-yellowHover transition-all cursor-pointer"
+                >
+                  Send Another Inquiry
+                </button>
+              </div>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setInquirySubmitted(true);
+                  confetti({
+                    particleCount: 50,
+                    spread: 60,
+                    origin: { y: 0.6 },
+                    colors: ['#F5B800', '#532688', '#FFFFFF'],
+                  });
+                }}
+                className="space-y-4"
+              >
+                <h4 className="text-base font-extrabold text-white">
+                  Quick Advertiser Inquiry
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    required
+                    placeholder="Your Name"
+                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                  />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Company / Brand"
+                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                  />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    type="email"
+                    required
+                    placeholder="Work Email"
+                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone Number"
+                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                  />
+                </div>
+                <textarea
+                  rows={3}
+                  required
+                  placeholder="Tell us about your campaign goals, timeline, and estimated budget..."
+                  className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                />
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-xl bg-brand-yellow text-black font-extrabold uppercase text-xs tracking-wider shadow-glow-yellow hover:bg-brand-yellowHover transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Submit Partnership Inquiry</span>
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 7. VIDEO POPUP MODAL                                                      */}
+      {/* ========================================================================= */}
+      {selectedVideo && (
+        <Modal
+          isOpen={!!selectedVideo}
+          onClose={() => setSelectedVideo(null)}
+          title={selectedVideo.title}
+          maxWidth="4xl"
+        >
+          <div className="aspect-video w-full rounded-xl overflow-hidden bg-black">
+            <iframe
+              src={selectedVideo.videoUrl}
+              title={selectedVideo.title}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="mt-4 flex items-center justify-between text-xs text-gray-400">
+            <span>
+              {selectedVideo.viewsCount} views • Published {selectedVideo.publishedAt}
+            </span>
+            <span className="text-brand-yellow font-bold uppercase">
+              {selectedVideo.category}
+            </span>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
