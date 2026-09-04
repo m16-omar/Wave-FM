@@ -12,8 +12,8 @@ export const TopBar: React.FC = () => {
           <div className="flex items-center gap-1.5 text-brand-yellow font-bold">
             <Flame className="w-3.5 h-3.5 fill-current" />
             <span className="uppercase tracking-wider">Hotline:</span>
-            <a href="tel:+18005559283" className="text-white hover:text-brand-yellow transition-colors font-mono">
-              +1 (800) 555-IMOLE
+            <a href="tel:+2348004665336" className="text-white hover:text-brand-yellow transition-colors font-mono">
+              +234 800 466 5336 (0800-IMOLE)
             </a>
           </div>
 

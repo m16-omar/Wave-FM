@@ -1,6 +1,6 @@
 import React from 'react';
 import { StationLogo } from '../ui/StationLogo';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
           {/* Left Yellow Block (6/7 Cols) */}
           <div className="md:col-span-6 lg:col-span-7 bg-brand-yellow text-black p-8 sm:p-10 flex flex-col justify-between relative z-10">
             {/* Contact Details */}
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               <div className="flex items-center gap-3 font-bold text-sm sm:text-base text-black">
                 <div className="w-8 h-8 rounded-full bg-black text-brand-yellow flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4" />
@@ -23,7 +23,18 @@ export const Footer: React.FC = () => {
                 <div className="w-8 h-8 rounded-full bg-black text-brand-yellow flex items-center justify-center shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span>+12 345 678 39</span>
+                <span>+234 800 466 5336</span>
+              </div>
+
+              <div className="flex items-start gap-3 font-bold text-xs sm:text-sm text-black">
+                <div className="w-8 h-8 rounded-full bg-black text-brand-yellow flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <span className="leading-snug">
+                  20, Adetoro John Street,
+                  <br />
+                  Fadeyi, Lagos.
+                </span>
               </div>
 
               {/* Round Black Social Icons */}

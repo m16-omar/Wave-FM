@@ -118,9 +118,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               <div className="flex items-center justify-center">
                 <SocialLinks size="sm" variant="pills" />
               </div>
-              <div className="text-center text-xs text-gray-500">
-                <p>Studio: +1 (800) 555-IMOLE</p>
-                <p className="mt-0.5">Live 24/7 in High Definition</p>
+              <div className="text-center text-xs text-gray-400 space-y-1">
+                <p className="font-semibold text-gray-200">20, Adetoro John Street, Fadeyi, Lagos.</p>
+                <p className="text-gray-400">Studio: +234 800 466 5336</p>
+                <p className="text-brand-yellow font-bold text-[11px]">Live 24/7 on 106.3 FM</p>
               </div>
             </div>
           </motion.div>
