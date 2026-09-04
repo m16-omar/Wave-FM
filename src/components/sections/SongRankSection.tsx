@@ -24,7 +24,7 @@ const VOTE_SONGS: VoteCardSong[] = [
   {
     id: 'vote-02',
     title: 'Back Outside',
-    artist: 'Sleepy',
+    artist: 'Gyapo',
     coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     votes: 3410,
@@ -32,7 +32,7 @@ const VOTE_SONGS: VoteCardSong[] = [
   {
     id: 'vote-03',
     title: 'The Life',
-    artist: 'SAINT JHN & Starrah',
+    artist: 'SAINT PARIS BABY & Producer',
     coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
     votes: 2950,
@@ -40,7 +40,7 @@ const VOTE_SONGS: VoteCardSong[] = [
   {
     id: 'vote-04',
     title: "Don't Bother Us (feat. B...)",
-    artist: 'Sweet Flower',
+    artist: 'Savina Bower',
     coverArt: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
     votes: 2720,

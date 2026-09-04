@@ -44,7 +44,7 @@ export const VideoArchive: React.FC = () => {
             {/* "ALL VIDEOS" Pill Button */}
             <div>
               <Link
-                to="/videos"
+                to="/contact#videos"
                 className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black font-black text-xs sm:text-sm uppercase tracking-wider shadow-md transition-all"
               >
                 ALL VIDEOS

@@ -76,7 +76,7 @@ export const FeaturedScheduleCallout: React.FC = () => {
 
             <div>
               <Link
-                to="/schedule"
+                to="/contact#schedule"
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all"
               >
                 <span>SEE SCHEDULE</span>

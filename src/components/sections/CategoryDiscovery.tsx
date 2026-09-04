@@ -12,7 +12,7 @@ const CATEGORIES: CategoryItem[] = [
   { id: 'cat-1', title: 'Artists', href: '/hosts', watermark: 'Artists' },
   { id: 'cat-2', title: 'Trends', href: '/blog', watermark: 'Trends' },
   { id: 'cat-3', title: 'Releases', href: '/charts', watermark: 'Releases' },
-  { id: 'cat-4', title: 'Concerts', href: '/events', watermark: 'Concerts' },
+  { id: 'cat-4', title: 'Concerts', href: '/contact#events', watermark: 'Concerts' },
 ];
 
 export const CategoryDiscovery: React.FC = () => {
