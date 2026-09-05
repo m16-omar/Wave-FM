@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { FeaturedScheduleCallout } from '../../components/sections/FeaturedScheduleCallout';
+import { WeeklySchedule } from '../../components/sections/WeeklySchedule';
 import { SponsorBadges } from '../../components/sections/SponsorBadges';
 import { useAudio } from '../../context/AudioContext';
 import { Play, Pause, MoreVertical, ShoppingCart, Star, Clock } from 'lucide-react';
-import { clsx } from 'clsx';
 import confetti from 'canvas-confetti';
 
 interface HostSong {
@@ -49,105 +50,17 @@ export const ShowsPage: React.FC = () => {
   const [showFullHostedTracklist, setShowFullHostedTracklist] = useState(false);
 
   return (
-    <div className="w-full select-none space-y-12 sm:space-y-16 pb-16">
-      {/* 1. Hero Show Highlight Section (Screenshot 1) */}
-      <section className="w-full pt-8 sm:pt-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Left Card: SHOW OF THE WEEK with Yellow Overlay Card (7 Cols) */}
-          <div className="lg:col-span-7 relative rounded-[32px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[360px] sm:min-h-[400px] flex items-center p-6 sm:p-10 border border-white/10 group">
-            {/* Background Image of Woman in Tan Coat */}
-            <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
-              alt="Show of the Week Presenter"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+    <div className="w-full select-none space-y-8 sm:space-y-12 pb-16">
+      {/* 1. Top Paired Cards: Featured Show + Weekly Schedule CTA Box */}
+      <FeaturedScheduleCallout />
 
-            {/* Overlaid Yellow Box: "SHOW OF THE WEEK" */}
-            <div className="relative z-10 bg-brand-yellow text-black rounded-3xl p-6 sm:p-8 max-w-sm shadow-2xl space-y-3.5 border border-brand-yellowHover">
-              <h2 className="text-3xl sm:text-4xl font-black uppercase font-display leading-none text-black">
-                SHOW OF
-                <br />
-                THE WEEK
-              </h2>
+      {/* 2. Tabbed Weekly Timetable Widget */}
+      <WeeklySchedule />
 
-              {/* Host Info Row */}
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl overflow-hidden bg-black/20 shrink-0 border border-black/10">
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-                    alt="Alex Rivera"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <span className="font-extrabold text-xs sm:text-sm text-black">
-                  With Alex Rivera
-                </span>
-              </div>
-
-              <p className="text-xs text-black/80 font-semibold leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
-              </p>
-
-              <div>
-                <button
-                  onClick={() => playLiveStream()}
-                  className="px-6 py-2.5 rounded-full bg-black text-white hover:bg-neutral-900 active:scale-95 font-black text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer"
-                >
-                  DISCOVER MORE
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Card: "The Fan Zone" Spotlight (5 Cols) */}
-          <div className="lg:col-span-5 relative rounded-[32px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[360px] sm:min-h-[400px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
-            {/* Background Image of Host with Beanie & Sunglasses */}
-            <img
-              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80"
-              alt="The Fan Zone - Dave Sparks"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-65"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-            {/* Stylized Background Watermark "SHOW RADIO" */}
-            <div className="absolute top-6 left-6 pointer-events-none opacity-20 select-none">
-              <span className="font-black text-6xl sm:text-7xl tracking-tighter text-white uppercase font-display leading-none">
-                SHOW
-              </span>
-              <span className="block font-marker text-brand-yellow text-2xl -mt-2">
-                RADIO
-              </span>
-            </div>
-
-            {/* Content Foreground */}
-            <div className="relative z-10 space-y-2">
-              <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
-                Interviews
-              </span>
-
-              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase font-display">
-                The Fan Zone
-              </h3>
-
-              <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
-                <span>Weekdays 5:00 pm - 6:45 pm</span>
-                <button
-                  onClick={() => playLiveStream()}
-                  className="p-1.5 text-gray-300 hover:text-brand-yellow transition-colors cursor-pointer"
-                >
-                  <MoreVertical className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Sponsor / Station Graphic Badges Row (Screenshot 1) */}
+      {/* 3. Sponsor / Station Graphic Badges Row */}
       <SponsorBadges />
 
-      {/* 3. "MEET OUR HOST STAR" + Host Selection (Screenshot 1 & 2) */}
+      {/* 4. "MEET OUR HOST STAR" + Host Selection & Hosted Chart */}
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column (6 Cols): White Callout Box + Host Portrait Card */}
@@ -161,7 +74,7 @@ export const ShowsPage: React.FC = () => {
               </h2>
 
               <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Meet the charismatic on-air personalities, journalists, and DJs who bring Imole 106.3 FM alive every single day with stories, music, and energy.
               </p>
             </div>
 
@@ -354,15 +267,8 @@ export const ShowsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. "NOW PLAYING" Hero Show Card (Screenshot 2) */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-6 relative">
-        {/* Giant Watermark Background "WAVE 98" */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10 opacity-[0.03] overflow-hidden select-none">
-          <span className="font-black text-[24vw] leading-none tracking-tighter text-white uppercase whitespace-nowrap font-display">
-            IMOLE 106.3
-          </span>
-        </div>
-
+      {/* 5. "NOW PLAYING" Hero Show Card */}
+      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-4 relative">
         {/* Section Heading */}
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight text-center mb-8 sm:mb-10">
           NOW PLAYING
@@ -420,8 +326,8 @@ export const ShowsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. "COMING NEXT" Grid (Screenshot 3) */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-8 sm:pt-12">
+      {/* 6. "COMING NEXT" Grid */}
+      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-6">
         {/* Header with Yellow Dashed Line across */}
         <div className="flex items-center gap-3 mb-6">
           <span className="px-3 py-1 rounded-full bg-brand-yellow text-black text-[11px] font-black uppercase tracking-wider">

@@ -6,6 +6,14 @@ import { useAudio } from '../../context/AudioContext';
 export const FeaturedScheduleCallout: React.FC = () => {
   const { playLiveStream } = useAudio();
 
+  const handleSeeSchedule = (e: React.MouseEvent) => {
+    const el = document.getElementById('schedule');
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="w-full py-8 sm:py-12 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,8 +84,9 @@ export const FeaturedScheduleCallout: React.FC = () => {
 
             <div>
               <Link
-                to="/contact#schedule"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all"
+                to="/shows#schedule"
+                onClick={handleSeeSchedule}
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all cursor-pointer"
               >
                 <span>SEE SCHEDULE</span>
                 <ArrowRight className="w-4 h-4 stroke-[3]" />
