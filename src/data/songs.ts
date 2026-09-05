@@ -1,4 +1,5 @@
 import { NowPlayingTrack } from '../types/radio';
+import { ASSET_IMAGES } from '../assets/images';
 
 export const RECENTLY_PLAYED_SONGS: NowPlayingTrack[] = [
   {
@@ -6,7 +7,7 @@ export const RECENTLY_PLAYED_SONGS: NowPlayingTrack[] = [
     title: 'Starry Night (Club Mix)',
     artist: 'Peggy Gou & Maya Jane Coles',
     album: 'I Go Remixes',
-    coverArt: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&auto=format&fit=crop&q=80',
+    coverArt: ASSET_IMAGES.shows.gospelLight,
     duration: 245,
     genre: 'Electronic / House',
     playedAt: 'Just Now',
@@ -20,7 +21,7 @@ export const RECENTLY_PLAYED_SONGS: NowPlayingTrack[] = [
     title: 'Espresso',
     artist: 'Sabrina Carpenter',
     album: 'Short n’ Sweet',
-    coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&auto=format&fit=crop&q=80',
+    coverArt: ASSET_IMAGES.shows.comedySplash,
     duration: 180,
     genre: 'Pop / Dance-Pop',
     playedAt: '4 mins ago',
@@ -34,7 +35,7 @@ export const RECENTLY_PLAYED_SONGS: NowPlayingTrack[] = [
     title: 'Not Like Us',
     artist: 'Kendrick Lamar',
     album: 'GNX',
-    coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&auto=format&fit=crop&q=80',
+    coverArt: ASSET_IMAGES.shows.gudugbe,
     duration: 274,
     genre: 'Hip-Hop',
     playedAt: '8 mins ago',
@@ -48,7 +49,7 @@ export const RECENTLY_PLAYED_SONGS: NowPlayingTrack[] = [
     title: 'Greedy',
     artist: 'Tate McRae',
     album: 'THINK LATER',
-    coverArt: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&auto=format&fit=crop&q=80',
+    coverArt: ASSET_IMAGES.shows.irinAjoEda,
     duration: 131,
     genre: 'Pop',
     playedAt: '13 mins ago',
@@ -62,7 +63,7 @@ export const RECENTLY_PLAYED_SONGS: NowPlayingTrack[] = [
     title: 'Water',
     artist: 'Tyla',
     album: 'TYLA',
-    coverArt: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+    coverArt: ASSET_IMAGES.shows.requestTime,
     duration: 200,
     genre: 'Amapiano',
     playedAt: '18 mins ago',
@@ -76,7 +77,7 @@ export const RECENTLY_PLAYED_SONGS: NowPlayingTrack[] = [
     title: 'Strangers',
     artist: 'Kenya Grace',
     album: 'The Aftermath',
-    coverArt: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&auto=format&fit=crop&q=80',
+    coverArt: ASSET_IMAGES.shows.reggaeHour,
     duration: 172,
     genre: 'Drum & Bass',
     playedAt: '24 mins ago',

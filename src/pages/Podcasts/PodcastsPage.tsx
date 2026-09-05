@@ -4,6 +4,7 @@ import { useAudio } from '../../context/AudioContext';
 import { Play, Pause, MoreVertical, Calendar, Eye, Share2 } from 'lucide-react';
 import { clsx } from 'clsx';
 import confetti from 'canvas-confetti';
+import { ASSET_IMAGES } from '../../assets/images';
 
 export const PodcastsPage: React.FC = () => {
   const { isPlaying, currentTrack, playTrack, togglePlay } = useAudio();
@@ -26,7 +27,7 @@ export const PodcastsPage: React.FC = () => {
         title: podcast.title,
         artist: 'Imole 106.3 FM Podcast',
         album: podcast.category,
-        coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.gospelLight,
         duration: 2400,
         previewAudioUrl: podcast.audioUrl,
         votes: 1200,
@@ -83,7 +84,7 @@ export const PodcastsPage: React.FC = () => {
             <div className="lg:col-span-5">
               <div className="rounded-[28px] overflow-hidden bg-[#C91A1A] p-2 aspect-[16/10] sm:aspect-[1.8/1] shadow-2xl flex items-center justify-center relative group">
                 <img
-                  src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80"
+                  src={ASSET_IMAGES.hero3}
                   alt="Podcaster with Microphone"
                   className="w-full h-full object-cover rounded-[22px] group-hover:scale-105 transition-transform duration-700"
                 />
@@ -134,7 +135,7 @@ export const PodcastsPage: React.FC = () => {
           >
             {/* Background Grayscale Image */}
             <img
-              src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80"
+              src={ASSET_IMAGES.studio}
               alt="Behind the Lens Podcast Studio"
               className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-transform duration-700"
             />

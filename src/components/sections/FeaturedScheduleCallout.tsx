@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Play, ArrowRight } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
+import { ASSET_IMAGES } from '../../assets/images';
 
 export const FeaturedScheduleCallout: React.FC = () => {
   const { playLiveStream } = useAudio();
@@ -20,10 +21,10 @@ export const FeaturedScheduleCallout: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Left Card: Featured Show Card (7 Cols) */}
           <div className="lg:col-span-7 relative rounded-[32px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[340px] sm:min-h-[380px] flex flex-col justify-end p-6 sm:p-10 border border-white/10 group">
-            {/* Background Image of Host Ryan Taylor */}
+            {/* Background Image of Host */}
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
-              alt="After Hours Mix - Ryan Taylor"
+              src={ASSET_IMAGES.amwoni}
+              alt="After Hours Mix - Imole 106.3 FM"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
             />
 

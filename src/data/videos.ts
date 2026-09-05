@@ -1,4 +1,5 @@
 import { VideoItem } from '../types/video';
+import { ASSET_IMAGES } from '../assets/images';
 
 export const VIDEOS_DATA: VideoItem[] = [
   {
@@ -6,7 +7,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     slug: 'peggy-gou-live-studio-session-wave-fm',
     title: 'Peggy Gou — Live DJ Set & Acoustic Synth Jam | Imole 106.3 FM Studio Sessions',
     description: 'Watch the full 45-minute live studio performance with Peggy Gou delivering custom edits in our neon studio.',
-    thumbnail: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80',
+    thumbnail: ASSET_IMAGES.studio,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
     duration: '45:12',
     category: 'Studio Sessions',
@@ -21,7 +22,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     slug: 'marcus-and-chloe-celebrity-rap-battle',
     title: 'The Morning Drive Rap Battle & Viral Caller Prank Highlight Reel',
     description: 'The funniest studio moments of the month featuring Marcus, Chloe, and unexpected special guests.',
-    thumbnail: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&auto=format&fit=crop&q=80',
+    thumbnail: ASSET_IMAGES.shows.gistHangout,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
     duration: '14:20',
     category: 'Comedy & Highlights',
@@ -34,7 +35,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     slug: 'dj-k-real-turntable-scratch-masterclass',
     title: 'DJ K-Real: 10-Minute Turntablism Scratch Routine & Beat Juggling',
     description: 'Witness master-level vinyl skills and beat juggling in real-time with our midday host.',
-    thumbnail: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop&q=80',
+    thumbnail: ASSET_IMAGES.shows.comedySplash,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
     duration: '10:05',
     category: 'DJ Masterclass',
@@ -47,7 +48,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     slug: 'wave-festival-aftermovie-2025',
     title: 'Imole Summer Music Festival Official Aftermovie (4K HDR)',
     description: 'Relive the high-voltage energy, sunset stages, and 30,000 music lovers at last year’s festival.',
-    thumbnail: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&auto=format&fit=crop&q=80',
+    thumbnail: ASSET_IMAGES.hero,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
     duration: '06:45',
     category: 'Festival Highlights',
@@ -60,7 +61,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     slug: 'billie-eilish-exclusive-backstage-interview',
     title: 'Billie Eilish on Album Production, Vocal Layering & World Tour | Imole Exclusive',
     description: 'Backstage sit-down conversation with Maya Lin discussing production philosophy and songwriting.',
-    thumbnail: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=800&auto=format&fit=crop&q=80',
+    thumbnail: ASSET_IMAGES.shows.requestTime,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
     duration: '22:18',
     category: 'Interviews',
@@ -73,7 +74,7 @@ export const VIDEOS_DATA: VideoItem[] = [
     slug: 'after-hours-berlin-club-live-stream',
     title: 'After Hours Club: 60-Min Berlin Underground Techno Live Stream',
     description: 'Leo Vance spins an uncompromising deep techno set direct from Berlin.',
-    thumbnail: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=800&auto=format&fit=crop&q=80',
+    thumbnail: ASSET_IMAGES.shows.gudugbe,
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1',
     duration: '61:02',
     category: 'Live DJ Mixes',

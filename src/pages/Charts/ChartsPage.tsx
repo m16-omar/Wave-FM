@@ -4,6 +4,7 @@ import { useAudio } from '../../context/AudioContext';
 import { Play, Pause, ShoppingCart } from 'lucide-react';
 import { clsx } from 'clsx';
 import confetti from 'canvas-confetti';
+import { ASSET_IMAGES } from '../../assets/images';
 
 export const ChartsPage: React.FC = () => {
   const [selectedChart, setSelectedChart] = useState<ChartCategoryItem>(CHART_CATEGORIES[0]);
@@ -25,7 +26,7 @@ export const ChartsPage: React.FC = () => {
         {/* Background Grayscale Image */}
         <div className="absolute inset-0 -z-10">
           <img
-            src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=80"
+            src={ASSET_IMAGES.hero}
             alt="Song Charts Live Studio"
             className="w-full h-full object-cover grayscale opacity-20"
           />
@@ -125,7 +126,7 @@ export const ChartsPage: React.FC = () => {
                           </span>
                           <div className="w-12 sm:w-14 h-full rounded-lg overflow-hidden shrink-0 border border-white/10">
                             <img
-                              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
+                              src={ASSET_IMAGES.shows.gudugbe}
                               alt="Chart Icon"
                               className="w-full h-full object-cover"
                             />

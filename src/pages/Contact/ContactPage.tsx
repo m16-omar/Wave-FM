@@ -27,6 +27,8 @@ import { Tabs } from '../../components/ui/Tabs';
 import type { TabItem } from '../../components/ui/Tabs';
 import type { VideoItem } from '../../types/video';
 
+import { ASSET_IMAGES } from '../../assets/images';
+
 export const ContactPage: React.FC = () => {
   const location = useLocation();
 
@@ -165,11 +167,11 @@ export const ContactPage: React.FC = () => {
       {/* 1. HERO PAGE HEADER & QUICK HUB JUMP NAVIGATION                           */}
       {/* ========================================================================= */}
       <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-24 sm:pt-16 sm:pb-32">
-        {/* Background Grayscale DJ / Host Image */}
+        {/* Background Building Image */}
         <div className="absolute inset-0 -z-10">
           <img
-            src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1800&q=80"
-            alt="Radio Host Background"
+            src={ASSET_IMAGES.building}
+            alt="Imole Broadcast Complex Fadeyi Lagos"
             className="w-full h-full object-cover grayscale opacity-25 object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0C0D10]/85 via-[#0C0D10]/60 to-[#0C0D10]" />

@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import confetti from 'canvas-confetti';
+import { ASSET_IMAGES } from '../../assets/images';
 
 interface HostTrack {
   id: string;
@@ -32,7 +33,7 @@ const MIA_TRACKS: HostTrack[] = [
     rank: 1,
     title: 'Starry Night (Club Mix)',
     artist: 'Peggy Gou',
-    coverArt: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?auto=format&fit=crop&w=300&q=80',
+    coverArt: ASSET_IMAGES.shows.gospelLight,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
   },
   {
@@ -40,7 +41,7 @@ const MIA_TRACKS: HostTrack[] = [
     rank: 2,
     title: 'Espresso',
     artist: 'Sabrina Carpenter',
-    coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=300&q=80',
+    coverArt: ASSET_IMAGES.shows.comedySplash,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
   },
   {
@@ -48,7 +49,7 @@ const MIA_TRACKS: HostTrack[] = [
     rank: 3,
     title: 'Not Like Us',
     artist: 'Kendrick Lamar',
-    coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=300&q=80',
+    coverArt: ASSET_IMAGES.shows.gudugbe,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
   },
   {
@@ -56,7 +57,7 @@ const MIA_TRACKS: HostTrack[] = [
     rank: 4,
     title: 'Who [MUSE]',
     artist: 'Jimin',
-    coverArt: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80',
+    coverArt: ASSET_IMAGES.shows.irinAjoEda,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
   },
   {
@@ -64,7 +65,7 @@ const MIA_TRACKS: HostTrack[] = [
     rank: 5,
     title: 'Timeless',
     artist: 'The Weeknd & Playboi Carti',
-    coverArt: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=300&q=80',
+    coverArt: ASSET_IMAGES.shows.reggaeHour,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
   },
 ];

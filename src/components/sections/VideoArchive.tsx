@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Play, X } from 'lucide-react';
+import { ASSET_IMAGES } from '../../assets/images';
 
 export const VideoArchive: React.FC = () => {
   const [isPlayingModal, setIsPlayingModal] = useState(false);
@@ -9,11 +10,11 @@ export const VideoArchive: React.FC = () => {
     <section className="w-full py-12 sm:py-16 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Column (5 Cols): Portrait Photo of Host Touching Cap with Tattoos */}
+          {/* Left Column (5 Cols): Portrait Photo of Host */}
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/10 group">
               <img
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80"
+                src={ASSET_IMAGES.staff}
                 alt="Studio Presenter"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -58,7 +59,7 @@ export const VideoArchive: React.FC = () => {
             >
               {/* Video Thumbnail Background */}
               <img
-                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"
+                src={ASSET_IMAGES.studio}
                 alt="Global Beats Session"
                 className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-500"
               />

@@ -1,4 +1,5 @@
 import { StationEvent } from '../types/event';
+import { ASSET_IMAGES } from '../assets/images';
 
 export const EVENTS_DATA: StationEvent[] = [
   {
@@ -17,8 +18,8 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
 - **VIP Perks:** Express entry, private viewing decks, air-conditioned lounges, complimentary drinks, and meet-and-greets with Imole FM on-air hosts.
 - **Eco-Friendly:** 100% renewable power, reusable cups, and free public transit shuttles.
     `,
-    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1000&auto=format&fit=crop&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1600&auto=format&fit=crop&q=80',
+    image: ASSET_IMAGES.shows.comedySplash,
+    bannerImage: ASSET_IMAGES.hero,
     date: 'Sep 12 - 14, 2026',
     time: '02:00 PM - 01:00 AM Daily',
     venue: 'Waterfront Festival Grounds',
@@ -39,8 +40,8 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
     subtitle: 'Direct from the White Isle — 8 Hours of Non-Stop Melodic House & Techno',
     description: 'Imole FM host Leo Vance takes over Club Elysium for an exclusive extended night session alongside international guest selectors.',
     fullDetails: 'Experience true underground club culture with custom Funktion-One sound, laser mapping, and sunrise sets.',
-    image: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=1000&auto=format&fit=crop&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=1600&auto=format&fit=crop&q=80',
+    image: ASSET_IMAGES.shows.gudugbe,
+    bannerImage: ASSET_IMAGES.hero3,
     date: 'Oct 02, 2026',
     time: '10:00 PM - 06:00 AM',
     venue: 'Club Elysium Warehouse',
@@ -61,8 +62,8 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
     subtitle: 'Free Live Broadcast, Breakfast Bar & Celebrity Drop-Ins',
     description: 'Watch Marcus & Chloe broadcast live from the Metro Hall Atrium with free coffee, breakfast burritos, and live band performances.',
     fullDetails: 'Come in person to be on live radio! Doors open at 5:30 AM with free admission, games, merchandise giveaways, and acoustic sets.',
-    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1000&auto=format&fit=crop&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1600&auto=format&fit=crop&q=80',
+    image: ASSET_IMAGES.shows.gistHangout,
+    bannerImage: ASSET_IMAGES.studio,
     date: 'Oct 18, 2026',
     time: '06:00 AM - 10:00 AM',
     venue: 'Metro City Hall Plaza',
@@ -83,8 +84,8 @@ Join over 30,000 music enthusiasts across 3 massive outdoor stages featuring wor
     subtitle: 'Street Basketball, Food Trucks, DJ Battles & Live Rap Showcases',
     description: 'Celebrating hip-hop and street culture with DJ K-Real, local rap crews, breakdance ciphers, and live street art.',
     fullDetails: 'A vibrant community festival celebrating 50 years of urban music culture. Free for all ages.',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1000&auto=format&fit=crop&q=80',
-    bannerImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1600&auto=format&fit=crop&q=80',
+    image: ASSET_IMAGES.shows.reggaeHour,
+    bannerImage: ASSET_IMAGES.hero2,
     date: 'Nov 07, 2026',
     time: '12:00 PM - 09:00 PM',
     venue: 'Urban Sound District',

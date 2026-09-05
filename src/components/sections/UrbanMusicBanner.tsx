@@ -1,6 +1,7 @@
 import React from 'react';
 import { Play, Heart } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
+import { ASSET_IMAGES } from '../../assets/images';
 
 export const UrbanMusicBanner: React.FC = () => {
   const { playTrack } = useAudio();
@@ -9,12 +10,12 @@ export const UrbanMusicBanner: React.FC = () => {
     <section className="w-full my-8 sm:my-14 select-none overflow-hidden">
       <div className="w-full bg-neutral-900 border-y border-white/10 relative">
         <div className="grid grid-cols-1 md:grid-cols-12 min-h-[320px] sm:min-h-[360px]">
-          {/* Left Block (4 Cols): Grayscale Performance Photo */}
+          {/* Left Block (4 Cols): Studio Session Photo */}
           <div className="md:col-span-4 relative overflow-hidden bg-black">
             <img
-              src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80"
-              alt="Artists Live Session"
-              className="w-full h-full object-cover grayscale contrast-125 opacity-75"
+              src={ASSET_IMAGES.studio}
+              alt="Imole Studio Live Session"
+              className="w-full h-full object-cover contrast-125 opacity-75"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent md:to-black/30" />
           </div>
@@ -45,7 +46,7 @@ export const UrbanMusicBanner: React.FC = () => {
                     title: 'Better',
                     artist: 'Square a Saw',
                     album: 'Vibes',
-                    coverArt: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=300&q=80',
+                    coverArt: ASSET_IMAGES.shows.reggaeHour,
                     duration: 210,
                     previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
                     votes: 1400,
@@ -57,7 +58,7 @@ export const UrbanMusicBanner: React.FC = () => {
                 <div className="flex items-center gap-2.5 min-w-0">
                   <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 bg-neutral-800">
                     <img
-                      src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=300&q=80"
+                      src={ASSET_IMAGES.shows.reggaeHour}
                       alt="Better"
                       className="w-full h-full object-cover"
                     />
@@ -78,7 +79,7 @@ export const UrbanMusicBanner: React.FC = () => {
                     title: 'Love Too Serious',
                     artist: 'Lily Wolf',
                     album: 'Late Night Talks',
-                    coverArt: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+                    coverArt: ASSET_IMAGES.shows.gistHangout,
                     duration: 240,
                     previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
                     votes: 1180,
@@ -90,7 +91,7 @@ export const UrbanMusicBanner: React.FC = () => {
                 <div className="flex items-center gap-2.5 min-w-0">
                   <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 bg-neutral-800">
                     <img
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
+                      src={ASSET_IMAGES.shows.gistHangout}
                       alt="Love Too Serious"
                       className="w-full h-full object-cover"
                     />
@@ -108,12 +109,12 @@ export const UrbanMusicBanner: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Block (4 Cols): Coral/Red with Guy in Orange Tee & Vertical WAVE98 Branding */}
+          {/* Right Block (4 Cols): Coral/Red with Presenter & Vertical IMOLE 106.3 Branding */}
           <div className="md:col-span-4 bg-[#E05A47] relative overflow-hidden flex items-center justify-between">
-            {/* Guy in Orange Shirt Image */}
+            {/* Presenter Image */}
             <img
-              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80"
-              alt="Urban Culture Presenter"
+              src={ASSET_IMAGES.hero}
+              alt="Urban Culture Presenter - Imole FM"
               className="absolute inset-0 w-full h-full object-cover object-top mix-blend-luminosity opacity-85"
             />
             <div className="absolute inset-0 bg-[#E05A47]/40" />

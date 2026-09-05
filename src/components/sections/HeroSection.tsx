@@ -2,6 +2,7 @@ import React from 'react';
 import { StationLogo } from '../ui/StationLogo';
 import { Play, Pause } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
+import { ASSET_IMAGES } from '../../assets/images';
 
 export const HeroSection: React.FC = () => {
   const { isPlaying, togglePlay, currentTrack } = useAudio();
@@ -55,8 +56,8 @@ export const HeroSection: React.FC = () => {
           <div className="relative group">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/5">
               <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-                alt="The Best Music"
+                src={ASSET_IMAGES.hero}
+                alt="The Best Music - Imole FM"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -72,8 +73,8 @@ export const HeroSection: React.FC = () => {
           <div className="relative group">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/10 flex items-center justify-center">
               <img
-                src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80"
-                alt="Light Trails - Visual Art"
+                src={ASSET_IMAGES.hero2}
+                alt="Visual Art - Imole FM"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
@@ -100,8 +101,8 @@ export const HeroSection: React.FC = () => {
           <div className="relative group">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/5">
               <img
-                src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80"
-                alt="Urban Music Roster"
+                src={ASSET_IMAGES.hero3}
+                alt="Urban Music Roster - Imole FM"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />

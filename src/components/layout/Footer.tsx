@@ -1,6 +1,7 @@
 import React from 'react';
 import { StationLogo } from '../ui/StationLogo';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { ASSET_IMAGES } from '../../assets/images';
 
 export const Footer: React.FC = () => {
   return (
@@ -104,11 +105,11 @@ export const Footer: React.FC = () => {
             </span>
           </div>
 
-          {/* Right Image Block (5/6 Cols): Smiling Woman in Beanie with Sneakers */}
+          {/* Right Image Block (5/6 Cols): Imole Building Image */}
           <div className="md:col-span-6 lg:col-span-5 relative min-h-[220px] bg-neutral-900 overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80"
-              alt="Radio Listener Contact"
+              src={ASSET_IMAGES.building}
+              alt="Imole 106.3 FM Building"
               className="w-full h-full object-cover object-top"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -124,8 +125,8 @@ export const Footer: React.FC = () => {
           <div className="bg-[#141416] rounded-2xl p-3 sm:p-4 flex items-center gap-3 border border-white/10 shadow-xl">
             <div className="w-12 h-12 rounded-xl overflow-hidden bg-neutral-800 shrink-0 border border-white/10">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
-                alt="Ryan Taylor"
+                src={ASSET_IMAGES.shows.gudugbe}
+                alt="After Hours Mix"
                 className="w-full h-full object-cover"
               />
             </div>

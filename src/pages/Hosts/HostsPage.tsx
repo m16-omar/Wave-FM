@@ -5,25 +5,26 @@ import { STATION_INFO } from '../../data/station';
 import { useAudio } from '../../context/AudioContext';
 import { User, MoreVertical, Star, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { ASSET_IMAGES } from '../../assets/images';
 
 const HOSTED_SHOWS_PREVIEWS = [
   {
     id: 'hs-1',
     title: 'Hitmakers Live',
     tag: 'Interviews',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+    image: ASSET_IMAGES.shows.gospelLight,
   },
   {
     id: 'hs-2',
     title: 'The Fan Zone',
     tag: 'Trends',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80',
+    image: ASSET_IMAGES.shows.gistHangout,
   },
   {
     id: 'hs-3',
     title: 'Throwback Jam',
     tag: 'Interviews',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+    image: ASSET_IMAGES.shows.comedySplash,
   },
 ];
 
@@ -103,9 +104,9 @@ export const HostsPage: React.FC = () => {
 
             {/* Right Card: 3 Presenters Photo with "Radio Hosts" Script */}
             <div className="lg:col-span-7 relative rounded-3xl overflow-hidden bg-neutral-900 shadow-2xl border border-white/10 aspect-[16/9] sm:aspect-[2.2/1] group flex items-end justify-end p-6">
-              {/* Photo of 3 Presenters */}
+              {/* Photo of Presenters */}
               <img
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+                src={ASSET_IMAGES.staff}
                 alt="Imole 106.3 FM Radio Hosts"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
               />
@@ -141,7 +142,7 @@ export const HostsPage: React.FC = () => {
           {/* Right Card: Dark Photo Card */}
           <div className="md:col-span-7 bg-[#141416] rounded-[32px] overflow-hidden relative aspect-[16/10] sm:aspect-[16/9] shadow-2xl border border-white/10 group">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
+              src={ASSET_IMAGES.amwoni}
               alt="Imole 106.3 FM Executive Leadership"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85"
             />
@@ -219,11 +220,11 @@ export const HostsPage: React.FC = () => {
       {/* 4. "THE START OF ALL" Story Section (Screenshot 2) */}
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
-          {/* Left Column: Portrait Photo of Smiling Woman in Beanie (5 Cols) */}
+          {/* Left Column: Imole Building Image (5 Cols) */}
           <div className="md:col-span-5 rounded-[32px] overflow-hidden bg-neutral-900 shadow-2xl border border-white/10 aspect-[4/5] group">
             <img
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80"
-              alt="The Start of All - Street Vibes"
+              src={ASSET_IMAGES.building}
+              alt="The Start of All - Imole 106.3 FM"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </div>

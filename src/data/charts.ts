@@ -1,4 +1,5 @@
 import { ChartSong, RadioChart } from '../types/chart';
+import { ASSET_IMAGES } from '../assets/images';
 
 export interface ChartCategoryItem {
   id: string;
@@ -15,7 +16,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
     title: 'The Cypher List',
     slug: 'the-cypher-list',
     description: 'The definitive weekly countdown of underground rap, trap anthems, and cross-continental hip-hop collaborations.',
-    coverImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    coverImage: ASSET_IMAGES.shows.gistHangout,
     songs: [
       {
         rank: 1,
@@ -28,7 +29,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: "Don't Bother Us (feat. Baer & Suzi)",
         artist: 'Samie Bower',
         album: 'Bother Us EP',
-        coverArt: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.comedySplash,
         votes: 4890,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -46,7 +47,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: "or just don't ://",
         artist: 'Sanni Vegas',
         album: 'Vegas Nights',
-        coverArt: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.reggaeHour,
         votes: 4320,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -64,7 +65,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Back Outside',
         artist: 'Sleepy',
         album: 'Outside Season',
-        coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.gospelLight,
         votes: 3950,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -82,7 +83,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'The Life',
         artist: 'SAINT PARIS BABY & Prod. Star',
         album: 'Paris Baby',
-        coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.gudugbe,
         votes: 3610,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -100,7 +101,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Who',
         artist: 'Jimin',
         album: 'MUSE',
-        coverArt: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.irinAjoEda,
         votes: 3480,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -118,7 +119,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Better',
         artist: 'Square a Saw',
         album: 'Summer Drive',
-        coverArt: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.requestTime,
         votes: 3120,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -132,7 +133,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
     title: 'Hustle & Flow 100',
     slug: 'hustle-flow-100',
     description: 'The top 100 high-energy motivational hip-hop records dominating city airwaves.',
-    coverImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    coverImage: ASSET_IMAGES.shows.comedySplash,
     songs: [
       {
         rank: 1,
@@ -145,7 +146,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Not Like Us',
         artist: 'Kendrick Lamar',
         album: 'GNX',
-        coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.gudugbe,
         votes: 5200,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -163,7 +164,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Million Dollar Baby',
         artist: 'Tommy Richman',
         album: 'Coyote',
-        coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.olomonLeto,
         votes: 4610,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -181,7 +182,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Back Outside',
         artist: 'Sleepy',
         album: 'Outside Season',
-        coverArt: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.toBaSeWoNi,
         votes: 4120,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -195,7 +196,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
     title: 'Bassline Kings',
     slug: 'bassline-kings',
     description: 'Heavy 808s, UK bassline, and drum & bass chart toppers.',
-    coverImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    coverImage: ASSET_IMAGES.shows.reggaeHour,
     songs: [
       {
         rank: 1,
@@ -208,7 +209,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Starry Night (Club Mix)',
         artist: 'Peggy Gou',
         album: 'I Go Remixes',
-        coverArt: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.gospelLight,
         votes: 4900,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -226,7 +227,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Baddadan',
         artist: 'Chase & Status ft. Bou',
         album: '2 Ruff',
-        coverArt: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.requestTime,
         votes: 4450,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -240,7 +241,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
     title: 'The Rap Radar',
     slug: 'the-rap-radar',
     description: 'Direct radar on breaking lyrical powerhouses and viral records.',
-    coverImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    coverImage: ASSET_IMAGES.shows.irinAjoEda,
     songs: [
       {
         rank: 1,
@@ -253,7 +254,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: "Don't Bother Us (feat. Baer & Suzi)",
         artist: 'Samie Bower',
         album: 'Bother Us',
-        coverArt: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.gistHangout,
         votes: 4700,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -267,7 +268,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
     title: 'Mic Drop Countdown',
     slug: 'mic-drop-countdown',
     description: 'The top 10 lyricist records voted on by live listeners during Friday Hitmakers Live.',
-    coverImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    coverImage: ASSET_IMAGES.shows.toBaSeWoNi,
     songs: [
       {
         rank: 1,
@@ -280,7 +281,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'The Life',
         artist: 'SAINT PARIS BABY',
         album: 'Paris Baby',
-        coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.comedySplash,
         votes: 4100,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -294,7 +295,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
     title: 'Street Heat Top 10',
     slug: 'street-heat-top-10',
     description: 'Raw city street anthems climbing club playlists and radio rotation.',
-    coverImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    coverImage: ASSET_IMAGES.shows.olomonLeto,
     songs: [
       {
         rank: 1,
@@ -307,7 +308,7 @@ export const CHART_CATEGORIES: ChartCategoryItem[] = [
         title: 'Back Outside',
         artist: 'Sleepy',
         album: 'Outside Season',
-        coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&auto=format&fit=crop&q=80',
+        coverArt: ASSET_IMAGES.shows.reggaeHour,
         votes: 4300,
         previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
         spotifyUrl: 'https://spotify.com',
@@ -325,7 +326,7 @@ export const OFFICIAL_RADIO_CHART: RadioChart = {
   title: 'The Official Imole Top 20',
   description: 'Updated every Friday at 6:00 PM on Hitmakers Live with Maya Lin. Calculated from listener votes, digital streaming data, and airplay frequency.',
   updatedDate: 'August 21, 2026',
-  coverImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop&q=80',
+  coverImage: ASSET_IMAGES.hero,
   sponsor: 'Pioneer DJ & Beatport',
   songs: TOP_CHART_SONGS,
 };

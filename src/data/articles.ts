@@ -1,4 +1,5 @@
 import { Article, ArticleCategory } from '../types/article';
+import { ASSET_IMAGES } from '../assets/images';
 
 export const ARTICLE_CATEGORIES: ArticleCategory[] = [
   { id: 'cat-1', name: 'Events', slug: 'events', count: 18, color: '#FFE600' },
@@ -29,14 +30,14 @@ From explosive world tours to genre-defining studio albums, this year proved tha
 - **Breakthrough Record:** "Who" — Jimin
 - **Underground DJ of the Year:** Ryan Taylor (After Hours Mix)
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.gistHangout,
     category: 'Events',
     tags: ['ARTISTS', 'CHARTS', 'COUNTDOWN', 'CULTURE', 'FESTIVALS'],
     author: {
       id: 'maya-lin',
       name: 'Maya Lin',
       role: 'Music Editor',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.hero2,
     },
     publishedAt: 'January 8, 2026',
     readTime: '4 min read',
@@ -54,14 +55,14 @@ From explosive world tours to genre-defining studio albums, this year proved tha
 
 How does an 8-bar loop uploaded from a bedroom producer become the #1 most-requested song on Imole 106.3 FM? We analyze the sonic formula behind viral hits.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.comedySplash,
     category: 'Artists',
     tags: ['HITS', 'INDUSTRY', 'POP', 'SOUND', 'TRENDS'],
     author: {
       id: 'ryan-taylor',
       name: 'Ryan Taylor',
       role: 'Resident DJ & Writer',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.staff,
     },
     publishedAt: 'January 8, 2026',
     readTime: '5 min read',
@@ -79,14 +80,14 @@ How does an 8-bar loop uploaded from a bedroom producer become the #1 most-reque
 
 Imole 106.3 FM is the official broadcast partner for the 2025 Urban Music Festival, streaming live DJ sets and exclusive backstage artist chats all weekend.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.reggaeHour,
     category: 'Concerts',
     tags: ['CONCERTS', 'FESTIVALS', 'LIVE', 'RADIO LIVE'],
     author: {
       id: 'maya-lin',
       name: 'Maya Lin',
       role: 'Music Editor',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.hero2,
     },
     publishedAt: 'January 8, 2026',
     readTime: '3 min read',
@@ -103,14 +104,14 @@ Imole 106.3 FM is the official broadcast partner for the 2025 Urban Music Festiv
 
 Analyzing the explosive growth of rap tracks engineered for club dancefloors and prime-time radio airplay.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.gospelLight,
     category: 'Featured',
     tags: ['FEATURED', 'DJ', 'STUDIO', 'PRO RADIO'],
     author: {
       id: 'dj-k-real',
       name: 'DJ K-Real',
       role: 'Director',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.hero,
     },
     publishedAt: 'January 8, 2026',
     readTime: '4 min read',
@@ -127,14 +128,14 @@ Analyzing the explosive growth of rap tracks engineered for club dancefloors and
 
 Great songs do not happen by accident. Top mixing engineers break down the anatomy of a #1 billboard smash.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.gudugbe,
     category: 'Artists',
     tags: ['STUDIO', 'SYNTH', 'TECHNO', 'SOUND'],
     author: {
       id: 'ryan-taylor',
       name: 'Ryan Taylor',
       role: 'Resident DJ',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.staff,
     },
     publishedAt: 'January 8, 2026',
     readTime: '6 min read',
@@ -151,14 +152,14 @@ Great songs do not happen by accident. Top mixing engineers break down the anato
 
 Meet the 5 producers and lyricists reshaping the sonic landscape from Atlanta, London, and Toronto.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.irinAjoEda,
     category: 'Featured',
     tags: ['ARTISTS', 'DISCOVERY', 'ONLINE', 'RELEASES'],
     author: {
       id: 'maya-lin',
       name: 'Maya Lin',
       role: 'Music Editor',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.hero2,
     },
     publishedAt: 'January 8, 2026',
     readTime: '4 min read',
@@ -175,14 +176,14 @@ Meet the 5 producers and lyricists reshaping the sonic landscape from Atlanta, L
 
 In a world of sterile playlists, Imole 106.3 FM proves that energy, human connection, and real-time enthusiasm can never be replaced.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.olomonLeto,
     category: 'Highlights',
     tags: ['ON AIR', 'PRO RADIO', 'RADIO LIVE', 'CULTURE'],
     author: {
       id: 'ryan-taylor',
       name: 'Ryan Taylor',
       role: 'Resident DJ',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.staff,
     },
     publishedAt: 'January 8, 2026',
     readTime: '5 min read',
@@ -199,14 +200,14 @@ In a world of sterile playlists, Imole 106.3 FM proves that energy, human connec
 
 Spotlighting the boldest new talents on Imole 106.3 FM’s Fresh Picks playlist.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.requestTime,
     category: 'Featured',
     tags: ['FEATURED', 'ARTISTS', 'TRENDS', 'DISCOVERY'],
     author: {
       id: 'maya-lin',
       name: 'Maya Lin',
       role: 'Music Editor',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.hero2,
     },
     publishedAt: 'January 8, 2026',
     readTime: '4 min read',
@@ -223,14 +224,14 @@ Spotlighting the boldest new talents on Imole 106.3 FM’s Fresh Picks playlist.
 
 Analyzing where artist revenue truly comes from in the streaming and broadcast era.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.shows.toBaSeWoNi,
     category: 'Artists',
     tags: ['INDUSTRY', 'ONLINE', 'POP', 'HITS'],
     author: {
       id: 'ryan-taylor',
       name: 'Ryan Taylor',
       role: 'Resident DJ',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.staff,
     },
     publishedAt: 'January 8, 2026',
     readTime: '5 min read',
@@ -247,14 +248,14 @@ Analyzing where artist revenue truly comes from in the streaming and broadcast e
 
 What separates a pleasant background track from an undeniable worldwide anthem? We break down the harmonic components.
     `,
-    featuredImage: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80',
+    featuredImage: ASSET_IMAGES.studio,
     category: 'Concerts',
     tags: ['CHARTS', 'COUNTDOWN', 'ROCK', 'POP', 'HITS'],
     author: {
       id: 'maya-lin',
       name: 'Maya Lin',
       role: 'Music Editor',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+      avatar: ASSET_IMAGES.hero2,
     },
     publishedAt: 'January 8, 2026',
     readTime: '4 min read',

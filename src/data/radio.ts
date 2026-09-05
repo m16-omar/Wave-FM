@@ -1,4 +1,5 @@
 import { RadioChannel, NowPlayingTrack } from '../types/radio';
+import { ASSET_IMAGES } from '../assets/images';
 
 export const RADIO_CHANNELS: RadioChannel[] = [
   {
@@ -57,7 +58,7 @@ export const CURRENT_NOW_PLAYING: NowPlayingTrack = {
   title: 'Anyway',
   artist: 'The Madpix Project',
   album: 'BMP Records',
-  coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80',
+  coverArt: ASSET_IMAGES.shows.gistHangout,
   duration: 245,
   currentTime: 85,
   genre: 'Urban / Hit Music',
@@ -72,9 +73,9 @@ export const ON_AIR_SHOW_INFO = {
   id: 'morning-drive',
   title: 'The Morning Drive w/ Marcus & Chloe',
   hostName: 'Marcus Cole & Chloe Vance',
-  hostAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+  hostAvatar: ASSET_IMAGES.amwoni,
   timeSlot: '06:00 - 10:00 AM',
-  image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&auto=format&fit=crop&q=80',
+  image: ASSET_IMAGES.studio,
   category: 'Live Talk & Hits',
   listeners: 14820,
   description: 'Wake up with fresh beats, trending culture talk, morning traffic, celebrity interviews and the hottest music chart countdown.',
@@ -85,7 +86,7 @@ export const COMING_NEXT_SHOW_INFO = {
   title: 'Urban Pulse: The Midday Anthem',
   hostName: 'DJ K-Real & Sarah Jenkins',
   timeSlot: '10:00 AM - 02:00 PM',
-  image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&auto=format&fit=crop&q=80',
+  image: ASSET_IMAGES.shows.comedySplash,
   startsIn: '45 mins',
   category: 'Hip-Hop & R&B',
 };

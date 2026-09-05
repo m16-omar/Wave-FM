@@ -3,6 +3,7 @@ import { MoreVertical } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
 import { DayOfWeek } from '../../types/schedule';
 import { clsx } from 'clsx';
+import { ASSET_IMAGES } from '../../assets/images';
 
 interface ScheduleEntry {
   id: string;
@@ -27,57 +28,57 @@ const SCHEDULE_DAYS: DayOfWeek[] = [
 const DEFAULT_SHOWS: ScheduleEntry[] = [
   {
     id: 'sch-01',
-    title: 'Top 10 Countdown',
+    title: 'Gist Hangout Show',
     time: '10:00 am – 11:30 am',
-    tag: 'music',
-    hostName: 'Marcus Vance',
-    hostAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-    bgImage: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=400&q=80',
+    tag: 'talk',
+    hostName: 'Imole On-Air Team',
+    hostAvatar: ASSET_IMAGES.amwoni,
+    bgImage: ASSET_IMAGES.shows.gistHangout,
   },
   {
     id: 'sch-02',
-    title: 'Urban Pulse',
+    title: 'Comedy Splash',
     time: '11:30 am – 01:00 pm',
     tag: 'interview',
-    hostName: 'Elena Rostova',
-    hostAvatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
-    bgImage: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=400&q=80',
+    hostName: 'Imole Comedy Crew',
+    hostAvatar: ASSET_IMAGES.hero,
+    bgImage: ASSET_IMAGES.shows.comedySplash,
   },
   {
     id: 'sch-03',
-    title: 'After Hours Mix',
+    title: 'Reggae Hour',
     time: '01:00 pm – 03:15 pm',
     tag: 'music',
-    hostName: 'Ryan Taylor',
-    hostAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-    bgImage: 'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=400&q=80',
+    hostName: 'DJ Roots',
+    hostAvatar: ASSET_IMAGES.hero2,
+    bgImage: ASSET_IMAGES.shows.reggaeHour,
   },
   {
     id: 'sch-04',
-    title: 'Throwback Jam',
+    title: 'Gospel Light',
     time: '03:15 pm – 05:00 pm',
     tag: 'throwback',
-    hostName: 'DJ K-Slide',
-    hostAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    bgImage: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80',
+    hostName: 'Faith & Worship Team',
+    hostAvatar: ASSET_IMAGES.hero3,
+    bgImage: ASSET_IMAGES.shows.gospelLight,
   },
   {
     id: 'sch-05',
-    title: 'The Fan Zone',
+    title: 'Gudugbe',
     time: '05:00 pm – 06:45 pm',
     tag: 'talk',
-    hostName: 'Dave Sparks',
-    hostAvatar: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=200&q=80',
-    bgImage: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80',
+    hostName: 'Indigenous Crew',
+    hostAvatar: ASSET_IMAGES.staff,
+    bgImage: ASSET_IMAGES.shows.gudugbe,
   },
   {
     id: 'sch-06',
-    title: 'Hitmakers Live',
+    title: 'Request Time',
     time: '06:45 pm – 08:30 pm',
     tag: 'interview',
-    hostName: 'Nia Cole',
-    hostAvatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80',
-    bgImage: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80',
+    hostName: 'Live Listeners Desk',
+    hostAvatar: ASSET_IMAGES.amwoni,
+    bgImage: ASSET_IMAGES.shows.requestTime,
   },
 ];
 

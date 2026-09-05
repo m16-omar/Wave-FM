@@ -5,6 +5,7 @@ import { SponsorBadges } from '../../components/sections/SponsorBadges';
 import { useAudio } from '../../context/AudioContext';
 import { Play, Pause, MoreVertical, ShoppingCart, Star, Clock } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { ASSET_IMAGES } from '../../assets/images';
 
 interface HostSong {
   id: string;
@@ -17,30 +18,30 @@ interface HostSong {
 const HOST_SELECTION_TRACKS: HostSong[] = [
   {
     id: 'hs-01',
-    title: 'Sweater Weather [I Love You.]',
-    artist: 'The Neighbourhood',
-    coverArt: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=300&q=80',
+    title: 'Olomon Leto Sessions',
+    artist: 'Imole Indigenous Band',
+    coverArt: ASSET_IMAGES.shows.olomonLeto,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
   },
   {
     id: 'hs-02',
-    title: 'Who [MUSE]',
-    artist: 'Jimin',
-    coverArt: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80',
+    title: 'To Ba Se Wo Ni Vibe',
+    artist: 'Lagos Cultural Voices',
+    coverArt: ASSET_IMAGES.shows.toBaSeWoNi,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
   },
   {
     id: 'hs-03',
-    title: 'Timeless [Timeless - Single]',
-    artist: 'The Weeknd & Playboi Carti',
-    coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=300&q=80',
+    title: 'Gist Hangout Live Mix',
+    artist: 'Imole Sound Studio',
+    coverArt: ASSET_IMAGES.shows.gistHangout,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
   },
   {
     id: 'hs-04',
-    title: 'YOU M4KE ME [Broken Symphonies]',
-    artist: 'Jan Metternich',
-    coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=300&q=80',
+    title: 'Reggae Roots Rhythm',
+    artist: 'Fadeyi Dub All-Stars',
+    coverArt: ASSET_IMAGES.shows.reggaeHour,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
   },
 ];
@@ -78,12 +79,12 @@ export const ShowsPage: React.FC = () => {
               </p>
             </div>
 
-            {/* Dark Portrait Card: Jordan Carter */}
+            {/* Dark Portrait Card: Amwoni */}
             <div className="bg-[#141416] rounded-[32px] overflow-hidden relative aspect-[4/3] sm:aspect-[16/11] shadow-2xl border border-white/10 group flex flex-col justify-end p-6 sm:p-8">
-              {/* Photo of Jordan Carter */}
+              {/* Photo of Amwoni */}
               <img
-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80"
-                alt="Jordan Carter"
+                src={ASSET_IMAGES.amwoni}
+                alt="Amwoni - Imole FM"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
@@ -100,7 +101,7 @@ export const ShowsPage: React.FC = () => {
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-display tracking-tight drop-shadow-md">
-                  Jordan Carter
+                  Amwoni
                 </h3>
 
                 {/* 5 Yellow Stars / Dots */}
@@ -209,14 +210,14 @@ export const ShowsPage: React.FC = () => {
                       </div>
                       <div className="w-9 h-9 rounded-lg overflow-hidden bg-neutral-900 shrink-0 border border-white/10">
                         <img
-                          src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=200&q=80"
-                          alt="Who - Jimin"
+                          src={ASSET_IMAGES.shows.gospelLight}
+                          alt="Gospel Light"
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-extrabold text-white truncate">Who</div>
-                        <div className="text-[10px] text-gray-400 truncate">Jimin</div>
+                        <div className="text-xs font-extrabold text-white truncate">Gospel Light</div>
+                        <div className="text-[10px] text-gray-400 truncate">Imole Choir</div>
                       </div>
                     </div>
                     <ShoppingCart className="w-4 h-4 text-brand-yellow shrink-0 cursor-pointer" />
@@ -230,14 +231,14 @@ export const ShowsPage: React.FC = () => {
                       </div>
                       <div className="w-9 h-9 rounded-lg overflow-hidden bg-neutral-900 shrink-0 border border-white/10">
                         <img
-                          src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=200&q=80"
-                          alt="Timeless - The Weeknd"
+                          src={ASSET_IMAGES.shows.comedySplash}
+                          alt="Comedy Splash"
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-extrabold text-white truncate">Timeless</div>
-                        <div className="text-[10px] text-gray-400 truncate">The Weeknd & Playboi Carti</div>
+                        <div className="text-xs font-extrabold text-white truncate">Comedy Splash</div>
+                        <div className="text-[10px] text-gray-400 truncate">Fadeyi Crew</div>
                       </div>
                     </div>
                     <ShoppingCart className="w-4 h-4 text-brand-yellow shrink-0 cursor-pointer" />
@@ -276,10 +277,10 @@ export const ShowsPage: React.FC = () => {
 
         {/* Large Wide Dark Show Card: The Sound Session */}
         <div className="max-w-4xl mx-auto rounded-[32px] overflow-hidden relative min-h-[300px] sm:min-h-[340px] bg-neutral-900 shadow-2xl border border-white/10 flex items-center justify-between p-6 sm:p-10 group">
-          {/* Background Image of Chloe Nguyen */}
+          {/* Background Image of Imole Studio */}
           <img
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80"
-            alt="The Sound Session with Chloe Nguyen"
+            src={ASSET_IMAGES.studio}
+            alt="The Sound Session - Imole 106.3 FM"
             className="absolute inset-0 w-full h-full object-cover object-right group-hover:scale-105 transition-transform duration-700 opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
@@ -305,7 +306,7 @@ export const ShowsPage: React.FC = () => {
             </h3>
 
             <p className="text-base sm:text-lg font-bold text-gray-200">
-              With <span className="text-brand-yellow">Chloe Nguyen</span>
+              With <span className="text-brand-yellow">Amwoni</span>
             </p>
 
             <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-300 pt-2">
@@ -338,12 +339,12 @@ export const ShowsPage: React.FC = () => {
 
         {/* 2-Column Show Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-          {/* Card 1: After Hours Mix */}
+          {/* Card 1: Reggae Hour */}
           <div className="relative rounded-[28px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[260px] sm:min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
             {/* Background Image */}
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-              alt="After Hours Mix"
+              src={ASSET_IMAGES.shows.reggaeHour}
+              alt="Reggae Hour"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -365,7 +366,7 @@ export const ShowsPage: React.FC = () => {
               </span>
 
               <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
-                After Hours Mix
+                Reggae Hour
               </h4>
 
               <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
@@ -380,12 +381,12 @@ export const ShowsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 2: Vibe Check */}
+          {/* Card 2: Gudugbe */}
           <div className="relative rounded-[28px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[260px] sm:min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
             {/* Background Image */}
             <img
-              src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80"
-              alt="Vibe Check"
+              src={ASSET_IMAGES.shows.gudugbe}
+              alt="Gudugbe"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -403,11 +404,11 @@ export const ShowsPage: React.FC = () => {
             {/* Foreground Content */}
             <div className="relative z-10 space-y-1.5">
               <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
-                Trends
+                Indigenous
               </span>
 
               <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
-                Vibe Check
+                Gudugbe
               </h4>
 
               <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">

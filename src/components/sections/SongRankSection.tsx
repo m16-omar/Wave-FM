@@ -2,6 +2,7 @@ import React from 'react';
 import { Play, Pause, MoreHorizontal, Heart, Check } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
 import confetti from 'canvas-confetti';
+import { ASSET_IMAGES } from '../../assets/images';
 
 interface VoteCardSong {
   id: string;
@@ -15,33 +16,33 @@ interface VoteCardSong {
 const VOTE_SONGS: VoteCardSong[] = [
   {
     id: 'vote-01',
-    title: 'Who',
-    artist: 'Jimin',
-    coverArt: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80',
+    title: 'Gospel Light Special',
+    artist: 'Imole Praise Choir',
+    coverArt: ASSET_IMAGES.shows.gospelLight,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     votes: 3840,
   },
   {
     id: 'vote-02',
-    title: 'Back Outside',
-    artist: 'Gyapo',
-    coverArt: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80',
+    title: 'Comedy Freestyle Jam',
+    artist: 'Fadeyi All-Stars',
+    coverArt: ASSET_IMAGES.shows.comedySplash,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     votes: 3410,
   },
   {
     id: 'vote-03',
-    title: 'The Life',
-    artist: 'SAINT PARIS BABY & Producer',
-    coverArt: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80',
+    title: 'Gudugbe Indigenous Beats',
+    artist: 'Lagos Cultural Troupe',
+    coverArt: ASSET_IMAGES.shows.gudugbe,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
     votes: 2950,
   },
   {
     id: 'vote-04',
-    title: "Don't Bother Us (feat. B...)",
-    artist: 'Savina Bower',
-    coverArt: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+    title: 'Irin Ajo Eda Melody',
+    artist: 'Traditional Ensemble',
+    coverArt: ASSET_IMAGES.shows.irinAjoEda,
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
     votes: 2720,
   },
@@ -84,16 +85,16 @@ export const SongRankSection: React.FC = () => {
               {/* Album Thumbnail */}
               <div className="w-12 h-12 rounded-xl overflow-hidden bg-black/10 shrink-0 border border-black/10">
                 <img
-                  src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=400&q=80"
-                  alt="Better - Square a Saw"
+                  src={ASSET_IMAGES.shows.requestTime}
+                  alt="Request Time Favorite - Imole FM"
                   className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Info */}
               <div className="min-w-0 pr-2">
-                <h4 className="font-black text-sm text-black leading-tight truncate">Better</h4>
-                <p className="text-xs font-semibold text-black/80 truncate">Square a Saw</p>
+                <h4 className="font-black text-sm text-black leading-tight truncate">Request Time</h4>
+                <p className="text-xs font-semibold text-black/80 truncate">Listener Choice</p>
               </div>
 
               {/* Time & Play */}
@@ -103,10 +104,10 @@ export const SongRankSection: React.FC = () => {
                   onClick={() => {
                     playTrack({
                       id: 'last-played-better',
-                      title: 'Better',
-                      artist: 'Square a Saw',
-                      album: 'Summer Drive',
-                      coverArt: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=400&q=80',
+                      title: 'Request Time Hits',
+                      artist: 'Imole Live Studio',
+                      album: 'Studio Vault',
+                      coverArt: ASSET_IMAGES.shows.requestTime,
                       duration: 215,
                       previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
                       votes: 1200,

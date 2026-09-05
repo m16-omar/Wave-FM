@@ -1,3 +1,5 @@
+import { ASSET_IMAGES } from '../assets/images';
+
 export interface StationLeadership {
   name: string;
   role: string;
@@ -72,21 +74,21 @@ export const STATION_INFO: StationInfo = {
       role: 'Chairman',
       title: 'Station Chairman & Visionary Founder',
       bio: 'Providing visionary leadership and strategic direction for Imole 106.3 FM, championing cultural elevation, ethical broadcasting, and community illumination.',
-      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+      photo: ASSET_IMAGES.staff,
     },
     {
       name: 'Mrs. Deborah O. Bodunrin',
       role: 'Vice Chairman',
       title: 'Station Vice Chairman & Executive Director',
       bio: 'Co-leading the organizational governance, institutional partnerships, and faith-centered community outreach across Lagos State.',
-      photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+      photo: ASSET_IMAGES.amwoni,
     },
     {
       name: 'Mrs. Peju Adekunle',
       role: 'General Manager',
       title: 'General Manager & Head of Operations',
       bio: 'Steering daily station operations, commercial partnerships, on-air programming quality, and talent excellence at the Imole Broadcast Complex.',
-      photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+      photo: ASSET_IMAGES.hero,
     },
   ],
   pillars: [
