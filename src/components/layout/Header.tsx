@@ -6,7 +6,7 @@ import { STATION_INFO } from '../../data/station';
 import { MobileMenu } from './MobileMenu';
 import { SearchOverlay } from './SearchOverlay';
 import { StreamSelectorModal } from '../audio/StreamSelectorModal';
-import { Search, Play, Pause, Volume2, Menu, Radio, Disc, Sparkles, Music2, Mic2, Calendar, Video, PartyPopper, PhoneCall, Megaphone } from 'lucide-react';
+import { Search, Play, Pause, Volume2, Menu, Radio, Disc, Sparkles, Music2, Mic2 } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
 import { clsx } from 'clsx';
 
@@ -14,7 +14,6 @@ export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isStreamModalOpen, setIsStreamModalOpen] = useState(false);
-  const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
 
   const { isPlaying, togglePlay, toggleMute, playLiveStream } = useAudio();
 
@@ -161,96 +160,18 @@ export const Header: React.FC = () => {
                 HOSTS
               </NavLink>
 
-              {/* 7. CONTACT with Dropdown menu */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsContactDropdownOpen(true)}
-                onMouseLeave={() => setIsContactDropdownOpen(false)}
+              {/* 7. CONTACT (Plain direct link) */}
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
               >
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    clsx(
-                      'flex items-center gap-1 transition-colors py-2 font-black',
-                      isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
-                    )
-                  }
-                >
-                  <span>CONTACT</span>
-                  <span className="text-[10px] text-gray-400 font-sans leading-none ml-0.5 select-none">
-                    →
-                  </span>
-                </NavLink>
-
-                {isContactDropdownOpen && (
-                  <div className="absolute top-full left-0 w-64 bg-white border border-gray-100 rounded-2xl shadow-xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150 select-none">
-                    <Link
-                      to="/contact#schedule"
-                      onClick={() => {
-                        setIsContactDropdownOpen(false);
-                        const el = document.getElementById('schedule');
-                        if (el) {
-                          const yOffset = -90;
-                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                          window.scrollTo({ top: y, behavior: 'smooth' });
-                        }
-                      }}
-                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
-                    >
-                      <Calendar className="w-4 h-4 text-gray-400 shrink-0" />
-                      <span>WEEKLY SCHEDULE</span>
-                    </Link>
-                    <Link
-                      to="/contact#videos"
-                      onClick={() => {
-                        setIsContactDropdownOpen(false);
-                        const el = document.getElementById('videos');
-                        if (el) {
-                          const yOffset = -90;
-                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                          window.scrollTo({ top: y, behavior: 'smooth' });
-                        }
-                      }}
-                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
-                    >
-                      <Video className="w-4 h-4 text-gray-400 shrink-0" />
-                      <span>VIDEOS ARCHIVE</span>
-                    </Link>
-                    <Link
-                      to="/contact#events"
-                      onClick={() => {
-                        setIsContactDropdownOpen(false);
-                        const el = document.getElementById('events');
-                        if (el) {
-                          const yOffset = -90;
-                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                          window.scrollTo({ top: y, behavior: 'smooth' });
-                        }
-                      }}
-                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
-                    >
-                      <PartyPopper className="w-4 h-4 text-gray-400 shrink-0" />
-                      <span>EVENTS & CONCERTS</span>
-                    </Link>
-                    <Link
-                      to="/contact#promote"
-                      onClick={() => {
-                        setIsContactDropdownOpen(false);
-                        const el = document.getElementById('promote');
-                        if (el) {
-                          const yOffset = -90;
-                          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                          window.scrollTo({ top: y, behavior: 'smooth' });
-                        }
-                      }}
-                      className="px-4 py-3 text-xs font-black uppercase tracking-wider hover:bg-gray-50 hover:text-brand-yellowDark text-gray-800 flex items-center gap-3 rounded-xl transition-colors"
-                    >
-                      <Megaphone className="w-4 h-4 text-gray-400 shrink-0" />
-                      <span>PROMOTE / ADVERTISE</span>
-                    </Link>
-                  </div>
-                )}
-              </div>
+                CONTACT
+              </NavLink>
             </nav>
           </div>
 

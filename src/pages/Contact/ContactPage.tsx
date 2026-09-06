@@ -6,7 +6,6 @@ import {
   MapPin,
   CheckCircle2,
   Calendar,
-  Tv,
   Megaphone,
   Download,
   Send,
@@ -15,18 +14,9 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Schedule } from '../../components/radio/Schedule';
-import { VIDEOS_DATA } from '../../data/videos';
-import { EVENTS_DATA } from '../../data/events';
 import { STATION_INFO } from '../../data/station';
-import { VideoCard } from '../../components/cards/VideoCard';
-import { EventCard } from '../../components/cards/EventCard';
 import { CallInStudioBanner } from '../../components/sections/CallInStudioBanner';
 import { SocialLinks } from '../../components/ui/SocialLinks';
-import { Modal } from '../../components/ui/Modal';
-import { Tabs } from '../../components/ui/Tabs';
-import type { TabItem } from '../../components/ui/Tabs';
-import type { VideoItem } from '../../types/video';
-
 import { ASSET_IMAGES } from '../../assets/images';
 
 export const ContactPage: React.FC = () => {
@@ -40,13 +30,6 @@ export const ContactPage: React.FC = () => {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Video widget state
-  const [selectedVideoCategory, setSelectedVideoCategory] = useState('all');
-  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
-
-  // Events widget state
-  const [activeEventsTab, setActiveEventsTab] = useState<'upcoming' | 'past'>('upcoming');
 
   // Promote widget state
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
@@ -78,36 +61,6 @@ export const ContactPage: React.FC = () => {
       });
     }
   };
-
-  const videoCategories: TabItem[] = [
-    { id: 'all', label: 'All Videos', count: VIDEOS_DATA.length },
-    { id: 'Studio Sessions', label: 'Studio Sessions' },
-    { id: 'Comedy & Highlights', label: 'Comedy Highlights' },
-    { id: 'DJ Masterclass', label: 'DJ Masterclass' },
-    { id: 'Festival Highlights', label: 'Festival Highlights' },
-    { id: 'Interviews', label: 'Interviews' },
-  ];
-
-  const filteredVideos = VIDEOS_DATA.filter((v) => {
-    return selectedVideoCategory === 'all' || v.category === selectedVideoCategory;
-  });
-
-  const eventTabs: TabItem[] = [
-    {
-      id: 'upcoming',
-      label: 'Upcoming Festivals & Concerts',
-      count: EVENTS_DATA.filter((e) => !e.isPast).length,
-    },
-    {
-      id: 'past',
-      label: 'Past Events & Archives',
-      count: EVENTS_DATA.filter((e) => e.isPast).length,
-    },
-  ];
-
-  const filteredEvents = EVENTS_DATA.filter((e) => {
-    return activeEventsTab === 'upcoming' ? !e.isPast : e.isPast;
-  });
 
   const audienceStats = [
     { value: '450,000+', label: 'Weekly Active FM Listeners' },
@@ -229,20 +182,6 @@ export const ContactPage: React.FC = () => {
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Weekly Schedule</span>
-            </button>
-            <button
-              onClick={() => scrollToSection('videos')}
-              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
-            >
-              <Tv className="w-3.5 h-3.5" />
-              <span>Videos Archive</span>
-            </button>
-            <button
-              onClick={() => scrollToSection('events')}
-              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Events & Concerts</span>
             </button>
             <button
               onClick={() => scrollToSection('promote')}
@@ -672,83 +611,7 @@ export const ContactPage: React.FC = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. WIDGET 2: VIDEOS ARCHIVE WIDGET                                        */}
-      {/* ========================================================================= */}
-      <section id="videos" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
-        {/* Header */}
-        <div className="border-b border-border pb-6">
-          <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
-            <Tv className="w-4 h-4" />
-            <span>Imole Visual Broadcast</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            Video Archive & Studio Live
-          </h2>
-          <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
-            Stream full HD studio DJ sets, artist freestyle battles, live acoustic jam sessions, and aftermovies.
-          </p>
-        </div>
-
-        {/* Category Filter */}
-        <div className="overflow-x-auto pb-1">
-          <Tabs
-            tabs={videoCategories}
-            activeTab={selectedVideoCategory}
-            onChange={setSelectedVideoCategory}
-            variant="pills"
-          />
-        </div>
-
-        {/* Videos Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredVideos.map((video) => (
-            <VideoCard
-              key={video.id}
-              video={video}
-              onPlay={(vid) => setSelectedVideo(vid)}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. WIDGET 3: EVENTS & CONCERTS WIDGET                                     */}
-      {/* ========================================================================= */}
-      <section id="events" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
-        {/* Header */}
-        <div className="border-b border-border pb-6">
-          <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
-            <Calendar className="w-4 h-4" />
-            <span>Station Calendar & Live Experiences</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            Imole Live Events & Festivals
-          </h2>
-          <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
-            Concerts, club nights, summer festivals and free live breakfast broadcasts powered by Imole 106.3 FM.
-          </p>
-        </div>
-
-        {/* Tab Toggle */}
-        <div className="overflow-x-auto pb-1">
-          <Tabs
-            tabs={eventTabs}
-            activeTab={activeEventsTab}
-            onChange={(id) => setActiveEventsTab(id as 'upcoming' | 'past')}
-            variant="pills"
-          />
-        </div>
-
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 6. WIDGET 4: PROMOTE & ADVERTISE WIDGET                                   */}
+      {/* 5. PROMOTE & ADVERTISE WIDGET                                             */}
       {/* ========================================================================= */}
       <section id="promote" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 scroll-mt-24">
         {/* Header */}
@@ -932,36 +795,6 @@ export const ContactPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* ========================================================================= */}
-      {/* 7. VIDEO POPUP MODAL                                                      */}
-      {/* ========================================================================= */}
-      {selectedVideo && (
-        <Modal
-          isOpen={!!selectedVideo}
-          onClose={() => setSelectedVideo(null)}
-          title={selectedVideo.title}
-          maxWidth="4xl"
-        >
-          <div className="aspect-video w-full rounded-xl overflow-hidden bg-black">
-            <iframe
-              src={selectedVideo.videoUrl}
-              title={selectedVideo.title}
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-          <div className="mt-4 flex items-center justify-between text-xs text-gray-400">
-            <span>
-              {selectedVideo.viewsCount} views • Published {selectedVideo.publishedAt}
-            </span>
-            <span className="text-brand-yellow font-bold uppercase">
-              {selectedVideo.category}
-            </span>
-          </div>
-        </Modal>
-      )}
     </div>
   );
 };
