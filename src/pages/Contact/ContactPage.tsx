@@ -116,7 +116,7 @@ export const ContactPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 1. HERO CONTACT SECTION WITH IMOLE BUILDING IMAGE & DUAL CARDS            */}
       {/* ========================================================================= */}
-      <div id="contact-hero" className="w-full relative overflow-hidden bg-[#0C0D10] border-b border-white/5 pt-8 pb-16 sm:pt-12 sm:pb-24">
+      <div id="contact-hero" className="w-full relative overflow-hidden bg-[#060D24] border-b border-blue-900/30 pt-8 pb-16 sm:pt-12 sm:pb-24">
         {/* Background Building Image with Rich Cinematic Gradient */}
         <div className="absolute inset-0 z-0">
           <img
@@ -125,8 +125,8 @@ export const ContactPage: React.FC = () => {
             className="w-full h-full object-cover object-center scale-105"
           />
           {/* Multi-layered dark and warm gradient to ensure pristine contrast and building visibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/85" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0C0D10]/80 via-transparent to-[#0C0D10]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#060D24]/95 via-[#060D24]/80 to-[#060D24]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#060D24]/80 via-transparent to-[#060D24]" />
         </div>
 
         {/* Giant Hollow Outline Watermark "IMOLE 106.3" in Gold across background */}
@@ -339,7 +339,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* Right Column: Dark Rounded Form Card */}
-            <div className="md:col-span-6 bg-[#141416] rounded-[32px] p-8 sm:p-10 border border-white/10 text-white shadow-2xl w-full">
+            <div className="md:col-span-6 bg-[#0F204E] rounded-[32px] p-8 sm:p-10 border border-blue-900/40 text-white shadow-2xl w-full">
               {isSubmitted ? (
                 <div className="text-center py-12 space-y-4">
                   <div className="w-14 h-14 rounded-full bg-brand-yellow text-black flex items-center justify-center mx-auto shadow-glow-yellow">
@@ -464,7 +464,7 @@ export const ContactPage: React.FC = () => {
         {/* Narrative Bio Container with Imole Building Side Card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left: Narrative Bio (7 cols) */}
-          <div className="lg:col-span-7 bg-[#141416] rounded-3xl p-8 sm:p-10 border border-white/10 shadow-2xl flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-7 bg-[#0F204E] rounded-3xl p-8 sm:p-10 border border-blue-900/40 shadow-2xl flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-80 h-80 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10 space-y-5 text-gray-200 text-sm sm:text-base leading-relaxed">
               <p className="border-l-4 border-brand-yellow pl-4 sm:pl-5 text-white font-medium">
@@ -482,14 +482,14 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Right: Imole Building Broadcast Complex Card (5 cols) */}
-          <div className="lg:col-span-5 bg-[#141416] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col justify-between relative group">
+          <div className="lg:col-span-5 bg-[#0F204E] rounded-3xl overflow-hidden border border-blue-900/40 shadow-2xl flex flex-col justify-between relative group">
             <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-neutral-900">
               <img
                 src={ASSET_IMAGES.building}
                 alt="Imole 106.3 FM Broadcast Complex Building"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141416] via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F204E] via-black/20 to-transparent" />
               <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider">
                 BROADCAST COMPLEX
               </span>
@@ -548,7 +548,7 @@ export const ContactPage: React.FC = () => {
             {STATION_INFO.leadership.map((leader, idx) => (
               <div
                 key={idx}
-                className="bg-[#141416] rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col group hover:border-brand-yellow/40 transition-all"
+                className="bg-[#0F204E] rounded-3xl overflow-hidden border border-blue-900/40 shadow-2xl flex flex-col group hover:border-brand-yellow/40 transition-all"
               >
                 {/* Photo container */}
                 <div className="relative aspect-[4/3] bg-neutral-900 overflow-hidden">
@@ -557,7 +557,7 @@ export const ContactPage: React.FC = () => {
                     alt={leader.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#141416] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F204E] via-transparent to-transparent" />
 
                   {/* Role Tag Pill */}
                   <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider">

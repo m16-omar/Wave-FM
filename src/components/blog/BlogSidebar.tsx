@@ -111,8 +111,8 @@ export const BlogSidebar: React.FC<BlogSidebarProps> = ({
           {TREND_TAGS.map((tag) => (
             <button
               key={tag}
-              onClick={() => (onSelectTag ? onSelectTag(tag) : navigate(`/blog?tag=${tag}`))}
-              className="px-2 py-1 bg-[#1A1B20] hover:bg-brand-yellow hover:text-black text-gray-300 text-[9px] font-bold uppercase tracking-wider rounded border border-white/10 transition-colors cursor-pointer"
+              onClick={() => (onSelectTag ? onSelectTag(tag) : navigate(`/news?tag=${tag}`))}
+              className="px-2 py-1 bg-[#0B173D] hover:bg-brand-yellow hover:text-black text-gray-300 text-[9px] font-bold uppercase tracking-wider rounded border border-blue-900/40 transition-colors cursor-pointer"
             >
               {tag}
             </button>
@@ -157,7 +157,7 @@ export const BlogSidebar: React.FC<BlogSidebarProps> = ({
           <div className="flex-1 border-b border-dashed border-brand-yellow/60" />
         </div>
 
-        <div className="bg-[#141416] rounded-2xl p-3 sm:p-4 border border-white/5 shadow-xl space-y-3">
+        <div className="bg-[#0F204E] rounded-2xl p-3 sm:p-4 border border-blue-900/30 shadow-xl space-y-3">
           {hotNowArticles.map((art) => (
             <Link
               key={art.id}

@@ -43,7 +43,7 @@ export const HostsPage: React.FC = () => {
   return (
     <div className="w-full select-none space-y-12 sm:space-y-16 pb-16">
       {/* 1. Hero Page Title Banner with Repeating "radio hosts" Watermark (Screenshot 1) */}
-      <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-16 sm:pt-16 sm:pb-20">
+      <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-12 pb-16 sm:pt-16 sm:pb-20">
         {/* Background Repeating Cursive Script Watermark "radio hosts" */}
         <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.05] overflow-hidden select-none">
           <span className="font-script text-7xl sm:text-[10rem] text-white rotate-[-12deg] whitespace-nowrap">
@@ -140,13 +140,13 @@ export const HostsPage: React.FC = () => {
           </div>
 
           {/* Right Card: Dark Photo Card */}
-          <div className="md:col-span-7 bg-[#141416] rounded-[32px] overflow-hidden relative aspect-[16/10] sm:aspect-[16/9] shadow-2xl border border-white/10 group">
+          <div className="md:col-span-7 bg-[#0F204E] rounded-[32px] overflow-hidden relative aspect-[16/10] sm:aspect-[16/9] shadow-2xl border border-blue-900/40 group">
             <img
               src={ASSET_IMAGES.amwoni}
               alt="Imole 106.3 FM Executive Leadership"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/80 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
               <span className="px-2.5 py-0.5 rounded bg-brand-yellow text-black text-[9px] font-black uppercase tracking-wider">
                 Leadership
@@ -284,7 +284,7 @@ export const HostsPage: React.FC = () => {
           {PRESENTERS_DATA.map((presenter) => (
             <div
               key={presenter.id}
-              className="bg-[#141416] rounded-3xl overflow-hidden relative aspect-[4/5] shadow-2xl border border-white/10 group flex flex-col justify-end p-5 sm:p-6"
+              className="bg-[#0F204E] rounded-3xl overflow-hidden relative aspect-[4/5] shadow-2xl border border-blue-900/40 group flex flex-col justify-end p-5 sm:p-6"
             >
               {/* Presenter Photo */}
               <img
@@ -292,7 +292,7 @@ export const HostsPage: React.FC = () => {
                 alt={presenter.name}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/95 via-[#060D24]/40 to-transparent" />
 
               {/* Floating Top-Right User Circle Icon */}
               <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">

@@ -20,7 +20,7 @@ export const StationLogo: React.FC<StationLogoProps> = ({
       className={clsx(
         'relative inline-flex items-center justify-center select-none group',
         variant === 'light'
-          ? 'bg-[#0C0D10] px-3.5 py-1.5 rounded-xl shadow-xs border border-neutral-800/80'
+          ? 'bg-[#060D24] px-3.5 py-1.5 rounded-xl shadow-xs border border-blue-900/50'
           : '',
         className
       )}

@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0C0D10;
-  --color-background-secondary: #131418;
-  --color-background-tertiary: #191B22;
-  --color-background-card: #151720;
-  --color-background-hover: #1F2230;
+  --color-background: #060D24;
+  --color-background-secondary: #0B173D;
+  --color-background-tertiary: #12255A;
+  --color-background-card: #0F204E;
+  --color-background-hover: #162E6E;
+
+  --color-brand-blue-deep: #060D24;
+  --color-brand-blue-navy: #0B173D;
+  --color-brand-blue-card: #0F204E;
+  --color-brand-blue-royal: #1E3A8A;
+  --color-brand-blue-bright: #3B82F6;
+  --color-brand-blue-accent: #38BDF8;
 
   --color-brand-yellow: #FEBF0F;
   --color-brand-yellowHover: #F8B217;
@@ -19,8 +26,8 @@
   --color-brand-lime: #10B981;
   --color-brand-red: #EF4444;
 
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-light: rgba(255, 255, 255, 0.15);
+  --color-border: rgba(96, 165, 250, 0.15);
+  --color-border-light: rgba(255, 255, 255, 0.12);
   --color-border-glow: rgba(254, 191, 15, 0.35);
 
   --font-sans: Outfit, Inter, system-ui, sans-serif;
@@ -31,9 +38,10 @@
   --font-mono: "JetBrains Mono", monospace;
 
   --shadow-glow-yellow: 0 0 25px -5px rgba(254, 191, 15, 0.5);
+  --shadow-glow-blue: 0 0 25px -5px rgba(59, 130, 246, 0.45);
   --shadow-glow-cyan: 0 0 25px -5px rgba(0, 240, 255, 0.45);
   --shadow-glow-pink: 0 0 25px -5px rgba(255, 0, 127, 0.45);
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 10px 30px -10px rgba(0, 10, 30, 0.7);
 }
 
 :root {
@@ -41,7 +49,7 @@
 }
 
 body {
-  background-color: #0C0D10;
+  background-color: #060D24;
   color: #F3F4F6;
   font-family: 'Outfit', 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
@@ -66,20 +74,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #090A0E;
+  background: #060D24;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1F2433;
+  background: #162E6E;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFE600;
+  background: #FEBF0F;
 }
 
 .text-glow-yellow {
-  text-shadow: 0 0 12px rgba(255, 230, 0, 0.6);
+  text-shadow: 0 0 12px rgba(254, 191, 15, 0.6);
 }
 
 .text-glow-cyan {
@@ -91,10 +99,10 @@ body {
 }
 
 .glass-panel {
-  background: rgba(19, 22, 32, 0.85);
+  background: rgba(15, 32, 78, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(96, 165, 250, 0.15);
 }
 
 .no-scrollbar::-webkit-scrollbar {

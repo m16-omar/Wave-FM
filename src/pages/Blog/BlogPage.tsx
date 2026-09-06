@@ -62,7 +62,7 @@ export const BlogPage: React.FC = () => {
 
           {/* Feature Highlights Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-4">
-            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+            <div className="bg-[#0F204E]/80 backdrop-blur-md rounded-2xl p-5 border border-blue-900/40 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
               <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
                 <Newspaper className="w-5 h-5" />
               </div>
@@ -72,7 +72,7 @@ export const BlogPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+            <div className="bg-[#0F204E]/80 backdrop-blur-md rounded-2xl p-5 border border-blue-900/40 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
               <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
                 <RadioTower className="w-5 h-5" />
               </div>
@@ -82,7 +82,7 @@ export const BlogPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+            <div className="bg-[#0F204E]/80 backdrop-blur-md rounded-2xl p-5 border border-blue-900/40 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
               <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
                 <Sparkles className="w-5 h-5" />
               </div>
@@ -96,7 +96,7 @@ export const BlogPage: React.FC = () => {
           {/* Notify Me Form Box */}
           <div className="pt-6 max-w-lg mx-auto">
             {isSubscribed ? (
-              <div className="bg-[#141416] border border-brand-yellow/40 rounded-2xl p-6 shadow-2xl space-y-2 text-center">
+              <div className="bg-[#0F204E] border border-brand-yellow/40 rounded-2xl p-6 shadow-2xl space-y-2 text-center">
                 <CheckCircle2 className="w-10 h-10 text-brand-yellow mx-auto" />
                 <h4 className="text-base font-black text-white uppercase font-display">You're on the news VIP list!</h4>
                 <p className="text-xs text-gray-400">
@@ -106,7 +106,7 @@ export const BlogPage: React.FC = () => {
             ) : (
               <form
                 onSubmit={handleNotifySubmit}
-                className="bg-[#141416]/90 border border-white/10 rounded-2xl p-2 sm:p-2.5 shadow-2xl flex flex-col sm:flex-row items-center gap-2"
+                className="bg-[#0F204E]/90 border border-blue-900/40 rounded-2xl p-2 sm:p-2.5 shadow-2xl flex flex-col sm:flex-row items-center gap-2"
               >
                 <div className="flex items-center gap-2 px-3 w-full sm:flex-1">
                   <Bell className="w-4 h-4 text-brand-yellow shrink-0" />
@@ -241,7 +241,7 @@ export const PreviousBlogPageDesign: React.FC = () => {
   return (
     <div className="w-full select-none">
       // 1. Hero Page Title with Repeating "Blog" Watermark
-      <div className="w-full bg-[#0C0D10] py-14 sm:py-20 relative overflow-hidden border-b border-white/5">
+      <div className="w-full bg-[#060D24] py-14 sm:py-20 relative overflow-hidden border-b border-blue-900/30">
         <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.04] overflow-hidden select-none">
           <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
             News
@@ -272,7 +272,7 @@ export const PreviousBlogPageDesign: React.FC = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16 bg-[#141416] rounded-2xl border border-white/10">
+              <div className="text-center py-16 bg-[#0F204E] rounded-2xl border border-blue-900/40">
                 <p className="text-gray-400 font-bold text-sm">No stories found in this category.</p>
                 <button
                   onClick={() => {

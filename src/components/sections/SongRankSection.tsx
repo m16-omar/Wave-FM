@@ -148,7 +148,7 @@ export const SongRankSection: React.FC = () => {
               return (
                 <div
                   key={song.id}
-                  className="bg-[#141416] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-xl transition-all duration-300 border border-neutral-800"
+                  className="bg-[#0F204E] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-xl transition-all duration-300 border border-blue-900/30"
                 >
                   {/* Album Cover Art with Play Button Hover */}
                   <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-neutral-900 mb-3.5">

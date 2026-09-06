@@ -8,16 +8,16 @@ export const UrbanMusicBanner: React.FC = () => {
 
   return (
     <section className="w-full my-8 sm:my-14 select-none overflow-hidden">
-      <div className="w-full bg-neutral-900 border-y border-white/10 relative">
+      <div className="w-full bg-[#060D24] border-y border-blue-900/40 relative">
         <div className="grid grid-cols-1 md:grid-cols-12 min-h-[320px] sm:min-h-[360px]">
           {/* Left Block (4 Cols): Studio Session Photo */}
-          <div className="md:col-span-4 relative overflow-hidden bg-black">
+          <div className="md:col-span-4 relative overflow-hidden bg-[#060D24]">
             <img
               src={ASSET_IMAGES.studio}
               alt="Imole Studio Live Session"
               className="w-full h-full object-cover contrast-125 opacity-75"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent md:to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#060D24]/80 via-transparent to-transparent md:to-[#060D24]/40" />
           </div>
 
           {/* Center Block (4 Cols): Yellow Block with Script & Latest Songs */}
@@ -33,7 +33,7 @@ export const UrbanMusicBanner: React.FC = () => {
             </div>
 
             {/* "LATEST SONGS" Mini Player Pill Container */}
-            <div className="mt-4 bg-black text-white rounded-2xl p-3 sm:p-4 shadow-xl border border-white/10 space-y-2.5">
+            <div className="mt-4 bg-[#0B173D] text-white rounded-2xl p-3 sm:p-4 shadow-xl border border-blue-900/40 space-y-2.5">
               <div className="text-[10px] font-black uppercase tracking-widest text-brand-yellow">
                 LATEST SONGS
               </div>

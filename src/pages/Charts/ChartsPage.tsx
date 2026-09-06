@@ -22,7 +22,7 @@ export const ChartsPage: React.FC = () => {
   return (
     <div className="w-full select-none">
       {/* 1. Hero Page Title Banner with Repeating "charts" Watermark */}
-      <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-32 sm:pt-16 sm:pb-40">
+      <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-12 pb-32 sm:pt-16 sm:pb-40">
         {/* Background Grayscale Image */}
         <div className="absolute inset-0 -z-10">
           <img
@@ -30,7 +30,7 @@ export const ChartsPage: React.FC = () => {
             alt="Song Charts Live Studio"
             className="w-full h-full object-cover grayscale opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0C0D10]/80 via-[#0C0D10]/60 to-[#0C0D10]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#060D24]/80 via-[#060D24]/60 to-[#060D24]" />
         </div>
 
         {/* Background Repeating Cursive Script Watermark "charts" */}
@@ -109,16 +109,16 @@ export const ChartsPage: React.FC = () => {
                     key={cat.id}
                     onClick={() => handleSelectChart(cat)}
                     className={clsx(
-                      'bg-[#141416] rounded-2xl overflow-hidden shadow-lg cursor-pointer group transition-all duration-300 flex flex-col justify-between border',
+                      'bg-[#0F204E] rounded-2xl overflow-hidden shadow-lg cursor-pointer group transition-all duration-300 flex flex-col justify-between border',
                       isSelected
                         ? 'border-brand-yellow ring-2 ring-brand-yellow scale-[1.02]'
-                        : 'border-neutral-800 hover:border-brand-yellow/50 hover:scale-[1.02]'
+                        : 'border-blue-900/40 hover:border-brand-yellow/50 hover:scale-[1.02]'
                     )}
                   >
-                    {/* Stylized Chart Artwork Graphic ("CH AR TS" yellow & black motif) */}
-                    <div className="relative aspect-square w-full bg-neutral-900 overflow-hidden flex items-center justify-center p-3">
+                    {/* Stylized Chart Artwork Graphic ("CH AR TS" yellow & deep blue motif) */}
+                    <div className="relative aspect-square w-full bg-[#081230] overflow-hidden flex items-center justify-center p-3">
                       {/* Stylized Poster Layout matching reference design */}
-                      <div className="absolute inset-0 bg-[#0E0E10] flex flex-col justify-between p-2">
+                      <div className="absolute inset-0 bg-[#081230] flex flex-col justify-between p-2">
                         {/* Top Row: Yellow "CH" + Photo */}
                         <div className="flex justify-between items-center h-1/2 gap-1">
                           <span className="font-black text-3xl sm:text-4xl text-brand-yellow font-display leading-none">
@@ -139,7 +139,7 @@ export const ChartsPage: React.FC = () => {
                             AR
                           </span>
                           <span className="font-script text-xs sm:text-sm text-brand-yellow rotate-[-8deg]">
-                            ★ 98 FM
+                            ★ 106.3 FM
                           </span>
                         </div>
                       </div>
@@ -153,7 +153,7 @@ export const ChartsPage: React.FC = () => {
                     </div>
 
                     {/* Title in White Text */}
-                    <div className="bg-[#141416] p-2.5 sm:p-3 text-center border-t border-neutral-800">
+                    <div className="bg-[#0F204E] p-2.5 sm:p-3 text-center border-t border-blue-900/40">
                       <h4
                         className={clsx(
                           'text-xs sm:text-sm font-extrabold truncate transition-colors',
@@ -192,7 +192,7 @@ export const ChartsPage: React.FC = () => {
                       particleCount: 50,
                       spread: 60,
                       origin: { y: 0.6 },
-                      colors: ['#000000', '#FFFFFF', '#F5B800'],
+                      colors: ['#000000', '#FFFFFF', '#FEBF0F'],
                     });
                   }}
                   className="px-8 py-3 rounded-full bg-black text-white hover:bg-neutral-900 active:scale-95 font-black text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer"
@@ -203,7 +203,7 @@ export const ChartsPage: React.FC = () => {
             </div>
 
             {/* Widget 2: Dark Tracklist Card */}
-            <div className="bg-[#141416] rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 border border-white/10 text-white shadow-2xl space-y-5">
+            <div className="bg-[#0F204E] rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 border border-blue-900/40 text-white shadow-2xl space-y-5">
               {/* Header: Selected Chart Title */}
               <div className="flex items-center justify-between border-b border-white/5 pb-3">
                 <h4 className="font-black text-base sm:text-lg text-white font-display">

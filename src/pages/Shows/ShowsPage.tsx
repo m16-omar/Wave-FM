@@ -111,14 +111,14 @@ export const ShowsPage: React.FC = () => {
             </div>
 
             {/* Dark Portrait Card: Amwoni */}
-            <div className="bg-[#141416] rounded-[32px] overflow-hidden relative aspect-[4/3] sm:aspect-[16/11] shadow-2xl border border-white/10 group flex flex-col justify-end p-6 sm:p-8">
+            <div className="bg-[#0F204E] rounded-[32px] overflow-hidden relative aspect-[4/3] sm:aspect-[16/11] shadow-2xl border border-blue-900/40 group flex flex-col justify-end p-6 sm:p-8">
               {/* Photo of Amwoni */}
               <img
                 src={ASSET_IMAGES.amwoni}
                 alt="Amwoni - Imole FM"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/95 via-[#060D24]/40 to-transparent" />
 
               {/* Floating Top-Right Icon */}
               <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
@@ -157,7 +157,7 @@ export const ShowsPage: React.FC = () => {
                 <div className="flex-1 border-b border-dashed border-brand-yellow/60" />
               </div>
 
-              <div className="bg-[#141416] rounded-2xl p-3 sm:p-4 border border-white/5 shadow-2xl space-y-2.5">
+              <div className="bg-[#0F204E] rounded-2xl p-3 sm:p-4 border border-blue-900/30 shadow-2xl space-y-2.5">
                 {HOST_SELECTION_TRACKS.map((track) => {
                   const isThisPlaying = isPlaying && currentTrack.title === track.title;
 
@@ -183,7 +183,7 @@ export const ShowsPage: React.FC = () => {
                       className="p-2 sm:p-2.5 rounded-xl hover:bg-white/5 transition-colors flex items-center justify-between gap-3 cursor-pointer group"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-neutral-900 shrink-0 border border-white/10">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#060D24] shrink-0 border border-white/10">
                           <img
                             src={track.coverArt}
                             alt={track.title}
@@ -227,7 +227,7 @@ export const ShowsPage: React.FC = () => {
                 <div className="flex-1 border-b border-dashed border-brand-yellow/60" />
               </div>
 
-              <div className="bg-[#141416] rounded-2xl p-4 sm:p-5 border border-white/5 shadow-2xl space-y-4">
+              <div className="bg-[#0F204E] rounded-2xl p-4 sm:p-5 border border-blue-900/30 shadow-2xl space-y-4">
                 <h4 className="font-black text-sm text-white uppercase font-display">
                   Imole Top Countdown
                 </h4>

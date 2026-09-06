@@ -9,17 +9,26 @@ export default {
     extend: {
       colors: {
         background: {
-          DEFAULT: '#090A0E',
-          secondary: '#11131A',
-          tertiary: '#181C26',
-          card: '#131620',
-          hover: '#1E2333',
+          DEFAULT: '#060D24', // Rich Deep Midnight Navy Blue
+          secondary: '#0B173D', // Deep Navy Blue
+          tertiary: '#12255A', // Elevated Deep Blue
+          card: '#0F204E', // Deep Blue Card
+          hover: '#162E6E', // Deep Blue Hover
         },
         brand: {
           yellow: '#FEBF0F',
           yellowHover: '#F8B217',
           yellowLight: '#F7D210',
           yellowDark: '#D49500',
+          blue: {
+            DEFAULT: '#0F204E',
+            deep: '#060D24',
+            navy: '#0B173D',
+            card: '#0F204E',
+            royal: '#1E3A8A',
+            bright: '#3B82F6',
+            accent: '#38BDF8',
+          },
           orange: '#F69A20',
           cyan: '#00F0FF',
           pink: '#FF007F',
@@ -29,9 +38,9 @@ export default {
           red: '#EF4444',
         },
         border: {
-          DEFAULT: 'rgba(255, 255, 255, 0.08)',
-          light: 'rgba(255, 255, 255, 0.15)',
-          glow: 'rgba(255, 230, 0, 0.3)',
+          DEFAULT: 'rgba(96, 165, 250, 0.15)',
+          light: 'rgba(255, 255, 255, 0.12)',
+          glow: 'rgba(254, 191, 15, 0.35)',
         }
       },
       fontFamily: {
@@ -41,9 +50,10 @@ export default {
       },
       boxShadow: {
         'glow-yellow': '0 0 25px -5px rgba(254, 191, 15, 0.5)',
+        'glow-blue': '0 0 25px -5px rgba(59, 130, 246, 0.4)',
         'glow-cyan': '0 0 25px -5px rgba(0, 240, 255, 0.4)',
         'glow-pink': '0 0 25px -5px rgba(255, 0, 127, 0.4)',
-        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
+        'card': '0 10px 30px -10px rgba(0, 10, 30, 0.7)',
       },
       keyframes: {
         pulseGlow: {

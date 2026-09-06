@@ -55,7 +55,7 @@ export const VideoArchive: React.FC = () => {
             {/* Embedded Dark Video Player Preview Box */}
             <div
               onClick={() => setIsPlayingModal(true)}
-              className="relative aspect-video rounded-2xl overflow-hidden bg-[#141416] text-white shadow-xl border border-neutral-800 cursor-pointer group flex items-end p-5 sm:p-6"
+              className="relative aspect-video rounded-2xl overflow-hidden bg-[#0F204E] text-white shadow-xl border border-blue-900/40 cursor-pointer group flex items-end p-5 sm:p-6"
             >
               {/* Video Thumbnail Background */}
               <img

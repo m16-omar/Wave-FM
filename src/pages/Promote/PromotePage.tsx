@@ -257,7 +257,7 @@ export const PromotePage: React.FC = () => {
           </div>
 
           {/* Right Card: Dark "STILL HAVE DOUBTS?" */}
-          <div className="lg:col-span-5 bg-[#18181b] text-white rounded-[32px] p-8 sm:p-12 shadow-2xl border border-white/10 flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-5 bg-[#0F204E] text-white rounded-[32px] p-8 sm:p-12 shadow-2xl border border-blue-900/40 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase font-display tracking-tight text-white leading-none">
                 STILL
@@ -311,7 +311,7 @@ export const PromotePage: React.FC = () => {
 
       {/* 4. INTERACTIVE INQUIRY FORM */}
       <section id="inquiry" className="w-full py-8 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className="bg-[#141416] p-8 sm:p-12 rounded-[32px] border border-white/10 shadow-2xl space-y-6">
+        <div className="bg-[#0F204E] p-8 sm:p-12 rounded-[32px] border border-blue-900/40 shadow-2xl space-y-6">
           <div className="text-center space-y-2">
             <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-display tracking-tight">
               Start Your Broadcast Campaign

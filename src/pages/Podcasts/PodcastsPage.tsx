@@ -62,7 +62,7 @@ export const PodcastsPage: React.FC = () => {
 
           {/* Feature Highlights Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-4">
-            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+            <div className="bg-[#0F204E]/80 backdrop-blur-md rounded-2xl p-5 border border-blue-900/40 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
               <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
                 <Mic2 className="w-5 h-5" />
               </div>
@@ -72,7 +72,7 @@ export const PodcastsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+            <div className="bg-[#0F204E]/80 backdrop-blur-md rounded-2xl p-5 border border-blue-900/40 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
               <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
                 <Headphones className="w-5 h-5" />
               </div>
@@ -82,7 +82,7 @@ export const PodcastsPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+            <div className="bg-[#0F204E]/80 backdrop-blur-md rounded-2xl p-5 border border-blue-900/40 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
               <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
                 <Sparkles className="w-5 h-5" />
               </div>
@@ -96,7 +96,7 @@ export const PodcastsPage: React.FC = () => {
           {/* Notify Me Form Box */}
           <div className="pt-6 max-w-lg mx-auto">
             {isSubscribed ? (
-              <div className="bg-[#141416] border border-brand-yellow/40 rounded-2xl p-6 shadow-2xl space-y-2 text-center">
+              <div className="bg-[#0F204E] border border-brand-yellow/40 rounded-2xl p-6 shadow-2xl space-y-2 text-center">
                 <CheckCircle2 className="w-10 h-10 text-brand-yellow mx-auto" />
                 <h4 className="text-base font-black text-white uppercase font-display">You're on the VIP list!</h4>
                 <p className="text-xs text-gray-400">
@@ -106,7 +106,7 @@ export const PodcastsPage: React.FC = () => {
             ) : (
               <form
                 onSubmit={handleNotifySubmit}
-                className="bg-[#141416]/90 border border-white/10 rounded-2xl p-2 sm:p-2.5 shadow-2xl flex flex-col sm:flex-row items-center gap-2"
+                className="bg-[#0F204E]/90 border border-blue-900/40 rounded-2xl p-2 sm:p-2.5 shadow-2xl flex flex-col sm:flex-row items-center gap-2"
               >
                 <div className="flex items-center gap-2 px-3 w-full sm:flex-1">
                   <Bell className="w-4 h-4 text-brand-yellow shrink-0" />
@@ -220,7 +220,7 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
 
   return (
     <div className="w-full select-none space-y-12 sm:space-y-16 pb-16 font-sans">
-      <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-12 pb-16 sm:pt-16 sm:pb-20">
+      <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-12 pb-16 sm:pt-16 sm:pb-20">
         <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.04] overflow-hidden select-none">
           <span className="font-script text-7xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
             podcasts
@@ -260,7 +260,7 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="rounded-[28px] overflow-hidden bg-[#C91A1A] p-2 aspect-[16/10] sm:aspect-[1.8/1] shadow-2xl flex items-center justify-center relative group">
+              <div className="rounded-[28px] overflow-hidden bg-[#0F204E] p-2 aspect-[16/10] sm:aspect-[1.8/1] shadow-2xl flex items-center justify-center relative group border border-blue-900/40">
                 <img
                   src={ASSET_IMAGES.hero3}
                   alt="Podcaster with Microphone"
@@ -289,9 +289,9 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
 
             <div
               onClick={() => handlePlayPodcast(ALL_PODCASTS_DATA[0])}
-              className="bg-[#141416] rounded-2xl p-3 sm:p-3.5 flex items-center gap-3 text-white shadow-lg cursor-pointer hover:bg-neutral-900 transition-colors group mt-4"
+              className="bg-[#0F204E] rounded-2xl p-3 sm:p-3.5 flex items-center gap-3 text-white shadow-lg cursor-pointer hover:bg-[#162E6E] transition-colors group mt-4 border border-blue-900/40"
             >
-              <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-white/10 flex flex-col items-center justify-center shrink-0 p-1">
+              <div className="w-10 h-10 rounded-xl bg-[#060D24] border border-blue-900/40 flex flex-col items-center justify-center shrink-0 p-1">
                 <span className="text-[11px] font-black text-brand-yellow font-display leading-none">POD</span>
                 <span className="text-[9px] font-black text-white font-display leading-none mt-0.5">CAST</span>
               </div>
@@ -304,14 +304,14 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
 
           <div
             onClick={() => handlePlayPodcast(ALL_PODCASTS_DATA[0])}
-            className="md:col-span-6 bg-neutral-900 rounded-[32px] overflow-hidden relative aspect-[16/10] sm:aspect-auto shadow-2xl border border-white/10 p-6 sm:p-8 flex flex-col justify-between group cursor-pointer min-h-[260px]"
+            className="md:col-span-6 bg-[#0F204E] rounded-[32px] overflow-hidden relative aspect-[16/10] sm:aspect-auto shadow-2xl border border-blue-900/40 p-6 sm:p-8 flex flex-col justify-between group cursor-pointer min-h-[260px]"
           >
             <img
               src={ASSET_IMAGES.studio}
               alt="Behind the Lens Podcast Studio"
               className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/90 via-transparent to-[#060D24]/40" />
 
             <div className="relative z-10">
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider font-mono">
@@ -347,9 +347,9 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
             <div
               key={pod.id}
               onClick={() => handlePlayPodcast(pod)}
-              className="bg-[#141416] rounded-[28px] overflow-hidden border border-white/10 shadow-2xl p-5 sm:p-6 flex flex-col justify-end group relative aspect-[4/5] cursor-pointer"
+              className="bg-[#0F204E] rounded-[28px] overflow-hidden border border-blue-900/40 shadow-2xl p-5 sm:p-6 flex flex-col justify-end group relative aspect-[4/5] cursor-pointer"
             >
-              <div className="absolute inset-0 bg-[#0E0E10] flex flex-col items-center justify-center p-6 select-none">
+              <div className="absolute inset-0 bg-[#0B173D] flex flex-col items-center justify-center p-6 select-none">
                 <div className="text-center relative">
                   <span className="font-black text-6xl sm:text-7xl text-brand-yellow font-display block leading-none tracking-tighter">
                     POD
@@ -363,7 +363,7 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
                 </div>
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/90 via-[#060D24]/30 to-transparent" />
 
               <div className="relative z-10 flex items-center justify-between">
                 <h4 className="text-base sm:text-lg font-black text-white uppercase font-display group-hover:text-brand-yellow transition-colors leading-snug">
@@ -399,9 +399,9 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
                 <div
                   key={podcast.id}
                   onClick={() => handlePlayPodcast(podcast)}
-                  className="bg-[#141416] rounded-2xl overflow-hidden p-3.5 border border-black/10 text-white shadow-xl space-y-3 group hover:scale-[1.03] transition-all cursor-pointer flex flex-col justify-between"
+                  className="bg-[#0F204E] rounded-2xl overflow-hidden p-3.5 border border-blue-900/40 text-white shadow-xl space-y-3 group hover:scale-[1.03] transition-all cursor-pointer flex flex-col justify-between"
                 >
-                  <div className="relative aspect-square w-full rounded-xl bg-neutral-950 overflow-hidden flex flex-col items-center justify-center p-4 select-none border border-white/5">
+                  <div className="relative aspect-square w-full rounded-xl bg-[#060D24] overflow-hidden flex flex-col items-center justify-center p-4 select-none border border-blue-900/30">
                     <div className="text-center relative">
                       <span className="font-black text-4xl text-brand-yellow font-display block leading-none">
                         POD

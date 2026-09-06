@@ -10,7 +10,7 @@ interface CategoryItem {
 
 const CATEGORIES: CategoryItem[] = [
   { id: 'cat-1', title: 'Artists', href: '/hosts', watermark: 'Artists' },
-  { id: 'cat-2', title: 'Trends', href: '/blog', watermark: 'Trends' },
+  { id: 'cat-2', title: 'Trends', href: '/news', watermark: 'Trends' },
   { id: 'cat-3', title: 'Releases', href: '/charts', watermark: 'Releases' },
   { id: 'cat-4', title: 'Concerts', href: '/events', watermark: 'Concerts' },
 ];
@@ -39,13 +39,13 @@ export const CategoryDiscovery: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Dark Rounded Cards */}
+        {/* 4 Dark Deep Blue Rounded Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {CATEGORIES.map((cat) => (
             <Link
               key={cat.id}
               to={cat.href}
-              className="bg-[#141416] text-white rounded-3xl p-8 sm:p-10 text-center flex flex-col items-center justify-center min-h-[170px] sm:min-h-[190px] relative overflow-hidden group shadow-2xl hover:scale-105 hover:bg-[#1a1a1e] transition-all duration-300 border border-white/5"
+              className="bg-[#0B173D] text-white rounded-3xl p-8 sm:p-10 text-center flex flex-col items-center justify-center min-h-[170px] sm:min-h-[190px] relative overflow-hidden group shadow-2xl hover:scale-105 hover:bg-[#0F204E] transition-all duration-300 border border-blue-900/40"
             >
               {/* Subtle repeating background text */}
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-20 group-hover:opacity-30 transition-opacity">

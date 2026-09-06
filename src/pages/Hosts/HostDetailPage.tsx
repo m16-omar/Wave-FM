@@ -96,7 +96,7 @@ export const HostDetailPage: React.FC = () => {
   return (
     <div className="w-full select-none space-y-12 sm:space-y-16 pb-16">
       {/* 1. Hero Page Header with Repeating Watermark Script */}
-      <div className="w-full bg-[#0C0D10] relative overflow-hidden border-b border-white/5 pt-8 pb-12 sm:pt-12 sm:pb-16">
+      <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-8 pb-12 sm:pt-12 sm:pb-16">
         {/* Background Repeating Cursive Script Watermark */}
         <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.05] overflow-hidden select-none">
           <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
@@ -157,7 +157,7 @@ export const HostDetailPage: React.FC = () => {
               </div>
 
               {/* Primary Show Highlight Badge */}
-              <div className="p-4 rounded-2xl bg-[#141416] border border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xl">
+              <div className="p-4 rounded-2xl bg-[#0F204E] border border-blue-900/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xl">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand-yellow/10 border border-brand-yellow/30 flex items-center justify-center text-brand-yellow shrink-0">
                     <Radio className="w-5 h-5" />
@@ -193,14 +193,14 @@ export const HostDetailPage: React.FC = () => {
 
             {/* Right Column (5 Cols): Portrait Photo Card */}
             <div className="lg:col-span-5">
-              <div className="bg-[#141416] rounded-[32px] overflow-hidden relative aspect-[4/5] shadow-2xl border border-white/10 group flex flex-col justify-end p-6 sm:p-8">
+              <div className="bg-[#0F204E] rounded-[32px] overflow-hidden relative aspect-[4/5] shadow-2xl border border-blue-900/40 group flex flex-col justify-end p-6 sm:p-8">
                 {/* Host Image */}
                 <img
                   src={host.photo}
                   alt={host.name}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/95 via-[#060D24]/30 to-transparent" />
 
                 {/* Floating Top-Right Star Badge */}
                 <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
@@ -290,7 +290,7 @@ export const HostDetailPage: React.FC = () => {
         </div>
 
         {/* Dark Tracklist Container */}
-        <div className="bg-[#141416] rounded-3xl p-6 sm:p-8 border border-white/5 shadow-2xl space-y-4">
+        <div className="bg-[#0B173D] rounded-3xl p-6 sm:p-8 border border-blue-900/30 shadow-2xl space-y-4">
           <div className="divide-y divide-white/5">
             {MIA_TRACKS.map((track) => {
               const isThisPlaying =
@@ -316,7 +316,7 @@ export const HostDetailPage: React.FC = () => {
                       });
                     }
                   }}
-                  className="py-3.5 flex items-center justify-between gap-3 hover:bg-white/[0.03] px-3 rounded-2xl transition-colors cursor-pointer group"
+                  className="py-3.5 flex items-center justify-between gap-3 hover:bg-white/[0.04] px-3 rounded-2xl transition-colors cursor-pointer group"
                 >
                   {/* Left: Rank Badge + Album Art + Title & Artist */}
                   <div className="flex items-center gap-3 sm:gap-4 min-w-0">
@@ -331,7 +331,7 @@ export const HostDetailPage: React.FC = () => {
                       {track.rank}
                     </div>
 
-                    <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-neutral-900 shrink-0 border border-white/10">
+                    <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-[#060D24] shrink-0 border border-white/10">
                       <img
                         src={track.coverArt}
                         alt={track.title}
@@ -408,14 +408,14 @@ export const HostDetailPage: React.FC = () => {
             <Link
               key={p.id}
               to={`/hosts/${p.slug}`}
-              className="bg-[#141416] rounded-2xl overflow-hidden relative aspect-[4/5] shadow-xl border border-white/10 group flex flex-col justify-end p-4 hover:border-brand-yellow/50 transition-all hover:scale-102"
+              className="bg-[#0F204E] rounded-2xl overflow-hidden relative aspect-[4/5] shadow-xl border border-blue-900/40 group flex flex-col justify-end p-4 hover:border-brand-yellow/50 transition-all hover:scale-102"
             >
               <img
                 src={p.photo}
                 alt={p.name}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/95 via-[#060D24]/30 to-transparent" />
 
               <div className="relative z-10 text-center space-y-1">
                 <span className="px-2 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[8px] font-black uppercase tracking-wider inline-block bg-black/40">

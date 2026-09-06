@@ -36,7 +36,7 @@ export const WeeklySchedule: React.FC = () => {
     <section id="schedule" className="w-full py-6 sm:py-10 select-none scroll-mt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Dark Container Card */}
-        <div className="bg-[#141416] rounded-[28px] sm:rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
+        <div className="bg-[#0B173D] rounded-[28px] sm:rounded-[32px] overflow-hidden border border-blue-900/40 shadow-2xl">
           {/* Day Navigation Tabs */}
           <div className="grid grid-cols-7 border-b border-white/10 text-center">
             {SCHEDULE_DAYS.map((d) => {
@@ -71,13 +71,13 @@ export const WeeklySchedule: React.FC = () => {
               entries.map((item) => (
                 <div
                   key={item.id}
-                  className="p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 hover:bg-white/[0.03] transition-colors group cursor-pointer"
+                  className="p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 hover:bg-white/[0.04] transition-colors group cursor-pointer"
                   onClick={() => playLiveStream()}
                 >
                   {/* Left: Show Graphics Banner + Host Avatar */}
                   <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                     {/* Show Box with Vertical Yellow Label */}
-                    <div className="relative w-20 sm:w-28 h-12 sm:h-14 rounded-lg overflow-hidden bg-neutral-900 shrink-0 border border-white/10 flex items-center">
+                    <div className="relative w-20 sm:w-28 h-12 sm:h-14 rounded-lg overflow-hidden bg-[#060D24] shrink-0 border border-white/10 flex items-center">
                       <img
                         src={item.image}
                         alt={item.showTitle}
