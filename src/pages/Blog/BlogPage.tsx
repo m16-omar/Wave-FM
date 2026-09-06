@@ -1,10 +1,195 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useAudio } from '../../context/AudioContext';
+import { Radio, Newspaper, Sparkles, Send, CheckCircle2, RadioTower, Bell, ArrowRight } from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { ASSET_IMAGES } from '../../assets/images';
+
+export const BlogPage: React.FC = () => {
+  const { playLiveStream, isPlaying } = useAudio();
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleNotifySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setIsSubscribed(true);
+    confetti({
+      particleCount: 70,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#F5B800', '#532688', '#FFFFFF', '#00E5FF'],
+    });
+  };
+
+  return (
+    <div className="w-full select-none overflow-hidden pb-16 font-sans">
+      {/* ========================================================================= */}
+      {/* 1. COMING SOON HERO SPOTLIGHT                                             */}
+      {/* ========================================================================= */}
+      <section className="relative w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Background Ambient Glows */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-yellow/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/4 right-10 w-[400px] h-[400px] bg-[#532688]/20 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+          {/* Eyebrow Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-900 border border-brand-yellow/40 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-brand-yellow animate-ping" />
+            <span className="text-[11px] font-black tracking-widest text-brand-yellow uppercase font-mono">
+              IMOLE 106.3 FM DIGITAL NEWSROOM
+            </span>
+          </div>
+
+          {/* Main Headline */}
+          <div className="relative inline-block">
+            {/* Tilted Handwritten Script Badge */}
+            <span className="font-marker text-2xl sm:text-4xl text-brand-yellow rotate-[-10deg] absolute -top-8 -right-4 sm:-right-12 drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)] pointer-events-none select-none">
+              Stay Informed!
+            </span>
+
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase font-display tracking-tight text-white leading-[1.05]">
+              IMOLE NEWS
+              <br />
+              <span className="text-brand-yellow">COMING SOON!</span>
+            </h1>
+          </div>
+
+          {/* Description */}
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 font-medium leading-relaxed max-w-2xl mx-auto">
+            Our digital newsroom is currently integrating live 24/7 editorial feeds, verified local Lagos reports, breaking community updates, and broadcast audio bulletins. Stay tuned as we prepare to bring you accurate, timely, and unbiased news across Lagos and beyond.
+          </p>
+
+          {/* Feature Highlights Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-4">
+            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
+                <Newspaper className="w-5 h-5" />
+              </div>
+              <h3 className="text-sm font-black text-white uppercase font-display">Breaking Lagos News</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Real-time civic affairs, traffic updates, metro reports, and grassroots stories.
+              </p>
+            </div>
+
+            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
+                <RadioTower className="w-5 h-5" />
+              </div>
+              <h3 className="text-sm font-black text-white uppercase font-display">Audio Bulletins</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Top-of-the-hour broadcast audio recaps and live on-air journalist field reports.
+              </p>
+            </div>
+
+            <div className="bg-[#141416]/80 backdrop-blur-md rounded-2xl p-5 border border-white/10 shadow-xl space-y-2 group hover:border-brand-yellow/50 transition-colors">
+              <div className="w-9 h-9 rounded-xl bg-brand-yellow/15 flex items-center justify-center text-brand-yellow">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <h3 className="text-sm font-black text-white uppercase font-display">Culture & Society</h3>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                In-depth features celebrating Yoruba heritage, urban lifestyle, entertainment, and sports.
+              </p>
+            </div>
+          </div>
+
+          {/* Notify Me Form Box */}
+          <div className="pt-6 max-w-lg mx-auto">
+            {isSubscribed ? (
+              <div className="bg-[#141416] border border-brand-yellow/40 rounded-2xl p-6 shadow-2xl space-y-2 text-center">
+                <CheckCircle2 className="w-10 h-10 text-brand-yellow mx-auto" />
+                <h4 className="text-base font-black text-white uppercase font-display">You're on the news VIP list!</h4>
+                <p className="text-xs text-gray-400">
+                  We'll send you an instant notification as soon as our live digital news portal goes live.
+                </p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleNotifySubmit}
+                className="bg-[#141416]/90 border border-white/10 rounded-2xl p-2 sm:p-2.5 shadow-2xl flex flex-col sm:flex-row items-center gap-2"
+              >
+                <div className="flex items-center gap-2 px-3 w-full sm:flex-1">
+                  <Bell className="w-4 h-4 text-brand-yellow shrink-0" />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email for news updates..."
+                    className="w-full bg-transparent text-white text-xs sm:text-sm placeholder-gray-500 focus:outline-none py-2"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-yellow text-black hover:bg-brand-yellowHover active:scale-95 font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0 shadow-lg"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Notify Me</span>
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Quick Action Buttons */}
+          <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={() => playLiveStream()}
+              className="px-8 py-3.5 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black font-black text-xs uppercase tracking-wider shadow-glow-yellow transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <Radio className="w-4 h-4" />
+              <span>{isPlaying ? 'Listening Live Now' : 'Listen Live On Air'}</span>
+            </button>
+
+            <Link
+              to="/shows"
+              className="px-8 py-3.5 rounded-full bg-neutral-900 border border-white/10 hover:border-brand-yellow/50 active:scale-95 text-white font-black text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <span>Explore Radio Shows</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 2. PHOTO BANNER SHOWCASE                                                  */}
+      {/* ========================================================================= */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl aspect-[16/6] min-h-[220px]">
+          <img
+            src={ASSET_IMAGES.building}
+            alt="Imole 106.3 FM Broadcast House"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/80" />
+          <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 max-w-xl space-y-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-brand-yellow font-mono">
+              OFFICIAL NEWSROOM & BROADCAST HOUSE
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-white uppercase font-display">
+              Inform • Inspire • Illuminate
+            </h2>
+            <p className="text-xs text-gray-300">
+              Broadcasting credible journalism, grassroots reports, and live news bulletins 24/7 across Lagos from 20, Adetoro John Street, Fadeyi.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+/*
+===================================================================================
+PREVIOUS BLOG/NEWS PAGE DESIGN (PRESERVED IN COMMENTS FOR FUTURE BACKEND ACTIVATION)
+===================================================================================
+
 import { useSearchParams } from 'react-router-dom';
 import { ARTICLES_DATA } from '../../data/articles';
 import { ArticleCard } from '../../components/cards/ArticleCard';
 import { BlogSidebar } from '../../components/blog/BlogSidebar';
 
-export const BlogPage: React.FC = () => {
+export const PreviousBlogPageDesign: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategory = searchParams.get('category') || 'all';
   const selectedTag = searchParams.get('tag') || null;
@@ -55,33 +240,30 @@ export const BlogPage: React.FC = () => {
 
   return (
     <div className="w-full select-none">
-      {/* 1. Hero Page Title with Repeating "Blog" Watermark (Pixel-Matched to Screenshot 1) */}
+      // 1. Hero Page Title with Repeating "Blog" Watermark
       <div className="w-full bg-[#0C0D10] py-14 sm:py-20 relative overflow-hidden border-b border-white/5">
-        {/* Background Repeating Script Watermark "Blog" */}
         <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.04] overflow-hidden select-none">
           <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
-            Blog
+            News
           </span>
           <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden sm:inline">
-            Blog
+            News
           </span>
           <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden md:inline">
-            Blog
+            News
           </span>
         </div>
 
-        {/* Centered Title */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight font-display">
-            Blog Sidebar
+            Imole News
           </h1>
         </div>
       </div>
 
-      {/* 2. Main Content Grid: Articles (8 Cols) + Sidebar (4 Cols) */}
+      // 2. Main Content Grid: Articles (8 Cols) + Sidebar (4 Cols)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          {/* Left Column (8 Cols): 2-Column Article Cards Grid */}
           <div className="lg:col-span-8 space-y-10">
             {displayedArticles.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
@@ -105,7 +287,6 @@ export const BlogPage: React.FC = () => {
               </div>
             )}
 
-            {/* "LOAD MORE" Pill Button from Screenshot 3 */}
             {hasMore && (
               <div className="text-center pt-4">
                 <button
@@ -118,7 +299,6 @@ export const BlogPage: React.FC = () => {
             )}
           </div>
 
-          {/* Right Column (4 Cols): Redesigned Sidebar */}
           <div className="lg:col-span-4">
             <BlogSidebar
               onSelectCategory={handleCategorySelect}
@@ -130,3 +310,5 @@ export const BlogPage: React.FC = () => {
     </div>
   );
 };
+*/
+

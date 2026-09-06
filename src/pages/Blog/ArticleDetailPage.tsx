@@ -1,4 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+
+export const ArticleDetailPage: React.FC = () => {
+  return <Navigate to="/news" replace />;
+};
+
+/*
+===================================================================================
+PREVIOUS ARTICLE DETAIL PAGE DESIGN (PRESERVED IN COMMENTS FOR FUTURE ACTIVATION)
+===================================================================================
+
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ARTICLES_DATA } from '../../data/articles';
 import { BlogSidebar } from '../../components/blog/BlogSidebar';
@@ -6,7 +18,7 @@ import { Badge } from '../../components/ui/Badge';
 import { ArticleCard } from '../../components/cards/ArticleCard';
 import { Clock, Eye, Link as LinkIcon, Check, ArrowLeft, ArrowRight } from 'lucide-react';
 
-export const ArticleDetailPage: React.FC = () => {
+export const PreviousArticleDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [copied, setCopied] = useState(false);
 
@@ -25,20 +37,19 @@ export const ArticleDetailPage: React.FC = () => {
   return (
     <div className="w-full py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Breadcrumbs */}
+        // Breadcrumbs
         <div className="flex items-center gap-2 text-xs text-gray-400">
           <Link to="/" className="hover:text-brand-yellow">Home</Link>
           <span>/</span>
-          <Link to="/blog" className="hover:text-brand-yellow">News & Blog</Link>
+          <Link to="/news" className="hover:text-brand-yellow">News</Link>
           <span>/</span>
           <span className="text-brand-yellow truncate max-w-xs sm:max-w-md">{article.title}</span>
         </div>
 
-        {/* 2-Column Article Detail Layout */}
+        // 2-Column Article Detail Layout
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* Main Article Content (8 Cols) */}
+          // Main Article Content (8 Cols)
           <article className="lg:col-span-8 space-y-8">
-            {/* Header / Meta */}
             <div className="space-y-4">
               <Badge variant="yellow" size="md">
                 {article.category}
@@ -59,32 +70,27 @@ export const ArticleDetailPage: React.FC = () => {
                     <span className="font-extrabold text-white block">
                       {article.author.name}
                     </span>
-                    <span className="text-gray-500">{article.author.role}</span>
+                    <span>{article.author.role}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4 text-brand-yellow" />
+                    {article.readTime}
+                  </span>
+                  <span>•</span>
                   <span>{article.publishedAt}</span>
                   <span>•</span>
                   <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-brand-yellow" />
-                    {article.readTime}
+                    <Eye className="w-4 h-4 text-cyan-400" />
+                    {article.views} views
                   </span>
-                  {article.viewsCount && (
-                    <>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Eye className="w-3.5 h-3.5" />
-                        {article.viewsCount.toLocaleString()}
-                      </span>
-                    </>
-                  )}
                 </div>
               </div>
             </div>
 
-            {/* Featured Image */}
-            <div className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-background-tertiary border border-border shadow-2xl">
+            <div className="aspect-[16/9] rounded-3xl overflow-hidden bg-background-card border border-border shadow-2xl">
               <img
                 src={article.featuredImage}
                 alt={article.title}
@@ -92,19 +98,10 @@ export const ArticleDetailPage: React.FC = () => {
               />
             </div>
 
-            {/* Article Body Content */}
-            <div className="prose prose-invert max-w-none space-y-6 text-gray-300 leading-relaxed text-base sm:text-lg">
-              <p className="text-lg sm:text-xl font-medium text-gray-200 leading-relaxed border-l-4 border-brand-yellow pl-4 italic">
+            <div className="text-gray-200 text-base sm:text-lg leading-relaxed space-y-6">
+              <p className="text-xl font-semibold text-white leading-relaxed border-l-4 border-brand-yellow pl-4">
                 {article.excerpt}
               </p>
-
-              <p>
-                As urban rhythms and electronic soundscapes continue to dominate streaming charts and festival mainstages worldwide, the intersection of live broadcasting and digital community engagement has never been more vibrant.
-              </p>
-
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-8 mb-4">
-                Redefining the Broadcast Experience
-              </h2>
 
               <p>
                 From exclusive live studio recordings to high-definition 320kbps streams, listeners are increasingly demanding seamless fidelity across mobile apps, in-car dashboards, and smart home speakers.
@@ -119,14 +116,14 @@ export const ArticleDetailPage: React.FC = () => {
               </p>
             </div>
 
-            {/* Tags & Social Sharing Bar */}
+            // Tags and Social Sharing Bar
             <div className="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Tags:</span>
                 {article.tags.map((tag) => (
                   <Link
                     key={tag}
-                    to={`/blog?tag=${encodeURIComponent(tag.toLowerCase().replace(/ /g, '-'))}`}
+                    to={`/news?tag=${encodeURIComponent(tag.toLowerCase().replace(/ /g, '-'))}`}
                     className="px-3 py-1 rounded-lg bg-background-card border border-border text-xs font-bold text-gray-300 hover:border-brand-yellow hover:text-brand-yellow transition-colors"
                   >
                     #{tag}
@@ -134,7 +131,7 @@ export const ArticleDetailPage: React.FC = () => {
                 ))}
               </div>
 
-              {/* Social Share */}
+              // Social Share
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-1">Share:</span>
                 <a
@@ -169,7 +166,7 @@ export const ArticleDetailPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Author Bio Box */}
+            // Author Bio Box
             <div className="p-6 sm:p-8 rounded-3xl bg-background-card border border-border flex flex-col sm:flex-row items-center sm:items-start gap-5 shadow-card">
               <img
                 src={article.author.avatar}
@@ -190,11 +187,11 @@ export const ArticleDetailPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Prev / Next Article Nav */}
+            // Prev / Next Article Nav
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
               {prevArticle ? (
                 <Link
-                  to={`/blog/${prevArticle.slug}`}
+                  to={`/news/${prevArticle.slug}`}
                   className="group p-4 rounded-2xl bg-background-card border border-border hover:border-brand-yellow/50 transition-all flex items-center gap-3"
                 >
                   <ArrowLeft className="w-5 h-5 text-brand-yellow group-hover:-translate-x-1 transition-transform shrink-0" />
@@ -209,7 +206,7 @@ export const ArticleDetailPage: React.FC = () => {
 
               {nextArticle ? (
                 <Link
-                  to={`/blog/${nextArticle.slug}`}
+                  to={`/news/${nextArticle.slug}`}
                   className="group p-4 rounded-2xl bg-background-card border border-border hover:border-brand-yellow/50 transition-all flex items-center justify-between gap-3 text-right"
                 >
                   <div className="min-w-0 flex-1">
@@ -223,7 +220,7 @@ export const ArticleDetailPage: React.FC = () => {
               ) : <div />}
             </div>
 
-            {/* Related Articles */}
+            // Related Articles
             {relatedArticles.length > 0 && (
               <div className="pt-8 border-t border-border">
                 <h3 className="text-xl font-extrabold text-white mb-6 border-l-2 border-brand-yellow pl-3">
@@ -238,7 +235,7 @@ export const ArticleDetailPage: React.FC = () => {
             )}
           </article>
 
-          {/* Sidebar (4 Cols) */}
+          // Sidebar (4 Cols)
           <div className="lg:col-span-4">
             <BlogSidebar currentCategory={article.category.toLowerCase().replace(/ & | /g, '-')} />
           </div>
@@ -247,3 +244,4 @@ export const ArticleDetailPage: React.FC = () => {
     </div>
   );
 };
+*/

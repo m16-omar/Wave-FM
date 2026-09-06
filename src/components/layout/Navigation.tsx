@@ -5,7 +5,7 @@ import { clsx } from 'clsx';
 
 export const MAIN_NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'News & Blog', href: '/blog' },
+  { label: 'News', href: '/news' },
   { label: 'Promote', href: '/promote' },
   { label: 'Radio Shows', href: '/shows' },
   { label: 'Schedule', href: '/schedule' },

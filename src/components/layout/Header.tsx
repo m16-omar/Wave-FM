@@ -95,9 +95,9 @@ export const Header: React.FC = () => {
                 HOME
               </NavLink>
 
-              {/* 2. BLOG (Plain direct link) */}
+              {/* 2. NEWS (Plain direct link) */}
               <NavLink
-                to="/blog"
+                to="/news"
                 className={({ isActive }) =>
                   clsx(
                     'transition-colors py-2',
@@ -105,7 +105,7 @@ export const Header: React.FC = () => {
                   )
                 }
               >
-                BLOG
+                NEWS
               </NavLink>
 
               {/* 3. CHARTS (Commented out per request) */}

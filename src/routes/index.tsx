@@ -22,9 +22,11 @@ export const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/blog" element={<BlogPage />} />
-      <Route path="/blog/:slug" element={<ArticleDetailPage />} />
-      <Route path="/article/:slug" element={<ArticleDetailPage />} />
+      <Route path="/news" element={<BlogPage />} />
+      <Route path="/news/:slug" element={<ArticleDetailPage />} />
+      <Route path="/blog" element={<Navigate to="/news" replace />} />
+      <Route path="/blog/:slug" element={<Navigate to="/news" replace />} />
+      <Route path="/article/:slug" element={<Navigate to="/news" replace />} />
       <Route path="/shows" element={<ShowsPage />} />
       <Route path="/shows/:slug" element={<ShowDetailPage />} />
       <Route path="/schedule" element={<Navigate to="/contact#schedule" replace />} />
