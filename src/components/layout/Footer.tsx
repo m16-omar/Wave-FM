@@ -105,11 +105,6 @@ export const Footer: React.FC = () => {
             <div className="mt-8 text-[11px] font-semibold text-black/70">
               Copyright © 2026 Imole 106.3 FM — All rights reserved
             </div>
-
-            {/* Angled Brush Script "Contact us" */}
-            <span className="font-marker text-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl absolute top-4 right-4 sm:top-6 sm:right-6 md:top-6 md:right-6 rotate-[-6deg] z-20 pointer-events-none select-none drop-shadow-sm whitespace-nowrap">
-              Contact us
-            </span>
           </div>
 
           {/* Right Image Block (5/6 Cols): Imole Building Image */}

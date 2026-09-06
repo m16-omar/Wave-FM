@@ -69,31 +69,15 @@ export const HeroSection: React.FC = () => {
             </span>
           </div>
 
-          {/* Card 2 (Center): "ANYWAY" Cover Art */}
+          {/* Card 2 (Center): Presenter Photo */}
           <div className="relative group">
-            <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/10 flex items-center justify-center">
+            <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/5">
               <img
                 src={ASSET_IMAGES.hero2}
-                alt="Visual Art - Imole FM"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                alt="Imole 106.3 FM"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
-
-              {/* Album Art Graphic Text Center */}
-              <div className="absolute inset-0 flex flex-col items-center justify-between p-6 text-center">
-                <div className="w-12 h-6 rounded bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-[10px] font-black tracking-widest text-white">
-                  BMP
-                </div>
-
-                <div className="w-full">
-                  <span className="font-black text-2xl sm:text-3xl tracking-widest text-white/90 uppercase font-display block">
-                    ANYWAY
-                  </span>
-                  <span className="text-[11px] font-bold text-gray-300 uppercase tracking-widest">
-                    The Madpix Project
-                  </span>
-                </div>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
           </div>
 
