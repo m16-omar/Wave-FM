@@ -347,21 +347,27 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Address */}
-                <div className="flex items-start gap-3">
-                  <div className="w-7 h-7 rounded-full bg-black/5 text-black flex items-center justify-center shrink-0 mt-0.5">
+                <a
+                  href={STATION_INFO.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 group cursor-pointer hover:opacity-90 transition-opacity"
+                  title="Open 20, Adetoro John Street on Google Maps"
+                >
+                  <div className="w-7 h-7 rounded-full bg-black/5 text-black flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-brand-yellow transition-colors shadow-sm">
                     <MapPin className="w-3.5 h-3.5" />
                   </div>
                   <div>
                     <span className="text-[10px] font-extrabold uppercase text-gray-500 block -mb-0.5">
                       Broadcast Complex:
                     </span>
-                    <div className="leading-relaxed font-medium text-gray-800">
+                    <div className="leading-relaxed font-medium text-gray-800 group-hover:text-black">
                       20, Adetoro John Street,
                       <br />
                       Fadeyi, Lagos.
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

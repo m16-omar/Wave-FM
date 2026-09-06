@@ -2,6 +2,7 @@ import React from 'react';
 import { StationLogo } from '../ui/StationLogo';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { ASSET_IMAGES } from '../../assets/images';
+import { STATION_INFO } from '../../data/station';
 
 export const Footer: React.FC = () => {
   return (
@@ -29,16 +30,22 @@ export const Footer: React.FC = () => {
                 </a>
               </div>
 
-              <div className="flex items-start gap-3 font-bold text-xs sm:text-sm text-black">
-                <div className="w-8 h-8 rounded-full bg-black text-brand-yellow flex items-center justify-center shrink-0 mt-0.5">
+              <a
+                href={STATION_INFO.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 font-bold text-xs sm:text-sm text-black hover:opacity-85 transition-all group cursor-pointer"
+                title="Open 20, Adetoro John Street, Fadeyi on Google Maps"
+              >
+                <div className="w-8 h-8 rounded-full bg-black text-brand-yellow flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-110 transition-transform shadow-md">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span className="leading-snug">
+                <span className="leading-snug group-hover:underline underline-offset-2">
                   20, Adetoro John Street,
                   <br />
                   Fadeyi, Lagos.
                 </span>
-              </div>
+              </a>
 
               {/* Round Black Social Icons with @IMOLEFMLAGOS */}
               <div className="pt-2 space-y-1.5">

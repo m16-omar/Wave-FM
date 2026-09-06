@@ -18,6 +18,8 @@ export interface StationInfo {
   city: string;
   state: string;
   country: string;
+  googleMapsUrl: string;
+  googleMapsEmbedUrl: string;
   hotline: string;
   hotlineDisplay?: string;
   hotlineInternational?: string;
@@ -49,6 +51,8 @@ export const STATION_INFO: StationInfo = {
   city: 'Lagos',
   state: 'Lagos State',
   country: 'Nigeria',
+  googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=20+Adetoro+John+Street,+Fadeyi,+Lagos,+Nigeria',
+  googleMapsEmbedUrl: 'https://maps.google.com/maps?q=20+Adetoro+John+Street,+Fadeyi,+Lagos,+Nigeria&t=&z=16&ie=UTF8&iwloc=&output=embed',
   hotline: '09022000085',
   hotlineDisplay: '0902 200 0085',
   hotlineInternational: '+234 902 200 0085',

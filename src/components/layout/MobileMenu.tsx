@@ -6,6 +6,7 @@ import { MAIN_NAV_ITEMS } from './Navigation';
 import { StationLogo } from '../ui/StationLogo';
 import { SocialLinks } from '../ui/SocialLinks';
 import { useAudio } from '../../context/AudioContext';
+import { STATION_INFO } from '../../data/station';
 import { clsx } from 'clsx';
 
 interface MobileMenuProps {
@@ -122,7 +123,15 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 <SocialLinks size="sm" variant="colored-circles" />
               </div>
               <div className="text-center text-xs text-gray-400 space-y-1">
-                <p className="font-semibold text-gray-200">20, Adetoro John Street, Fadeyi, Lagos.</p>
+                <a
+                  href={STATION_INFO.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-gray-200 hover:text-brand-yellow transition-colors block"
+                  title="Open in Google Maps"
+                >
+                  20, Adetoro John Street, Fadeyi, Lagos.
+                </a>
                 <p className="text-gray-300 font-mono">
                   Call In: <a href="tel:09022000085" className="text-white font-black hover:text-brand-yellow">09022000085</a>
                 </p>
