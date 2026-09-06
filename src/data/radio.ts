@@ -53,21 +53,26 @@ export const RADIO_CHANNELS: RadioChannel[] = [
   },
 ];
 
-export const CURRENT_NOW_PLAYING: NowPlayingTrack = {
-  id: 'track-01',
-  title: 'Anyway',
-  artist: 'The Madpix Project',
-  album: 'BMP Records',
-  coverArt: ASSET_IMAGES.shows.gistHangout,
-  duration: 245,
-  currentTime: 85,
-  genre: 'Urban / Hit Music',
-  releaseYear: 2026,
-  spotifyUrl: 'https://spotify.com',
-  appleMusicUrl: 'https://apple.com',
-  previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-  votes: 1420,
-};
+import { getCurrentLiveShow } from './schedule';
+
+export function getCurrentLiveTrack(now: Date = new Date()): NowPlayingTrack {
+  const liveShow = getCurrentLiveShow(now);
+  return {
+    id: `live-${liveShow.id}`,
+    title: liveShow.showTitle,
+    artist: `Hosted by ${liveShow.hostName}`,
+    album: 'Imole 106.3 FM Lagos',
+    coverArt: liveShow.image,
+    duration: 0,
+    currentTime: 0,
+    genre: liveShow.category,
+    releaseYear: 2026,
+    previewAudioUrl: 'https://stream.zeno.fm/f3wvbbqmdg8uv',
+    votes: 3820,
+  };
+}
+
+export const CURRENT_NOW_PLAYING: NowPlayingTrack = getCurrentLiveTrack();
 
 export const ON_AIR_SHOW_INFO = {
   id: 'morning-drive',

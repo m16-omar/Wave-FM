@@ -11,6 +11,7 @@ export const BottomAudioPlayer: React.FC = () => {
     togglePlay,
     currentTrack,
     currentChannel,
+    playbackMode,
     volume,
     setVolumeLevel,
     isMuted,
@@ -25,6 +26,7 @@ export const BottomAudioPlayer: React.FC = () => {
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
 
   const formatTime = (secs: number) => {
+    if (!isFinite(secs) || isNaN(secs) || secs < 0) return '0:00';
     const m = Math.floor(secs / 60);
     const s = Math.floor(secs % 60);
     return `${m}:${s < 10 ? '0' : ''}${s}`;
@@ -34,7 +36,7 @@ export const BottomAudioPlayer: React.FC = () => {
     <>
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-brand-yellow text-black h-16 shadow-[0_-4px_25px_rgba(0,0,0,0.5)] border-t border-brand-yellowHover select-none">
         <div className="max-w-7xl mx-auto h-full px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
-          {/* Left: Play/Pause Button + Song Info */}
+          {/* Left: Play/Pause Button + Show / Track Info */}
           <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1 sm:flex-initial">
             {/* Main Play/Pause Button */}
             <button
@@ -49,23 +51,31 @@ export const BottomAudioPlayer: React.FC = () => {
               )}
             </button>
 
-            {/* Song Title & Artist */}
-            <div className="min-w-0 flex flex-col justify-center">
-              <span className="font-black text-xs sm:text-sm text-black truncate leading-tight tracking-tight uppercase">
-                {currentTrack.title}
-              </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-black/80 truncate">
-                {currentTrack.artist}
-              </span>
-            </div>
-
-            {/* Square Album Cover */}
-            <div className="hidden xs:block relative w-9 h-9 sm:w-10 sm:h-10 rounded-md overflow-hidden bg-black/10 shrink-0 border border-black/10 shadow-sm">
+            {/* Show Artwork / Album Cover */}
+            <div className="hidden xs:block relative w-9 h-9 sm:w-10 sm:h-10 rounded-md overflow-hidden bg-black/10 shrink-0 border border-black/15 shadow-sm">
               <img
                 src={currentTrack.coverArt}
                 alt={currentTrack.title}
                 className="w-full h-full object-cover"
               />
+            </div>
+
+            {/* Show Title & Host / Artist */}
+            <div className="min-w-0 flex flex-col justify-center">
+              <div className="flex items-center gap-1.5">
+                {playbackMode === 'live-radio' && (
+                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-black text-brand-yellow text-[9px] font-black uppercase tracking-wider shrink-0 shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+                    LIVE
+                  </span>
+                )}
+                <span className="font-black text-xs sm:text-sm text-black truncate leading-tight tracking-tight uppercase">
+                  {currentTrack.title}
+                </span>
+              </div>
+              <span className="text-[11px] sm:text-xs font-semibold text-black/80 truncate">
+                {currentTrack.artist}
+              </span>
             </div>
           </div>
 
@@ -99,9 +109,18 @@ export const BottomAudioPlayer: React.FC = () => {
 
           {/* Center: Live Time / Duration */}
           <div className="hidden md:flex items-center justify-center font-mono font-bold text-xs sm:text-sm text-black/90 tracking-wider">
-            <span>{formatTime(currentTime)}</span>
-            <span className="mx-1 text-black/40">/</span>
-            <span>{formatTime(duration)}</span>
+            {playbackMode === 'live-radio' || !isFinite(duration) || duration <= 0 ? (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/10 border border-black/15 text-[11px] font-black uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-red-600 animate-ping" />
+                LIVE ON AIR • 106.3 FM (WAT)
+              </span>
+            ) : (
+              <>
+                <span>{formatTime(currentTime)}</span>
+                <span className="mx-1 text-black/40">/</span>
+                <span>{formatTime(duration)}</span>
+              </>
+            )}
           </div>
 
           {/* Right: Social Media Handles, Channel Badge, Volume & Playlist / Menu */}

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
 import { RadioChannel, NowPlayingTrack } from '../types/radio';
-import { RADIO_CHANNELS, CURRENT_NOW_PLAYING, ON_AIR_SHOW_INFO, COMING_NEXT_SHOW_INFO } from '../data/radio';
+import { RADIO_CHANNELS, CURRENT_NOW_PLAYING, ON_AIR_SHOW_INFO, COMING_NEXT_SHOW_INFO, getCurrentLiveTrack } from '../data/radio';
 import { TOP_CHART_SONGS } from '../data/charts';
 
 export type PlaybackMode = 'live-radio' | 'track-preview' | 'podcast';
@@ -40,7 +40,7 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [playbackMode, setPlaybackMode] = useState<PlaybackMode>('live-radio');
   const [currentChannel, setCurrentChannel] = useState<RadioChannel>(RADIO_CHANNELS[0]);
-  const [currentTrack, setCurrentTrack] = useState<NowPlayingTrack>(CURRENT_NOW_PLAYING);
+  const [currentTrack, setCurrentTrack] = useState<NowPlayingTrack>(() => getCurrentLiveTrack());
   const [onAirShow] = useState(ON_AIR_SHOW_INFO);
   const [comingNextShow] = useState(COMING_NEXT_SHOW_INFO);
   const [volume, setVolume] = useState<number>(() => {
@@ -49,7 +49,7 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   });
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(245);
+  const [duration, setDuration] = useState<number>(0);
   const [votedSongIds, setVotedSongIds] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem('wave_voted_songs');
@@ -60,6 +60,27 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   });
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Keep live track updated to current active broadcast slot
+  useEffect(() => {
+    if (playbackMode === 'live-radio') {
+      setCurrentTrack(getCurrentLiveTrack());
+    }
+
+    const interval = setInterval(() => {
+      if (playbackMode === 'live-radio') {
+        const live = getCurrentLiveTrack();
+        setCurrentTrack(prev => {
+          if (prev.id !== live.id || prev.title !== live.title) {
+            return live;
+          }
+          return prev;
+        });
+      }
+    }, 15000);
+
+    return () => clearInterval(interval);
+  }, [playbackMode]);
 
   // Initialize HTML5 Audio instance
   useEffect(() => {
@@ -137,7 +158,7 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     
     setCurrentChannel(targetChannel);
     setPlaybackMode('live-radio');
-    setCurrentTrack(CURRENT_NOW_PLAYING);
+    setCurrentTrack(getCurrentLiveTrack());
 
     if (audioRef.current) {
       audioRef.current.pause();
