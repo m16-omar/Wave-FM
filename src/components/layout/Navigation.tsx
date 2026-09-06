@@ -5,15 +5,15 @@ import { clsx } from 'clsx';
 
 export const MAIN_NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
+  { label: 'News & Blog', href: '/blog' },
+  { label: 'Promote', href: '/promote' },
   { label: 'Radio Shows', href: '/shows' },
   { label: 'Schedule', href: '/schedule' },
   { label: 'Podcasts', href: '/podcasts' },
-  { label: 'Charts', href: '/charts', badge: 'TOP 20' },
-  { label: 'News & Blog', href: '/blog' },
+  // { label: 'Charts', href: '/charts', badge: 'TOP 20' },
   { label: 'Videos', href: '/videos' },
   { label: 'Events', href: '/events' },
   { label: 'DJs & Hosts', href: '/hosts' },
-  { label: 'Advertise', href: '/promote' },
   { label: 'Contact', href: '/contact' },
 ];
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Megaphone, CheckCircle2, Download, Send } from 'lucide-react';
+import confetti from 'canvas-confetti';
 
 export const PromotePage: React.FC = () => {
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
@@ -157,12 +158,24 @@ export const PromotePage: React.FC = () => {
                 <CheckCircle2 className="w-12 h-12 text-brand-yellow mx-auto" />
                 <h4 className="text-lg font-bold text-white">Inquiry Received!</h4>
                 <p className="text-xs text-gray-400">Our sales and sponsorships team will contact you within 24 hours.</p>
+                <button
+                  onClick={() => setInquirySubmitted(false)}
+                  className="px-6 py-2 rounded-full bg-brand-yellow text-black font-bold text-xs uppercase tracking-wider hover:bg-brand-yellowHover transition-all cursor-pointer"
+                >
+                  Send Another Inquiry
+                </button>
               </div>
             ) : (
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   setInquirySubmitted(true);
+                  confetti({
+                    particleCount: 50,
+                    spread: 60,
+                    origin: { y: 0.6 },
+                    colors: ['#F5B800', '#532688', '#FFFFFF'],
+                  });
                 }}
                 className="space-y-4"
               >

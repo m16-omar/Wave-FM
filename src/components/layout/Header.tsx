@@ -108,8 +108,8 @@ export const Header: React.FC = () => {
                 BLOG
               </NavLink>
 
-              {/* 3. CHARTS */}
-              <NavLink
+              {/* 3. CHARTS (Commented out per request) */}
+              {/* <NavLink
                 to="/charts"
                 className={({ isActive }) =>
                   clsx(
@@ -119,6 +119,19 @@ export const Header: React.FC = () => {
                 }
               >
                 CHARTS
+              </NavLink> */}
+
+              {/* 3. PROMOTE */}
+              <NavLink
+                to="/promote"
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
+              >
+                PROMOTE
               </NavLink>
 
               {/* 4. RADIO SHOWS */}
