@@ -89,8 +89,8 @@ export const ShowsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Sponsor / Station Graphic Badges Row */}
-      <SponsorBadges />
+      {/* 3. Sponsor / Station Graphic Badges Row (Commented out) */}
+      {/* <SponsorBadges /> */}
 
       {/* 4. "MEET OUR HOST STAR" + Host Selection & Hosted Chart */}
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

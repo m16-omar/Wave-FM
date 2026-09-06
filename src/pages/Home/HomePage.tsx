@@ -17,8 +17,8 @@ export const HomePage: React.FC = () => {
       {/* 2. SONG RANK & Last Played Song & Voting Box (Screenshot 1 & 2) */}
       <SongRankSection />
 
-      {/* 3. Station Sponsor Badges Row (Screenshot 2) */}
-      <SponsorBadges />
+      {/* 3. Station Sponsor Badges Row (Commented out) */}
+      {/* <SponsorBadges /> */}
 
       {/* 4. Featured Show + Weekly Schedule CTA Card (Screenshot 2) */}
       <FeaturedScheduleCallout />
