@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAudio } from '../../context/AudioContext';
 import { StreamSelectorModal } from './StreamSelectorModal';
+import { SocialLinks } from '../ui/SocialLinks';
 import { Play, Pause, SkipBack, SkipForward, Mic2, ListMusic, Volume2, VolumeX } from 'lucide-react';
 import { clsx } from 'clsx';
 
@@ -103,12 +104,17 @@ export const BottomAudioPlayer: React.FC = () => {
             <span>{formatTime(duration)}</span>
           </div>
 
-          {/* Right: Channel Badge, Volume & Playlist / Menu */}
+          {/* Right: Social Media Handles, Channel Badge, Volume & Playlist / Menu */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Social Media Handle Icons (as on top navbar) */}
+            <div className="hidden lg:flex items-center mr-1">
+              <SocialLinks size="xs" variant="navbar" />
+            </div>
+
             {/* Live Frequency Badge */}
             <button
               onClick={() => setIsChannelModalOpen(true)}
-              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/10 hover:bg-black/20 text-black text-[11px] font-black uppercase tracking-wider transition-colors cursor-pointer"
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/10 hover:bg-black/20 text-black text-[11px] font-black uppercase tracking-wider transition-colors cursor-pointer"
             >
               <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
               <span>{currentChannel.frequency}</span>
