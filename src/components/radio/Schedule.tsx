@@ -10,28 +10,45 @@ interface ScheduleProps {
   defaultDay?: DayOfWeek;
 }
 
+const ORDERED_DAYS: { id: DayOfWeek; label: string }[] = [
+  { id: 'monday', label: 'Monday' },
+  { id: 'tuesday', label: 'Tuesday' },
+  { id: 'wednesday', label: 'Wednesday' },
+  { id: 'thursday', label: 'Thursday' },
+  { id: 'friday', label: 'Friday' },
+  { id: 'saturday', label: 'Saturday' },
+  { id: 'sunday', label: 'Sunday' },
+];
+
 export const Schedule: React.FC<ScheduleProps> = ({
   className,
-  defaultDay = 'monday',
+  defaultDay,
 }) => {
-  const [selectedDay, setSelectedDay] = useState<DayOfWeek>(defaultDay);
-
-  const dayTabs: TabItem[] = [
-    { id: 'monday', label: 'Monday', badge: 'TODAY' },
-    { id: 'tuesday', label: 'Tuesday' },
-    { id: 'wednesday', label: 'Wednesday' },
-    { id: 'thursday', label: 'Thursday' },
-    { id: 'friday', label: 'Friday' },
-    { id: 'saturday', label: 'Saturday' },
-    { id: 'sunday', label: 'Sunday' },
+  const dayIndexMap: DayOfWeek[] = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
   ];
+  const todayDay = dayIndexMap[new Date().getDay()] || 'monday';
+
+  const [selectedDay, setSelectedDay] = useState<DayOfWeek>(defaultDay || todayDay);
+
+  const dayTabs: TabItem[] = ORDERED_DAYS.map((d) => ({
+    id: d.id,
+    label: d.label,
+    badge: d.id === todayDay ? 'TODAY' : undefined,
+  }));
 
   const currentSlots = WEEKLY_SCHEDULE[selectedDay] || [];
 
   return (
     <div className={clsx('space-y-6', className)}>
       {/* Day Selector Tabs */}
-      <div className="flex items-center justify-start overflow-x-auto pb-2">
+      <div className="flex items-center justify-start overflow-x-auto pb-2 scrollbar-none">
         <Tabs
           tabs={dayTabs}
           activeTab={selectedDay}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FeaturedScheduleCallout } from '../../components/sections/FeaturedScheduleCallout';
-import { WeeklySchedule } from '../../components/sections/WeeklySchedule';
+import { Schedule } from '../../components/radio/Schedule';
 import { SponsorBadges } from '../../components/sections/SponsorBadges';
 import { useAudio } from '../../context/AudioContext';
-import { Play, Pause, MoreVertical, ShoppingCart, Star, Clock } from 'lucide-react';
+import { Play, Pause, MoreVertical, ShoppingCart, Star, Clock, Calendar } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ASSET_IMAGES } from '../../assets/images';
 
@@ -55,8 +55,36 @@ export const ShowsPage: React.FC = () => {
       {/* 1. Top Paired Cards: Featured Show + Weekly Schedule CTA Box */}
       <FeaturedScheduleCallout />
 
-      {/* 2. Tabbed Weekly Timetable Widget */}
-      <WeeklySchedule />
+      {/* 2. Broadcast Program Guide / Weekly Radio Schedule */}
+      <section id="schedule" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
+        {/* Header */}
+        <div className="border-b border-border pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
+              <Calendar className="w-4 h-4" />
+              <span>Broadcast Program Guide</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight font-display uppercase">
+              Weekly Radio Schedule
+            </h2>
+            <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
+              All times are broadcast in West Africa Time (WAT). Tune in live on 106.3 FM or our high-definition digital streams.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1.5 text-xs text-brand-yellow font-bold bg-brand-yellow/10 px-3 py-1.5 rounded-lg border border-brand-yellow/20 shadow-glow-yellow/10">
+              <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
+              Live Feed Active
+            </span>
+          </div>
+        </div>
+
+        {/* Schedule Component */}
+        <div className="bg-background-card/50 rounded-3xl p-4 sm:p-8 border border-white/5 shadow-2xl">
+          <Schedule />
+        </div>
+      </section>
 
       {/* 3. Sponsor / Station Graphic Badges Row */}
       <SponsorBadges />
@@ -75,7 +103,7 @@ export const ShowsPage: React.FC = () => {
               </h2>
 
               <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
-                Meet the charismatic on-air personalities, journalists, and DJs who bring Imole 106.3 FM alive every single day with stories, music, and energy.
+                Meet the charismatic on-air personalities, journalists, and cultural voices who bring Imole 106.3 FM alive every single day with stories, music, and energy.
               </p>
             </div>
 
@@ -97,7 +125,7 @@ export const ShowsPage: React.FC = () => {
               {/* Foreground Host Details */}
               <div className="relative z-10 text-center space-y-2">
                 <div className="inline-block px-3 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider bg-black/40 backdrop-blur-sm">
-                  Host
+                  Lead Presenter
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-display tracking-tight drop-shadow-md">
@@ -145,7 +173,7 @@ export const ShowsPage: React.FC = () => {
                             duration: 210,
                             previewAudioUrl: track.audioUrl,
                             votes: 1500,
-                            genre: 'Urban / Alternative',
+                            genre: 'Urban / Indigenous',
                           });
                         }
                       }}
@@ -191,14 +219,14 @@ export const ShowsPage: React.FC = () => {
               {/* Header with Yellow Dashed Line */}
               <div className="flex items-center gap-2 mb-3">
                 <span className="px-2.5 py-0.5 rounded bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
-                  HOSTED CHART
+                  STATION FAVORITES
                 </span>
                 <div className="flex-1 border-b border-dashed border-brand-yellow/60" />
               </div>
 
               <div className="bg-[#141416] rounded-2xl p-4 sm:p-5 border border-white/5 shadow-2xl space-y-4">
                 <h4 className="font-black text-sm text-white uppercase font-display">
-                  The Rap Radar
+                  Imole Top Countdown
                 </h4>
 
                 <div className="space-y-2 divide-y divide-white/5">
@@ -216,8 +244,8 @@ export const ShowsPage: React.FC = () => {
                         />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-extrabold text-white truncate">Gospel Light</div>
-                        <div className="text-[10px] text-gray-400 truncate">Imole Choir</div>
+                        <div className="text-xs font-extrabold text-white truncate">Gospel Light Praises</div>
+                        <div className="text-[10px] text-gray-400 truncate">Imole Worship Team</div>
                       </div>
                     </div>
                     <ShoppingCart className="w-4 h-4 text-brand-yellow shrink-0 cursor-pointer" />
@@ -237,8 +265,8 @@ export const ShowsPage: React.FC = () => {
                         />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs font-extrabold text-white truncate">Comedy Splash</div>
-                        <div className="text-[10px] text-gray-400 truncate">Fadeyi Crew</div>
+                        <div className="text-xs font-extrabold text-white truncate">Comedy Splash Jams</div>
+                        <div className="text-[10px] text-gray-400 truncate">Imole Comedy Crew</div>
                       </div>
                     </div>
                     <ShoppingCart className="w-4 h-4 text-brand-yellow shrink-0 cursor-pointer" />
@@ -259,7 +287,7 @@ export const ShowsPage: React.FC = () => {
                     }}
                     className="px-6 py-2 rounded-full border border-white/30 text-white hover:border-brand-yellow hover:text-brand-yellow text-xs font-black uppercase tracking-wider transition-colors cursor-pointer"
                   >
-                    FULL TRACKLIST
+                    FULL COUNTDOWN
                   </button>
                 </div>
               </div>
@@ -272,15 +300,15 @@ export const ShowsPage: React.FC = () => {
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-4 relative">
         {/* Section Heading */}
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight text-center mb-8 sm:mb-10">
-          NOW PLAYING
+          NOW BROADCASTING
         </h2>
 
-        {/* Large Wide Dark Show Card: The Sound Session */}
+        {/* Large Wide Dark Show Card: Gist Hangout Show */}
         <div className="max-w-4xl mx-auto rounded-[32px] overflow-hidden relative min-h-[300px] sm:min-h-[340px] bg-neutral-900 shadow-2xl border border-white/10 flex items-center justify-between p-6 sm:p-10 group">
           {/* Background Image of Imole Studio */}
           <img
             src={ASSET_IMAGES.studio}
-            alt="The Sound Session - Imole 106.3 FM"
+            alt="Gist Hangout Show - Imole 106.3 FM"
             className="absolute inset-0 w-full h-full object-cover object-right group-hover:scale-105 transition-transform duration-700 opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
@@ -298,21 +326,21 @@ export const ShowsPage: React.FC = () => {
           {/* Content Foreground */}
           <div className="relative z-10 space-y-3 max-w-md">
             <span className="px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
-              ON AIR
+              ON AIR NOW
             </span>
 
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display leading-none">
-              The Sound Session
+              Gist Hangout Show
             </h3>
 
             <p className="text-base sm:text-lg font-bold text-gray-200">
-              With <span className="text-brand-yellow">Amwoni</span>
+              With <span className="text-brand-yellow">Amwoni & Imole Crew</span>
             </p>
 
             <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-300 pt-2">
               <span className="flex items-center gap-1.5 font-mono">
                 <Clock className="w-4 h-4 text-brand-yellow" />
-                1:00 am – 7:00 am
+                07:00 am – 10:00 am
               </span>
 
               <button
@@ -339,7 +367,49 @@ export const ShowsPage: React.FC = () => {
 
         {/* 2-Column Show Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-          {/* Card 1: Reggae Hour */}
+          {/* Card 1: Comedy Splash */}
+          <div className="relative rounded-[28px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[260px] sm:min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
+            {/* Background Image */}
+            <img
+              src={ASSET_IMAGES.shows.comedySplash}
+              alt="Comedy Splash"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+
+            {/* Stylized Background Watermark */}
+            <div className="absolute top-4 left-6 pointer-events-none opacity-20 select-none">
+              <span className="font-black text-5xl tracking-tighter text-white uppercase font-display leading-none">
+                SHOW
+              </span>
+              <span className="block font-marker text-brand-yellow text-xl -mt-1">
+                RADIO
+              </span>
+            </div>
+
+            {/* Foreground Content */}
+            <div className="relative z-10 space-y-1.5">
+              <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
+                Comedy & Banter
+              </span>
+
+              <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
+                Comedy Splash
+              </h4>
+
+              <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
+                <span className="font-mono">10:00 am – 01:00 pm</span>
+                <button
+                  onClick={() => playLiveStream()}
+                  className="p-1.5 text-gray-300 hover:text-brand-yellow transition-colors cursor-pointer"
+                >
+                  <MoreVertical className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Reggae Hour */}
           <div className="relative rounded-[28px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[260px] sm:min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
             {/* Background Image */}
             <img
@@ -362,7 +432,7 @@ export const ShowsPage: React.FC = () => {
             {/* Foreground Content */}
             <div className="relative z-10 space-y-1.5">
               <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
-                Music
+                Roots & Reggae
               </span>
 
               <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
@@ -370,49 +440,7 @@ export const ShowsPage: React.FC = () => {
               </h4>
 
               <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
-                <span className="font-mono">1:00 pm – 3:00 pm</span>
-                <button
-                  onClick={() => playLiveStream()}
-                  className="p-1.5 text-gray-300 hover:text-brand-yellow transition-colors cursor-pointer"
-                >
-                  <MoreVertical className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Gudugbe */}
-          <div className="relative rounded-[28px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[260px] sm:min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
-            {/* Background Image */}
-            <img
-              src={ASSET_IMAGES.shows.gudugbe}
-              alt="Gudugbe"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-            {/* Stylized Background Watermark */}
-            <div className="absolute top-4 left-6 pointer-events-none opacity-20 select-none">
-              <span className="font-black text-5xl tracking-tighter text-white uppercase font-display leading-none">
-                SHOW
-              </span>
-              <span className="block font-marker text-brand-yellow text-xl -mt-1">
-                RADIO
-              </span>
-            </div>
-
-            {/* Foreground Content */}
-            <div className="relative z-10 space-y-1.5">
-              <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
-                Indigenous
-              </span>
-
-              <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
-                Gudugbe
-              </h4>
-
-              <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
-                <span className="font-mono">4:00 pm – 7:00 pm</span>
+                <span className="font-mono">01:00 pm – 03:00 pm</span>
                 <button
                   onClick={() => playLiveStream()}
                   className="p-1.5 text-gray-300 hover:text-brand-yellow transition-colors cursor-pointer"

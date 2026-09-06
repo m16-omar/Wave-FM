@@ -5,7 +5,6 @@ import {
   Phone,
   MapPin,
   CheckCircle2,
-  Calendar,
   Megaphone,
   Download,
   Send,
@@ -13,7 +12,6 @@ import {
   ArrowDownCircle,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { Schedule } from '../../components/radio/Schedule';
 import { STATION_INFO } from '../../data/station';
 import { CallInStudioBanner } from '../../components/sections/CallInStudioBanner';
 import { SocialLinks } from '../../components/ui/SocialLinks';
@@ -175,13 +173,6 @@ export const ContactPage: React.FC = () => {
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Station Bio & Leadership</span>
-            </button>
-            <button
-              onClick={() => scrollToSection('schedule')}
-              className="px-4 py-2 rounded-full bg-white/10 hover:bg-brand-yellow hover:text-black text-white text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border border-white/10 backdrop-blur-md cursor-pointer"
-            >
-              <Calendar className="w-3.5 h-3.5" />
-              <span>Weekly Schedule</span>
             </button>
             <button
               onClick={() => scrollToSection('promote')}
@@ -577,38 +568,7 @@ export const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 4. WIDGET 1: WEEKLY SCHEDULE WIDGET                                       */}
-      {/* ========================================================================= */}
-      <section id="schedule" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
-        {/* Header */}
-        <div className="border-b border-border pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs text-brand-yellow font-extrabold uppercase tracking-widest mb-2">
-              <Calendar className="w-4 h-4" />
-              <span>Broadcast Program Guide</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-              Weekly Radio Schedule
-            </h2>
-            <p className="text-sm md:text-base text-gray-400 mt-2 max-w-xl">
-              All times are broadcast in West Africa Time (WAT). Tune in live on 106.3 FM or our high-definition digital streams.
-            </p>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-xs text-brand-yellow font-bold bg-brand-yellow/10 px-3 py-1.5 rounded-lg border border-brand-yellow/20">
-              <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
-              Live Feed Active
-            </span>
-          </div>
-        </div>
-
-        {/* Schedule Component */}
-        <div className="bg-background-card/50 rounded-3xl p-4 sm:p-8 border border-white/5 shadow-2xl">
-          <Schedule defaultDay="monday" />
-        </div>
-      </section>
 
       {/* ========================================================================= */}
       {/* 5. PROMOTE & ADVERTISE WIDGET                                             */}

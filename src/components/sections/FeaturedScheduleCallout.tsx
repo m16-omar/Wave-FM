@@ -16,7 +16,7 @@ export const FeaturedScheduleCallout: React.FC = () => {
   };
 
   return (
-    <section className="w-full py-8 sm:py-12 select-none">
+    <section className="w-full py-6 sm:py-10 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Left Card: Featured Show Card (7 Cols) */}
@@ -24,7 +24,7 @@ export const FeaturedScheduleCallout: React.FC = () => {
             {/* Background Image of Host */}
             <img
               src={ASSET_IMAGES.amwoni}
-              alt="After Hours Mix - Imole 106.3 FM"
+              alt="Gist Hangout Show - Imole 106.3 FM"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
             />
 
@@ -47,17 +47,17 @@ export const FeaturedScheduleCallout: React.FC = () => {
               </div>
 
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display">
-                After Hours Mix
+                Gist Hangout Show
               </h3>
 
               <p className="text-base sm:text-lg font-bold text-gray-200">
-                Mixed by <span className="text-brand-yellow">Ryan Taylor</span>
+                Hosted by <span className="text-brand-yellow">Amwoni & Imole Crew</span>
               </p>
 
               <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-300 pt-1">
                 <span className="flex items-center gap-1.5 font-mono">
                   <Clock className="w-4 h-4 text-brand-yellow" />
-                  10:45 am – 2:30 pm
+                  07:00 am – 10:00 am (WAT)
                 </span>
 
                 <button
@@ -80,7 +80,7 @@ export const FeaturedScheduleCallout: React.FC = () => {
             </h2>
 
             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
-              Explore our full weekly broadcasting timetable. Live resident DJ sets, artist interviews, top charts, and underground sessions 24/7.
+              Explore our full weekly broadcasting timetable. Live resident show hosts, indigenous music, community dialogue, and faith inspirations 24/7.
             </p>
 
             <div>
