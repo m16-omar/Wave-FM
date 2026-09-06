@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Angled Brush Script "Contact us" */}
-            <span className="font-marker text-black text-3xl sm:text-4xl md:text-5xl absolute -top-3 right-4 sm:-right-8 md:-right-12 rotate-[-12deg] z-20 pointer-events-none select-none drop-shadow-sm whitespace-nowrap">
+            <span className="font-marker text-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl absolute top-4 right-4 sm:top-6 sm:right-6 md:top-6 md:right-6 rotate-[-6deg] z-20 pointer-events-none select-none drop-shadow-sm whitespace-nowrap">
               Contact us
             </span>
           </div>
