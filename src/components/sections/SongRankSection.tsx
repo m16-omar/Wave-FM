@@ -1,184 +1,204 @@
 import React from 'react';
-import { Play, Pause, MoreHorizontal, Heart, Check } from 'lucide-react';
+import { Play, Pause, MoreHorizontal, Check, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useAudio } from '../../context/AudioContext';
 import confetti from 'canvas-confetti';
 import { ASSET_IMAGES } from '../../assets/images';
 
-interface VoteCardSong {
+interface RankShowItem {
   id: string;
+  slug: string;
   title: string;
-  artist: string;
+  host: string;
+  schedule: string;
   coverArt: string;
-  audioUrl: string;
   votes: number;
 }
 
-const VOTE_SONGS: VoteCardSong[] = [
+const RANK_SHOWS: RankShowItem[] = [
   {
-    id: 'vote-01',
-    title: 'Gospel Light Special',
-    artist: 'Imole Praise Choir',
+    id: 'show-gospel-light',
+    slug: 'gospel-light',
+    title: 'Gospel Light',
+    host: 'Big Val',
+    schedule: 'Sundays, 4:00 – 7:00 PM',
     coverArt: ASSET_IMAGES.shows.gospelLight,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     votes: 3840,
   },
   {
-    id: 'vote-02',
-    title: 'Comedy Freestyle Jam',
-    artist: 'Fadeyi All-Stars',
+    id: 'show-comedy-splash',
+    slug: 'comedy-splash',
+    title: 'Comedy Splash',
+    host: 'MC Toothbrush',
+    schedule: 'Fridays, 7:00 – 8:00 PM',
     coverArt: ASSET_IMAGES.shows.comedySplash,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     votes: 3410,
   },
   {
-    id: 'vote-03',
-    title: 'Gudugbe Indigenous Beats',
-    artist: 'Lagos Cultural Troupe',
+    id: 'show-gudugbe',
+    slug: 'gudugbe',
+    title: 'Gudugbe Inu Iwe Iroyin',
+    host: 'Amwoni & Indigenous Crew',
+    schedule: 'Weekdays, 9:00 – 10:00 AM',
     coverArt: ASSET_IMAGES.shows.gudugbe,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
     votes: 2950,
   },
   {
-    id: 'vote-04',
-    title: 'Irin Ajo Eda Melody',
-    artist: 'Traditional Ensemble',
+    id: 'show-irin-ajo-eda',
+    slug: 'irin-ajo-eda',
+    title: 'Irin Ajo Eda',
+    host: 'Adeshina Baba Omo',
+    schedule: 'Thursdays, 9:00 – 10:00 PM',
     coverArt: ASSET_IMAGES.shows.irinAjoEda,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
     votes: 2720,
   },
 ];
 
 export const SongRankSection: React.FC = () => {
-  const { isPlaying, currentTrack, playTrack, togglePlay, voteSong, votedSongIds } = useAudio();
+  const { isPlaying, currentTrack, playTrack, togglePlay, voteSong, votedSongIds, playLiveStream } = useAudio();
 
-  const handleVote = (e: React.MouseEvent, songId: string) => {
+  const handleVote = (e: React.MouseEvent, showId: string) => {
     e.stopPropagation();
-    voteSong(songId);
+    e.preventDefault();
+    voteSong(showId);
 
     // Trigger celebratory confetti effect
     confetti({
       particleCount: 40,
       spread: 60,
       origin: { y: 0.8 },
-      colors: ['#F5B800', '#FFFFFF', '#FF4B4B'],
+      colors: ['#F5B800', '#FFFFFF', '#162E6E'],
     });
   };
 
   return (
     <section className="w-full py-12 sm:py-16 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Row: Title + Last Played Song Widget */}
+        {/* Top Row: Title + Featured Show Widget */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           {/* Left Title */}
           <div className="max-w-xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-brand-yellow tracking-tight uppercase font-display">
-              SONG RANK
+              SHOW RANK
             </h2>
             <p className="mt-2 text-sm sm:text-base text-gray-400 font-medium">
-              Vote for your favorite records to climb this week's official airplay chart. Direct listener power on Imole 106.3 FM.
+              Vote for your favorite on-air programs and indigenous broadcasts. Direct listener power on Imole 106.3 FM.
             </p>
           </div>
 
-          {/* Right: Last Played Song Pill Card */}
+          {/* Right: Featured Show Pill Card */}
           <div className="relative self-start md:self-auto">
-            <div className="bg-brand-yellow text-black rounded-3xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 shadow-xl border border-brand-yellowHover">
-              {/* Album Thumbnail */}
+            <Link
+              to="/shows/request-time"
+              className="bg-brand-yellow text-black rounded-3xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 shadow-xl border border-brand-yellowHover group hover:scale-[1.02] transition-transform"
+            >
+              {/* Show Thumbnail */}
               <div className="w-12 h-12 rounded-xl overflow-hidden bg-black/10 shrink-0 border border-black/10">
                 <img
                   src={ASSET_IMAGES.shows.requestTime}
-                  alt="Request Time Favorite - Imole FM"
-                  className="w-full h-full object-cover"
+                  alt="Request Time - Imole FM"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
 
               {/* Info */}
               <div className="min-w-0 pr-2">
                 <h4 className="font-black text-sm text-black leading-tight truncate">Request Time</h4>
-                <p className="text-xs font-semibold text-black/80 truncate">Listener Choice</p>
+                <p className="text-xs font-semibold text-black/80 truncate">Listener Choice • Daily</p>
               </div>
 
               {/* Time & Play */}
               <div className="flex items-center gap-2 pl-2 border-l border-black/10 text-xs font-bold text-black">
                 <span className="font-mono">13:59</span>
                 <button
-                  onClick={() => {
-                    playTrack({
-                      id: 'last-played-better',
-                      title: 'Request Time Hits',
-                      artist: 'Imole Live Studio',
-                      album: 'Studio Vault',
-                      coverArt: ASSET_IMAGES.shows.requestTime,
-                      duration: 215,
-                      previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-                      votes: 1200,
-                      genre: 'Dance / House',
-                    });
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (isPlaying) {
+                      togglePlay();
+                    } else {
+                      playLiveStream();
+                    }
                   }}
                   className="w-7 h-7 rounded-full bg-black text-brand-yellow flex items-center justify-center hover:scale-105 active:scale-95 transition-transform cursor-pointer"
-                  title="Play Track"
+                  title="Listen Live"
                 >
-                  <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                  {isPlaying ? (
+                    <Pause className="w-3.5 h-3.5 fill-current" />
+                  ) : (
+                    <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                  )}
                 </button>
               </div>
-            </div>
+            </Link>
 
-            {/* Handwritten "Last played song" script overlay */}
+            {/* Handwritten script overlay */}
             <span className="font-marker text-white text-xl sm:text-2xl absolute -bottom-7 right-2 rotate-[-8deg] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] pointer-events-none whitespace-nowrap">
-              Last played song
+              Featured show
             </span>
           </div>
         </div>
 
-        {/* White Rounded Card Container from Screenshot 1 & 2 */}
+        {/* White Rounded Card Container */}
         <div className="bg-white rounded-[32px] p-6 sm:p-8 md:p-10 shadow-2xl text-black">
           {/* Top Badge + Dotted Line */}
           <div className="flex items-center gap-4 pb-6">
             <span className="px-4 py-1.5 rounded-full bg-black text-white text-[11px] sm:text-xs font-black uppercase tracking-wider shrink-0 shadow-md">
-              VOTE YOUR FAV SONG
+              VOTE YOUR FAV SHOW
             </span>
             <div className="flex-1 border-b border-dashed border-gray-300" />
+            <Link
+              to="/shows"
+              className="text-xs font-black text-black hover:text-brand-yellow flex items-center gap-1 uppercase tracking-wider shrink-0 transition-colors"
+            >
+              <span>View All Shows</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          {/* 4 Dark Voting Cards */}
+          {/* 4 Dark Show Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {VOTE_SONGS.map((song) => {
-              const isThisPlaying = isPlaying && currentTrack.title === song.title;
-              const voted = votedSongIds.includes(song.id);
+            {RANK_SHOWS.map((show) => {
+              const isThisPlaying = isPlaying && currentTrack.title === show.title;
+              const voted = votedSongIds.includes(show.id);
 
               return (
-                <div
-                  key={song.id}
-                  className="bg-[#0F204E] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-xl transition-all duration-300 border border-blue-900/30"
+                <Link
+                  key={show.id}
+                  to={`/shows/${show.slug}`}
+                  className="bg-[#0F204E] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-blue-900/30"
                 >
-                  {/* Album Cover Art with Play Button Hover */}
+                  {/* Show Cover Art with Play Button Hover */}
                   <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-neutral-900 mb-3.5">
                     <img
-                      src={song.coverArt}
-                      alt={song.title}
+                      src={show.coverArt}
+                      alt={show.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
 
-                    {/* Play/Pause Overlay Button */}
-                    <button
-                      onClick={() => {
+                    {/* Play/Listen Overlay Button */}
+                    <div
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
                         if (isThisPlaying) {
                           togglePlay();
                         } else {
                           playTrack({
-                            id: song.id,
-                            title: song.title,
-                            artist: song.artist,
-                            album: 'Chart Nominee',
-                            coverArt: song.coverArt,
+                            id: show.id,
+                            title: show.title,
+                            artist: show.host,
+                            album: show.schedule,
+                            coverArt: show.coverArt,
                             duration: 210,
-                            previewAudioUrl: song.audioUrl,
-                            votes: song.votes,
-                            genre: 'Hit Music',
+                            previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+                            votes: show.votes,
+                            genre: 'Live Show',
                           });
                         }
                       }}
                       className="absolute inset-0 bg-black/40 hover:bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                      title={isThisPlaying ? 'Pause' : 'Preview Song'}
+                      title={isThisPlaying ? 'Pause' : `Listen to ${show.title}`}
                     >
                       <div className="w-12 h-12 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform">
                         {isThisPlaying ? (
@@ -187,29 +207,32 @@ export const SongRankSection: React.FC = () => {
                           <Play className="w-5 h-5 fill-current ml-0.5" />
                         )}
                       </div>
-                    </button>
+                    </div>
                   </div>
 
-                  {/* Title & Artist */}
+                  {/* Title & Host / Schedule */}
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0 flex-1">
-                      <h4 className="font-extrabold text-sm text-white truncate group-hover:text-brand-yellow transition-colors">
-                        {song.title}
+                      <h4 className="font-extrabold text-sm text-white truncate group-hover:text-brand-yellow transition-colors font-display">
+                        {show.title}
                       </h4>
-                      <p className="text-xs text-gray-400 font-medium truncate mt-0.5">
-                        {song.artist}
+                      <p className="text-xs text-brand-yellow font-semibold truncate mt-0.5">
+                        {show.host}
+                      </p>
+                      <p className="text-[11px] text-gray-400 font-medium truncate mt-0.5">
+                        {show.schedule}
                       </p>
                     </div>
 
                     {/* Vote / Action Button */}
                     <button
-                      onClick={(e) => handleVote(e, song.id)}
-                      className={`p-2 rounded-xl transition-all cursor-pointer ${
+                      onClick={(e) => handleVote(e, show.id)}
+                      className={`p-2 rounded-xl transition-all cursor-pointer shrink-0 mt-0.5 ${
                         voted
-                          ? 'bg-brand-yellow text-black'
+                          ? 'bg-brand-yellow text-black shadow-glow-yellow'
                           : 'bg-white/10 hover:bg-brand-yellow hover:text-black text-gray-300'
                       }`}
-                      title={voted ? 'Voted!' : 'Vote for song'}
+                      title={voted ? 'Voted!' : 'Vote for show'}
                     >
                       {voted ? (
                         <Check className="w-4 h-4 stroke-[3]" />
@@ -218,7 +241,7 @@ export const SongRankSection: React.FC = () => {
                       )}
                     </button>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
