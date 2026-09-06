@@ -64,7 +64,7 @@ export const PromotePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. "HOW IT WORKS" & SPECIAL PRICE SECTION (Photo Background) */}
+      {/* 2. "HOW IT WORKS" & BESPOKE PACKAGES SECTION (Photo Background) */}
       <section className="relative w-full py-16 sm:py-24 my-6 overflow-hidden">
         {/* Full-width Background Photo with Warm Cinematic Overlay */}
         <div className="absolute inset-0 -z-10">
@@ -79,34 +79,44 @@ export const PromotePage: React.FC = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center max-w-5xl mx-auto">
-            {/* Left Card: Yellow Special Price Box */}
-            <div className="lg:col-span-5 bg-brand-yellow text-black rounded-[28px] p-8 sm:p-10 relative flex flex-col justify-center shadow-2xl min-h-[220px]">
-              {/* Handwritten Script Badge "Special Price!" */}
-              <span className="font-marker text-3xl sm:text-4xl text-white rotate-[-12deg] absolute -top-5 right-3 sm:right-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] pointer-events-none select-none">
-                Special Price!
+            {/* Left Card: Yellow Custom Packages Box (No Price) */}
+            <div className="lg:col-span-5 bg-brand-yellow text-black rounded-[28px] p-8 sm:p-10 relative flex flex-col justify-between shadow-2xl min-h-[240px]">
+              {/* Handwritten Script Badge "Tailored Plans!" */}
+              <span className="font-marker text-2xl sm:text-3xl text-white rotate-[-10deg] absolute -top-5 right-3 sm:right-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] pointer-events-none select-none">
+                Tailored Plans!
               </span>
 
-              <span className="text-xs font-black uppercase tracking-widest text-black/80 mb-2">
-                NOW ONLY
-              </span>
-
-              <div className="flex items-baseline gap-2 font-display">
-                <span className="text-6xl sm:text-7xl font-black text-black leading-none tracking-tight">
-                  10
+              <div className="space-y-1">
+                <span className="text-xs font-black uppercase tracking-widest text-black/80 block">
+                  BESPOKE BROADCAST
                 </span>
-                <div className="flex flex-col">
-                  <span className="text-2xl font-black text-black leading-none">
-                    $
-                  </span>
-                  <span className="text-xs font-black text-black/80 uppercase">
-                    /month
-                  </span>
+
+                <div className="font-display">
+                  <h3 className="text-3xl sm:text-4xl font-black text-black uppercase leading-tight tracking-tight">
+                    CUSTOM
+                    <br />
+                    PACKAGES
+                  </h3>
                 </div>
               </div>
 
-              <p className="text-[11px] font-bold text-black/75 mt-3">
-                Affordable broadcast advertising plans tailored for local brands and growing businesses.
+              <p className="text-xs sm:text-sm font-bold text-black/85 leading-relaxed mt-3">
+                Flexible broadcast advertising plans tailored for local brands, SMEs, and corporate campaigns across Lagos.
               </p>
+
+              <div className="pt-3 mt-2 border-t border-black/15 flex items-center justify-between">
+                <span className="text-[11px] font-black uppercase tracking-wider text-black/80">
+                  Flexible Slots & Jingles
+                </span>
+                <a
+                  href="#inquiry"
+                  onClick={handleScrollToInquiry}
+                  className="inline-flex items-center gap-1.5 text-xs font-black text-black hover:underline uppercase tracking-wider cursor-pointer"
+                >
+                  <span>Get Quote</span>
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
+                </a>
+              </div>
             </div>
 
             {/* Right Card: White "HOW IT WORKS" Box */}
@@ -123,10 +133,10 @@ export const PromotePage: React.FC = () => {
                   </div>
                   <div>
                     <span className="font-black text-sm sm:text-base text-black block">
-                      Sign Up:
+                      Connect With Us:
                     </span>
                     <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
-                      Fill out a quick form to subscribe to the plan.
+                      Fill out our quick campaign brief or contact our partnerships desk.
                     </p>
                   </div>
                 </div>
