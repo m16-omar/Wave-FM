@@ -61,10 +61,10 @@ export const ChartsPage: React.FC = () => {
                 Vote for your favorite records to climb this week's official airplay chart. Direct listener power on Imole 106.3 FM.
               </p>
 
-              {/* Active Now Playing Ticker */}
+              {/* Active Now Streaming Ticker */}
               <div className="pt-2">
                 <div className="text-xs sm:text-sm font-black text-white uppercase tracking-wide">
-                  NOW PLAYING:{' '}
+                  NOW STREAMING:{' '}
                   <span className="text-brand-yellow">
                     {currentTrack.title} (feat. Baer & Suzi)
                   </span>

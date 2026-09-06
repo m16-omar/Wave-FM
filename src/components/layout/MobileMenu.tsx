@@ -65,7 +65,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 className="w-full py-3 px-4 rounded-xl bg-brand-yellow text-black font-extrabold uppercase tracking-wider text-sm flex items-center justify-center gap-2 shadow-glow-yellow mb-6"
               >
                 <Play className="w-4 h-4 fill-current" />
-                <span>{isPlaying ? 'Now Playing Live' : 'Listen Live Now'}</span>
+                <span>{isPlaying ? 'Now Streaming Live' : 'Listen Live Now'}</span>
               </button>
 
               {/* Quick Search Button */}

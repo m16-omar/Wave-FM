@@ -35,9 +35,9 @@ export const HeroSection: React.FC = () => {
           </button>
         </div>
 
-        {/* Now Playing Subtitle */}
+        {/* Now Streaming Subtitle */}
         <div className="mt-4 sm:mt-6 flex items-center justify-center gap-2 text-sm sm:text-base font-bold text-gray-300">
-          <span className="text-white font-extrabold">Now playing:</span>
+          <span className="text-white font-extrabold">Now streaming:</span>
           <span className="text-gray-200">
             {currentTrack.title} - {currentTrack.artist}
           </span>
