@@ -1,230 +1,417 @@
 import React, { useState } from 'react';
-import { Megaphone, CheckCircle2, Download, Send } from 'lucide-react';
+import { ASSET_IMAGES } from '../../assets/images';
+import { Headphones, CreditCard, Megaphone, Smartphone, Mail, Phone, Check, Send, CheckCircle2, ArrowRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export const PromotePage: React.FC = () => {
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
 
-  const stats = [
-    { value: '450,000+', label: 'Weekly Active FM Listeners' },
-    { value: '1.2M+', label: 'Monthly Digital Audio Streams' },
-    { value: '78%', label: 'Key 18-34 Urban Demographic' },
-    { value: '#1', label: 'Ranked Youth Music Media in Region' },
-  ];
-
-  const advertisingPackages = [
-    {
-      name: 'On-Air Spot Campaign',
-      tagline: 'High frequency rotation during morning & afternoon drive times.',
-      features: [
-        '30s & 60s prime broadcast audio commercials',
-        'Live presenter voice reads & endorsements',
-        'Hourly sponsor tags during Morning Drive',
-        'Inclusion in audio stream pre-rolls',
-      ],
-      badge: 'Popular',
-    },
-    {
-      name: 'Digital & App Sponsorship',
-      tagline: 'Multi-platform visual and interactive digital branding.',
-      features: [
-        'Sticky audio player banner takeovers',
-        'Sponsored podcast episode mentions',
-        'Newsletter feature to 45,000 VIP subscribers',
-        'Social media giveaway campaign hosting',
-      ],
-      badge: 'Digital',
-    },
-    {
-      name: 'Festival & Event Partnership',
-      tagline: 'Direct experiential engagement at Imole live concerts.',
-      features: [
-        'On-site experiential booth placement',
-        'Mainstage visual LED screen branding',
-        'VIP hospitality lounge naming rights',
-        'Live on-air remote broadcasts from your venue',
-      ],
-      badge: 'Experiential',
-    },
-  ];
+  const handleScrollToInquiry = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('inquiry');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <div className="w-full py-8 md:py-12 space-y-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-yellow/15 text-brand-yellow text-xs font-black uppercase tracking-widest border border-brand-yellow/30">
-            <Megaphone className="w-3.5 h-3.5" />
-            <span>Commercial & Media Partnerships</span>
+    <div className="w-full select-none overflow-hidden pb-16">
+      {/* 1. TOP HERO SECTION: "PROMOTE YOUR BUSINESS WITH US!" */}
+      <section className="w-full py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          {/* Left: Rounded Image Box */}
+          <div className="lg:col-span-6 rounded-[32px] overflow-hidden relative shadow-2xl border border-white/10 min-h-[340px] sm:min-h-[420px] group">
+            <img
+              src={ASSET_IMAGES.hero3}
+              alt="Promote Your Brand on Imole 106.3 FM"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-            Amplify Your Brand on Imole 106.3 FM
-          </h1>
+          {/* Right: Bright Yellow Brand Box */}
+          <div className="lg:col-span-6 bg-brand-yellow text-black rounded-[32px] p-8 sm:p-12 shadow-2xl flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase font-display leading-[1.05] tracking-tight text-black">
+                PROMOTE
+                <br />
+                YOUR BUSINESS
+                <br />
+                WITH US!
+              </h1>
 
-          <p className="text-base text-gray-300">
-            Connect with an energized, trend-conscious urban audience through broadcast radio commercials, digital streaming sponsorships, and major music festivals.
-          </p>
+              <div className="space-y-2">
+                <p className="text-base sm:text-lg font-extrabold text-black">
+                  Boost Your Brand on IMOLE 106.3 FM
+                </p>
+                <p className="text-xs sm:text-sm font-semibold text-black/85 leading-relaxed">
+                  Are you looking to reach a local audience and grow your business? Imole Radio offers affordable promotional plans tailored for small businesses like yours. Let us help you get your message across to the right ears!
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <a
+                href="#inquiry"
+                onClick={handleScrollToInquiry}
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-black hover:bg-neutral-900 active:scale-95 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all cursor-pointer"
+              >
+                <span>START NOW</span>
+                <ArrowRight className="w-4 h-4 stroke-[3]" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. "HOW IT WORKS" & SPECIAL PRICE SECTION (Photo Background) */}
+      <section className="relative w-full py-16 sm:py-24 my-6 overflow-hidden">
+        {/* Full-width Background Photo with Warm Cinematic Overlay */}
+        <div className="absolute inset-0 -z-10">
+          <img
+            src={ASSET_IMAGES.studio}
+            alt="Imole Broadcast Studio"
+            className="w-full h-full object-cover object-center scale-105"
+          />
+          <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/80" />
         </div>
 
-        {/* Audience Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {stats.map((st, i) => (
-            <div
-              key={i}
-              className="p-6 rounded-3xl bg-background-card border border-border text-center shadow-card"
-            >
-              <h3 className="text-3xl sm:text-4xl font-black text-brand-yellow mb-1 font-mono">
-                {st.value}
-              </h3>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-wider">
-                {st.label}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center max-w-5xl mx-auto">
+            {/* Left Card: Yellow Special Price Box */}
+            <div className="lg:col-span-5 bg-brand-yellow text-black rounded-[28px] p-8 sm:p-10 relative flex flex-col justify-center shadow-2xl min-h-[220px]">
+              {/* Handwritten Script Badge "Special Price!" */}
+              <span className="font-marker text-3xl sm:text-4xl text-white rotate-[-12deg] absolute -top-5 right-3 sm:right-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] pointer-events-none select-none">
+                Special Price!
+              </span>
+
+              <span className="text-xs font-black uppercase tracking-widest text-black/80 mb-2">
+                NOW ONLY
+              </span>
+
+              <div className="flex items-baseline gap-2 font-display">
+                <span className="text-6xl sm:text-7xl font-black text-black leading-none tracking-tight">
+                  10
+                </span>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-black text-black leading-none">
+                    $
+                  </span>
+                  <span className="text-xs font-black text-black/80 uppercase">
+                    /month
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-[11px] font-bold text-black/75 mt-3">
+                Affordable broadcast advertising plans tailored for local brands and growing businesses.
               </p>
             </div>
-          ))}
-        </div>
 
-        {/* Packages Grid */}
-        <div>
-          <h2 className="text-2xl font-black text-white text-center mb-8">
-            Advertising & Sponsorship Opportunities
-          </h2>
+            {/* Right Card: White "HOW IT WORKS" Box */}
+            <div className="lg:col-span-7 bg-white text-black rounded-[28px] p-8 sm:p-12 shadow-2xl space-y-6">
+              <h2 className="text-3xl sm:text-4xl font-black uppercase font-display tracking-tight text-black">
+                HOW IT WORKS
+              </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {advertisingPackages.map((pkg, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-3xl bg-background-card border border-border hover:border-brand-yellow/50 transition-all flex flex-col justify-between shadow-card"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-brand-yellow/15 text-brand-yellow border border-brand-yellow/30">
-                      {pkg.badge}
-                    </span>
+              <div className="space-y-4">
+                {/* Step 1 */}
+                <div className="flex items-start gap-3.5">
+                  <div className="w-5 h-5 rounded-full bg-brand-yellow/30 text-brand-yellowDark flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 stroke-[3] text-black" />
                   </div>
-
-                  <h3 className="text-xl font-extrabold text-white mb-2">
-                    {pkg.name}
-                  </h3>
-
-                  <p className="text-xs text-gray-400 mb-6">
-                    {pkg.tagline}
-                  </p>
-
-                  <ul className="space-y-3 text-xs text-gray-300">
-                    {pkg.features.map((feat, fi) => (
-                      <li key={fi} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-brand-yellow shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <span className="font-black text-sm sm:text-base text-black block">
+                      Sign Up:
+                    </span>
+                    <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
+                      Fill out a quick form to subscribe to the plan.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="pt-8 mt-8 border-t border-border">
-                  <a
-                    href="#inquiry"
-                    className="w-full py-3 rounded-xl bg-white/10 hover:bg-brand-yellow hover:text-black text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
-                  >
-                    <span>Request Rates & Avails</span>
-                  </a>
+                {/* Step 2 */}
+                <div className="flex items-start gap-3.5">
+                  <div className="w-5 h-5 rounded-full bg-brand-yellow/30 text-brand-yellowDark flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 stroke-[3] text-black" />
+                  </div>
+                  <div>
+                    <span className="font-black text-sm sm:text-base text-black block">
+                      Submit Your Ad:
+                    </span>
+                    <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
+                      Share your business details and a short message. Don't worry if you don't have one ready—we'll help craft the perfect ad!
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="flex items-start gap-3.5">
+                  <div className="w-5 h-5 rounded-full bg-brand-yellow/30 text-brand-yellowDark flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 stroke-[3] text-black" />
+                  </div>
+                  <div>
+                    <span className="font-black text-sm sm:text-base text-black block">
+                      We Broadcast Your Ad:
+                    </span>
+                    <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
+                      Your message will air on our station multiple times a day, reaching local listeners who care about businesses like yours.
+                    </p>
+                  </div>
                 </div>
               </div>
-            ))}
+
+              <div className="pt-2 border-t border-gray-100">
+                <p className="text-[11px] sm:text-xs text-gray-500 font-semibold italic">
+                  It's that simple. No complicated processes—just effective local advertising.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Media Kit Download & Inquiry Form */}
-        <div id="inquiry" className="p-8 sm:p-12 rounded-3xl bg-background-secondary border border-border grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-2xl font-black text-white">
-              Download 2026 Media Kit
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-              Get full listener demographics, daypart coverage maps, pricing rate cards, and technical spec sheets in our official PDF media kit.
-            </p>
-            <button
-              onClick={() => alert('Downloading Imole 106.3 FM Media Kit 2026 (PDF)...')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-yellow text-black font-extrabold text-xs uppercase tracking-wider shadow-glow-yellow hover:scale-105 transition-all"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download Media Kit (PDF)</span>
-            </button>
+      {/* 3. "WHY ADVERTISE WITH US?" & "STILL HAVE DOUBTS?" */}
+      <section className="w-full py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          {/* Left Card: White "WHY ADVERTISE WITH US?" */}
+          <div className="lg:col-span-7 bg-white text-black rounded-[32px] p-8 sm:p-12 shadow-2xl space-y-6 flex flex-col justify-between">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase font-display tracking-tight text-black">
+              WHY ADVERTISE
+              <br />
+              WITH US?
+            </h2>
+
+            <div className="space-y-5">
+              {/* Feature 1 */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-8 h-8 rounded-full bg-brand-yellow/20 flex items-center justify-center shrink-0 text-brand-yellowDark mt-0.5">
+                  <Headphones className="w-4 h-4 text-black stroke-[2.5]" />
+                </div>
+                <div>
+                  <span className="font-black text-sm sm:text-base text-black block">
+                    Reach Your Community:
+                  </span>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                    Our listeners are local and loyal across Lagos and surrounding environs!
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-8 h-8 rounded-full bg-brand-yellow/20 flex items-center justify-center shrink-0 text-brand-yellowDark mt-0.5">
+                  <CreditCard className="w-4 h-4 text-black stroke-[2.5]" />
+                </div>
+                <div>
+                  <span className="font-black text-sm sm:text-base text-black block">
+                    Cost-Effective Marketing:
+                  </span>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                    Plans designed to fit your budget with flexible daypart rotations.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-8 h-8 rounded-full bg-brand-yellow/20 flex items-center justify-center shrink-0 text-brand-yellowDark mt-0.5">
+                  <Megaphone className="w-4 h-4 text-black stroke-[2.5]" />
+                </div>
+                <div>
+                  <span className="font-black text-sm sm:text-base text-black block">
+                    Engaging Promotions:
+                  </span>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                    Your message broadcast to an active, engaged indigenous audience.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 4 */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-8 h-8 rounded-full bg-brand-yellow/20 flex items-center justify-center shrink-0 text-brand-yellowDark mt-0.5">
+                  <Smartphone className="w-4 h-4 text-black stroke-[2.5]" />
+                </div>
+                <div>
+                  <span className="font-black text-sm sm:text-base text-black block">
+                    Digital Presence:
+                  </span>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                    Get featured on our high-traffic website and social media platforms.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="lg:col-span-7 bg-background-card p-6 sm:p-8 rounded-2xl border border-border">
-            {inquirySubmitted ? (
-              <div className="text-center py-8 space-y-3">
-                <CheckCircle2 className="w-12 h-12 text-brand-yellow mx-auto" />
-                <h4 className="text-lg font-bold text-white">Inquiry Received!</h4>
-                <p className="text-xs text-gray-400">Our sales and sponsorships team will contact you within 24 hours.</p>
-                <button
-                  onClick={() => setInquirySubmitted(false)}
-                  className="px-6 py-2 rounded-full bg-brand-yellow text-black font-bold text-xs uppercase tracking-wider hover:bg-brand-yellowHover transition-all cursor-pointer"
+          {/* Right Card: Dark "STILL HAVE DOUBTS?" */}
+          <div className="lg:col-span-5 bg-[#18181b] text-white rounded-[32px] p-8 sm:p-12 shadow-2xl border border-white/10 flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase font-display tracking-tight text-white leading-none">
+                STILL
+                <br />
+                HAVE
+                <br />
+                DOUBTS?
+              </h2>
+
+              <p className="text-xs sm:text-sm text-gray-300 font-medium leading-relaxed">
+                Our commercial broadcast team is ready to answer your questions, customize bespoke radio packages, and get your campaign on air within 24 hours.
+              </p>
+
+              {/* Contact Info Items */}
+              <div className="space-y-3 pt-2">
+                <a
+                  href="mailto:contact@imoleradio.com"
+                  className="flex items-center gap-3 text-xs sm:text-sm font-bold text-gray-200 hover:text-brand-yellow transition-colors"
                 >
-                  Send Another Inquiry
-                </button>
+                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                    <Mail className="w-3.5 h-3.5 text-brand-yellow" />
+                  </div>
+                  <span>contact@imoleradio.com</span>
+                </a>
+
+                <a
+                  href="tel:+2348030000000"
+                  className="flex items-center gap-3 text-xs sm:text-sm font-bold text-gray-200 hover:text-brand-yellow transition-colors"
+                >
+                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-3.5 h-3.5 text-brand-yellow" />
+                  </div>
+                  <span>+234 (0) 803 000 0000</span>
+                </a>
               </div>
-            ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setInquirySubmitted(true);
-                  confetti({
-                    particleCount: 50,
-                    spread: 60,
-                    origin: { y: 0.6 },
-                    colors: ['#F5B800', '#532688', '#FFFFFF'],
-                  });
-                }}
-                className="space-y-4"
+            </div>
+
+            <div>
+              <a
+                href="#inquiry"
+                onClick={handleScrollToInquiry}
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all cursor-pointer"
               >
-                <h4 className="text-base font-extrabold text-white">Quick Advertiser Inquiry</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <span>CONTACT US</span>
+                <ArrowRight className="w-4 h-4 stroke-[3]" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. INTERACTIVE INQUIRY FORM */}
+      <section id="inquiry" className="w-full py-8 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="bg-[#141416] p-8 sm:p-12 rounded-[32px] border border-white/10 shadow-2xl space-y-6">
+          <div className="text-center space-y-2">
+            <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-display tracking-tight">
+              Start Your Broadcast Campaign
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 font-medium">
+              Submit your details below and our corporate partnerships desk will reach out within 24 hours.
+            </p>
+          </div>
+
+          {inquirySubmitted ? (
+            <div className="text-center py-10 space-y-4">
+              <CheckCircle2 className="w-14 h-14 text-brand-yellow mx-auto animate-bounce" />
+              <h4 className="text-xl font-black text-white uppercase font-display">Inquiry Received!</h4>
+              <p className="text-xs sm:text-sm text-gray-300 max-w-md mx-auto">
+                Thank you for choosing Imole 106.3 FM. Our advertising specialists will contact you shortly to finalize your schedule.
+              </p>
+              <button
+                onClick={() => setInquirySubmitted(false)}
+                className="px-8 py-3 rounded-full bg-brand-yellow text-black font-black text-xs uppercase tracking-wider hover:bg-brand-yellowHover transition-all cursor-pointer shadow-lg"
+              >
+                Send Another Brief
+              </button>
+            </div>
+          ) : (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setInquirySubmitted(true);
+                confetti({
+                  particleCount: 60,
+                  spread: 70,
+                  origin: { y: 0.6 },
+                  colors: ['#F5B800', '#532688', '#FFFFFF'],
+                });
+              }}
+              className="space-y-4"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[11px] font-black uppercase tracking-wider text-gray-300 mb-1.5">
+                    Your Name
+                  </label>
                   <input
                     type="text"
                     required
-                    placeholder="Your Name"
-                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
-                  />
-                  <input
-                    type="text"
-                    required
-                    placeholder="Company / Brand"
-                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                    placeholder="e.g. Tunde Balogun"
+                    className="w-full px-4 py-3 bg-neutral-900 border border-white/10 rounded-2xl text-white text-xs sm:text-sm placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
                   />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-black uppercase tracking-wider text-gray-300 mb-1.5">
+                    Business / Brand Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Apex Lagos Enterprises"
+                    className="w-full px-4 py-3 bg-neutral-900 border border-white/10 rounded-2xl text-white text-xs sm:text-sm placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[11px] font-black uppercase tracking-wider text-gray-300 mb-1.5">
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     required
-                    placeholder="Work Email"
-                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                    placeholder="e.g. tunde@apex.ng"
+                    className="w-full px-4 py-3 bg-neutral-900 border border-white/10 rounded-2xl text-white text-xs sm:text-sm placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
                   />
                 </div>
+                <div>
+                  <label className="block text-[11px] font-black uppercase tracking-wider text-gray-300 mb-1.5">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="e.g. +234 803 123 4567"
+                    className="w-full px-4 py-3 bg-neutral-900 border border-white/10 rounded-2xl text-white text-xs sm:text-sm placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-black uppercase tracking-wider text-gray-300 mb-1.5">
+                  Campaign Goals & Ad Message
+                </label>
                 <textarea
-                  rows={3}
+                  rows={4}
                   required
-                  placeholder="Tell us about your campaign goals, timeline, and estimated budget..."
-                  className="w-full px-3.5 py-2.5 bg-background-secondary border border-border rounded-xl text-white text-xs placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
+                  placeholder="Tell us about your product or service, target audience, preferred show slots, or campaign timeline..."
+                  className="w-full px-4 py-3 bg-neutral-900 border border-white/10 rounded-2xl text-white text-xs sm:text-sm placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
                 />
-                <button
-                  type="submit"
-                  className="w-full py-3 rounded-xl bg-brand-yellow text-black font-extrabold uppercase text-xs tracking-wider shadow-glow-yellow hover:bg-brand-yellowHover transition-all flex items-center justify-center gap-2"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Submit Partnership Inquiry</span>
-                </button>
-              </form>
-            )}
-          </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-4 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black font-black uppercase text-xs sm:text-sm tracking-wider shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Send className="w-4 h-4" />
+                <span>Submit Broadcast Promotion Request</span>
+              </button>
+            </form>
+          )}
         </div>
-      </div>
+      </section>
     </div>
   );
 };
