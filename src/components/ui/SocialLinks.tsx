@@ -6,18 +6,21 @@ interface SocialLinksProps {
   className?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
   variant?: 'ghost' | 'pills' | 'solid' | 'colored-circles' | 'navbar';
+  platforms?: ('facebook' | 'instagram' | 'twitter' | 'youtube' | 'tiktok')[];
 }
 
 export const SocialLinks: React.FC<SocialLinksProps> = ({
   className,
   size = 'md',
   variant = 'ghost',
+  platforms,
 }) => {
-  const socialItems = [
+  const allSocialItems = [
     {
+      id: 'facebook',
       label: 'Facebook',
       href: STATION_INFO.socialLinks.facebook,
-      bg: 'bg-[#1877F2] text-white hover:bg-[#166fe5]',
+      bg: 'bg-[#1877F2] text-white hover:opacity-90',
       navbarHover: 'hover:bg-[#1877F2]',
       color: 'hover:text-[#1877F2] hover:border-[#1877F2]',
       svg: (
@@ -27,6 +30,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       ),
     },
     {
+      id: 'instagram',
       label: 'Instagram',
       href: STATION_INFO.socialLinks.instagram,
       bg: 'bg-gradient-to-tr from-[#FD1D1D] via-[#E1306C] to-[#C13584] text-white hover:opacity-90',
@@ -39,21 +43,23 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       ),
     },
     {
+      id: 'twitter',
       label: 'Twitter / X',
       href: STATION_INFO.socialLinks.twitter,
-      bg: 'bg-[#1DA1F2] text-white hover:bg-[#1a94df]',
-      navbarHover: 'hover:bg-black',
+      bg: 'bg-[#1DA1F2] text-white hover:opacity-90',
+      navbarHover: 'hover:bg-[#1DA1F2]',
       color: 'hover:text-[#1DA1F2] hover:border-[#1DA1F2]',
       svg: (
         <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z" />
         </svg>
       ),
     },
     {
+      id: 'youtube',
       label: 'YouTube',
       href: STATION_INFO.socialLinks.youtube,
-      bg: 'bg-[#FF0000] text-white hover:bg-[#e60000]',
+      bg: 'bg-[#FF0000] text-white hover:opacity-90',
       navbarHover: 'hover:bg-[#FF0000]',
       color: 'hover:text-[#FF0000] hover:border-[#FF0000]',
       svg: (
@@ -63,9 +69,10 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       ),
     },
     {
+      id: 'tiktok',
       label: 'TikTok',
       href: STATION_INFO.socialLinks.tiktok,
-      bg: 'bg-black text-white border border-white/20 hover:bg-neutral-900',
+      bg: 'bg-black text-white border border-white/20 hover:opacity-90',
       navbarHover: 'hover:bg-black',
       color: 'hover:text-brand-yellow hover:border-brand-yellow',
       svg: (
@@ -76,8 +83,12 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
     },
   ];
 
+  const socialItems = platforms
+    ? allSocialItems.filter((item) => platforms.includes(item.id as any))
+    : allSocialItems;
+
   const sizeClasses = {
-    xs: 'w-7 h-7 p-1.5',
+    xs: 'w-6.5 h-6.5 p-1.5',
     sm: 'w-8 h-8 p-1.5',
     md: 'w-10 h-10 p-2',
     lg: 'w-12 h-12 p-2.5',
@@ -95,16 +106,16 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
           title={`${item.label} - @IMOLEFMLAGOS`}
           className={clsx(
             sizeClasses,
-            'inline-flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer',
+            'inline-flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer shadow-xs',
             variant === 'ghost' && `text-gray-300 hover:bg-white/10 ${item.color}`,
             variant === 'pills' &&
               `bg-neutral-900 border border-white/10 text-white ${item.color} hover:scale-110 shadow-sm`,
             variant === 'solid' &&
               'bg-brand-yellow text-black hover:bg-brand-yellowHover hover:scale-110 shadow-md',
             variant === 'colored-circles' &&
-              `${item.bg} hover:scale-115 active:scale-95 shadow-lg`,
+              `${item.bg} hover:scale-115 active:scale-95`,
             variant === 'navbar' &&
-              `bg-neutral-100/90 text-neutral-700 border border-neutral-200/80 hover:text-white hover:border-transparent hover:scale-110 active:scale-95 shadow-2xs ${item.navbarHover}`
+              `${item.bg} hover:scale-115 active:scale-95`
           )}
         >
           {item.svg}

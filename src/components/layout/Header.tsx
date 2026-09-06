@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { StationLogo } from '../ui/StationLogo';
 import { SocialLinks } from '../ui/SocialLinks';
+import { STATION_INFO } from '../../data/station';
 import { MobileMenu } from './MobileMenu';
 import { SearchOverlay } from './SearchOverlay';
 import { StreamSelectorModal } from '../audio/StreamSelectorModal';
@@ -254,10 +255,27 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Right: Social Media Handles + Station Logo + Mobile Hamburger */}
-          <div className="flex items-center gap-2.5 sm:gap-3.5 lg:gap-4 shrink-0">
-            {/* Social Media Handles Icons (Before Logo) */}
-            <div className="hidden sm:flex items-center">
-              <SocialLinks size="xs" variant="navbar" />
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+            {/* Social Media Strip: FOLLOW US @IMOLEFMLAGOS + 4 Colored Circular Icons */}
+            <div className="hidden md:flex items-center gap-2 lg:gap-2.5 select-none">
+              <div className="flex items-center gap-1.5 text-[11px] xl:text-xs font-black uppercase tracking-wider">
+                <span className="text-black font-extrabold">FOLLOW US</span>
+                <a
+                  href={STATION_INFO.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-yellow font-black hover:underline cursor-pointer"
+                  title="Follow @IMOLEFMLAGOS"
+                >
+                  {STATION_INFO.socialHandle}
+                </a>
+              </div>
+              <SocialLinks size="xs" variant="colored-circles" platforms={['facebook', 'instagram', 'twitter', 'youtube']} />
+            </div>
+
+            {/* Compact social icons for small-medium screens (sm to md) */}
+            <div className="hidden sm:flex md:hidden items-center">
+              <SocialLinks size="xs" variant="colored-circles" platforms={['facebook', 'instagram', 'twitter', 'youtube']} />
             </div>
 
             <StationLogo variant="light" size="sm" asLink={true} />
