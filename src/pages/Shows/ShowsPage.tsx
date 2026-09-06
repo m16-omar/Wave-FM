@@ -3,6 +3,7 @@ import { FeaturedScheduleCallout } from '../../components/sections/FeaturedSched
 import { Schedule } from '../../components/radio/Schedule';
 import { SponsorBadges } from '../../components/sections/SponsorBadges';
 import { useAudio } from '../../context/AudioContext';
+import { getCurrentLiveShow, getNextLiveShow } from '../../data/schedule';
 import { Play, Pause, MoreVertical, ShoppingCart, Star, Clock, Calendar } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ASSET_IMAGES } from '../../assets/images';
@@ -49,6 +50,8 @@ const HOST_SELECTION_TRACKS: HostSong[] = [
 export const ShowsPage: React.FC = () => {
   const { isPlaying, currentTrack, playTrack, togglePlay, playLiveStream } = useAudio();
   const [showFullHostedTracklist, setShowFullHostedTracklist] = useState(false);
+  const currentLive = getCurrentLiveShow();
+  const nextLive = getNextLiveShow();
 
   return (
     <div className="w-full select-none space-y-8 sm:space-y-12 pb-16">
@@ -296,22 +299,22 @@ export const ShowsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. "NOW PLAYING" Hero Show Card */}
+      {/* 5. "NOW BROADCASTING" Dynamic Show Card */}
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-4 relative">
         {/* Section Heading */}
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase font-display tracking-tight text-center mb-8 sm:mb-10">
           NOW BROADCASTING
         </h2>
 
-        {/* Large Wide Dark Show Card: Gist Hangout Show */}
+        {/* Large Wide Dark Show Card: Dynamic Current Live Show */}
         <div className="max-w-4xl mx-auto rounded-[32px] overflow-hidden relative min-h-[300px] sm:min-h-[340px] bg-neutral-900 shadow-2xl border border-white/10 flex items-center justify-between p-6 sm:p-10 group">
-          {/* Background Image of Imole Studio */}
+          {/* Background Image of Show Artwork */}
           <img
-            src={ASSET_IMAGES.studio}
-            alt="Gist Hangout Show - Imole 106.3 FM"
+            src={currentLive.image}
+            alt={`${currentLive.showTitle} - Imole 106.3 FM`}
             className="absolute inset-0 w-full h-full object-cover object-right group-hover:scale-105 transition-transform duration-700 opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent" />
 
           {/* Stylized Background Watermark "SHOW RADIO" */}
           <div className="absolute top-6 left-8 pointer-events-none opacity-25 select-none">
@@ -325,22 +328,37 @@ export const ShowsPage: React.FC = () => {
 
           {/* Content Foreground */}
           <div className="relative z-10 space-y-3 max-w-md">
-            <span className="px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
-              ON AIR NOW
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
+                ON AIR NOW
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
+                {currentLive.category}
+              </span>
+            </div>
 
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display leading-none">
-              Gist Hangout Show
+              {currentLive.showTitle}
             </h3>
 
-            <p className="text-base sm:text-lg font-bold text-gray-200">
-              With <span className="text-brand-yellow">Amwoni & Imole Crew</span>
-            </p>
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-full overflow-hidden border border-brand-yellow/60 shrink-0 bg-neutral-800">
+                <img
+                  src={currentLive.hostAvatar}
+                  alt={currentLive.hostName}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-sm sm:text-base font-bold text-gray-200">
+                With <span className="text-brand-yellow">{currentLive.hostName}</span>
+              </p>
+            </div>
 
             <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-300 pt-2">
               <span className="flex items-center gap-1.5 font-mono">
                 <Clock className="w-4 h-4 text-brand-yellow" />
-                07:00 am – 10:00 am
+                {currentLive.timeSlot}
               </span>
 
               <button
@@ -367,12 +385,12 @@ export const ShowsPage: React.FC = () => {
 
         {/* 2-Column Show Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-          {/* Card 1: Comedy Splash */}
+          {/* Card 1: Next Show */}
           <div className="relative rounded-[28px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[260px] sm:min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
             {/* Background Image */}
             <img
-              src={ASSET_IMAGES.shows.comedySplash}
-              alt="Comedy Splash"
+              src={nextLive.image}
+              alt={nextLive.showTitle}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -390,15 +408,15 @@ export const ShowsPage: React.FC = () => {
             {/* Foreground Content */}
             <div className="relative z-10 space-y-1.5">
               <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
-                Comedy & Banter
+                {nextLive.category}
               </span>
 
               <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
-                Comedy Splash
+                {nextLive.showTitle}
               </h4>
 
               <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
-                <span className="font-mono">10:00 am – 01:00 pm</span>
+                <span className="font-mono">{nextLive.timeSlot}</span>
                 <button
                   onClick={() => playLiveStream()}
                   className="p-1.5 text-gray-300 hover:text-brand-yellow transition-colors cursor-pointer"
@@ -409,12 +427,12 @@ export const ShowsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 2: Reggae Hour */}
+          {/* Card 2: Featured Show (Gist Hangout / Gudugbe) */}
           <div className="relative rounded-[28px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[260px] sm:min-h-[280px] flex flex-col justify-end p-6 sm:p-8 border border-white/10 group">
             {/* Background Image */}
             <img
-              src={ASSET_IMAGES.shows.reggaeHour}
-              alt="Reggae Hour"
+              src={ASSET_IMAGES.shows.gudugbe}
+              alt="Gudugbe"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -432,15 +450,15 @@ export const ShowsPage: React.FC = () => {
             {/* Foreground Content */}
             <div className="relative z-10 space-y-1.5">
               <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
-                Roots & Reggae
+                Street Talk & Drive
               </span>
 
               <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
-                Reggae Hour
+                Gudugbe
               </h4>
 
               <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
-                <span className="font-mono">01:00 pm – 03:00 pm</span>
+                <span className="font-mono">07:00 pm – 09:30 pm</span>
                 <button
                   onClick={() => playLiveStream()}
                   className="p-1.5 text-gray-300 hover:text-brand-yellow transition-colors cursor-pointer"

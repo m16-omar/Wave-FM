@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { WEEKLY_SCHEDULE } from '../../data/schedule';
+import { WEEKLY_SCHEDULE, getCurrentLiveShow } from '../../data/schedule';
 import { DayOfWeek } from '../../types/schedule';
 import { ScheduleItem } from './ScheduleItem';
 import { Tabs, TabItem } from '../ui/Tabs';
@@ -34,6 +34,7 @@ export const Schedule: React.FC<ScheduleProps> = ({
     'saturday',
   ];
   const todayDay = dayIndexMap[new Date().getDay()] || 'monday';
+  const currentLiveShow = getCurrentLiveShow();
 
   const [selectedDay, setSelectedDay] = useState<DayOfWeek>(defaultDay || todayDay);
 
@@ -60,9 +61,15 @@ export const Schedule: React.FC<ScheduleProps> = ({
       {/* Schedule Items for Selected Day */}
       <div className="space-y-3">
         {currentSlots.length > 0 ? (
-          currentSlots.map((item) => (
-            <ScheduleItem key={item.id} item={item} />
-          ))
+          currentSlots.map((item) => {
+            const isLive = selectedDay === todayDay && item.id === currentLiveShow.id;
+            return (
+              <ScheduleItem
+                key={item.id}
+                item={{ ...item, isLiveNow: isLive }}
+              />
+            );
+          })
         ) : (
           <div className="text-center py-12 bg-background-card rounded-2xl border border-border">
             <p className="text-gray-400 text-sm">

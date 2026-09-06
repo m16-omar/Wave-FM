@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Play, ArrowRight } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
-import { ASSET_IMAGES } from '../../assets/images';
+import { getCurrentLiveShow } from '../../data/schedule';
 
 export const FeaturedScheduleCallout: React.FC = () => {
   const { playLiveStream } = useAudio();
+  const currentShow = getCurrentLiveShow();
 
   const handleSeeSchedule = (e: React.MouseEvent) => {
     const el = document.getElementById('schedule');
@@ -19,17 +20,17 @@ export const FeaturedScheduleCallout: React.FC = () => {
     <section className="w-full py-6 sm:py-10 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Left Card: Featured Show Card (7 Cols) */}
+          {/* Left Card: Dynamic Live Show Card (7 Cols) */}
           <div className="lg:col-span-7 relative rounded-[32px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[340px] sm:min-h-[380px] flex flex-col justify-end p-6 sm:p-10 border border-white/10 group">
-            {/* Background Image of Host */}
+            {/* Background Image of Show Artwork */}
             <img
-              src={ASSET_IMAGES.amwoni}
-              alt="Gist Hangout Show - Imole 106.3 FM"
+              src={currentShow.image}
+              alt={`${currentShow.showTitle} - Imole 106.3 FM`}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
             />
 
             {/* Dark Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
             {/* Giant Watermark Background Text "SHOW" */}
             <div className="absolute top-4 left-6 pointer-events-none opacity-20 select-none">
@@ -40,24 +41,37 @@ export const FeaturedScheduleCallout: React.FC = () => {
 
             {/* Content Foreground */}
             <div className="relative z-10 space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
-                  FEATURED ON AIR
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider shadow-glow-yellow/20">
+                  <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
+                  CURRENT SHOW • ON AIR NOW
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
+                  {currentShow.category}
                 </span>
               </div>
 
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display">
-                Gist Hangout Show
+                {currentShow.showTitle}
               </h3>
 
-              <p className="text-base sm:text-lg font-bold text-gray-200">
-                Hosted by <span className="text-brand-yellow">Amwoni & Imole Crew</span>
-              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-brand-yellow/60 shrink-0 bg-neutral-800">
+                  <img
+                    src={currentShow.hostAvatar}
+                    alt={currentShow.hostName}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="text-sm sm:text-base font-bold text-gray-200">
+                  Hosted by <span className="text-brand-yellow">{currentShow.hostName}</span>
+                </p>
+              </div>
 
               <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-300 pt-1">
                 <span className="flex items-center gap-1.5 font-mono">
                   <Clock className="w-4 h-4 text-brand-yellow" />
-                  07:00 am – 10:00 am (WAT)
+                  {currentShow.timeSlot} (WAT)
                 </span>
 
                 <button

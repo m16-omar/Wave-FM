@@ -977,3 +977,70 @@ export const WEEKLY_SCHEDULE: Record<DayOfWeek, ScheduleSlot[]> = {
     },
   ],
 };
+
+export const getCurrentLiveShow = (now: Date = new Date()): ScheduleSlot => {
+  const dayIndexMap: DayOfWeek[] = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+  ];
+  const currentDay = dayIndexMap[now.getDay()] || 'monday';
+  const slots = WEEKLY_SCHEDULE[currentDay] || WEEKLY_SCHEDULE.monday;
+
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+  const parseTimeToMinutes = (timeStr: string): number => {
+    const match = timeStr.trim().match(/(\d+):(\d+)\s*(AM|PM)?/i);
+    if (!match) return 0;
+    let hours = parseInt(match[1], 10);
+    const minutes = parseInt(match[2], 10);
+    const ampm = match[3]?.toUpperCase();
+    if (ampm === 'PM' && hours < 12) hours += 12;
+    if (ampm === 'AM' && hours === 12) hours = 0;
+    return hours * 60 + minutes;
+  };
+
+  for (const slot of slots) {
+    const startMin = parseTimeToMinutes(slot.startTime);
+    let endMin = parseTimeToMinutes(slot.endTime);
+    // If show spans midnight (e.g. 11:30 PM to 05:00 AM)
+    if (endMin <= startMin) {
+      if (currentMinutes >= startMin || currentMinutes < endMin) {
+        return { ...slot, isLiveNow: true };
+      }
+    } else {
+      if (currentMinutes >= startMin && currentMinutes < endMin) {
+        return { ...slot, isLiveNow: true };
+      }
+    }
+  }
+
+  return { ...slots[0], isLiveNow: true };
+};
+
+export const getNextLiveShow = (now: Date = new Date()): ScheduleSlot => {
+  const dayIndexMap: DayOfWeek[] = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+  ];
+  const currentDay = dayIndexMap[now.getDay()] || 'monday';
+  const slots = WEEKLY_SCHEDULE[currentDay] || WEEKLY_SCHEDULE.monday;
+  const current = getCurrentLiveShow(now);
+  const currentIndex = slots.findIndex((s) => s.id === current.id);
+  if (currentIndex >= 0 && currentIndex + 1 < slots.length) {
+    return slots[currentIndex + 1];
+  }
+  const nextDay = dayIndexMap[(now.getDay() + 1) % 7];
+  const nextDaySlots = WEEKLY_SCHEDULE[nextDay] || slots;
+  return nextDaySlots[0];
+};
+
