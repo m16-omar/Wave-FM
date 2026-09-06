@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { StationLogo } from '../ui/StationLogo';
+import { SocialLinks } from '../ui/SocialLinks';
 import { MobileMenu } from './MobileMenu';
 import { SearchOverlay } from './SearchOverlay';
 import { StreamSelectorModal } from '../audio/StreamSelectorModal';
@@ -252,8 +253,13 @@ export const Header: React.FC = () => {
             </nav>
           </div>
 
-          {/* Right: Station Logo (WAVE98 gold) + Mobile Hamburger */}
-          <div className="flex items-center gap-4 shrink-0">
+          {/* Right: Social Media Handles + Station Logo + Mobile Hamburger */}
+          <div className="flex items-center gap-2.5 sm:gap-3.5 lg:gap-4 shrink-0">
+            {/* Social Media Handles Icons (Before Logo) */}
+            <div className="hidden sm:flex items-center">
+              <SocialLinks size="xs" variant="navbar" />
+            </div>
+
             <StationLogo variant="light" size="sm" asLink={true} />
 
             {/* Mobile Menu Toggle Button */}

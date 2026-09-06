@@ -4,8 +4,8 @@ import { STATION_INFO } from '../../data/station';
 
 interface SocialLinksProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
-  variant?: 'ghost' | 'pills' | 'solid' | 'colored-circles';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
+  variant?: 'ghost' | 'pills' | 'solid' | 'colored-circles' | 'navbar';
 }
 
 export const SocialLinks: React.FC<SocialLinksProps> = ({
@@ -18,6 +18,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       label: 'Facebook',
       href: STATION_INFO.socialLinks.facebook,
       bg: 'bg-[#1877F2] text-white hover:bg-[#166fe5]',
+      navbarHover: 'hover:bg-[#1877F2]',
       color: 'hover:text-[#1877F2] hover:border-[#1877F2]',
       svg: (
         <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
@@ -29,6 +30,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       label: 'Instagram',
       href: STATION_INFO.socialLinks.instagram,
       bg: 'bg-gradient-to-tr from-[#FD1D1D] via-[#E1306C] to-[#C13584] text-white hover:opacity-90',
+      navbarHover: 'hover:bg-gradient-to-tr hover:from-[#FD1D1D] hover:via-[#E1306C] hover:to-[#C13584]',
       color: 'hover:text-[#E4405F] hover:border-[#E4405F]',
       svg: (
         <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
@@ -40,6 +42,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       label: 'Twitter / X',
       href: STATION_INFO.socialLinks.twitter,
       bg: 'bg-[#1DA1F2] text-white hover:bg-[#1a94df]',
+      navbarHover: 'hover:bg-black',
       color: 'hover:text-[#1DA1F2] hover:border-[#1DA1F2]',
       svg: (
         <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
@@ -51,6 +54,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       label: 'YouTube',
       href: STATION_INFO.socialLinks.youtube,
       bg: 'bg-[#FF0000] text-white hover:bg-[#e60000]',
+      navbarHover: 'hover:bg-[#FF0000]',
       color: 'hover:text-[#FF0000] hover:border-[#FF0000]',
       svg: (
         <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
@@ -62,6 +66,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
       label: 'TikTok',
       href: STATION_INFO.socialLinks.tiktok,
       bg: 'bg-black text-white border border-white/20 hover:bg-neutral-900',
+      navbarHover: 'hover:bg-black',
       color: 'hover:text-brand-yellow hover:border-brand-yellow',
       svg: (
         <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
@@ -72,13 +77,14 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
   ];
 
   const sizeClasses = {
+    xs: 'w-7 h-7 p-1.5',
     sm: 'w-8 h-8 p-1.5',
     md: 'w-10 h-10 p-2',
     lg: 'w-12 h-12 p-2.5',
   }[size];
 
   return (
-    <div className={clsx('flex items-center gap-2.5', className)}>
+    <div className={clsx('flex items-center gap-1.5 sm:gap-2', className)}>
       {socialItems.map((item) => (
         <a
           key={item.label}
@@ -96,7 +102,9 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({
             variant === 'solid' &&
               'bg-brand-yellow text-black hover:bg-brand-yellowHover hover:scale-110 shadow-md',
             variant === 'colored-circles' &&
-              `${item.bg} hover:scale-115 active:scale-95 shadow-lg`
+              `${item.bg} hover:scale-115 active:scale-95 shadow-lg`,
+            variant === 'navbar' &&
+              `bg-neutral-100/90 text-neutral-700 border border-neutral-200/80 hover:text-white hover:border-transparent hover:scale-110 active:scale-95 shadow-2xs ${item.navbarHover}`
           )}
         >
           {item.svg}
