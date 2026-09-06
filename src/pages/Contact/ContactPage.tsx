@@ -269,6 +269,30 @@ export const ContactPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start justify-center">
           {/* Left Column: Clean White Rounded Info Card */}
           <div className="md:col-span-6 bg-white rounded-[32px] p-8 sm:p-10 text-black shadow-2xl space-y-6 w-full">
+            {/* Section 0: ABOUT THE STATION MINI OVERVIEW */}
+            <div className="space-y-2.5 pb-4 border-b border-gray-100">
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-lg sm:text-xl font-black uppercase font-display tracking-tight text-black leading-none flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-brand-yellowDark" />
+                  <span>STATION BIO</span>
+                </h3>
+                <span className="text-[10px] font-extrabold uppercase text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+                  Launched 21 Nov 2025
+                </span>
+              </div>
+              <p className="text-xs text-gray-600 leading-relaxed font-medium">
+                <strong className="text-black font-black">Imole 106.3FM</strong> is Lagos's urban indigenous voice — a commercial radio station born to inform, inspire, and illuminate. Rooted in culture, community, and conversation that matters.
+              </p>
+              <button
+                type="button"
+                onClick={() => scrollToSection('station-bio')}
+                className="text-[11px] font-black text-brand-yellowDark hover:underline inline-flex items-center gap-1 uppercase tracking-wider cursor-pointer"
+              >
+                <span>Read Full Station Bio & Leadership</span>
+                <span>→</span>
+              </button>
+            </div>
+
             {/* Section 1: OUR SOCIALS */}
             <div className="space-y-3">
               <div className="flex items-center justify-between gap-2">
