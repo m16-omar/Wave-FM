@@ -1,4 +1,15 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
+
+export const PodcastDetailPage: React.FC = () => {
+  return <Navigate to="/podcasts" replace />;
+};
+
+/*
+===================================================================================
+PREVIOUS PODCAST DETAIL PAGE DESIGN (PRESERVED IN COMMENTS FOR FUTURE ACTIVATION)
+===================================================================================
+
 import { useParams, Link } from 'react-router-dom';
 import { PODCAST_EPISODES } from '../../data/podcasts';
 import { PodcastCard } from '../../components/cards/PodcastCard';
@@ -6,7 +17,7 @@ import { Badge } from '../../components/ui/Badge';
 import { Play, Pause, Clock, Mic2 } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
 
-export const PodcastDetailPage: React.FC = () => {
+export const PreviousPodcastDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { isPlaying, currentTrack, playPodcast, togglePlay } = useAudio();
 
@@ -30,7 +41,7 @@ export const PodcastDetailPage: React.FC = () => {
   return (
     <div className="w-full py-8 md:py-12 space-y-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Breadcrumbs */}
+        // Breadcrumbs
         <div className="flex items-center gap-2 text-xs text-gray-400">
           <Link to="/" className="hover:text-brand-yellow">Home</Link>
           <span>/</span>
@@ -39,10 +50,9 @@ export const PodcastDetailPage: React.FC = () => {
           <span className="text-brand-yellow truncate max-w-xs">{episode.title}</span>
         </div>
 
-        {/* Hero Card with Audio Play */}
+        // Hero Card with Audio Play
         <div className="relative rounded-3xl overflow-hidden bg-background-card border border-border p-6 sm:p-10 lg:p-12 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Cover */}
             <div className="lg:col-span-4 aspect-square rounded-2xl overflow-hidden bg-background-tertiary border-2 border-border shadow-2xl">
               <img
                 src={episode.coverImage}
@@ -51,7 +61,6 @@ export const PodcastDetailPage: React.FC = () => {
               />
             </div>
 
-            {/* Episode Meta & Big Play Control */}
             <div className="lg:col-span-8 space-y-5">
               <div className="flex flex-wrap items-center gap-3">
                 <Badge variant="cyan" size="md">
@@ -84,7 +93,6 @@ export const PodcastDetailPage: React.FC = () => {
                 {episode.description}
               </p>
 
-              {/* Action */}
               <div className="pt-4 border-t border-border flex items-center gap-4">
                 <button
                   onClick={handlePlay}
@@ -107,7 +115,6 @@ export const PodcastDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Episode Show Notes */}
         <div className="p-8 rounded-3xl bg-background-card border border-border space-y-4">
           <h3 className="text-xl font-extrabold text-white border-l-2 border-brand-yellow pl-3">
             Episode Show Notes & Highlights
@@ -127,7 +134,6 @@ export const PodcastDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* More Episodes */}
         <div className="pt-8 border-t border-border">
           <h3 className="text-2xl font-black text-white mb-6">
             More Episodes to Stream
@@ -142,3 +148,5 @@ export const PodcastDetailPage: React.FC = () => {
     </div>
   );
 };
+*/
+
