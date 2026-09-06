@@ -22,22 +22,15 @@ export const FeaturedScheduleCallout: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Left Card: Dynamic Live Show Card (7 Cols) */}
           <div className="lg:col-span-7 relative rounded-[32px] overflow-hidden bg-neutral-900 shadow-2xl min-h-[340px] sm:min-h-[380px] flex flex-col justify-end p-6 sm:p-10 border border-white/10 group">
-            {/* Background Image of Show Artwork */}
+            {/* Full Image of Show Artwork */}
             <img
               src={currentShow.image}
               alt={`${currentShow.showTitle} - Imole 106.3 FM`}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
+              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
 
-            {/* Dark Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-
-            {/* Giant Watermark Background Text "SHOW" */}
-            <div className="absolute top-4 left-6 pointer-events-none opacity-20 select-none">
-              <span className="font-black text-6xl sm:text-8xl md:text-9xl tracking-tighter text-white uppercase font-display leading-none">
-                SHOW
-              </span>
-            </div>
+            {/* Gradient Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10" />
 
             {/* Content Foreground */}
             <div className="relative z-10 space-y-3">
@@ -46,39 +39,39 @@ export const FeaturedScheduleCallout: React.FC = () => {
                   <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
                   CURRENT SHOW • ON AIR NOW
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
+                <span className="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
                   {currentShow.category}
                 </span>
               </div>
 
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase font-display drop-shadow-md">
                 {currentShow.showTitle}
               </h3>
 
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full overflow-hidden border border-brand-yellow/60 shrink-0 bg-neutral-800">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-brand-yellow/60 shrink-0 bg-neutral-800 shadow-md">
                   <img
                     src={currentShow.hostAvatar}
                     alt={currentShow.hostName}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p className="text-sm sm:text-base font-bold text-gray-200">
+                <p className="text-sm sm:text-base font-bold text-gray-100 drop-shadow">
                   Hosted by <span className="text-brand-yellow">{currentShow.hostName}</span>
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-300 pt-1">
-                <span className="flex items-center gap-1.5 font-mono">
+              <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-200 pt-1">
+                <span className="flex items-center gap-1.5 font-mono bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
                   <Clock className="w-4 h-4 text-brand-yellow" />
                   {currentShow.timeSlot} (WAT)
                 </span>
 
                 <button
                   onClick={() => playLiveStream()}
-                  className="inline-flex items-center gap-1.5 text-xs font-black text-brand-yellow hover:underline cursor-pointer ml-auto"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-brand-yellow hover:bg-brand-yellowHover text-black text-xs font-black uppercase tracking-wider transition-all active:scale-95 cursor-pointer ml-auto shadow-lg"
                 >
-                  <Play className="w-4 h-4 fill-current" />
+                  <Play className="w-3.5 h-3.5 fill-current" />
                   <span>Listen Live</span>
                 </button>
               </div>

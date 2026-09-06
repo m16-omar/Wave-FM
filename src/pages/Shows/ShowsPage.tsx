@@ -312,19 +312,9 @@ export const ShowsPage: React.FC = () => {
           <img
             src={currentLive.image}
             alt={`${currentLive.showTitle} - Imole 106.3 FM`}
-            className="absolute inset-0 w-full h-full object-cover object-right group-hover:scale-105 transition-transform duration-700 opacity-60"
+            className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent" />
-
-          {/* Stylized Background Watermark "SHOW RADIO" */}
-          <div className="absolute top-6 left-8 pointer-events-none opacity-25 select-none">
-            <span className="font-black text-7xl sm:text-8xl tracking-tighter text-white uppercase font-display leading-none">
-              SHOW
-            </span>
-            <span className="block font-marker text-brand-yellow text-3xl -mt-2">
-              RADIO
-            </span>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/20" />
 
           {/* Content Foreground */}
           <div className="relative z-10 space-y-3 max-w-md">
@@ -333,39 +323,39 @@ export const ShowsPage: React.FC = () => {
                 <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
                 ON AIR NOW
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
+              <span className="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
                 {currentLive.category}
               </span>
             </div>
 
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display leading-none">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display leading-none drop-shadow-md">
               {currentLive.showTitle}
             </h3>
 
             <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-full overflow-hidden border border-brand-yellow/60 shrink-0 bg-neutral-800">
+              <div className="w-7 h-7 rounded-full overflow-hidden border border-brand-yellow/60 shrink-0 bg-neutral-800 shadow-md">
                 <img
                   src={currentLive.hostAvatar}
                   alt={currentLive.hostName}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <p className="text-sm sm:text-base font-bold text-gray-200">
+              <p className="text-sm sm:text-base font-bold text-gray-200 drop-shadow">
                 With <span className="text-brand-yellow">{currentLive.hostName}</span>
               </p>
             </div>
 
-            <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-300 pt-2">
-              <span className="flex items-center gap-1.5 font-mono">
+            <div className="flex items-center gap-4 text-xs sm:text-sm font-semibold text-gray-200 pt-2">
+              <span className="flex items-center gap-1.5 font-mono bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
                 <Clock className="w-4 h-4 text-brand-yellow" />
                 {currentLive.timeSlot}
               </span>
 
               <button
                 onClick={() => playLiveStream()}
-                className="inline-flex items-center gap-1.5 text-xs font-black text-brand-yellow hover:underline cursor-pointer ml-auto"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-yellow hover:bg-brand-yellowHover text-black text-xs font-black uppercase tracking-wider cursor-pointer ml-auto shadow-md"
               >
-                <Play className="w-4 h-4 fill-current" />
+                <Play className="w-3.5 h-3.5 fill-current" />
                 <span>Listen Live</span>
               </button>
             </div>
@@ -391,32 +381,22 @@ export const ShowsPage: React.FC = () => {
             <img
               src={nextLive.image}
               alt={nextLive.showTitle}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
+              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-            {/* Stylized Background Watermark */}
-            <div className="absolute top-4 left-6 pointer-events-none opacity-20 select-none">
-              <span className="font-black text-5xl tracking-tighter text-white uppercase font-display leading-none">
-                SHOW
-              </span>
-              <span className="block font-marker text-brand-yellow text-xl -mt-1">
-                RADIO
-              </span>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10" />
 
             {/* Foreground Content */}
             <div className="relative z-10 space-y-1.5">
-              <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block">
+              <span className="px-2.5 py-0.5 rounded border border-brand-yellow text-brand-yellow text-[10px] font-black uppercase tracking-wider inline-block bg-black/40 backdrop-blur-md">
                 {nextLive.category}
               </span>
 
-              <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
+              <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display drop-shadow-md">
                 {nextLive.showTitle}
               </h4>
 
-              <div className="flex items-center justify-between text-xs text-gray-400 font-medium pt-1">
-                <span className="font-mono">{nextLive.timeSlot}</span>
+              <div className="flex items-center justify-between text-xs text-gray-300 font-medium pt-1">
+                <span className="font-mono bg-black/40 px-2 py-0.5 rounded border border-white/10">{nextLive.timeSlot}</span>
                 <button
                   onClick={() => playLiveStream()}
                   className="p-1.5 text-gray-300 hover:text-brand-yellow transition-colors cursor-pointer"
@@ -433,19 +413,9 @@ export const ShowsPage: React.FC = () => {
             <img
               src={ASSET_IMAGES.shows.gudugbe}
               alt="Gudugbe"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
+              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-            {/* Stylized Background Watermark */}
-            <div className="absolute top-4 left-6 pointer-events-none opacity-20 select-none">
-              <span className="font-black text-5xl tracking-tighter text-white uppercase font-display leading-none">
-                SHOW
-              </span>
-              <span className="block font-marker text-brand-yellow text-xl -mt-1">
-                RADIO
-              </span>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10" />
 
             {/* Foreground Content */}
             <div className="relative z-10 space-y-1.5">
