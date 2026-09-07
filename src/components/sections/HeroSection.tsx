@@ -19,7 +19,10 @@ export const HeroSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         {/* Top Header: Logo + Big Circular Gold Play Button */}
         <div className="flex items-center justify-center gap-4 sm:gap-8 flex-wrap">
-          <StationLogo variant="dark" size="hero" asLink={false} />
+          <h1 className="inline-flex items-center justify-center">
+            <StationLogo variant="dark" size="hero" asLink={false} />
+            <span className="sr-only">Imole 106.3 FM — Lagos's Urban Indigenous Voice</span>
+          </h1>
 
           {/* Big Circular Yellow Play Button from Screenshot 1 */}
           <button
