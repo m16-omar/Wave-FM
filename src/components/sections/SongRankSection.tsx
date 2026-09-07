@@ -1,8 +1,7 @@
 import React from 'react';
-import { Play, Pause, MoreHorizontal, Check, ArrowUpRight } from 'lucide-react';
+import { Play, Pause, MoreHorizontal, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAudio } from '../../context/AudioContext';
-import confetti from 'canvas-confetti';
 import {
   getUpcomingConsecutiveShows,
   getNextLiveShow,
@@ -15,27 +14,11 @@ export const SongRankSection: React.FC = () => {
     currentTrack,
     playTrack,
     togglePlay,
-    voteSong,
-    votedSongIds,
     playLiveStream,
   } = useAudio();
 
   const upcomingShows = getUpcomingConsecutiveShows(4);
   const featuredShow = getNextLiveShow() || getCurrentLiveShow();
-
-  const handleVote = (e: React.MouseEvent, showId: string) => {
-    e.stopPropagation();
-    e.preventDefault();
-    voteSong(showId);
-
-    // Trigger celebratory confetti effect
-    confetti({
-      particleCount: 40,
-      spread: 60,
-      origin: { y: 0.8 },
-      colors: ['#F5B800', '#FFFFFF', '#162E6E'],
-    });
-  };
 
   return (
     <section className="w-full py-12 sm:py-16 select-none">
@@ -45,10 +28,10 @@ export const SongRankSection: React.FC = () => {
           {/* Left Title */}
           <div className="max-w-xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-brand-yellow tracking-tight uppercase font-display">
-              SHOW RANK
+              LINE UP SHOWS
             </h2>
             <p className="mt-2 text-sm sm:text-base text-gray-400 font-medium">
-              Vote for your favorite on-air programs and indigenous broadcasts. Direct listener power on Imole 106.3 FM.
+              Tune in to upcoming consecutive on-air broadcasts, flagship presentations, and cultural shows on Imole 106.3 FM.
             </p>
           </div>
 
@@ -109,7 +92,7 @@ export const SongRankSection: React.FC = () => {
           {/* Top Badge + Dotted Line */}
           <div className="flex items-center gap-4 pb-6">
             <span className="px-4 py-1.5 rounded-full bg-black text-white text-[11px] sm:text-xs font-black uppercase tracking-wider shrink-0 shadow-md">
-              VOTE YOUR FAV SHOW
+              UPCOMING SHOWS LINEUP
             </span>
             <div className="flex-1 border-b border-dashed border-gray-300" />
             <Link
@@ -125,7 +108,6 @@ export const SongRankSection: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {upcomingShows.map((show) => {
               const isThisPlaying = isPlaying && currentTrack.title === show.title;
-              const voted = votedSongIds.includes(show.id);
 
               return (
                 <Link
@@ -157,7 +139,6 @@ export const SongRankSection: React.FC = () => {
                             coverArt: show.coverArt,
                             duration: 210,
                             previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-                            votes: show.votes,
                             genre: 'Live Show',
                           });
                         }
@@ -189,22 +170,13 @@ export const SongRankSection: React.FC = () => {
                       </p>
                     </div>
 
-                    {/* Vote / Action Button */}
-                    <button
-                      onClick={(e) => handleVote(e, show.id)}
-                      className={`p-2 rounded-xl transition-all cursor-pointer shrink-0 mt-0.5 ${
-                        voted
-                          ? 'bg-brand-yellow text-black shadow-glow-yellow'
-                          : 'bg-white/10 hover:bg-brand-yellow hover:text-black text-gray-300'
-                      }`}
-                      title={voted ? 'Voted!' : 'Vote for show'}
+                    {/* Action Button */}
+                    <div
+                      className="p-2 rounded-xl bg-white/10 group-hover:bg-brand-yellow group-hover:text-black text-gray-300 transition-all shrink-0 mt-0.5"
+                      title="View Show"
                     >
-                      {voted ? (
-                        <Check className="w-4 h-4 stroke-[3]" />
-                      ) : (
-                        <MoreHorizontal className="w-4 h-4" />
-                      )}
-                    </button>
+                      <MoreHorizontal className="w-4 h-4" />
+                    </div>
                   </div>
                 </Link>
               );
