@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAudio } from '../../context/AudioContext';
 import { EqualizerVisualizer } from './EqualizerVisualizer';
+import { LiveNowBadge } from '../ui/LiveNowBadge';
 import { Radio } from 'lucide-react';
 import { clsx } from 'clsx';
 
@@ -35,10 +36,7 @@ export const NowPlaying: React.FC<NowPlayingProps> = ({
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           {playbackMode === 'live-radio' ? (
-            <span className="inline-flex items-center gap-1 text-[10px] font-extrabold text-brand-yellow uppercase tracking-widest">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-red animate-ping" />
-              ON AIR NOW
-            </span>
+            <LiveNowBadge size="xs" />
           ) : (
             <span className="text-[10px] font-extrabold text-brand-cyan uppercase tracking-widest">
               PREVIEW PLAY

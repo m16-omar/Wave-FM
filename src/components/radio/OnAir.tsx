@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Play, Pause, Radio, Users, Clock, ArrowRight } from 'lucide-react';
 import { Badge } from '../ui/Badge';
+import { LiveNowBadge } from '../ui/LiveNowBadge';
 import { EqualizerVisualizer } from '../audio/EqualizerVisualizer';
 import { useAudio } from '../../context/AudioContext';
 import { clsx } from 'clsx';
@@ -33,9 +34,7 @@ export const OnAir: React.FC<OnAirProps> = ({ className }) => {
       {/* Top Meta: Live Badge & Show Category */}
       <div className="relative z-10 flex items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
-          <Badge variant="live" size="md" dot>
-            ON AIR NOW
-          </Badge>
+          <LiveNowBadge size="md" />
           <span className="text-xs font-black uppercase tracking-widest text-brand-yellow">
             {onAirShow.category}
           </span>

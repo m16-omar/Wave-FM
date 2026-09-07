@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Clock, Play, Radio, ArrowRight } from 'lucide-react';
 import { ScheduleSlot } from '../../types/schedule';
 import { Badge } from '../ui/Badge';
+import { LiveNowBadge } from '../ui/LiveNowBadge';
 import { useAudio } from '../../context/AudioContext';
 import { clsx } from 'clsx';
 
@@ -22,7 +23,7 @@ export const ScheduleItem: React.FC<ScheduleItemProps> = ({
       className={clsx(
         'group flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl border transition-all duration-300',
         item.isLiveNow
-          ? 'bg-brand-yellow/10 border-brand-yellow shadow-glow-yellow/20'
+          ? 'bg-red-950/20 border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.15)]'
           : 'bg-background-card border-border hover:border-brand-yellow/40 hover:bg-background-hover',
         className
       )}
@@ -37,8 +38,8 @@ export const ScheduleItem: React.FC<ScheduleItemProps> = ({
             loading="lazy"
           />
           {item.isLiveNow && (
-            <div className="absolute inset-0 bg-brand-yellow/20 flex items-center justify-center">
-              <span className="w-2.5 h-2.5 rounded-full bg-brand-red animate-ping" />
+            <div className="absolute inset-0 bg-red-900/30 flex items-center justify-center">
+              <span className="w-3 h-3 rounded-full bg-red-500 animate-ping opacity-75" />
             </div>
           )}
         </div>
@@ -47,9 +48,7 @@ export const ScheduleItem: React.FC<ScheduleItemProps> = ({
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1">
             {item.isLiveNow ? (
-              <Badge variant="live" size="sm" dot>
-                LIVE NOW
-              </Badge>
+              <LiveNowBadge size="xs" />
             ) : (
               <span className="text-xs font-bold text-brand-yellow uppercase tracking-wider flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" />

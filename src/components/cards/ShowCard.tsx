@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { Clock, Play, ArrowRight } from 'lucide-react';
 import type { RadioShow } from '../../types/show';
 import { Badge } from '../ui/Badge';
+import { LiveNowBadge } from '../ui/LiveNowBadge';
 import { useAudio } from '../../context/AudioContext';
+import { getCurrentLiveShow } from '../../data/schedule';
 import { clsx } from 'clsx';
 
 interface ShowCardProps {
@@ -17,6 +19,8 @@ export const ShowCard: React.FC<ShowCardProps> = ({
   className,
 }) => {
   const { playLiveStream } = useAudio();
+  const currentLive = getCurrentLiveShow();
+  const isLive = show.isLive || show.slug === currentLive.showSlug || show.id === currentLive.id;
 
   return (
     <div
@@ -37,10 +41,8 @@ export const ShowCard: React.FC<ShowCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
         <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
-          {show.isLive ? (
-            <Badge variant="live" size="sm" dot>
-              ON AIR
-            </Badge>
+          {isLive ? (
+            <LiveNowBadge size="xs" />
           ) : (
             <Badge variant="yellow" size="sm">
               {show.category}
@@ -48,10 +50,10 @@ export const ShowCard: React.FC<ShowCardProps> = ({
           )}
         </div>
 
-        {show.isLive && (
+        {isLive && (
           <button
             onClick={() => playLiveStream()}
-            className="absolute bottom-3 right-3 z-10 p-3 rounded-full bg-brand-yellow text-black shadow-glow-yellow hover:scale-110 active:scale-95 transition-all"
+            className="absolute bottom-3 right-3 z-10 p-3 rounded-full bg-brand-yellow text-black shadow-glow-yellow hover:scale-110 active:scale-95 transition-all cursor-pointer"
             aria-label="Listen Live"
           >
             <Play className="w-4 h-4 fill-current ml-0.5" />

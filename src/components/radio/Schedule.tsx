@@ -62,7 +62,7 @@ export const Schedule: React.FC<ScheduleProps> = ({
       <div className="space-y-3">
         {currentSlots.length > 0 ? (
           currentSlots.map((item) => {
-            const isLive = selectedDay === todayDay && item.id === currentLiveShow.id;
+            const isLive = selectedDay === todayDay && (item.id === currentLiveShow.id || item.showSlug === currentLiveShow.showSlug || item.isLiveNow);
             return (
               <ScheduleItem
                 key={item.id}

@@ -7,6 +7,7 @@ import { getCurrentLiveShow, getNextLiveShow } from '../../data/schedule';
 import { Play, Pause, MoreVertical, ShoppingCart, Star, Clock, Calendar } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ASSET_IMAGES } from '../../assets/images';
+import { LiveNowBadge } from '../../components/ui/LiveNowBadge';
 
 interface HostSong {
   id: string;
@@ -76,10 +77,7 @@ export const ShowsPage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-xs text-brand-yellow font-bold bg-brand-yellow/10 px-3 py-1.5 rounded-lg border border-brand-yellow/20 shadow-glow-yellow/10">
-              <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
-              Live Feed Active
-            </span>
+            <LiveNowBadge size="sm" label="Live Feed Active" />
           </div>
         </div>
 
@@ -319,10 +317,7 @@ export const ShowsPage: React.FC = () => {
           {/* Content Foreground */}
           <div className="relative z-10 space-y-3 max-w-md">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
-                ON AIR NOW
-              </span>
+              <LiveNowBadge size="md" />
               <span className="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
                 {currentLive.category}
               </span>

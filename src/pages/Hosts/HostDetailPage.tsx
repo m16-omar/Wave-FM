@@ -17,6 +17,8 @@ import {
 import { clsx } from 'clsx';
 import confetti from 'canvas-confetti';
 import { ASSET_IMAGES } from '../../assets/images';
+import { LiveNowBadge } from '../../components/ui/LiveNowBadge';
+import { getCurrentLiveShow } from '../../data/schedule';
 
 interface HostTrack {
   id: string;
@@ -34,6 +36,12 @@ export const HostDetailPage: React.FC = () => {
   const host: PresenterItem =
     PRESENTERS_DATA.find((p) => p.slug === slug || p.id === slug) ||
     PRESENTERS_DATA[0];
+
+  const currentLive = getCurrentLiveShow();
+  const isHostShowLive =
+    host.showTitle.toLowerCase().includes(currentLive.showTitle.toLowerCase()) ||
+    currentLive.showTitle.toLowerCase().includes(host.showTitle.toLowerCase()) ||
+    (host.name && currentLive.hostName.toLowerCase().includes(host.name.toLowerCase()));
 
   const otherPresenters = PRESENTERS_DATA.filter((p) => p.id !== host.id);
   const hostArticles = ARTICLES_DATA.slice(0, 2);
@@ -210,9 +218,13 @@ export const HostDetailPage: React.FC = () => {
 
           {/* Foreground Show Details */}
           <div className="relative z-10 space-y-3 max-w-md">
-            <span className="px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
-              ON AIR SHOW
-            </span>
+            {isHostShowLive ? (
+              <LiveNowBadge size="sm" />
+            ) : (
+              <span className="px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider">
+                FLAGSHIP SHOW
+              </span>
+            )}
 
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase font-display leading-none">
               {host.showTitle}

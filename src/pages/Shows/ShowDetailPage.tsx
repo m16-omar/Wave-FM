@@ -5,8 +5,10 @@ import { PODCAST_EPISODES } from '../../data/podcasts';
 import { ShowCard } from '../../components/cards/ShowCard';
 import { PodcastCard } from '../../components/cards/PodcastCard';
 import { Badge } from '../../components/ui/Badge';
+import { LiveNowBadge } from '../../components/ui/LiveNowBadge';
 import { Clock, Play, Music } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
+import { getCurrentLiveShow } from '../../data/schedule';
 
 export const ShowDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +16,8 @@ export const ShowDetailPage: React.FC = () => {
 
   const show = SHOWS_DATA.find((s) => s.slug === slug || s.id === slug) || SHOWS_DATA[0];
   const otherShows = SHOWS_DATA.filter((s) => s.id !== show.id).slice(0, 3);
+  const currentLive = getCurrentLiveShow();
+  const isCurrentlyLive = show.isLive || show.slug === currentLive.showSlug || show.id === currentLive.id;
 
   return (
     <div className="w-full py-8 md:py-12 space-y-12">
@@ -51,10 +55,8 @@ export const ShowDetailPage: React.FC = () => {
             {/* Show Info & Broadcast Callout */}
             <div className="lg:col-span-8 space-y-5">
               <div className="flex flex-wrap items-center gap-3">
-                {show.isLive ? (
-                  <Badge variant="live" size="md" dot>
-                    ON AIR NOW
-                  </Badge>
+                {isCurrentlyLive ? (
+                  <LiveNowBadge size="md" />
                 ) : (
                   <Badge variant="yellow" size="md">
                     {show.category}
@@ -81,7 +83,7 @@ export const ShowDetailPage: React.FC = () => {
                   className="px-6 py-3.5 rounded-xl bg-brand-yellow text-black font-extrabold text-xs uppercase tracking-wider shadow-glow-yellow hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
                 >
                   <Play className="w-4 h-4 fill-current" />
-                  <span>{show.isLive && isPlaying ? 'Pause Live Audio' : 'Listen Live'}</span>
+                  <span>{isCurrentlyLive && isPlaying ? 'Pause Live Audio' : 'Listen Live'}</span>
                 </button>
 
                 <Link

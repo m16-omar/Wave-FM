@@ -4,6 +4,8 @@ import { Clock, Play, ArrowRight } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
 import { getCurrentLiveShow } from '../../data/schedule';
 
+import { LiveNowBadge } from '../ui/LiveNowBadge';
+
 export const FeaturedScheduleCallout: React.FC = () => {
   const { playLiveStream } = useAudio();
   const currentShow = getCurrentLiveShow();
@@ -35,10 +37,7 @@ export const FeaturedScheduleCallout: React.FC = () => {
             {/* Content Foreground */}
             <div className="relative z-10 space-y-3">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-yellow text-black text-[10px] font-black uppercase tracking-wider shadow-glow-yellow/20">
-                  <span className="w-2 h-2 rounded-full bg-brand-red animate-ping" />
-                  CURRENT SHOW • ON AIR NOW
-                </span>
+                <LiveNowBadge size="md" />
                 <span className="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
                   {currentShow.category}
                 </span>

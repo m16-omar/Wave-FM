@@ -2,9 +2,9 @@ import React from 'react';
 import { Play, Pause, MoreHorizontal, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAudio } from '../../context/AudioContext';
+import { LiveNowBadge } from '../ui/LiveNowBadge';
 import {
   getUpcomingConsecutiveShows,
-  getNextLiveShow,
   getCurrentLiveShow,
 } from '../../data/schedule';
 
@@ -16,7 +16,7 @@ export const SongRankSection: React.FC = () => {
   } = useAudio();
 
   const upcomingShows = getUpcomingConsecutiveShows(4);
-  const featuredShow = getNextLiveShow() || getCurrentLiveShow();
+  const currentLive = getCurrentLiveShow();
 
   return (
     <section className="w-full py-12 sm:py-16 select-none">
@@ -33,34 +33,36 @@ export const SongRankSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Right: Featured Show Pill Card (Dynamic Next Up Show) */}
+          {/* Right: Featured Show Pill Card (Dynamic Live Now Show) */}
           <div className="relative self-start md:self-auto">
             <Link
-              to={`/shows/${featuredShow.showSlug}`}
+              to={`/shows/${currentLive.showSlug}`}
               className="bg-brand-yellow text-black rounded-3xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 shadow-xl border border-brand-yellowHover group hover:scale-[1.02] transition-transform"
             >
               {/* Show Thumbnail */}
-              <div className="w-12 h-12 rounded-xl overflow-hidden bg-black/10 shrink-0 border border-black/10">
+              <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-black/10 shrink-0 border border-black/10">
                 <img
-                  src={featuredShow.image}
-                  alt={`${featuredShow.showTitle} - Imole FM`}
+                  src={currentLive.image}
+                  alt={`${currentLive.showTitle} - Imole FM`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
 
               {/* Info */}
-              <div className="min-w-0 pr-2">
+              <div className="min-w-0 pr-2 space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <LiveNowBadge size="xs" />
+                  <span className="text-[10px] font-bold text-black/70 font-mono">
+                    {currentLive.timeSlot}
+                  </span>
+                </div>
                 <h4 className="font-black text-sm text-black leading-tight truncate">
-                  {featuredShow.showTitle}
+                  {currentLive.showTitle}
                 </h4>
-                <p className="text-xs font-semibold text-black/80 truncate">
-                  {featuredShow.category} • {featuredShow.timeSlot}
-                </p>
               </div>
 
-              {/* Time & Play */}
-              <div className="flex items-center gap-2 pl-2 border-l border-black/10 text-xs font-bold text-black">
-                <span className="font-mono">{featuredShow.startTime}</span>
+              {/* Play Live Button */}
+              <div className="flex items-center pl-2 border-l border-black/15">
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -71,13 +73,13 @@ export const SongRankSection: React.FC = () => {
                       playLiveStream();
                     }
                   }}
-                  className="w-7 h-7 rounded-full bg-black text-brand-yellow flex items-center justify-center hover:scale-105 active:scale-95 transition-transform cursor-pointer"
-                  title="Listen Live"
+                  className="w-8 h-8 rounded-full bg-black text-brand-yellow flex items-center justify-center hover:scale-105 active:scale-95 transition-transform cursor-pointer shadow-md"
+                  title="Listen Live Now"
                 >
                   {isPlaying ? (
-                    <Pause className="w-3.5 h-3.5 fill-current" />
+                    <Pause className="w-4 h-4 fill-current" />
                   ) : (
-                    <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                    <Play className="w-4 h-4 fill-current ml-0.5" />
                   )}
                 </button>
               </div>
@@ -104,15 +106,22 @@ export const SongRankSection: React.FC = () => {
 
           {/* 4 Dark Show Cards (Consecutive Upcoming Lineup) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {upcomingShows.map((show) => {
+            {upcomingShows.map((show, index) => {
+              const isCurrentShowLive = show.slug === currentLive.showSlug || index === 0;
+
               return (
                 <Link
                   key={show.id}
                   to={`/shows/${show.slug}`}
-                  className="bg-[#0F204E] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-2xl hover:scale-[1.02] hover:border-brand-yellow/50 transition-all duration-300 border border-blue-900/30"
+                  className="bg-[#0F204E] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-2xl hover:scale-[1.02] hover:border-brand-yellow/50 transition-all duration-300 border border-blue-900/30 relative"
                 >
                   {/* Show Cover Art */}
                   <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-neutral-900 mb-3.5">
+                    {isCurrentShowLive && (
+                      <div className="absolute top-2 left-2 z-10">
+                        <LiveNowBadge size="xs" />
+                      </div>
+                    )}
                     <img
                       src={show.coverArt}
                       alt={show.title}

@@ -3,7 +3,8 @@ import { MoreVertical, Play, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAudio } from '../../context/AudioContext';
 import { DayOfWeek } from '../../types/schedule';
-import { WEEKLY_SCHEDULE } from '../../data/schedule';
+import { WEEKLY_SCHEDULE, getCurrentLiveShow } from '../../data/schedule';
+import { LiveNowBadge } from '../ui/LiveNowBadge';
 import { clsx } from 'clsx';
 
 const SCHEDULE_DAYS: { id: DayOfWeek; label: string }[] = [
@@ -31,6 +32,8 @@ export const WeeklySchedule: React.FC = () => {
   const { playLiveStream } = useAudio();
 
   const entries = WEEKLY_SCHEDULE[activeDay] || [];
+
+  const currentLive = getCurrentLiveShow();
 
   return (
     <section id="schedule" className="w-full py-6 sm:py-10 select-none scroll-mt-24">
@@ -68,64 +71,74 @@ export const WeeklySchedule: React.FC = () => {
           {/* Schedule Show List Rows */}
           <div className="divide-y divide-white/5">
             {entries.length > 0 ? (
-              entries.map((item) => (
-                <div
-                  key={item.id}
-                  className="p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 hover:bg-white/[0.04] transition-colors group cursor-pointer"
-                  onClick={() => playLiveStream()}
-                >
-                  {/* Left: Show Graphics Banner + Host Avatar */}
-                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                    {/* Show Box with Vertical Yellow Label */}
-                    <div className="relative w-20 sm:w-28 h-12 sm:h-14 rounded-lg overflow-hidden bg-[#060D24] shrink-0 border border-white/10 flex items-center">
-                      <img
-                        src={item.image}
-                        alt={item.showTitle}
-                        className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-300"
-                      />
-                      {/* Vertical Yellow "SHOW" badge */}
-                      <div className="absolute left-0 top-0 bottom-0 w-5 bg-brand-yellow text-black flex items-center justify-center font-black text-[9px] uppercase tracking-tighter [writing-mode:vertical-lr] rotate-180">
-                        SHOW
-                      </div>
-                      {/* Circular Host Avatar Overlay */}
-                      <div className="absolute right-1.5 bottom-1 w-6 sm:w-7 h-6 sm:h-7 rounded-full overflow-hidden border-2 border-neutral-900 shadow-md">
+              entries.map((item) => {
+                const isLive = activeDay === todayDay && (item.isLiveNow || item.showSlug === currentLive.showSlug);
+
+                return (
+                  <div
+                    key={item.id}
+                    className={clsx(
+                      'p-3.5 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 transition-colors group cursor-pointer',
+                      isLive ? 'bg-red-950/20 hover:bg-red-950/30' : 'hover:bg-white/[0.04]'
+                    )}
+                    onClick={() => playLiveStream()}
+                  >
+                    {/* Left: Show Graphics Banner + Host Avatar */}
+                    <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                      {/* Show Box with Vertical Yellow Label */}
+                      <div className="relative w-20 sm:w-28 h-12 sm:h-14 rounded-lg overflow-hidden bg-[#060D24] shrink-0 border border-white/10 flex items-center">
                         <img
-                          src={item.hostAvatar}
-                          alt={item.hostName}
-                          className="w-full h-full object-cover"
+                          src={item.image}
+                          alt={item.showTitle}
+                          className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-300"
                         />
+                        {/* Vertical Yellow "SHOW" badge */}
+                        <div className="absolute left-0 top-0 bottom-0 w-5 bg-brand-yellow text-black flex items-center justify-center font-black text-[9px] uppercase tracking-tighter [writing-mode:vertical-lr] rotate-180">
+                          SHOW
+                        </div>
+                        {/* Circular Host Avatar Overlay */}
+                        <div className="absolute right-1.5 bottom-1 w-6 sm:w-7 h-6 sm:h-7 rounded-full overflow-hidden border-2 border-neutral-900 shadow-md">
+                          <img
+                            src={item.hostAvatar}
+                            alt={item.hostName}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Show Title & Time */}
+                      <div className="min-w-0 space-y-0.5">
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-black text-sm sm:text-base text-white truncate group-hover:text-brand-yellow transition-colors">
+                            {item.showTitle}
+                          </h4>
+                          {isLive && <LiveNowBadge size="xs" />}
+                        </div>
+                        <p className="text-xs text-gray-400 font-mono truncate flex items-center gap-1">
+                          <Clock className="w-3 h-3 text-brand-yellow shrink-0" />
+                          <span>{item.timeSlot}</span>
+                        </p>
                       </div>
                     </div>
 
-                    {/* Show Title & Time */}
-                    <div className="min-w-0">
-                      <h4 className="font-black text-sm sm:text-base text-white truncate group-hover:text-brand-yellow transition-colors">
-                        {item.showTitle}
-                      </h4>
-                      <p className="text-xs text-gray-400 font-mono mt-0.5 truncate flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-brand-yellow shrink-0" />
-                        <span>{item.timeSlot}</span>
-                      </p>
+                    {/* Right: Category Tag Badge & Action Link */}
+                    <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                      <span className="hidden sm:inline-block px-2.5 py-0.5 rounded border border-white/20 text-gray-300 text-[10px] sm:text-xs font-mono">
+                        {item.category}
+                      </span>
+
+                      <Link
+                        to={`/shows/${item.showSlug}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="p-1.5 text-gray-400 hover:text-brand-yellow transition-colors cursor-pointer"
+                        title="Show Information"
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
                     </div>
                   </div>
-
-                  {/* Right: Category Tag Badge & Action Link */}
-                  <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-                    <span className="hidden sm:inline-block px-2.5 py-0.5 rounded border border-white/20 text-gray-300 text-[10px] sm:text-xs font-mono">
-                      {item.category}
-                    </span>
-
-                    <Link
-                      to={`/shows/${item.showSlug}`}
-                      onClick={(e) => e.stopPropagation()}
-                      className="p-1.5 text-gray-400 hover:text-brand-yellow transition-colors cursor-pointer"
-                      title="Show Information"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              ))
+                );
+              })
             ) : (
               <div className="text-center py-10 text-gray-400 text-xs font-medium">
                 Non-stop hit music playlist broadcasting on this day.
