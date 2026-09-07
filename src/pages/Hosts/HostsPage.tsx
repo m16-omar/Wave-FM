@@ -10,21 +10,21 @@ import { ASSET_IMAGES } from '../../assets/images';
 const HOSTED_SHOWS_PREVIEWS = [
   {
     id: 'hs-1',
-    title: 'Hitmakers Live',
-    tag: 'Interviews',
-    image: ASSET_IMAGES.shows.gospelLight,
+    title: 'Gudugbe Inu Iwe Iroyin',
+    tag: 'News & Review',
+    image: ASSET_IMAGES.shows.gudugbe,
   },
   {
     id: 'hs-2',
-    title: 'The Fan Zone',
-    tag: 'Trends',
-    image: ASSET_IMAGES.shows.gistHangout,
+    title: 'Comedy Splash',
+    tag: 'Humor & Jams',
+    image: ASSET_IMAGES.shows.comedySplash,
   },
   {
     id: 'hs-3',
-    title: 'Throwback Jam',
-    tag: 'Interviews',
-    image: ASSET_IMAGES.shows.comedySplash,
+    title: 'Amiwoni',
+    tag: 'Indigenous Talk',
+    image: ASSET_IMAGES.amwoni,
   },
 ];
 
@@ -259,12 +259,13 @@ export const HostsPage: React.FC = () => {
           </h2>
         </div>
 
-        {/* 3-Column Presenters Card Grid (6 Presenters) */}
+        {/* 3-Column Presenters Card Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {PRESENTERS_DATA.map((presenter) => (
-            <div
+            <Link
               key={presenter.id}
-              className="bg-[#0F204E] rounded-3xl overflow-hidden relative aspect-[4/5] shadow-2xl border border-blue-900/40 group flex flex-col justify-end p-5 sm:p-6"
+              to={`/hosts/${presenter.slug}`}
+              className="bg-[#0F204E] rounded-3xl overflow-hidden relative aspect-[4/5] shadow-2xl border border-blue-900/40 group flex flex-col justify-end p-5 sm:p-6 hover:border-brand-yellow/60 hover:scale-[1.02] transition-all duration-300 cursor-pointer block"
             >
               {/* Presenter Photo */}
               <img
@@ -275,8 +276,8 @@ export const HostsPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#060D24]/95 via-[#060D24]/40 to-transparent" />
 
               {/* Floating Top-Right User Circle Icon */}
-              <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
-                <User className="w-4 h-4 text-white" />
+              <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg group-hover:border-brand-yellow group-hover:text-brand-yellow transition-colors">
+                <User className="w-4 h-4 text-white group-hover:text-brand-yellow" />
               </div>
 
               {/* Bottom Presenter Details */}
@@ -287,7 +288,7 @@ export const HostsPage: React.FC = () => {
                 </div>
 
                 {/* Name in Bold White Font */}
-                <h3 className="text-lg sm:text-xl font-black text-white uppercase font-display tracking-tight drop-shadow-md">
+                <h3 className="text-lg sm:text-xl font-black text-white uppercase font-display tracking-tight drop-shadow-md group-hover:text-brand-yellow transition-colors">
                   {presenter.name}
                 </h3>
 
@@ -298,7 +299,7 @@ export const HostsPage: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

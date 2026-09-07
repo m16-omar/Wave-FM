@@ -27,49 +27,6 @@ interface HostTrack {
   audioUrl: string;
 }
 
-const MIA_TRACKS: HostTrack[] = [
-  {
-    id: 'mt-01',
-    rank: 1,
-    title: 'Starry Night (Club Mix)',
-    artist: 'Peggy Gou',
-    coverArt: ASSET_IMAGES.shows.gospelLight,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-  },
-  {
-    id: 'mt-02',
-    rank: 2,
-    title: 'Espresso',
-    artist: 'Sabrina Carpenter',
-    coverArt: ASSET_IMAGES.shows.comedySplash,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-  },
-  {
-    id: 'mt-03',
-    rank: 3,
-    title: 'Not Like Us',
-    artist: 'Kendrick Lamar',
-    coverArt: ASSET_IMAGES.shows.gudugbe,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
-  },
-  {
-    id: 'mt-04',
-    rank: 4,
-    title: 'Who [MUSE]',
-    artist: 'Jimin',
-    coverArt: ASSET_IMAGES.shows.irinAjoEda,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
-  },
-  {
-    id: 'mt-05',
-    rank: 5,
-    title: 'Timeless',
-    artist: 'The Weeknd & Playboi Carti',
-    coverArt: ASSET_IMAGES.shows.reggaeHour,
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-  },
-];
-
 export const HostDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { isPlaying, currentTrack, playTrack, togglePlay, playLiveStream } = useAudio();
@@ -80,6 +37,29 @@ export const HostDetailPage: React.FC = () => {
 
   const otherPresenters = PRESENTERS_DATA.filter((p) => p.id !== host.id);
   const hostArticles = ARTICLES_DATA.slice(0, 2);
+
+  const showCoverList = [
+    ASSET_IMAGES.shows.gospelLight,
+    ASSET_IMAGES.shows.comedySplash,
+    ASSET_IMAGES.shows.gudugbe,
+    ASSET_IMAGES.shows.irinAjoEda,
+    ASSET_IMAGES.shows.reggaeHour,
+    ASSET_IMAGES.shows.olomonLeto,
+  ];
+
+  const hostTracks: HostTrack[] = (host.favoriteTracks || []).map((fav, index) => {
+    const parts = fav.split(' - ');
+    const title = parts[0] || fav;
+    const artist = parts[1] || host.name;
+    return {
+      id: `ht-${host.id}-${index + 1}`,
+      rank: index + 1,
+      title,
+      artist,
+      coverArt: showCoverList[index % showCoverList.length],
+      audioUrl: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${(index % 4) + 1}.mp3`,
+    };
+  });
 
   const handleShare = () => {
     if (navigator.clipboard) {
@@ -269,7 +249,7 @@ export const HostDetailPage: React.FC = () => {
         {/* Dark Tracklist Container */}
         <div className="bg-[#0B173D] rounded-3xl p-6 sm:p-8 border border-blue-900/30 shadow-2xl space-y-4">
           <div className="divide-y divide-white/5">
-            {MIA_TRACKS.map((track) => {
+            {hostTracks.map((track) => {
               const isThisPlaying =
                 isPlaying && currentTrack.title === track.title;
 
