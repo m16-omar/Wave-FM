@@ -53,9 +53,9 @@ export const HeroSection: React.FC = () => {
           )}
         </div>
 
-        {/* 3 Large Rounded Photo Cards in a row with handwriting overlays */}
+        {/* 3 Large Rounded Photo Cards in a row */}
         <div className="w-full max-w-5xl mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 items-center">
-          {/* Card 1: Curly Haired Woman with "The Best" */}
+          {/* Card 1: Presenter / Music Photo */}
           <div className="relative group">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/5">
               <img
@@ -65,11 +65,6 @@ export const HeroSection: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
-
-            {/* Overlapping Hand-drawn Script "The Best" */}
-            <span className="font-marker text-brand-yellow text-3xl sm:text-4xl md:text-5xl absolute top-1/2 -right-4 sm:-right-8 -translate-y-1/2 rotate-[-12deg] drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] z-10 pointer-events-none select-none">
-              The Best
-            </span>
           </div>
 
           {/* Card 2 (Center): Presenter Photo */}
@@ -84,7 +79,7 @@ export const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 3: Urban Guys with "urban music" */}
+          {/* Card 3: Urban Music Roster */}
           <div className="relative group">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/5">
               <img
@@ -94,11 +89,6 @@ export const HeroSection: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
-
-            {/* Overlapping Hand-drawn Script "urban music" */}
-            <span className="font-marker text-brand-yellow text-3xl sm:text-4xl md:text-5xl absolute top-1/2 -left-4 sm:-left-8 -translate-y-1/2 rotate-[-8deg] drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] z-10 pointer-events-none select-none whitespace-nowrap">
-              urban music
-            </span>
           </div>
         </div>
       </div>

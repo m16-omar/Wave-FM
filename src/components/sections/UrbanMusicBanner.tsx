@@ -22,13 +22,13 @@ export const UrbanMusicBanner: React.FC = () => {
 
           {/* Center Block (4 Cols): Yellow Block with Script & Latest Songs */}
           <div className="md:col-span-4 bg-brand-yellow text-black p-6 sm:p-8 flex flex-col justify-between relative z-10">
-            {/* Hand-drawn Brush Script Header */}
+            {/* Clean Bold Header */}
             <div>
-              <span className="font-marker text-3xl sm:text-4xl lg:text-5xl text-black block leading-none drop-shadow-sm">
-                The Best
+              <span className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-black block leading-none uppercase tracking-tight">
+                THE BEST
               </span>
-              <span className="font-marker text-2xl sm:text-3xl lg:text-4xl text-black/90 block leading-tight mt-1">
-                urban music
+              <span className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-black/80 block leading-tight mt-1 uppercase tracking-tight">
+                URBAN SOUNDS
               </span>
             </div>
 
@@ -121,7 +121,7 @@ export const UrbanMusicBanner: React.FC = () => {
 
             {/* Giant Vertical Typography on Far Right */}
             <div className="relative z-10 ml-auto h-full flex flex-col items-center justify-center pr-4 sm:pr-6 select-none">
-              <span className="font-marker text-brand-yellow text-2xl sm:text-3xl [writing-mode:vertical-rl] rotate-180 drop-shadow-md leading-none">
+              <span className="font-mono font-black text-brand-yellow text-xl sm:text-2xl [writing-mode:vertical-rl] rotate-180 drop-shadow-md leading-none tracking-widest">
                 RADIO
               </span>
               <span className="font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter uppercase font-display [writing-mode:vertical-rl] rotate-180 leading-none">

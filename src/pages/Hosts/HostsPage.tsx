@@ -42,21 +42,8 @@ export const HostsPage: React.FC = () => {
 
   return (
     <div className="w-full select-none space-y-12 sm:space-y-16 pb-16">
-      {/* 1. Hero Page Title Banner with Repeating "radio hosts" Watermark (Screenshot 1) */}
+      {/* 1. Hero Page Title Banner */}
       <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-12 pb-16 sm:pt-16 sm:pb-20">
-        {/* Background Repeating Cursive Script Watermark "radio hosts" */}
-        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.05] overflow-hidden select-none">
-          <span className="font-script text-7xl sm:text-[10rem] text-white rotate-[-12deg] whitespace-nowrap">
-            radio hosts
-          </span>
-          <span className="font-script text-7xl sm:text-[10rem] text-white rotate-[-12deg] whitespace-nowrap hidden sm:inline">
-            radio hosts
-          </span>
-          <span className="font-script text-7xl sm:text-[10rem] text-white rotate-[-12deg] whitespace-nowrap hidden md:inline">
-            radio hosts
-          </span>
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
           {/* Top Title Row + SEE ALL TEAM Badge */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -102,7 +89,7 @@ export const HostsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Card: 3 Presenters Photo with "Radio Hosts" Script */}
+            {/* Right Card: 3 Presenters Photo */}
             <div className="lg:col-span-7 relative rounded-3xl overflow-hidden bg-neutral-900 shadow-2xl border border-white/10 aspect-[16/9] sm:aspect-[2.2/1] group flex items-end justify-end p-6">
               {/* Photo of Presenters */}
               <img
@@ -111,13 +98,6 @@ export const HostsPage: React.FC = () => {
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-              {/* Floating Yellow Brush Script "Radio Hosts" */}
-              <span className="font-marker text-brand-yellow text-3xl sm:text-4xl rotate-[-10deg] relative z-10 drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)] pointer-events-none select-none">
-                Radio
-                <br />
-                Hosts
-              </span>
             </div>
           </div>
         </div>
@@ -193,8 +173,8 @@ export const HostsPage: React.FC = () => {
                 <span className="font-black text-4xl tracking-tighter text-white uppercase font-display leading-none">
                   SHOW
                 </span>
-                <span className="block font-marker text-brand-yellow text-base -mt-1">
-                  RADIO
+                <span className="block font-mono font-bold text-brand-yellow text-xs tracking-widest uppercase mt-0.5">
+                  106.3 FM
                 </span>
               </div>
 

@@ -21,29 +21,16 @@ export const ChartsPage: React.FC = () => {
 
   return (
     <div className="w-full select-none">
-      {/* 1. Hero Page Title Banner with Repeating "charts" Watermark */}
-      <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-12 pb-32 sm:pt-16 sm:pb-40">
-        {/* Background Grayscale Image */}
-        <div className="absolute inset-0 -z-10">
+      {/* 1. Top Header Banner with Live Now Playing Ticker */}
+      <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-10 pb-32 sm:pt-14 sm:pb-40">
+        {/* Background Grayscale Image Overlay */}
+        <div className="absolute inset-0 pointer-events-none select-none">
           <img
-            src={ASSET_IMAGES.hero}
+            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1600&auto=format&fit=crop"
             alt="Song Charts Live Studio"
             className="w-full h-full object-cover grayscale opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#060D24]/80 via-[#060D24]/60 to-[#060D24]" />
-        </div>
-
-        {/* Background Repeating Cursive Script Watermark "charts" */}
-        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.06] overflow-hidden select-none">
-          <span className="font-script text-8xl sm:text-[12rem] text-white rotate-[-12deg] whitespace-nowrap">
-            charts
-          </span>
-          <span className="font-script text-8xl sm:text-[12rem] text-white rotate-[-12deg] whitespace-nowrap hidden sm:inline">
-            charts
-          </span>
-          <span className="font-script text-8xl sm:text-[12rem] text-white rotate-[-12deg] whitespace-nowrap hidden md:inline">
-            charts
-          </span>
         </div>
 
         {/* Top Header Row Content (Aligned to right/center as in reference screenshot) */}
@@ -83,20 +70,13 @@ export const ChartsPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column (6 Cols on LG): Tall White Rounded Container */}
           <div className="lg:col-span-6 bg-white rounded-[32px] p-6 sm:p-8 md:p-10 shadow-2xl text-black relative">
-            {/* Header + Floating Yellow Script "Listeners Choice" */}
-            <div className="relative pr-28 sm:pr-36">
+            {/* Header */}
+            <div>
               <h2 className="text-3xl sm:text-4xl font-black text-black tracking-tight leading-none uppercase font-display">
                 SEE ALL
                 <br />
                 CHARTS
               </h2>
-
-              {/* Overlapping Yellow Brush Script Badge */}
-              <span className="font-marker text-brand-yellow text-3xl sm:text-4xl absolute -top-4 sm:-top-6 right-0 sm:right-2 rotate-[-10deg] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] pointer-events-none select-none whitespace-nowrap leading-tight">
-                Listeners
-                <br />
-                Choice
-              </span>
             </div>
 
             {/* 2-Column Grid of 6 Chart Categories */}
@@ -138,7 +118,7 @@ export const ChartsPage: React.FC = () => {
                           <span className="font-black text-3xl sm:text-4xl text-brand-yellow font-display leading-none">
                             AR
                           </span>
-                          <span className="font-script text-xs sm:text-sm text-brand-yellow rotate-[-8deg]">
+                          <span className="font-mono text-[10px] sm:text-xs font-bold text-brand-yellow">
                             ★ 106.3 FM
                           </span>
                         </div>

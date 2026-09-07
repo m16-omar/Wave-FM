@@ -51,19 +51,6 @@ const PARTNER_CATEGORIES: PartnerItem[] = [
 export const CategoryDiscovery: React.FC = () => {
   return (
     <section className="w-full py-16 sm:py-20 bg-brand-yellow text-black relative overflow-hidden select-none">
-      {/* Repeating Cursive Watermark "Partners" in Background */}
-      <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-15 overflow-hidden">
-        <span className="font-script text-8xl sm:text-9xl text-black rotate-[-15deg] whitespace-nowrap">
-          Partners
-        </span>
-        <span className="font-script text-8xl sm:text-9xl text-black rotate-[-15deg] whitespace-nowrap hidden sm:inline">
-          Advertising
-        </span>
-        <span className="font-script text-8xl sm:text-9xl text-black rotate-[-15deg] whitespace-nowrap hidden lg:inline">
-          Partners
-        </span>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Centered Black Pill Header */}
         <div className="text-center mb-10 sm:mb-12">
@@ -88,16 +75,6 @@ export const CategoryDiscovery: React.FC = () => {
                   : 'border-blue-900/40'
               }`}
             >
-              {/* Subtle repeating background text */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-15 group-hover:opacity-25 transition-opacity">
-                <span className="font-script text-4xl text-gray-400 rotate-[-12deg] select-none">
-                  {partner.watermark}
-                </span>
-                <span className="font-script text-4xl text-gray-400 rotate-[-12deg] select-none -mt-2">
-                  {partner.watermark}
-                </span>
-              </div>
-
               {/* Icon */}
               <div className="relative z-10 transition-transform group-hover:scale-110 duration-300">
                 {partner.icon}

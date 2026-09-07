@@ -95,21 +95,8 @@ export const HostDetailPage: React.FC = () => {
 
   return (
     <div className="w-full select-none space-y-12 sm:space-y-16 pb-16">
-      {/* 1. Hero Page Header with Repeating Watermark Script */}
+      {/* 1. Hero Page Header */}
       <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-8 pb-12 sm:pt-12 sm:pb-16">
-        {/* Background Repeating Cursive Script Watermark */}
-        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.05] overflow-hidden select-none">
-          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
-            radio host
-          </span>
-          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden sm:inline">
-            {host.name}
-          </span>
-          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden md:inline">
-            radio host
-          </span>
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs font-semibold text-gray-400">
@@ -205,16 +192,6 @@ export const HostDetailPage: React.FC = () => {
                 {/* Floating Top-Right Star Badge */}
                 <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
                   <Star className="w-4 h-4 text-brand-yellow fill-current" />
-                </div>
-
-                {/* Background Gold "SHOW RADIO" Watermark */}
-                <div className="absolute top-6 left-6 pointer-events-none opacity-20 select-none">
-                  <span className="font-black text-6xl tracking-tighter text-white uppercase font-display leading-none">
-                    SHOW
-                  </span>
-                  <span className="block font-marker text-brand-yellow text-2xl -mt-2">
-                    RADIO
-                  </span>
                 </div>
 
                 {/* Foreground Card Info */}

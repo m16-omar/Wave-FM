@@ -81,11 +81,6 @@ export const PromotePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center max-w-5xl mx-auto">
             {/* Left Card: Yellow Custom Packages Box (No Price) */}
             <div className="lg:col-span-5 bg-brand-yellow text-black rounded-[28px] p-8 sm:p-10 relative flex flex-col justify-between shadow-2xl min-h-[240px]">
-              {/* Handwritten Script Badge "Tailored Plans!" */}
-              <span className="font-marker text-2xl sm:text-3xl text-white rotate-[-10deg] absolute -top-5 right-3 sm:right-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] pointer-events-none select-none">
-                Tailored Plans!
-              </span>
-
               <div className="space-y-1">
                 <span className="text-xs font-black uppercase tracking-widest text-black/80 block">
                   BESPOKE BROADCAST

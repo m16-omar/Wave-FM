@@ -101,11 +101,6 @@ export const SongRankSection: React.FC = () => {
                 </button>
               </div>
             </Link>
-
-            {/* Handwritten script overlay */}
-            <span className="font-marker text-white text-xl sm:text-2xl absolute -bottom-7 right-2 rotate-[-8deg] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] pointer-events-none whitespace-nowrap">
-              Featured show
-            </span>
           </div>
         </div>
 

@@ -54,9 +54,9 @@ export const SponsorBadges: React.FC = () => {
             </div>
           </div>
 
-          {/* 6. DREAM (Graffiti Style) */}
+          {/* 6. DREAM (Modern Badge) */}
           <div className="flex items-center justify-center text-brand-yellow hover:scale-105 transition-transform">
-            <span className="font-marker text-2xl sm:text-3xl text-brand-yellow border-2 border-dashed border-brand-yellow px-3 py-1 rounded-xl">
+            <span className="font-display font-black tracking-widest text-2xl sm:text-3xl text-brand-yellow border-2 border-brand-yellow px-4 py-1 rounded-xl">
               DREAM
             </span>
           </div>

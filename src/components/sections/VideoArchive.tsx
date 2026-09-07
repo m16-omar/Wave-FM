@@ -24,18 +24,13 @@ export const VideoArchive: React.FC = () => {
 
           {/* Right Column (7 Cols): White Rounded Card Container from Screenshot 4 */}
           <div className="lg:col-span-7 bg-white rounded-[32px] p-8 sm:p-12 text-black shadow-2xl relative space-y-6">
-            {/* Top Header + Floating Yellow Script "stay updated" */}
-            <div className="relative pr-24 sm:pr-32">
+            {/* Top Header */}
+            <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-black uppercase font-display leading-none">
                 VIDEOS
                 <br />
                 ARCHIVE
               </h2>
-
-              {/* Yellow Marker Script "stay updated" on Top Right */}
-              <span className="font-marker text-brand-yellow text-3xl sm:text-4xl md:text-5xl absolute -top-4 sm:-top-6 right-0 sm:right-4 rotate-[-10deg] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] pointer-events-none select-none whitespace-nowrap">
-                stay updated
-              </span>
             </div>
 
             <p className="text-sm sm:text-base text-gray-600 font-medium leading-relaxed max-w-lg">

@@ -43,11 +43,6 @@ export const PodcastsPage: React.FC = () => {
 
           {/* Main Headline */}
           <div className="relative inline-block">
-            {/* Tilted Handwritten Script Badge */}
-            <span className="font-marker text-2xl sm:text-4xl text-brand-yellow rotate-[-10deg] absolute -top-8 -right-4 sm:-right-12 drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)] pointer-events-none select-none">
-              Stay Tuned!
-            </span>
-
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase font-display tracking-tight text-white leading-[1.05]">
               PODCASTS
               <br />
@@ -221,18 +216,6 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
   return (
     <div className="w-full select-none space-y-12 sm:space-y-16 pb-16 font-sans">
       <div className="w-full bg-[#060D24] relative overflow-hidden border-b border-blue-900/30 pt-12 pb-16 sm:pt-16 sm:pb-20">
-        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.04] overflow-hidden select-none">
-          <span className="font-script text-7xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
-            podcasts
-          </span>
-          <span className="font-script text-7xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden sm:inline">
-            podcasts
-          </span>
-          <span className="font-script text-7xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden md:inline">
-            podcasts
-          </span>
-        </div>
-
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7 space-y-4">
@@ -354,9 +337,6 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
                   <span className="font-black text-6xl sm:text-7xl text-brand-yellow font-display block leading-none tracking-tighter">
                     POD
                   </span>
-                  <span className="font-script text-2xl text-white/80 absolute top-7 left-1/2 -translate-x-1/2 rotate-[-8deg] whitespace-nowrap">
-                    podcasts
-                  </span>
                   <span className="font-black text-6xl sm:text-7xl text-brand-yellow font-display block leading-none tracking-tighter mt-2">
                     CAST
                   </span>
@@ -405,9 +385,6 @@ export const PreviousPodcastsPageDesign: React.FC = () => {
                     <div className="text-center relative">
                       <span className="font-black text-4xl text-brand-yellow font-display block leading-none">
                         POD
-                      </span>
-                      <span className="font-script text-base text-white/80 absolute top-4 left-1/2 -translate-x-1/2 rotate-[-8deg] whitespace-nowrap">
-                        podcasts
                       </span>
                       <span className="font-black text-4xl text-brand-yellow font-display block leading-none mt-1">
                         CAST

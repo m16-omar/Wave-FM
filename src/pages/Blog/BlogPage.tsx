@@ -43,11 +43,6 @@ export const BlogPage: React.FC = () => {
 
           {/* Main Headline */}
           <div className="relative inline-block">
-            {/* Tilted Handwritten Script Badge */}
-            <span className="font-marker text-2xl sm:text-4xl text-brand-yellow rotate-[-10deg] absolute -top-8 -right-4 sm:-right-12 drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)] pointer-events-none select-none">
-              Stay Informed!
-            </span>
-
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase font-display tracking-tight text-white leading-[1.05]">
               IMOLE NEWS
               <br />
@@ -240,20 +235,8 @@ export const PreviousBlogPageDesign: React.FC = () => {
 
   return (
     <div className="w-full select-none">
-      // 1. Hero Page Title with Repeating "Blog" Watermark
+      {/* 1. Hero Page Title --}
       <div className="w-full bg-[#060D24] py-14 sm:py-20 relative overflow-hidden border-b border-blue-900/30">
-        <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-[0.04] overflow-hidden select-none">
-          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap">
-            News
-          </span>
-          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden sm:inline">
-            News
-          </span>
-          <span className="font-script text-8xl sm:text-[11rem] text-white rotate-[-12deg] whitespace-nowrap hidden md:inline">
-            News
-          </span>
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight font-display">
             Imole News
@@ -261,7 +244,7 @@ export const PreviousBlogPageDesign: React.FC = () => {
         </div>
       </div>
 
-      // 2. Main Content Grid: Articles (8 Cols) + Sidebar (4 Cols)
+      {/* 2. Main Content Grid: Articles (8 Cols) + Sidebar (4 Cols) --}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           <div className="lg:col-span-8 space-y-10">
