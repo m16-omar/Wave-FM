@@ -325,3 +325,117 @@ export const getNextLiveShow = (now: Date = new Date()): ScheduleSlot => {
 
   return DEFAULT_FALLBACK_SHOW;
 };
+
+export interface ConsecutiveShowItem {
+  id: string;
+  slug: string;
+  title: string;
+  host: string;
+  hostAvatar: string;
+  schedule: string;
+  dayLabel: string;
+  timeSlot: string;
+  coverArt: string;
+  votes: number;
+}
+
+export const getUpcomingConsecutiveShows = (
+  count: number = 4,
+  now: Date = new Date()
+): ConsecutiveShowItem[] => {
+  const dayIndexMap: DayOfWeek[] = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+  ];
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  const currentDayIndex = now.getDay();
+
+  const parseTimeToMinutes = (timeStr: string): number => {
+    const match = timeStr.trim().match(/(\d+):(\d+)\s*(AM|PM)?/i);
+    if (!match) return 0;
+    let hours = parseInt(match[1], 10);
+    const minutes = parseInt(match[2], 10);
+    const ampm = match[3]?.toUpperCase();
+    if (ampm === 'PM' && hours < 12) hours += 12;
+    if (ampm === 'AM' && hours === 12) hours = 0;
+    return hours * 60 + minutes;
+  };
+
+  const results: ConsecutiveShowItem[] = [];
+
+  const votesMap: Record<string, number> = {
+    'gospel-light': 3840,
+    'comedy-splash': 3410,
+    'gudugbe': 2950,
+    'irin-ajo-eda': 2720,
+    'olomon-leto': 2610,
+    'to-ba-se-wo-ni': 2490,
+    'request-time': 2380,
+    'gist-hangout': 2250,
+    'reggae-hour': 2190,
+  };
+
+  const formatDayLabel = (day: DayOfWeek): string => {
+    return day.charAt(0).toUpperCase() + day.slice(1);
+  };
+
+  // Loop through upcoming days across the broadcast calendar (up to 2 full weeks)
+  for (let offset = 0; offset < 14 && results.length < count; offset++) {
+    const day = dayIndexMap[(currentDayIndex + offset) % 7];
+    const slots = WEEKLY_SCHEDULE[day] || [];
+
+    for (const slot of slots) {
+      if (results.length >= count) break;
+
+      const startMin = parseTimeToMinutes(slot.startTime);
+      // If evaluating today, only take upcoming or currently playing shows
+      if (offset === 0 && startMin + 60 < currentMinutes) {
+        continue;
+      }
+
+      const dayName = formatDayLabel(day);
+      const scheduleString = `${dayName}s, ${slot.timeSlot}`;
+
+      results.push({
+        id: `${slot.id}-${offset}`,
+        slug: slot.showSlug,
+        title: slot.showTitle,
+        host: slot.hostName,
+        hostAvatar: slot.hostAvatar,
+        schedule: scheduleString,
+        dayLabel: dayName,
+        timeSlot: slot.timeSlot,
+        coverArt: slot.image,
+        votes: votesMap[slot.showSlug] || 2500,
+      });
+    }
+  }
+
+  // Fallback: If still under count, cycle through all scheduled shows so it is NEVER empty
+  if (results.length < count) {
+    const allSlots = Object.values(WEEKLY_SCHEDULE).flat();
+    for (const slot of allSlots) {
+      if (results.length >= count) break;
+      results.push({
+        id: `fallback-${slot.id}-${results.length}`,
+        slug: slot.showSlug,
+        title: slot.showTitle,
+        host: slot.hostName,
+        hostAvatar: slot.hostAvatar,
+        schedule: `${formatDayLabel(slot.day)}s, ${slot.timeSlot}`,
+        dayLabel: formatDayLabel(slot.day),
+        timeSlot: slot.timeSlot,
+        coverArt: slot.image,
+        votes: votesMap[slot.showSlug] || 2500,
+      });
+    }
+  }
+
+  return results.slice(0, count);
+};
+

@@ -3,59 +3,25 @@ import { Play, Pause, MoreHorizontal, Check, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAudio } from '../../context/AudioContext';
 import confetti from 'canvas-confetti';
-import { ASSET_IMAGES } from '../../assets/images';
-
-interface RankShowItem {
-  id: string;
-  slug: string;
-  title: string;
-  host: string;
-  schedule: string;
-  coverArt: string;
-  votes: number;
-}
-
-const RANK_SHOWS: RankShowItem[] = [
-  {
-    id: 'show-gospel-light',
-    slug: 'gospel-light',
-    title: 'Gospel Light',
-    host: 'Big Val',
-    schedule: 'Sundays, 4:00 – 7:00 PM',
-    coverArt: ASSET_IMAGES.shows.gospelLight,
-    votes: 3840,
-  },
-  {
-    id: 'show-comedy-splash',
-    slug: 'comedy-splash',
-    title: 'Comedy Splash',
-    host: 'MC Toothbrush',
-    schedule: 'Fridays, 7:00 – 8:00 PM',
-    coverArt: ASSET_IMAGES.shows.comedySplash,
-    votes: 3410,
-  },
-  {
-    id: 'show-gudugbe',
-    slug: 'gudugbe',
-    title: 'Gudugbe Inu Iwe Iroyin',
-    host: 'Amwoni & Indigenous Crew',
-    schedule: 'Weekdays, 9:00 – 10:00 AM',
-    coverArt: ASSET_IMAGES.shows.gudugbe,
-    votes: 2950,
-  },
-  {
-    id: 'show-irin-ajo-eda',
-    slug: 'irin-ajo-eda',
-    title: 'Irin Ajo Eda',
-    host: 'Adeshina Baba Omo',
-    schedule: 'Thursdays, 9:00 – 10:00 PM',
-    coverArt: ASSET_IMAGES.shows.irinAjoEda,
-    votes: 2720,
-  },
-];
+import {
+  getUpcomingConsecutiveShows,
+  getNextLiveShow,
+  getCurrentLiveShow,
+} from '../../data/schedule';
 
 export const SongRankSection: React.FC = () => {
-  const { isPlaying, currentTrack, playTrack, togglePlay, voteSong, votedSongIds, playLiveStream } = useAudio();
+  const {
+    isPlaying,
+    currentTrack,
+    playTrack,
+    togglePlay,
+    voteSong,
+    votedSongIds,
+    playLiveStream,
+  } = useAudio();
+
+  const upcomingShows = getUpcomingConsecutiveShows(4);
+  const featuredShow = getNextLiveShow() || getCurrentLiveShow();
 
   const handleVote = (e: React.MouseEvent, showId: string) => {
     e.stopPropagation();
@@ -86,30 +52,34 @@ export const SongRankSection: React.FC = () => {
             </p>
           </div>
 
-          {/* Right: Featured Show Pill Card */}
+          {/* Right: Featured Show Pill Card (Dynamic Next Up Show) */}
           <div className="relative self-start md:self-auto">
             <Link
-              to="/shows/request-time"
+              to={`/shows/${featuredShow.showSlug}`}
               className="bg-brand-yellow text-black rounded-3xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 shadow-xl border border-brand-yellowHover group hover:scale-[1.02] transition-transform"
             >
               {/* Show Thumbnail */}
               <div className="w-12 h-12 rounded-xl overflow-hidden bg-black/10 shrink-0 border border-black/10">
                 <img
-                  src={ASSET_IMAGES.shows.requestTime}
-                  alt="Request Time - Imole FM"
+                  src={featuredShow.image}
+                  alt={`${featuredShow.showTitle} - Imole FM`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                 />
               </div>
 
               {/* Info */}
               <div className="min-w-0 pr-2">
-                <h4 className="font-black text-sm text-black leading-tight truncate">Request Time</h4>
-                <p className="text-xs font-semibold text-black/80 truncate">Listener Choice • Daily</p>
+                <h4 className="font-black text-sm text-black leading-tight truncate">
+                  {featuredShow.showTitle}
+                </h4>
+                <p className="text-xs font-semibold text-black/80 truncate">
+                  {featuredShow.category} • {featuredShow.timeSlot}
+                </p>
               </div>
 
               {/* Time & Play */}
               <div className="flex items-center gap-2 pl-2 border-l border-black/10 text-xs font-bold text-black">
-                <span className="font-mono">13:59</span>
+                <span className="font-mono">{featuredShow.startTime}</span>
                 <button
                   onClick={(e) => {
                     e.preventDefault();
@@ -156,9 +126,9 @@ export const SongRankSection: React.FC = () => {
             </Link>
           </div>
 
-          {/* 4 Dark Show Cards */}
+          {/* 4 Dark Show Cards (Consecutive Upcoming Lineup) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {RANK_SHOWS.map((show) => {
+            {upcomingShows.map((show) => {
               const isThisPlaying = isPlaying && currentTrack.title === show.title;
               const voted = votedSongIds.includes(show.id);
 
