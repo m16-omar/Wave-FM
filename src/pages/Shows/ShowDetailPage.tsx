@@ -1,12 +1,10 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SHOWS_DATA } from '../../data/shows';
-import { PODCAST_EPISODES } from '../../data/podcasts';
 import { ShowCard } from '../../components/cards/ShowCard';
-import { PodcastCard } from '../../components/cards/PodcastCard';
 import { Badge } from '../../components/ui/Badge';
 import { LiveNowBadge } from '../../components/ui/LiveNowBadge';
-import { Clock, Play, Music } from 'lucide-react';
+import { Clock, Play, Music, Headphones, ArrowRight, Sparkles } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
 import { getCurrentLiveShow } from '../../data/schedule';
 
@@ -140,10 +138,38 @@ export const ShowDetailPage: React.FC = () => {
               <h3 className="text-xl font-extrabold text-white border-l-2 border-brand-yellow pl-3">
                 Catch Up On Podcasts
               </h3>
-              <div className="space-y-3">
-                {PODCAST_EPISODES.slice(0, 3).map((ep) => (
-                  <PodcastCard key={ep.id} episode={ep} variant="list" />
-                ))}
+
+              {/* Coming Soon Podcast Card */}
+              <div className="relative rounded-2xl overflow-hidden bg-[#0F204E]/80 border border-blue-900/40 p-6 sm:p-8 shadow-2xl flex flex-col sm:flex-row items-center gap-6 group hover:border-brand-yellow/40 transition-all">
+                {/* Glowing Icon Container */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-brand-yellow/10 border border-brand-yellow/30 flex items-center justify-center text-brand-yellow shrink-0 shadow-glow-yellow/10 group-hover:scale-105 transition-transform">
+                  <Headphones className="w-8 h-8 sm:w-9 sm:h-9" />
+                </div>
+
+                {/* Content */}
+                <div className="space-y-2 text-center sm:text-left flex-1 min-w-0">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow text-[10px] font-black uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-ping" />
+                    <span>Episodes In Production</span>
+                  </div>
+                  <h4 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
+                    Podcasts Coming Soon
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-md">
+                    Full audio recordings and on-demand catch-up episodes for <span className="text-white font-bold">{show.title}</span> are currently being produced in the studio.
+                  </p>
+                </div>
+
+                {/* CTA Button */}
+                <div className="shrink-0">
+                  <Link
+                    to="/podcasts"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-yellow text-black font-extrabold text-xs uppercase tracking-wider shadow-glow-yellow hover:scale-105 active:scale-95 transition-all"
+                  >
+                    <span>View Hub</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
