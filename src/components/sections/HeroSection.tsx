@@ -53,8 +53,20 @@ export const HeroSection: React.FC = () => {
           )}
         </div>
 
-        {/* 3 Large Rounded Photo Cards in a row */}
-        <div className="w-full max-w-5xl mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 items-center">
+        {/* Main Station Official Backdrop Showcase Banner (Top Before Individual Pictures) */}
+        <div className="w-full max-w-5xl mt-8 sm:mt-10">
+          <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden bg-neutral-900 shadow-2xl border border-white/10 group aspect-[16/10] sm:aspect-[21/9] md:aspect-[2.5/1]">
+            <img
+              src={ASSET_IMAGES.building}
+              alt="Imole 106.3 FM Stage Backdrop - We Are The Light"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </div>
+
+        {/* 3 Large Rounded Photo Cards in a row (Individual Presenter Pictures) */}
+        <div className="w-full max-w-5xl mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 items-center">
           {/* Card 1: Presenter / Music Photo */}
           <div className="relative group">
             <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden aspect-[4/5] bg-neutral-900 shadow-2xl border border-white/5">
