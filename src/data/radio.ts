@@ -78,7 +78,7 @@ export const ON_AIR_SHOW_INFO = {
   id: 'morning-drive',
   title: 'The Morning Drive w/ Marcus & Chloe',
   hostName: 'Marcus Cole & Chloe Vance',
-  hostAvatar: ASSET_IMAGES.amwoni,
+  hostAvatar: ASSET_IMAGES.staff,
   timeSlot: '06:00 - 10:00 AM',
   image: ASSET_IMAGES.studio,
   category: 'Live Talk & Hits',
