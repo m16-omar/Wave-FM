@@ -11,8 +11,6 @@ import {
 export const SongRankSection: React.FC = () => {
   const {
     isPlaying,
-    currentTrack,
-    playTrack,
     togglePlay,
     playLiveStream,
   } = useAudio();
@@ -107,53 +105,19 @@ export const SongRankSection: React.FC = () => {
           {/* 4 Dark Show Cards (Consecutive Upcoming Lineup) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {upcomingShows.map((show) => {
-              const isThisPlaying = isPlaying && currentTrack.title === show.title;
-
               return (
                 <Link
                   key={show.id}
                   to={`/shows/${show.slug}`}
-                  className="bg-[#0F204E] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border border-blue-900/30"
+                  className="bg-[#0F204E] text-white rounded-2xl p-3.5 flex flex-col justify-between group hover:shadow-2xl hover:scale-[1.02] hover:border-brand-yellow/50 transition-all duration-300 border border-blue-900/30"
                 >
-                  {/* Show Cover Art with Play Button Hover */}
+                  {/* Show Cover Art */}
                   <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-neutral-900 mb-3.5">
                     <img
                       src={show.coverArt}
                       alt={show.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-
-                    {/* Play/Listen Overlay Button */}
-                    <div
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (isThisPlaying) {
-                          togglePlay();
-                        } else {
-                          playTrack({
-                            id: show.id,
-                            title: show.title,
-                            artist: show.host,
-                            album: show.schedule,
-                            coverArt: show.coverArt,
-                            duration: 210,
-                            previewAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-                            genre: 'Live Show',
-                          });
-                        }
-                      }}
-                      className="absolute inset-0 bg-black/40 hover:bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                      title={isThisPlaying ? 'Pause' : `Listen to ${show.title}`}
-                    >
-                      <div className="w-12 h-12 rounded-full bg-brand-yellow text-black flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform">
-                        {isThisPlaying ? (
-                          <Pause className="w-5 h-5 fill-current" />
-                        ) : (
-                          <Play className="w-5 h-5 fill-current ml-0.5" />
-                        )}
-                      </div>
-                    </div>
                   </div>
 
                   {/* Title & Host / Schedule */}
@@ -173,7 +137,7 @@ export const SongRankSection: React.FC = () => {
                     {/* Action Button */}
                     <div
                       className="p-2 rounded-xl bg-white/10 group-hover:bg-brand-yellow group-hover:text-black text-gray-300 transition-all shrink-0 mt-0.5"
-                      title="View Show"
+                      title="View Show Details"
                     >
                       <MoreHorizontal className="w-4 h-4" />
                     </div>
