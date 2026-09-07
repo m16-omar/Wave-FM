@@ -1,66 +1,123 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowUpRight, Megaphone, Building2, Radio, Sparkles } from 'lucide-react';
 
-interface CategoryItem {
+interface PartnerItem {
   id: string;
   title: string;
+  subtitle: string;
+  icon: React.ReactNode;
   href: string;
   watermark: string;
+  isCta?: boolean;
 }
 
-const CATEGORIES: CategoryItem[] = [
-  { id: 'cat-1', title: 'Artists', href: '/hosts', watermark: 'Artists' },
-  { id: 'cat-2', title: 'Trends', href: '/news', watermark: 'Trends' },
-  { id: 'cat-3', title: 'Releases', href: '/charts', watermark: 'Releases' },
-  { id: 'cat-4', title: 'Concerts', href: '/events', watermark: 'Concerts' },
+const PARTNER_CATEGORIES: PartnerItem[] = [
+  {
+    id: 'partner-1',
+    title: 'Corporate Brands',
+    subtitle: 'FMCG, Banking & Telecom',
+    icon: <Building2 className="w-6 h-6 text-brand-yellow mb-2" />,
+    href: '/promote',
+    watermark: 'Brands',
+  },
+  {
+    id: 'partner-2',
+    title: 'Digital & Media',
+    subtitle: 'Streaming & Tech Networks',
+    icon: <Radio className="w-6 h-6 text-brand-yellow mb-2" />,
+    href: '/promote',
+    watermark: 'Digital',
+  },
+  {
+    id: 'partner-3',
+    title: 'Prime-Time Jingles',
+    subtitle: 'Commercial Broadcast Spots',
+    icon: <Megaphone className="w-6 h-6 text-brand-yellow mb-2" />,
+    href: '/promote',
+    watermark: 'Radio Ads',
+  },
+  {
+    id: 'partner-4',
+    title: 'Partner With Us',
+    subtitle: 'Bespoke Radio Packages',
+    icon: <Sparkles className="w-6 h-6 text-brand-yellow mb-2" />,
+    href: '/promote',
+    watermark: 'Sponsor',
+    isCta: true,
+  },
 ];
 
 export const CategoryDiscovery: React.FC = () => {
   return (
     <section className="w-full py-16 sm:py-20 bg-brand-yellow text-black relative overflow-hidden select-none">
-      {/* Repeating Cursive Watermark "Categories" in Background */}
+      {/* Repeating Cursive Watermark "Partners" in Background */}
       <div className="absolute inset-0 flex items-center justify-around pointer-events-none opacity-15 overflow-hidden">
         <span className="font-script text-8xl sm:text-9xl text-black rotate-[-15deg] whitespace-nowrap">
-          Categories
+          Partners
         </span>
         <span className="font-script text-8xl sm:text-9xl text-black rotate-[-15deg] whitespace-nowrap hidden sm:inline">
-          Categories
+          Advertising
         </span>
         <span className="font-script text-8xl sm:text-9xl text-black rotate-[-15deg] whitespace-nowrap hidden lg:inline">
-          Categories
+          Partners
         </span>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Centered Black Pill Header from Screenshot 5 */}
+        {/* Centered Black Pill Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <div className="inline-block px-8 py-2.5 rounded-full bg-black text-brand-yellow font-black text-xs sm:text-sm uppercase tracking-widest shadow-xl">
-            DISCOVER ALL CATEGORIES
+          <div className="inline-flex items-center gap-2 px-8 py-2.5 rounded-full bg-black text-brand-yellow font-black text-xs sm:text-sm uppercase tracking-widest shadow-xl">
+            <Megaphone className="w-4 h-4 text-brand-yellow" />
+            <span>OFFICIAL ADVERTISING PARTNERS</span>
           </div>
+          <p className="mt-2 text-xs sm:text-sm font-bold text-black/80 max-w-md mx-auto">
+            Reach over 5 million daily Lagos listeners across digital airwaves and indigenous broadcast slots.
+          </p>
         </div>
 
-        {/* 4 Dark Deep Blue Rounded Cards */}
+        {/* 4 Dark Deep Blue Rounded Partner Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CATEGORIES.map((cat) => (
+          {PARTNER_CATEGORIES.map((partner) => (
             <Link
-              key={cat.id}
-              to={cat.href}
-              className="bg-[#0B173D] text-white rounded-3xl p-8 sm:p-10 text-center flex flex-col items-center justify-center min-h-[170px] sm:min-h-[190px] relative overflow-hidden group shadow-2xl hover:scale-105 hover:bg-[#0F204E] transition-all duration-300 border border-blue-900/40"
+              key={partner.id}
+              to={partner.href}
+              className={`bg-[#0B173D] text-white rounded-3xl p-6 sm:p-8 text-center flex flex-col items-center justify-center min-h-[180px] sm:min-h-[200px] relative overflow-hidden group shadow-2xl hover:scale-105 hover:bg-[#0F204E] transition-all duration-300 border ${
+                partner.isCta
+                  ? 'border-brand-yellow shadow-glow-yellow/20'
+                  : 'border-blue-900/40'
+              }`}
             >
               {/* Subtle repeating background text */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-20 group-hover:opacity-30 transition-opacity">
+              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-15 group-hover:opacity-25 transition-opacity">
                 <span className="font-script text-4xl text-gray-400 rotate-[-12deg] select-none">
-                  {cat.watermark}
+                  {partner.watermark}
                 </span>
-                <span className="font-script text-4xl text-gray-400 rotate-[-12deg] select-none -mt-3">
-                  {cat.watermark}
+                <span className="font-script text-4xl text-gray-400 rotate-[-12deg] select-none -mt-2">
+                  {partner.watermark}
                 </span>
               </div>
 
-              {/* Main Category Title */}
-              <span className="relative z-10 font-extrabold text-xl sm:text-2xl text-white tracking-wide group-hover:text-brand-yellow transition-colors font-display">
-                {cat.title}
+              {/* Icon */}
+              <div className="relative z-10 transition-transform group-hover:scale-110 duration-300">
+                {partner.icon}
+              </div>
+
+              {/* Main Partner Title */}
+              <span className="relative z-10 font-extrabold text-lg sm:text-xl text-white tracking-wide group-hover:text-brand-yellow transition-colors font-display">
+                {partner.title}
               </span>
+
+              {/* Subtitle */}
+              <span className="relative z-10 text-[11px] sm:text-xs text-gray-300 font-medium mt-1 group-hover:text-gray-200 transition-colors">
+                {partner.subtitle}
+              </span>
+
+              {/* Action Indicator */}
+              <div className="relative z-10 mt-3 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-brand-yellow opacity-80 group-hover:opacity-100 transition-opacity">
+                <span>Explore</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </div>
             </Link>
           ))}
         </div>
@@ -68,3 +125,4 @@ export const CategoryDiscovery: React.FC = () => {
     </section>
   );
 };
+
