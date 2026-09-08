@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Play, Pause, ChevronDown, MoreVertical } from 'lucide-react';
+import { X, Play, Pause } from 'lucide-react';
 import { useAudio } from '../../context/AudioContext';
 import { getCurrentLiveShow, getUpcomingConsecutiveShows } from '../../data/schedule';
 import { clsx } from 'clsx';
@@ -11,6 +11,19 @@ interface MobileMenuProps {
   onClose: () => void;
   onOpenSearch?: () => void;
 }
+
+const NAV_ITEMS = [
+  { label: 'HOME', href: '/' },
+  { label: 'NEWS', href: '/news' },
+  { label: 'PROMOTE', href: '/promote' },
+  { label: 'RADIO SHOWS', href: '/shows' },
+  { label: 'PODCASTS', href: '/podcasts' },
+  { label: 'HOSTS', href: '/hosts' },
+  { label: 'SCHEDULE', href: '/schedule' },
+  { label: 'VIDEOS', href: '/videos' },
+  { label: 'EVENTS', href: '/events' },
+  { label: 'CONTACT', href: '/contact' },
+];
 
 const TREND_TAGS = [
   'ARTISTS',
@@ -51,13 +64,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   const currentLive = getCurrentLiveShow();
   const nextShows = getUpcomingConsecutiveShows(2);
 
-  // Accordion state for dropdown nav items
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  const toggleDropdown = (key: string) => {
-    setOpenDropdown(prev => (prev === key ? null : key));
-  };
-
   const handleTagClick = (tag: string) => {
     onClose();
     navigate(`/news?tag=${encodeURIComponent(tag)}`);
@@ -97,243 +103,25 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               </div>
 
               {/* ============================================================= */}
-              {/* 1. PRIMARY NAVIGATION LINKS (Pixel-matched to Screenshot 1) */}
+              {/* 1. PRIMARY NAVIGATION LINKS (Aligned with Main Navbar)        */}
               {/* ============================================================= */}
               <nav className="divide-y divide-white/10 border-t border-b border-white/10 font-display">
-                {/* DEMOS / HOME (With Dropdown) */}
-                <div>
-                  <div className="flex items-center justify-between py-3 group">
+                {NAV_ITEMS.map((item) => (
+                  <div key={item.label} className="py-2.5 sm:py-3">
                     <NavLink
-                      to="/"
+                      to={item.href}
                       onClick={onClose}
                       className={({ isActive }) =>
                         clsx(
-                          'text-sm font-black uppercase tracking-wider transition-colors',
-                          isActive ? 'text-brand-yellow' : 'text-brand-yellow/90 hover:text-brand-yellow'
+                          'block text-sm font-black uppercase tracking-wider transition-colors',
+                          isActive ? 'text-brand-yellow font-extrabold' : 'text-brand-yellow/90 hover:text-brand-yellow'
                         )
                       }
                     >
-                      DEMOS
+                      {item.label}
                     </NavLink>
-                    <button
-                      onClick={() => toggleDropdown('demos')}
-                      className="w-6 h-6 rounded-full border border-white/20 hover:border-brand-yellow text-gray-300 hover:text-brand-yellow flex items-center justify-center transition-all cursor-pointer"
-                      aria-label="Toggle Demos submenu"
-                    >
-                      <ChevronDown
-                        className={clsx(
-                          'w-3.5 h-3.5 transition-transform duration-300',
-                          openDropdown === 'demos' && 'rotate-180 text-brand-yellow'
-                        )}
-                      />
-                    </button>
                   </div>
-                  {openDropdown === 'demos' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="pl-3 pb-2 space-y-1.5 text-xs font-bold text-gray-300"
-                    >
-                      <Link
-                        to="/"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Main Station Broadcast
-                      </Link>
-                      <Link
-                        to="/shows"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Lineup & Daily Programs
-                      </Link>
-                    </motion.div>
-                  )}
-                </div>
-
-                {/* BLOG / NEWS (With Dropdown) */}
-                <div>
-                  <div className="flex items-center justify-between py-3 group">
-                    <NavLink
-                      to="/news"
-                      onClick={onClose}
-                      className={({ isActive }) =>
-                        clsx(
-                          'text-sm font-black uppercase tracking-wider transition-colors',
-                          isActive ? 'text-brand-yellow' : 'text-brand-yellow/90 hover:text-brand-yellow'
-                        )
-                      }
-                    >
-                      BLOG
-                    </NavLink>
-                    <button
-                      onClick={() => toggleDropdown('blog')}
-                      className="w-6 h-6 rounded-full border border-white/20 hover:border-brand-yellow text-gray-300 hover:text-brand-yellow flex items-center justify-center transition-all cursor-pointer"
-                      aria-label="Toggle Blog submenu"
-                    >
-                      <ChevronDown
-                        className={clsx(
-                          'w-3.5 h-3.5 transition-transform duration-300',
-                          openDropdown === 'blog' && 'rotate-180 text-brand-yellow'
-                        )}
-                      />
-                    </button>
-                  </div>
-                  {openDropdown === 'blog' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="pl-3 pb-2 space-y-1.5 text-xs font-bold text-gray-300"
-                    >
-                      <Link
-                        to="/news"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Breaking National News
-                      </Link>
-                      <Link
-                        to="/news"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Lagos Culture & Lifestyle
-                      </Link>
-                    </motion.div>
-                  )}
-                </div>
-
-                {/* CHARTS */}
-                <div className="py-3">
-                  <NavLink
-                    to="/shows"
-                    onClick={onClose}
-                    className={({ isActive }) =>
-                      clsx(
-                        'block text-sm font-black uppercase tracking-wider transition-colors',
-                        isActive ? 'text-brand-yellow' : 'text-brand-yellow/90 hover:text-brand-yellow'
-                      )
-                    }
-                  >
-                    CHARTS
-                  </NavLink>
-                </div>
-
-                {/* RADIO SHOWS */}
-                <div className="py-3">
-                  <NavLink
-                    to="/shows"
-                    onClick={onClose}
-                    className={({ isActive }) =>
-                      clsx(
-                        'block text-sm font-black uppercase tracking-wider transition-colors',
-                        isActive ? 'text-brand-yellow' : 'text-brand-yellow/90 hover:text-brand-yellow'
-                      )
-                    }
-                  >
-                    RADIO SHOWS
-                  </NavLink>
-                </div>
-
-                {/* PODCASTS */}
-                <div className="py-3">
-                  <NavLink
-                    to="/podcasts"
-                    onClick={onClose}
-                    className={({ isActive }) =>
-                      clsx(
-                        'block text-sm font-black uppercase tracking-wider transition-colors',
-                        isActive ? 'text-brand-yellow' : 'text-brand-yellow/90 hover:text-brand-yellow'
-                      )
-                    }
-                  >
-                    PODCASTS
-                  </NavLink>
-                </div>
-
-                {/* HOSTS */}
-                <div className="py-3">
-                  <NavLink
-                    to="/hosts"
-                    onClick={onClose}
-                    className={({ isActive }) =>
-                      clsx(
-                        'block text-sm font-black uppercase tracking-wider transition-colors',
-                        isActive ? 'text-brand-yellow' : 'text-brand-yellow/90 hover:text-brand-yellow'
-                      )
-                    }
-                  >
-                    HOSTS
-                  </NavLink>
-                </div>
-
-                {/* MORE (With Dropdown) */}
-                <div>
-                  <div className="flex items-center justify-between py-3 group">
-                    <span className="text-sm font-black uppercase tracking-wider text-brand-yellow cursor-pointer" onClick={() => toggleDropdown('more')}>
-                      MORE
-                    </span>
-                    <button
-                      onClick={() => toggleDropdown('more')}
-                      className="w-6 h-6 rounded-full border border-white/20 hover:border-brand-yellow text-gray-300 hover:text-brand-yellow flex items-center justify-center transition-all cursor-pointer"
-                      aria-label="Toggle More submenu"
-                    >
-                      <ChevronDown
-                        className={clsx(
-                          'w-3.5 h-3.5 transition-transform duration-300',
-                          openDropdown === 'more' && 'rotate-180 text-brand-yellow'
-                        )}
-                      />
-                    </button>
-                  </div>
-                  {openDropdown === 'more' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="pl-3 pb-2 space-y-1.5 text-xs font-bold text-gray-300"
-                    >
-                      <Link
-                        to="/schedule"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Broadcast Schedule Guide
-                      </Link>
-                      <Link
-                        to="/promote"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Promote & Advertising
-                      </Link>
-                      <Link
-                        to="/videos"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Video Archives
-                      </Link>
-                      <Link
-                        to="/events"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Station Events & Concerts
-                      </Link>
-                      <Link
-                        to="/contact"
-                        onClick={onClose}
-                        className="block py-1 hover:text-brand-yellow transition-colors"
-                      >
-                        • Contact Studio & Staff
-                      </Link>
-                    </motion.div>
-                  )}
-                </div>
+                ))}
               </nav>
 
               {/* ============================================================= */}
