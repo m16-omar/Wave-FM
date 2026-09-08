@@ -41,14 +41,15 @@ export const Header: React.FC = () => {
                 <Search className="w-3.5 h-3.5 stroke-[2.5]" />
               </button>
 
-              {/* 2. Equalizer / Menu Bars (=) */}
+              {/* 2. Menu Bars (≡) -> Opens Navigation Drawer */}
               <button
-                onClick={toggleMute}
+                onClick={() => setIsMobileMenuOpen(true)}
                 className="w-8 h-8 rounded-full bg-brand-yellow hover:bg-brand-yellowHover active:scale-95 text-black flex items-center justify-center transition-all shadow-xs cursor-pointer"
-                title="Mute / Audio Toggle"
-                aria-label="Equalizer"
+                title="Open Navigation Menu"
+                aria-label="Navigation Menu"
               >
-                <div className="flex flex-col gap-[3.5px] w-3.5 items-center justify-center">
+                <div className="flex flex-col gap-[2.5px] w-3.5 items-center justify-center">
+                  <span className="h-[2px] w-full bg-black rounded-full" />
                   <span className="h-[2px] w-full bg-black rounded-full" />
                   <span className="h-[2px] w-full bg-black rounded-full" />
                 </div>
