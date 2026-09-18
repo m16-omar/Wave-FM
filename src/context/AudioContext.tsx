@@ -60,6 +60,7 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   });
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const userPausedRef = useRef<boolean>(false);
 
   // Keep live track updated to current active broadcast slot
   useEffect(() => {
@@ -82,10 +83,10 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     return () => clearInterval(interval);
   }, [playbackMode]);
 
-  // Initialize HTML5 Audio instance
+  // Initialize HTML5 Audio instance and Autoplay on Launch
   useEffect(() => {
     const audio = new Audio();
-    audio.preload = 'none';
+    audio.preload = 'auto';
     audio.volume = isMuted ? 0 : volume;
 
     audio.onwaiting = () => setIsLoading(true);
@@ -111,6 +112,51 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     audioRef.current = audio;
 
+    // Load main live broadcast stream URL
+    audio.src = RADIO_CHANNELS[0].streamUrl;
+
+    // Attempt automatic playback on website launch
+    setIsLoading(true);
+    const startAutoplay = () => {
+      if (userPausedRef.current) return;
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          // Browser prevented autoplay without prior user interaction.
+          // Fallback: auto-start stream on the user's very first interaction on the page.
+          setIsLoading(false);
+          setIsPlaying(false);
+
+          const handleFirstInteraction = () => {
+            if (!userPausedRef.current && audio.paused) {
+              setIsLoading(true);
+              audio
+                .play()
+                .then(() => {
+                  setIsPlaying(true);
+                  setIsLoading(false);
+                })
+                .catch(() => {
+                  setIsLoading(false);
+                });
+            }
+            window.removeEventListener('click', handleFirstInteraction);
+            window.removeEventListener('touchstart', handleFirstInteraction);
+            window.removeEventListener('keydown', handleFirstInteraction);
+          };
+
+          window.addEventListener('click', handleFirstInteraction, { once: true });
+          window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+          window.addEventListener('keydown', handleFirstInteraction, { once: true });
+        });
+    };
+
+    startAutoplay();
+
     return () => {
       audio.pause();
       audio.src = '';
@@ -129,9 +175,11 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     if (!audioRef.current) return;
 
     if (isPlaying) {
+      userPausedRef.current = true;
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
+      userPausedRef.current = false;
       // If no src or stopped, load current mode source
       if (!audioRef.current.src || audioRef.current.src === '') {
         const src = playbackMode === 'live-radio' ? currentChannel.streamUrl : (currentTrack.previewAudioUrl || currentChannel.streamUrl);
@@ -152,6 +200,7 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   const playLiveStream = (channelId?: string) => {
+    userPausedRef.current = false;
     const targetChannel = channelId 
       ? RADIO_CHANNELS.find(c => c.id === channelId) || RADIO_CHANNELS[0] 
       : currentChannel;
