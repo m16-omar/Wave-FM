@@ -61,6 +61,7 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const userPausedRef = useRef<boolean>(false);
+  const autoplayAttemptedRef = useRef<boolean>(false);
 
   // Keep live track updated to current active broadcast slot
   useEffect(() => {
@@ -83,42 +84,51 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     return () => clearInterval(interval);
   }, [playbackMode]);
 
-  // Initialize HTML5 Audio instance and Autoplay on Launch
+  // Initialize HTML5 Audio event listeners and execute Autoplay on Launch
   useEffect(() => {
-    const audio = new Audio();
-    audio.preload = 'auto';
+    const audio = audioRef.current;
+    if (!audio) return;
+
     audio.volume = isMuted ? 0 : volume;
 
-    audio.onwaiting = () => setIsLoading(true);
-    audio.onplaying = () => {
+    const onWaiting = () => setIsLoading(true);
+    const onPlaying = () => {
       setIsLoading(false);
       setIsPlaying(true);
     };
-    audio.onpause = () => setIsPlaying(false);
-    audio.ontimeupdate = () => {
+    const onPause = () => {
+      setIsPlaying(false);
+      setIsLoading(false);
+    };
+    const onTimeUpdate = () => {
       if (audio.duration && !isNaN(audio.duration)) {
         setCurrentTime(audio.currentTime);
         setDuration(audio.duration);
       }
     };
-    audio.onended = () => {
+    const onEnded = () => {
       setIsPlaying(false);
       nextTrack();
     };
-    audio.onerror = () => {
+    const onError = () => {
       setIsLoading(false);
       setIsPlaying(false);
     };
 
-    audioRef.current = audio;
+    audio.addEventListener('waiting', onWaiting);
+    audio.addEventListener('playing', onPlaying);
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('timeupdate', onTimeUpdate);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('error', onError);
 
-    // Load main live broadcast stream URL
-    audio.src = RADIO_CHANNELS[0].streamUrl;
+    // Initial Live Stream Load & Bulletproof Autoplay Sequence
+    if (!autoplayAttemptedRef.current) {
+      autoplayAttemptedRef.current = true;
+      audio.src = RADIO_CHANNELS[0].streamUrl;
+      setIsLoading(true);
 
-    // Attempt automatic playback on website launch
-    setIsLoading(true);
-    const startAutoplay = () => {
-      if (userPausedRef.current) return;
+      // Attempt 1: Standard unmuted autoplay (allowed on desktop when user has interacted or MEI permits)
       audio
         .play()
         .then(() => {
@@ -126,13 +136,27 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
           setIsLoading(false);
         })
         .catch(() => {
-          // Browser prevented autoplay without prior user interaction.
-          // Fallback: auto-start stream on the user's very first interaction on the page.
-          setIsLoading(false);
-          setIsPlaying(false);
+          // Attempt 2: Muted autoplay (universally allowed by all browsers and mobile devices)
+          audio.muted = true;
+          audio
+            .play()
+            .then(() => {
+              setIsPlaying(true);
+              setIsLoading(false);
+            })
+            .catch(() => {
+              setIsLoading(false);
+              setIsPlaying(false);
+            });
 
+          // Unmute & start audio stream on the user's very first interaction anywhere on the site
           const handleFirstInteraction = () => {
-            if (!userPausedRef.current && audio.paused) {
+            if (userPausedRef.current) return;
+            audio.muted = false;
+            audio.volume = volume;
+            setIsMuted(false);
+            
+            if (audio.paused) {
               setIsLoading(true);
               audio
                 .play()
@@ -144,29 +168,38 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
                   setIsLoading(false);
                 });
             }
-            window.removeEventListener('click', handleFirstInteraction);
-            window.removeEventListener('touchstart', handleFirstInteraction);
-            window.removeEventListener('keydown', handleFirstInteraction);
+            cleanupListeners();
           };
 
-          window.addEventListener('click', handleFirstInteraction, { once: true });
-          window.addEventListener('touchstart', handleFirstInteraction, { once: true });
-          window.addEventListener('keydown', handleFirstInteraction, { once: true });
-        });
-    };
+          const cleanupListeners = () => {
+            ['click', 'pointerdown', 'touchstart', 'touchend', 'keydown', 'scroll', 'wheel'].forEach(ev => {
+              window.removeEventListener(ev, handleFirstInteraction, { capture: true });
+              document.removeEventListener(ev, handleFirstInteraction, { capture: true });
+            });
+          };
 
-    startAutoplay();
+          ['click', 'pointerdown', 'touchstart', 'touchend', 'keydown', 'scroll', 'wheel'].forEach(ev => {
+            window.addEventListener(ev, handleFirstInteraction, { capture: true, once: true });
+            document.addEventListener(ev, handleFirstInteraction, { capture: true, once: true });
+          });
+        });
+    }
 
     return () => {
-      audio.pause();
-      audio.src = '';
+      audio.removeEventListener('waiting', onWaiting);
+      audio.removeEventListener('playing', onPlaying);
+      audio.removeEventListener('pause', onPause);
+      audio.removeEventListener('timeupdate', onTimeUpdate);
+      audio.removeEventListener('ended', onEnded);
+      audio.removeEventListener('error', onError);
     };
   }, []);
 
-  // Update volume
+  // Update volume & mute state on audio element
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = isMuted ? 0 : volume;
+      audioRef.current.muted = isMuted;
     }
     localStorage.setItem('wave_player_volume', volume.toString());
   }, [volume, isMuted]);
@@ -180,7 +213,9 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       setIsPlaying(false);
     } else {
       userPausedRef.current = false;
-      // If no src or stopped, load current mode source
+      audioRef.current.muted = false;
+      setIsMuted(false);
+
       if (!audioRef.current.src || audioRef.current.src === '') {
         const src = playbackMode === 'live-radio' ? currentChannel.streamUrl : (currentTrack.previewAudioUrl || currentChannel.streamUrl);
         audioRef.current.src = src;
@@ -192,9 +227,8 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
           setIsLoading(false);
         })
         .catch(() => {
-          // Fallback simulation for live stream preview if audio file is blocked
           setIsLoading(false);
-          setIsPlaying(true);
+          setIsPlaying(false);
         });
     }
   };
@@ -211,6 +245,8 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     if (audioRef.current) {
       audioRef.current.pause();
+      audioRef.current.muted = false;
+      setIsMuted(false);
       audioRef.current.src = targetChannel.streamUrl;
       setIsLoading(true);
       audioRef.current.play()
@@ -220,13 +256,14 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         })
         .catch(() => {
           setIsLoading(false);
-          setIsPlaying(true);
+          setIsPlaying(false);
         });
     }
   };
 
   const playTrack = (track: Partial<NowPlayingTrack> & { title: string; artist: string; previewAudioUrl?: string }) => {
     setPlaybackMode('track-preview');
+    userPausedRef.current = false;
     const newTrack: NowPlayingTrack = {
       id: track.id || `track-${Date.now()}`,
       title: track.title,
@@ -243,6 +280,8 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     if (audioRef.current) {
       audioRef.current.pause();
+      audioRef.current.muted = false;
+      setIsMuted(false);
       audioRef.current.src = newTrack.previewAudioUrl || '';
       setIsLoading(true);
       audioRef.current.play()
@@ -252,13 +291,14 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         })
         .catch(() => {
           setIsLoading(false);
-          setIsPlaying(true);
+          setIsPlaying(false);
         });
     }
   };
 
   const playPodcast = (podcast: { title: string; hostName: string; audioUrl: string; coverImage: string }) => {
     setPlaybackMode('podcast');
+    userPausedRef.current = false;
     const newTrack: NowPlayingTrack = {
       id: `pod-${Date.now()}`,
       title: podcast.title,
@@ -273,6 +313,8 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     if (audioRef.current) {
       audioRef.current.pause();
+      audioRef.current.muted = false;
+      setIsMuted(false);
       audioRef.current.src = podcast.audioUrl;
       setIsLoading(true);
       audioRef.current.play()
@@ -282,7 +324,7 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         })
         .catch(() => {
           setIsLoading(false);
-          setIsPlaying(true);
+          setIsPlaying(false);
         });
     }
   };
@@ -360,6 +402,15 @@ export const AudioProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         prevTrack,
       }}
     >
+      {/* Hidden audio element in DOM for rock-solid mobile & browser support */}
+      <audio
+        ref={audioRef}
+        playsInline
+        autoPlay
+        preload="auto"
+        className="hidden"
+        aria-hidden="true"
+      />
       {children}
     </AudioContext.Provider>
   );
