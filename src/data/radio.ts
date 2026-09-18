@@ -8,7 +8,7 @@ export const RADIO_CHANNELS: RadioChannel[] = [
     frequency: '106.3 FM',
     tagline: 'The Light of the Airwaves — Hit Music & Live Radio',
     genre: 'Afrobeats / Urban / Hits',
-    streamUrl: 'https://stream.zeno.fm/f3wvbbqmdg8uv', // Real live streaming URL fallback
+    streamUrl: 'https://edge.waystream.io/WGFQP9VrkMZ3fihvHaT2dKjX', // Official live streaming URL
     backupStreamUrl: 'https://icecast.radiowave.live/live',
     bitrate: '320kbps',
     listenersCount: 14820,
@@ -21,7 +21,7 @@ export const RADIO_CHANNELS: RadioChannel[] = [
     frequency: 'HD2 Digital',
     tagline: 'Non-Stop Afrobeats, Drill, R&B & Street Hits',
     genre: 'Afrobeats & Hip-Hop',
-    streamUrl: 'https://stream.zeno.fm/f3wvbbqmdg8uv',
+    streamUrl: 'https://edge.waystream.io/WGFQP9VrkMZ3fihvHaT2dKjX',
     bitrate: '320kbps',
     listenersCount: 9340,
     logo: '/imole-logo.png',
@@ -33,7 +33,7 @@ export const RADIO_CHANNELS: RadioChannel[] = [
     frequency: 'HD3 Digital',
     tagline: 'Amapiano, House, EDM & Live DJ Mixes',
     genre: 'Amapiano / Electronic',
-    streamUrl: 'https://stream.zeno.fm/f3wvbbqmdg8uv',
+    streamUrl: 'https://edge.waystream.io/WGFQP9VrkMZ3fihvHaT2dKjX',
     bitrate: '320kbps',
     listenersCount: 7120,
     logo: '/imole-logo.png',
@@ -45,7 +45,7 @@ export const RADIO_CHANNELS: RadioChannel[] = [
     frequency: 'HD4 Digital',
     tagline: 'Inspirational Gospel, Soul & Lo-Fi Beats',
     genre: 'Inspirational / Soul',
-    streamUrl: 'https://stream.zeno.fm/f3wvbbqmdg8uv',
+    streamUrl: 'https://edge.waystream.io/WGFQP9VrkMZ3fihvHaT2dKjX',
     bitrate: '192kbps',
     listenersCount: 4890,
     logo: '/imole-logo.png',
@@ -67,7 +67,7 @@ export function getCurrentLiveTrack(now: Date = new Date()): NowPlayingTrack {
     currentTime: 0,
     genre: liveShow.category,
     releaseYear: 2026,
-    previewAudioUrl: 'https://stream.zeno.fm/f3wvbbqmdg8uv',
+    previewAudioUrl: 'https://edge.waystream.io/WGFQP9VrkMZ3fihvHaT2dKjX',
     votes: 3820,
   };
 }
