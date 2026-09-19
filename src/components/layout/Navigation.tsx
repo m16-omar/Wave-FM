@@ -15,7 +15,7 @@ export const MAIN_NAV_ITEMS: NavItem[] = [
   { label: 'Videos', href: '/videos' },
   { label: 'Events', href: '/events' },
   { label: 'DJs & Hosts', href: '/hosts' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'About Us', href: '/contact' },
 ];
 
 interface NavigationProps {

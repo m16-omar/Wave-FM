@@ -23,7 +23,7 @@ const NAV_ITEMS = [
   { label: 'SCHEDULE', href: '/schedule' },
   { label: 'VIDEOS', href: '/videos' },
   { label: 'EVENTS', href: '/events' },
-  { label: 'CONTACT', href: '/contact' },
+  { label: 'ABOUT US', href: '/contact' },
 ];
 
 const TREND_TAGS = [

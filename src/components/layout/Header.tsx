@@ -187,7 +187,7 @@ export const Header: React.FC = () => {
                 HOSTS
               </NavLink>
 
-              {/* 7. CONTACT (Plain direct link) */}
+              {/* 7. ABOUT US (Plain direct link) */}
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
@@ -197,7 +197,7 @@ export const Header: React.FC = () => {
                   )
                 }
               >
-                CONTACT
+                ABOUT US
               </NavLink>
             </nav>
           </div>

@@ -42,6 +42,8 @@ export const AppRoutes: React.FC = () => {
       <Route path="/events/:slug" element={<EventDetailPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/contacts" element={<ContactPage />} />
+      <Route path="/about" element={<ContactPage />} />
+      <Route path="/about-us" element={<ContactPage />} />
       <Route path="/promote" element={<PromotePage />} />
       <Route path="/advertise" element={<PromotePage />} />
       <Route path="/rate-card" element={<RateCardPage />} />
