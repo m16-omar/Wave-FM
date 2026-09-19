@@ -16,6 +16,7 @@ import { EventsPage } from '../pages/Events/EventsPage';
 import { EventDetailPage } from '../pages/Events/EventDetailPage';
 import { ContactPage } from '../pages/Contact/ContactPage';
 import { PromotePage } from '../pages/Promote/PromotePage';
+import { RateCardPage } from '../pages/RateCard/RateCardPage';
 import { SearchPage } from '../pages/Search/SearchPage';
 
 export const AppRoutes: React.FC = () => {
@@ -43,9 +44,9 @@ export const AppRoutes: React.FC = () => {
       <Route path="/contacts" element={<ContactPage />} />
       <Route path="/promote" element={<PromotePage />} />
       <Route path="/advertise" element={<PromotePage />} />
-      <Route path="/rate-card" element={<PromotePage />} />
-      <Route path="/ratecard" element={<PromotePage />} />
-      <Route path="/rates" element={<PromotePage />} />
+      <Route path="/rate-card" element={<RateCardPage />} />
+      <Route path="/ratecard" element={<RateCardPage />} />
+      <Route path="/rates" element={<RateCardPage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

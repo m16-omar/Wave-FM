@@ -135,6 +135,19 @@ export const Header: React.FC = () => {
                 PROMOTE
               </NavLink>
 
+              {/* 4. RATE CARD */}
+              <NavLink
+                to="/rate-card"
+                className={({ isActive }) =>
+                  clsx(
+                    'transition-colors py-2',
+                    isActive ? 'text-brand-yellowDark' : 'hover:text-brand-yellowDark'
+                  )
+                }
+              >
+                RATE CARD
+              </NavLink>
+
               {/* 4. RADIO SHOWS */}
               <NavLink
                 to="/shows"

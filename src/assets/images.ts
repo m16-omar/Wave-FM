@@ -7,6 +7,7 @@ import imoleBuildingImage from './image/Imole Building.png';
 import imoleStaffImage from './image/Imole Staff.png';
 import imoleStudioImage from './image/Imole Studio.png';
 import rateCardImage from './image/rate card.jpeg';
+import advertiseWithUsImage from './image/advertise with us.jpeg';
 
 // Show graphics from src/assets/image/Shows
 import comedySplashImg from './image/Shows/Comedy Splash.png';
@@ -28,6 +29,7 @@ export const ASSET_IMAGES = {
   staff: imoleStaffImage,
   studio: imoleStudioImage,
   rateCard: rateCardImage,
+  advertiseWithUs: advertiseWithUsImage,
   shows: {
     comedySplash: comedySplashImg,
     gistHangout: gistHangoutImg,

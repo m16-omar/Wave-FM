@@ -7,6 +7,7 @@ export const MAIN_NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'News', href: '/news' },
   { label: 'Promote', href: '/promote' },
+  { label: 'Rate Card', href: '/rate-card' },
   { label: 'Radio Shows', href: '/shows' },
   { label: 'Schedule', href: '/schedule' },
   { label: 'Podcasts', href: '/podcasts' },

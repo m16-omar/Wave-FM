@@ -16,6 +16,7 @@ const NAV_ITEMS = [
   { label: 'HOME', href: '/' },
   { label: 'NEWS', href: '/news' },
   { label: 'PROMOTE', href: '/promote' },
+  { label: 'RATE CARD', href: '/rate-card' },
   { label: 'RADIO SHOWS', href: '/shows' },
   { label: 'PODCASTS', href: '/podcasts' },
   { label: 'HOSTS', href: '/hosts' },
