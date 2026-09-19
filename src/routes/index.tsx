@@ -43,6 +43,9 @@ export const AppRoutes: React.FC = () => {
       <Route path="/contacts" element={<ContactPage />} />
       <Route path="/promote" element={<PromotePage />} />
       <Route path="/advertise" element={<PromotePage />} />
+      <Route path="/rate-card" element={<PromotePage />} />
+      <Route path="/ratecard" element={<PromotePage />} />
+      <Route path="/rates" element={<PromotePage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
