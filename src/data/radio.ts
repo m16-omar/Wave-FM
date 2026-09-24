@@ -9,7 +9,7 @@ export const RADIO_CHANNELS: RadioChannel[] = [
     tagline: 'The Light of the Airwaves — Hit Music & Live Radio',
     genre: 'Afrobeats / Urban / Hits',
     streamUrl: 'https://edge.waystream.io/WGFQP9VrkMZ3fihvHaT2dKjX', // Official live streaming URL
-    backupStreamUrl: 'https://icecast.radiowave.live/live',
+    backupStreamUrl: 'https://edge.waystream.io/WGFQP9VrkMZ3fihvHaT2dKjX',
     bitrate: '320kbps',
     listenersCount: 14820,
     logo: '/imole-logo.png',
