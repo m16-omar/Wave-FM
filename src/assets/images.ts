@@ -11,6 +11,7 @@ import advertiseWithUsImage from './image/advertise with us.jpeg';
 
 // Show graphics from src/assets/image/Shows
 import comedySplashImg from './image/Shows/Comedy Splash.png';
+import exploreTheWorldImg from './image/Shows/Explore The World.jpeg';
 import gistHangoutImg from './image/Shows/Gist Hangout Show.png';
 import gospelLightImg from './image/Shows/Gospel Light.png';
 import gudugbeImg from './image/Shows/Gudugbe.png';
@@ -19,6 +20,7 @@ import olomonLetoImg from './image/Shows/Olomon Leto.png';
 import reggaeHourImg from './image/Shows/Reggae Hour.png';
 import requestTimeImg from './image/Shows/Request Time.PNG';
 import toBaSeWoNiImg from './image/Shows/To Ba Se Wo Ni.png';
+import wakatiOgoImg from './image/Shows/Wakati Ogo.jpeg';
 
 export const ASSET_IMAGES = {
   hero: heroImage,
@@ -32,6 +34,7 @@ export const ASSET_IMAGES = {
   advertiseWithUs: advertiseWithUsImage,
   shows: {
     comedySplash: comedySplashImg,
+    exploreTheWorld: exploreTheWorldImg,
     gistHangout: gistHangoutImg,
     gospelLight: gospelLightImg,
     gudugbe: gudugbeImg,
@@ -40,6 +43,7 @@ export const ASSET_IMAGES = {
     reggaeHour: reggaeHourImg,
     requestTime: requestTimeImg,
     toBaSeWoNi: toBaSeWoNiImg,
+    wakatiOgo: wakatiOgoImg,
   },
 };
 

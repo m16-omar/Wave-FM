@@ -36,6 +36,22 @@ export const WEEKLY_SCHEDULE: Record<DayOfWeek, ScheduleSlot[]> = {
       description: 'Deeply rooted Yoruba culture, family values, indigenous highlife melodies, folklore, and heritage discourse.',
       isLiveNow: false,
     },
+    {
+      id: 'mon-03',
+      showId: 'wakati-ogo',
+      showTitle: 'Wakati Ogo (Hour of Glory)',
+      showSlug: 'wakati-ogo',
+      category: 'Faith & Devotion',
+      hostName: 'Prophet Moses Bodunrin',
+      hostAvatar: ASSET_IMAGES.staff,
+      image: ASSET_IMAGES.shows.wakatiOgo,
+      day: 'monday',
+      startTime: '08:00 PM',
+      endTime: '09:00 PM',
+      timeSlot: '08:00 – 09:00 PM (WAT)',
+      description: 'Prayers. Word. Transformation. Come for divine encounters, prayers, and life-changing messages.',
+      isLiveNow: false,
+    },
   ],
   tuesday: [
     {
@@ -162,6 +178,22 @@ export const WEEKLY_SCHEDULE: Record<DayOfWeek, ScheduleSlot[]> = {
     },
   ],
   saturday: [
+    {
+      id: 'sat-00',
+      showId: 'explore-the-world',
+      showTitle: 'Explore The World',
+      showSlug: 'explore-the-world',
+      category: 'Travel & Culture',
+      hostName: 'Olukayode Adekunle',
+      hostAvatar: ASSET_IMAGES.staff,
+      image: ASSET_IMAGES.shows.exploreTheWorld,
+      day: 'saturday',
+      startTime: '03:00 PM',
+      endTime: '04:00 PM',
+      timeSlot: '03:00 – 04:00 PM',
+      description: 'Different cultures. Bigger perspectives. Journey beyond borders through travel, culture, people, and places.',
+      isLiveNow: false,
+    },
     {
       id: 'sat-01',
       showId: 'request-time',
@@ -384,6 +416,8 @@ export const getUpcomingConsecutiveShows = (
     'request-time': 2380,
     'gist-hangout': 2250,
     'reggae-hour': 2190,
+    'wakati-ogo': 2300,
+    'explore-the-world': 2150,
   };
 
   const formatDayLabel = (day: DayOfWeek): string => {
